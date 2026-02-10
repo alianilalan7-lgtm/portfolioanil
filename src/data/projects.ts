@@ -202,56 +202,57 @@ export const projects: Project[] = [
     slug: "academy360",
     title: "Academy360",
     description:
-      "Modern online learning platform with course management, progress tracking, and interactive education tools.",
+      "Multi-tenant football academy management platform with role-based dashboards for athletes, coaches, parents, and admins.",
     longDescription:
-      "Academy360 is a comprehensive e-learning platform built with Next.js that provides course management, student progress tracking, and interactive learning experiences for educational institutions and independent instructors.",
+      "Academy360 is a comprehensive football/soccer player development platform designed for youth academies (ages 8-18). It provides role-based dashboards for athletes, coaches, parents, club admins, and super admins — covering everything from training programs and skill tracking to attendance, payments, and performance analytics.",
     image: "/images/academy360.jpg",
     status: "live",
-    category: "Web App",
+    category: "SaaS",
     techStack: [
-      "Next.js",
+      "Next.js 16",
+      "React 19",
       "TypeScript",
-      "Tailwind CSS",
+      "Tailwind CSS 4",
       "Supabase",
-      "Vercel",
+      "Zod",
     ],
     featured: true,
     overview:
-      "Academy360 delivers a complete learning management experience with a modern, responsive interface. Students can browse courses, track their progress, and engage with interactive content. Instructors get tools to create and manage courses, monitor student performance, and deliver educational content effectively.",
+      "Academy360 is a multi-tenant SaaS platform that digitalizes youth football academy operations. With 55+ API routes, a unified dashboard architecture, and PWA support, it serves five distinct user roles — each with a tailored experience. Coaches build weekly training plans, track skill scores with radar charts, and write development notes. Athletes log exercise completions and view their progress. Parents monitor their children's development and payments. Club admins manage members, groups, sessions, and fees. The platform includes a library of 105 exercises across 5 categories, 28 training templates for 7 age groups, and comprehensive analytics with attendance, performance, and season comparison charts.",
     problem:
-      "Many educational platforms are outdated, slow, and offer poor user experiences. Instructors need modern tools to deliver engaging content, while students need intuitive interfaces that make learning enjoyable and trackable.",
+      "Youth football academies typically manage player development through spreadsheets, WhatsApp groups, and paper-based systems. Coaches lack tools to systematically track individual skill progression across technical, physical, and behavioral dimensions. Parents have no visibility into their child's training attendance or development trajectory. Club administrators struggle with member management, payment tracking, and cross-group coordination.",
     solution:
-      "A fast, modern LMS built with Next.js that prioritizes user experience. Server-side rendering ensures quick page loads, while a clean design with Tailwind CSS keeps the interface intuitive. Supabase handles authentication, data storage, and real-time features.",
+      "A purpose-built platform with role-based access control and Row-Level Security ensuring data isolation between organizations. The unified dashboard architecture serves all roles from a single URL namespace with automatic role switching. Features include a structured exercise library with difficulty levels, a \"Yaptım\" (I did it) completion tracking system, coach skill scoring with radar chart visualization, weekly plan builder, player comparison tools, and a complete manual payment tracking system — all wrapped in a Turkish-language, mobile-responsive PWA.",
     features: [
       {
-        title: "Course Management",
+        title: "Role-Based Dashboards",
         description:
-          "Create, organize, and publish courses with rich content, modules, and assessments.",
-        icon: "school",
+          "Five tailored experiences for athletes, coaches, parents, club admins, and super admins with seamless role switching.",
+        icon: "dashboard",
       },
       {
-        title: "Progress Tracking",
+        title: "Training & Exercise Library",
         description:
-          "Visual progress indicators and completion tracking for students across all enrolled courses.",
-        icon: "trending_up",
+          "105 exercises across 5 categories with 3 difficulty levels, 28 age-group templates, and weekly plan builder.",
+        icon: "fitness_center",
       },
       {
-        title: "Interactive Learning",
+        title: "Skill Tracking & Analytics",
         description:
-          "Engaging content delivery with quizzes, assignments, and interactive educational tools.",
-        icon: "quiz",
+          "Individual skill scoring with radar charts, weakness analysis, player comparison, and monthly development archives.",
+        icon: "insights",
       },
       {
-        title: "Analytics Dashboard",
+        title: "Multi-Tenant Architecture",
         description:
-          "Detailed analytics for instructors to monitor student engagement and course performance.",
-        icon: "analytics",
+          "Secure organization isolation with Supabase RLS, OTP authentication, and 55+ validated API endpoints.",
+        icon: "security",
       },
     ],
     team: [{ name: "Ali Anil Alan", role: "Full-Stack Developer" }],
     timeline: {
       duration: "Ongoing",
-      phase: "Production",
+      phase: "Phase 2.5 Complete",
       role: "Solo Developer",
     },
     liveUrl: "https://academy360-one.vercel.app",
