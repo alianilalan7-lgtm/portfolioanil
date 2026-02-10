@@ -25,11 +25,11 @@ export default function ContactCTA() {
               <span className="material-icons text-lg">arrow_forward</span>
             </Link>
             <a
-              href="mailto:hello@alianilalan.dev"
+              href="mailto:alianilappstore@gmail.com"
               className="inline-flex items-center gap-2 px-8 py-3.5 border border-glass-border text-sage rounded-xl hover:border-primary/30 hover:text-primary transition-all"
             >
               <span className="material-icons text-lg">mail_outline</span>
-              hello@alianilalan.dev
+              alianilappstore@gmail.com
             </a>
           </div>
         </div>

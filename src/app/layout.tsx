@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   title: "Ali Anil Alan | Portfolio",
   description:
     "Full-stack developer crafting digital experiences with modern web technologies.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    apple: "/apple-icon.png",
+  },
 };
 
 export default function RootLayout({
