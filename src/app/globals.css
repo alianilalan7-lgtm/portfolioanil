@@ -1,26 +1,101 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary: #84A59D;
+  --color-primary-light: #9DB5AE;
+  --color-forest: #1A1C1A;
+  --color-forest-light: #242724;
+  --color-forest-lighter: #2E322E;
+  --color-sage: #D1D9D1;
+  --color-sand: #E3D5CA;
+  --color-terracotta: #B5838D;
+  --color-background-dark: #1A1C1A;
+  --color-glass: rgba(36, 39, 36, 0.6);
+  --color-glass-border: rgba(132, 165, 157, 0.15);
+  --font-display: "Inter", sans-serif;
+  --font-heading: "Lexend", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Organic glow orbs */
+.orb-sage {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(132, 165, 157, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.orb-sand {
+  position: fixed;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(227, 213, 202, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(36, 39, 36, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(132, 165, 157, 0.15);
+  border-radius: 16px;
+}
+
+.glass-card-hover {
+  transition: all 0.3s ease;
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(132, 165, 157, 0.35);
+  box-shadow: 0 0 30px rgba(132, 165, 157, 0.08);
+}
+
+/* Ping animation for "Available" badge */
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
   }
 }
 
+.animate-ping-slow {
+  animation: ping-slow 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1C1A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2E322E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #84A59D;
+}
+
+/* Selection */
+::selection {
+  background: rgba(132, 165, 157, 0.3);
+  color: #D1D9D1;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #1A1C1A;
+  color: #D1D9D1;
+  font-family: "Inter", sans-serif;
 }
