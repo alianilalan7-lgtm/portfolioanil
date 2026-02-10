@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Project } from "@/data/projects";
 
 const statusColors: Record<string, string> = {
@@ -15,21 +16,43 @@ const statusLabels: Record<string, string> = {
   "in-progress": "In Progress",
 };
 
+const gradients: Record<string, string> = {
+  pulse: "from-emerald-900/40 to-cyan-900/40",
+  "smart-planning": "from-violet-900/40 to-indigo-900/40",
+  gozcu: "from-amber-900/40 to-orange-900/40",
+  academy360: "from-blue-900/40 to-sky-900/40",
+  "iro-beautyzone": "from-pink-900/40 to-rose-900/40",
+};
+
 export default function ProjectCard({ project }: { project: Project }) {
+  const hasImage = project.image && project.image.length > 0;
+
   return (
     <Link href={`/projects/${project.slug}`} className="group">
       <div className="glass-card glass-card-hover p-1 h-full flex flex-col">
-        {/* Image placeholder */}
+        {/* Image */}
         <div className="relative h-48 rounded-t-xl bg-forest-lighter overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-terracotta/10 flex items-center justify-center">
-            <span className="material-icons text-5xl text-sage/20">
-              image
-            </span>
-          </div>
+          {hasImage ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            />
+          ) : (
+            <div
+              className={`absolute inset-0 bg-gradient-to-br ${gradients[project.slug] || "from-primary/10 to-terracotta/10"} flex items-center justify-center`}
+            >
+              <span className="font-heading text-2xl font-bold text-sage/20">
+                {project.title}
+              </span>
+            </div>
+          )}
           {/* Status badge */}
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-3 left-3 z-10">
             <span
-              className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${statusColors[project.status]}`}
+              className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border backdrop-blur-sm ${statusColors[project.status]}`}
             >
               {statusLabels[project.status]}
             </span>

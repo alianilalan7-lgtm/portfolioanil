@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/data/projects";
 
 const statusColors: Record<string, string> = {
@@ -106,15 +107,25 @@ export default async function ProjectDetailPage({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left - Main content */}
           <div className="lg:col-span-2 space-y-10">
-            {/* Project image placeholder */}
+            {/* Project image */}
             <div className="glass-card p-2">
-              <div className="h-64 md:h-80 rounded-xl bg-forest-lighter flex items-center justify-center">
-                <div className="text-center">
-                  <span className="material-icons text-6xl text-sage/20">
-                    image
-                  </span>
-                  <p className="text-sage/30 text-sm mt-2">Project Screenshot</p>
-                </div>
+              <div className="relative h-64 md:h-80 rounded-xl bg-forest-lighter overflow-hidden">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                    priority
+                  />
+                ) : (
+                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-terracotta/10 flex items-center justify-center">
+                    <span className="font-heading text-4xl font-bold text-sage/15">
+                      {project.title}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 

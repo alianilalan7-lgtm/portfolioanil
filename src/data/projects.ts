@@ -85,7 +85,7 @@ export const projects: Project[] = [
       "AI-powered workforce scheduling and shift planning system for retail stores and businesses.",
     longDescription:
       "Smart Planning is an intelligent shift planning and employee management system designed for retail stores. It automatically generates optimal weekly schedules based on business rules, employee availability, skills, and budget constraints \u2014 with drag-and-drop manual editing support.",
-    image: "/images/smart-planning.jpg",
+    image: "",
     status: "live",
     category: "SaaS",
     techStack: [
@@ -144,7 +144,7 @@ export const projects: Project[] = [
       "Enterprise-grade inventory, equipment failure, and maintenance management system (mini-CMMS).",
     longDescription:
       "G\u00f6zc\u00fc is a corporate-level Asset Management / mini-CMMS web application for managing company inventory, tracking equipment failures and downtime, and planning preventive maintenance with checklists, notifications, and detailed audit logging.",
-    image: "/images/gozcu.jpg",
+    image: "",
     status: "live",
     category: "SaaS",
     techStack: [
@@ -262,7 +262,7 @@ export const projects: Project[] = [
       "Premium nail art studio website with online appointment booking, service gallery, and client reviews.",
     longDescription:
       "IRO Beautyzone is a sleek, mobile-first website for a premium nail art studio in Istanbul. It features online appointment booking, a service showcase, client testimonials, and a gallery \u2014 designed to convert visitors into booked clients.",
-    image: "/images/iro-beautyzone.jpg",
+    image: "",
     status: "live",
     category: "Web App",
     techStack: [
