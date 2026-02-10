@@ -109,13 +109,29 @@ export default async function ProjectDetailPage({
           <div className="lg:col-span-2 space-y-10">
             {/* Project image */}
             <div className="glass-card p-2">
-              <div className="relative h-64 md:h-80 rounded-xl bg-forest-lighter overflow-hidden">
+              <div className={`relative h-64 md:h-80 rounded-xl overflow-hidden ${
+                {
+                  pulse: "bg-[#0a0a0a]",
+                  "smart-planning": "bg-[#eef2f7]",
+                  gozcu: "bg-[#f0f4f8]",
+                  academy360: "bg-[#0a0a0a]",
+                  "iro-beautyzone": "bg-[#9a8174]",
+                }[project.slug] || "bg-forest-lighter"
+              }`}>
                 {project.image ? (
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover"
+                    className={`${
+                      {
+                        pulse: "object-contain p-4",
+                        "smart-planning": "object-contain p-3",
+                        gozcu: "object-contain p-3",
+                        academy360: "object-contain p-4",
+                        "iro-beautyzone": "object-contain p-6",
+                      }[project.slug] || "object-cover"
+                    }`}
                     sizes="(max-width: 1024px) 100vw, 66vw"
                     priority
                   />
@@ -128,6 +144,25 @@ export default async function ProjectDetailPage({
                 )}
               </div>
             </div>
+
+            {/* Gallery */}
+            {project.gallery && project.gallery.length > 0 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.gallery.map((img, i) => (
+                  <div key={i} className="glass-card p-2">
+                    <div className="relative h-52 md:h-64 rounded-xl bg-forest-lighter overflow-hidden">
+                      <Image
+                        src={img}
+                        alt={`${project.title} screenshot ${i + 2}`}
+                        fill
+                        className="object-cover object-top"
+                        sizes="(max-width: 1024px) 100vw, 33vw"
+                      />
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Overview */}
             <div>

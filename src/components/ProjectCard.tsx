@@ -24,20 +24,32 @@ const gradients: Record<string, string> = {
   "iro-beautyzone": "from-pink-900/40 to-rose-900/40",
 };
 
+/* Per-project image config: bg color matches the image background so contain looks seamless */
+const imageConfig: Record<string, { bg: string; fit: string }> = {
+  pulse: { bg: "bg-[#0a0a0a]", fit: "object-contain p-3" },
+  "smart-planning": { bg: "bg-[#eef2f7]", fit: "object-contain p-2" },
+  gozcu: { bg: "bg-[#f0f4f8]", fit: "object-contain p-2" },
+  academy360: { bg: "bg-[#0a0a0a]", fit: "object-contain p-3" },
+  "iro-beautyzone": { bg: "bg-[#9a8174]", fit: "object-contain p-4" },
+};
+
 export default function ProjectCard({ project }: { project: Project }) {
   const hasImage = project.image && project.image.length > 0;
+  const config = imageConfig[project.slug];
 
   return (
     <Link href={`/projects/${project.slug}`} className="group">
       <div className="glass-card glass-card-hover p-1 h-full flex flex-col">
         {/* Image */}
-        <div className="relative h-48 rounded-t-xl bg-forest-lighter overflow-hidden">
+        <div
+          className={`relative h-48 rounded-t-xl overflow-hidden ${config?.bg || "bg-forest-lighter"}`}
+        >
           {hasImage ? (
             <Image
               src={project.image}
               alt={project.title}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-500"
+              className={`${config?.fit || "object-cover"} group-hover:scale-105 transition-transform duration-500`}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           ) : (

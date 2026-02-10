@@ -14,6 +14,7 @@ export interface Project {
   features: { title: string; description: string; icon: string }[];
   team: { name: string; role: string }[];
   timeline: { duration: string; phase: string; role: string };
+  gallery?: string[];
   liveUrl?: string;
   sourceUrl?: string;
 }
@@ -85,7 +86,8 @@ export const projects: Project[] = [
       "AI-powered workforce scheduling and shift planning system for retail stores and businesses.",
     longDescription:
       "Smart Planning is an intelligent shift planning and employee management system designed for retail stores. It automatically generates optimal weekly schedules based on business rules, employee availability, skills, and budget constraints \u2014 with drag-and-drop manual editing support.",
-    image: "",
+    image: "/images/smart-planning.jpg",
+    gallery: ["/images/smart-planning-2.jpg", "/images/smart-planning-3.jpg"],
     status: "live",
     category: "SaaS",
     techStack: [
@@ -144,7 +146,7 @@ export const projects: Project[] = [
       "Enterprise-grade inventory, equipment failure, and maintenance management system (mini-CMMS).",
     longDescription:
       "G\u00f6zc\u00fc is a corporate-level Asset Management / mini-CMMS web application for managing company inventory, tracking equipment failures and downtime, and planning preventive maintenance with checklists, notifications, and detailed audit logging.",
-    image: "",
+    image: "/images/gozcu.jpg",
     status: "live",
     category: "SaaS",
     techStack: [
@@ -203,7 +205,7 @@ export const projects: Project[] = [
       "Modern online learning platform with course management, progress tracking, and interactive education tools.",
     longDescription:
       "Academy360 is a comprehensive e-learning platform built with Next.js that provides course management, student progress tracking, and interactive learning experiences for educational institutions and independent instructors.",
-    image: "/images/academy360.jpg",
+    image: "",
     status: "live",
     category: "Web App",
     techStack: [
@@ -262,7 +264,8 @@ export const projects: Project[] = [
       "Premium nail art studio website with online appointment booking, service gallery, and client reviews.",
     longDescription:
       "IRO Beautyzone is a sleek, mobile-first website for a premium nail art studio in Istanbul. It features online appointment booking, a service showcase, client testimonials, and a gallery \u2014 designed to convert visitors into booked clients.",
-    image: "",
+    image: "/images/iro-beautyzone-logo.jpg",
+    gallery: ["/images/iro-beautyzone.jpg"],
     status: "live",
     category: "Web App",
     techStack: [
