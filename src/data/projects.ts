@@ -77,7 +77,6 @@ export const projects: Project[] = [
       role: "Solo Developer",
     },
     liveUrl: "https://pulse-phi-topaz.vercel.app",
-    sourceUrl: "https://github.com/alianilalan7-lgtm/Pulse",
   },
   {
     slug: "smart-planning",
@@ -137,7 +136,6 @@ export const projects: Project[] = [
       role: "Solo Developer",
     },
     liveUrl: "https://smart-planing-next.vercel.app",
-    sourceUrl: "https://github.com/alianilalan7-lgtm/Smartplaning",
   },
   {
     slug: "gozcu",
@@ -197,7 +195,6 @@ export const projects: Project[] = [
       role: "Solo Developer",
     },
     liveUrl: "https://mizan-flax-seven.vercel.app",
-    sourceUrl: "https://github.com/alianilalan7-lgtm/mizan",
   },
   {
     slug: "academy360",
