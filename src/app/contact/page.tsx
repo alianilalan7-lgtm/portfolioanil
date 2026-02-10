@@ -60,7 +60,7 @@ export default function ContactPage() {
                   {
                     icon: "work",
                     label: "LinkedIn",
-                    href: "https://linkedin.com/in/alianilalan",
+                    href: "https://www.linkedin.com/in/ali-an%C4%B1l-alan-a77a7468/",
                     handle: "@alianilalan",
                   },
                   {

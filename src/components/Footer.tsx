@@ -56,7 +56,7 @@ export default function Footer() {
                   label: "GitHub",
                 },
                 {
-                  href: "https://linkedin.com/in/alianilalan",
+                  href: "https://www.linkedin.com/in/ali-an%C4%B1l-alan-a77a7468/",
                   icon: "work",
                   label: "LinkedIn",
                 },
