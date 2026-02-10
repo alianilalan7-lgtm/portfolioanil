@@ -205,7 +205,7 @@ export const projects: Project[] = [
       "Modern online learning platform with course management, progress tracking, and interactive education tools.",
     longDescription:
       "Academy360 is a comprehensive e-learning platform built with Next.js that provides course management, student progress tracking, and interactive learning experiences for educational institutions and independent instructors.",
-    image: "",
+    image: "/images/academy360.jpg",
     status: "live",
     category: "Web App",
     techStack: [

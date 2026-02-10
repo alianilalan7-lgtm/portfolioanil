@@ -114,7 +114,7 @@ export default async function ProjectDetailPage({
                   pulse: "bg-[#0a0a0a]",
                   "smart-planning": "bg-[#eef2f7]",
                   gozcu: "bg-[#f0f4f8]",
-                  academy360: "bg-[#0a0a0a]",
+                  academy360: "bg-[#2bae7e]",
                   "iro-beautyzone": "bg-[#9a8174]",
                 }[project.slug] || "bg-forest-lighter"
               }`}>
@@ -128,7 +128,7 @@ export default async function ProjectDetailPage({
                         pulse: "object-contain p-4",
                         "smart-planning": "object-contain p-3",
                         gozcu: "object-contain p-3",
-                        academy360: "object-contain p-4",
+                        academy360: "object-contain p-8",
                         "iro-beautyzone": "object-contain p-6",
                       }[project.slug] || "object-cover"
                     }`}

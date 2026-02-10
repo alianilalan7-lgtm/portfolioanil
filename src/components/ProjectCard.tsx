@@ -29,7 +29,7 @@ const imageConfig: Record<string, { bg: string; fit: string }> = {
   pulse: { bg: "bg-[#0a0a0a]", fit: "object-contain p-3" },
   "smart-planning": { bg: "bg-[#eef2f7]", fit: "object-contain p-2" },
   gozcu: { bg: "bg-[#f0f4f8]", fit: "object-contain p-2" },
-  academy360: { bg: "bg-[#0a0a0a]", fit: "object-contain p-3" },
+  academy360: { bg: "bg-[#2bae7e]", fit: "object-contain p-6" },
   "iro-beautyzone": { bg: "bg-[#9a8174]", fit: "object-contain p-4" },
 };
 
