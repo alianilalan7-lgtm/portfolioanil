@@ -72,7 +72,7 @@ export default function ContactPage() {
                   {
                     icon: "code",
                     label: "GitHub",
-                    href: "https://github.com/alianilalan",
+                    href: "https://github.com/alianilalan7-lgtm",
                     handle: "@alianilalan",
                   },
                 ].map((social) => (

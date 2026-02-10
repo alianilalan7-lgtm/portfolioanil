@@ -43,7 +43,7 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="https://github.com/alianilalan"
+            href="https://github.com/alianilalan7-lgtm"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sage/70 hover:text-primary transition-colors"
