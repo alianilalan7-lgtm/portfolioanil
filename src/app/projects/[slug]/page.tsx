@@ -76,6 +76,20 @@ export default async function ProjectDetailPage({
             ))}
           </div>
 
+          {/* Progress bar */}
+          <div className="mt-6">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-sage/40 text-sm">Project Progress</span>
+              <span className="text-primary text-sm font-medium">{project.progress}%</span>
+            </div>
+            <div className="h-2 rounded-full bg-forest-lighter overflow-hidden">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary to-primary-light transition-all duration-500"
+                style={{ width: `${project.progress}%` }}
+              />
+            </div>
+          </div>
+
           {/* Action buttons */}
           <div className="flex flex-wrap gap-3 mt-8">
             {project.liveUrl && (
@@ -214,6 +228,31 @@ export default async function ProjectDetailPage({
                 ))}
               </div>
             </div>
+
+            {/* Code Snippet */}
+            {project.codeSnippet && (
+              <div>
+                <h2 className="font-heading text-2xl font-bold text-sage mb-4">
+                  Code Highlight
+                </h2>
+                <div className="glass-card overflow-hidden">
+                  <div className="flex items-center justify-between px-5 py-3 border-b border-glass-border bg-forest-lighter/50">
+                    <div className="flex items-center gap-2">
+                      <span className="material-icons text-primary text-sm">code</span>
+                      <span className="text-sage/70 text-sm font-medium">
+                        {project.codeSnippet.title}
+                      </span>
+                    </div>
+                    <span className="text-sage/30 text-xs uppercase tracking-wider">
+                      {project.codeSnippet.language}
+                    </span>
+                  </div>
+                  <pre className="p-5 overflow-x-auto text-sm leading-relaxed">
+                    <code className="text-sage/70">{project.codeSnippet.code}</code>
+                  </pre>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Right - Sidebar */}

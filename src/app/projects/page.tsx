@@ -94,6 +94,15 @@ export default function ProjectsPage() {
             </p>
           </div>
         )}
+
+        {/* Archival Works */}
+        <div className="text-center mt-16 pt-8 border-t border-glass-border">
+          <button className="inline-flex items-center gap-2 text-sage/40 text-sm hover:text-primary transition-colors group">
+            <span className="material-icons text-lg group-hover:text-primary transition-colors">inventory_2</span>
+            View Archival Works
+            <span className="material-icons text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+          </button>
+        </div>
       </div>
     </div>
   );

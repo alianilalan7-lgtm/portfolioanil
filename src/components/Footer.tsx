@@ -12,7 +12,7 @@ export default function Footer() {
                 <span className="text-primary font-heading font-bold text-sm">A</span>
               </div>
               <span className="font-heading font-semibold text-sage">
-                ali<span className="text-primary">.dev</span>
+                alianil<span className="text-primary">.com</span>
               </span>
             </Link>
             <p className="text-sage/50 text-sm leading-relaxed">
@@ -29,6 +29,7 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               {[
                 { href: "/", label: "Home" },
+                { href: "/certificates", label: "Certificates" },
                 { href: "/projects", label: "Projects" },
                 { href: "/contact", label: "Contact" },
               ].map((link) => (

@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Project } from "@/data/projects";
 
 const statusColors: Record<string, string> = {
@@ -16,51 +15,17 @@ const statusLabels: Record<string, string> = {
   "in-progress": "In Progress",
 };
 
-const gradients: Record<string, string> = {
-  pulse: "from-emerald-900/40 to-cyan-900/40",
-  "smart-planning": "from-violet-900/40 to-indigo-900/40",
-  gozcu: "from-amber-900/40 to-orange-900/40",
-  academy360: "from-blue-900/40 to-sky-900/40",
-  "iro-beautyzone": "from-pink-900/40 to-rose-900/40",
-};
-
-/* Per-project image config: bg color matches the image background so contain looks seamless */
-const imageConfig: Record<string, { bg: string; fit: string }> = {
-  pulse: { bg: "bg-[#0a0a0a]", fit: "object-contain p-3" },
-  "smart-planning": { bg: "bg-[#eef2f7]", fit: "object-contain p-2" },
-  gozcu: { bg: "bg-[#f0f4f8]", fit: "object-contain p-2" },
-  academy360: { bg: "bg-[#2bae7e]", fit: "object-contain p-6" },
-  "iro-beautyzone": { bg: "bg-[#9a8174]", fit: "object-contain p-4" },
-};
-
 export default function ProjectCard({ project }: { project: Project }) {
-  const hasImage = project.image && project.image.length > 0;
-  const config = imageConfig[project.slug];
+  const initial = project.title.charAt(0).toUpperCase();
 
   return (
     <Link href={`/projects/${project.slug}`} className="group">
       <div className="glass-card glass-card-hover p-1 h-full flex flex-col">
-        {/* Image */}
-        <div
-          className={`relative h-48 rounded-t-xl overflow-hidden ${config?.bg || "bg-forest-lighter"}`}
-        >
-          {hasImage ? (
-            <Image
-              src={project.image}
-              alt={project.title}
-              fill
-              className={`${config?.fit || "object-cover"} group-hover:scale-105 transition-transform duration-500`}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            />
-          ) : (
-            <div
-              className={`absolute inset-0 bg-gradient-to-br ${gradients[project.slug] || "from-primary/10 to-terracotta/10"} flex items-center justify-center`}
-            >
-              <span className="font-heading text-2xl font-bold text-sage/20">
-                {project.title}
-              </span>
-            </div>
-          )}
+        {/* Initial letter */}
+        <div className="relative h-48 rounded-t-xl overflow-hidden bg-forest-light flex items-center justify-center">
+          <span className="font-heading text-8xl font-bold text-primary/20 group-hover:text-primary/35 transition-colors duration-500 select-none">
+            {initial}
+          </span>
           {/* Status badge */}
           <div className="absolute top-3 left-3 z-10">
             <span

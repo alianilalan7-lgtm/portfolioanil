@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/certificates", label: "Certificates" },
   { href: "/projects", label: "Projects" },
   { href: "/contact", label: "Contact" },
 ];
@@ -23,7 +24,7 @@ export default function Navbar() {
             <span className="text-primary font-heading font-bold text-sm">A</span>
           </div>
           <span className="font-heading font-semibold text-sage">
-            ali<span className="text-primary">.dev</span>
+            alianil<span className="text-primary">.com</span>
           </span>
         </Link>
 

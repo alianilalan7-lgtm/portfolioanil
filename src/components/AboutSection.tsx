@@ -1,59 +1,46 @@
+import { projects } from "@/data/projects";
+
 export default function AboutSection() {
   return (
     <section className="py-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left - Image placeholder */}
-          <div className="glass-card p-2">
-            <div className="h-80 rounded-xl bg-forest-lighter flex items-center justify-center">
-              <div className="text-center">
-                <span className="material-icons text-6xl text-sage/20 mb-2">
-                  person
-                </span>
-                <p className="text-sage/30 text-sm">Profile Photo</p>
-              </div>
-            </div>
-          </div>
+      <div className="max-w-4xl mx-auto">
+        <p className="text-primary text-sm font-medium mb-2">About Me</p>
+        <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage mb-6">
+          Building working products rooted in{" "}
+          <span className="text-primary">real-world</span> problems
+        </h2>
+        <div className="space-y-4 text-sage/60 text-lg leading-relaxed">
+          <p>
+            I spent 10+ years inside retail operations — team leadership,
+            KPIs, shift planning, high-tempo environments, and crisis
+            management. That experience shaped a simple principle for me:
+            a solution only matters if it works in real life.
+          </p>
+          <p>
+            Today, I combine that operational mindset with software and AI
+            to build practical web applications and MVPs. I care less about
+            trends and more about choosing the right tool for the right
+            problem.
+          </p>
+          <p>
+            My main focus areas include planning &amp; optimization,
+            dashboards and automation, and AI-powered briefing workflows.
+          </p>
+        </div>
 
-          {/* Right - Content */}
-          <div>
-            <p className="text-primary text-sm font-medium mb-2">About Me</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage mb-6">
-              Passionate about building{" "}
-              <span className="text-primary">meaningful</span> digital products
-            </h2>
-            <div className="space-y-4 text-sage/60 leading-relaxed">
-              <p>
-                I&apos;m a full-stack developer with a passion for creating
-                elegant, performant web applications that solve real-world
-                problems. With expertise in modern JavaScript frameworks and
-                cloud technologies, I bring ideas to life through clean code and
-                thoughtful design.
+        {/* Stats */}
+        <div className="flex gap-12 mt-10 pt-8 border-t border-glass-border">
+          {[
+            { number: "10+", label: "Years in Operations" },
+            { number: `${projects.length}`, label: "Projects Built" },
+          ].map((stat) => (
+            <div key={stat.label}>
+              <p className="font-heading text-3xl font-bold text-primary">
+                {stat.number}
               </p>
-              <p>
-                When I&apos;m not coding, you&apos;ll find me exploring nature,
-                contributing to open-source projects, or experimenting with AI
-                and machine learning to push the boundaries of what&apos;s
-                possible on the web.
-              </p>
+              <p className="text-sage/40 text-sm mt-1">{stat.label}</p>
             </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-8">
-              {[
-                { number: "3+", label: "Years Experience" },
-                { number: "20+", label: "Projects Built" },
-                { number: "10+", label: "Happy Clients" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <p className="font-heading text-2xl font-bold text-primary">
-                    {stat.number}
-                  </p>
-                  <p className="text-sage/40 text-sm">{stat.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

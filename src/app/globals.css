@@ -19,22 +19,36 @@
 /* Organic glow orbs */
 .orb-sage {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 700px;
+  height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(132, 165, 157, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(132, 165, 157, 0.15) 0%, rgba(132, 165, 157, 0.05) 40%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  animation: orb-drift 20s ease-in-out infinite alternate;
 }
 
 .orb-sand {
   position: fixed;
-  width: 500px;
-  height: 500px;
+  width: 600px;
+  height: 600px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(227, 213, 202, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(227, 213, 202, 0.12) 0%, rgba(227, 213, 202, 0.04) 40%, transparent 70%);
   pointer-events: none;
   z-index: 0;
+  animation: orb-drift 25s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes orb-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  100% {
+    transform: translate(-20px, 30px) scale(0.95);
+  }
 }
 
 /* Glass card */
@@ -98,4 +112,15 @@ body {
   background: #1A1C1A;
   color: #D1D9D1;
   font-family: "Inter", sans-serif;
+}
+
+/* Code block styling */
+pre {
+  font-family: "SF Mono", "Fira Code", "Fira Mono", Menlo, Consolas, monospace;
+  tab-size: 2;
+}
+
+pre code {
+  font-size: 13px;
+  line-height: 1.7;
 }

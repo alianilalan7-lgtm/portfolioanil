@@ -14,6 +14,8 @@ export interface Project {
   features: { title: string; description: string; icon: string }[];
   team: { name: string; role: string }[];
   timeline: { duration: string; phase: string; role: string };
+  progress: number;
+  codeSnippet?: { language: string; title: string; code: string };
   gallery?: string[];
   liveUrl?: string;
   sourceUrl?: string;
@@ -39,6 +41,7 @@ export const projects: Project[] = [
       "SST v3 / AWS",
     ],
     featured: true,
+    progress: 65,
     overview:
       "Pulse redefines how people consume news by combining AI-driven editorial analysis with real-time fact verification. The platform ingests content from multiple RSS sources, groups semantically similar stories, and generates editorial rewrites in five distinct styles \u2014 from deep analytical breakdowns to quick TL;DR summaries. Six specialized AI experts provide unique perspectives across politics, economics, science, sports, culture, and health.",
     problem:
@@ -71,6 +74,29 @@ export const projects: Project[] = [
         icon: "fact_check",
       },
     ],
+    codeSnippet: {
+      language: "typescript",
+      title: "AI Editorial Pipeline - Gemini Integration",
+      code: `// Editorial render pipeline with fact verification
+async function renderEditorial(article: Article) {
+  const factTable = await gemini.extract({
+    model: "gemini-2.5-flash",
+    prompt: buildFactExtractionPrompt(article),
+    schema: FactTableSchema,
+  });
+
+  const rewrites = await Promise.all(
+    EDITORIAL_STYLES.map((style) =>
+      gemini.generate({
+        prompt: buildRewritePrompt(article, style),
+        facts: factTable, // deterministic verification
+      })
+    )
+  );
+
+  return { factTable, rewrites };
+}`,
+    },
     team: [{ name: "Ali Anil Alan", role: "Full-Stack Developer" }],
     timeline: {
       duration: "Ongoing",
@@ -99,6 +125,7 @@ export const projects: Project[] = [
       "Supabase",
     ],
     featured: true,
+    progress: 90,
     overview:
       "Smart Planning transforms workforce management with an AI-driven scheduling engine that considers employee skills, availability, labor laws, and budget constraints. Managers can view timeline-based daily plans, lock approved shifts, and switch between Protective, Balanced, and Aggressive planning modes to optimize staffing levels.",
     problem:
@@ -158,6 +185,7 @@ export const projects: Project[] = [
       "Prisma",
     ],
     featured: true,
+    progress: 85,
     overview:
       "G\u00f6zc\u00fc provides a complete asset management solution for industrial and manufacturing environments. It covers the full lifecycle from machine registration and inventory tracking to failure reporting, downtime analysis, cost tracking, and preventive maintenance scheduling \u2014 all with role-based access control and full audit logging.",
     problem:
@@ -217,6 +245,7 @@ export const projects: Project[] = [
       "Zod",
     ],
     featured: true,
+    progress: 75,
     overview:
       "Academy360 is a multi-tenant SaaS platform that digitalizes youth football academy operations. With 55+ API routes, a unified dashboard architecture, and PWA support, it serves five distinct user roles — each with a tailored experience. Coaches build weekly training plans, track skill scores with radar charts, and write development notes. Athletes log exercise completions and view their progress. Parents monitor their children's development and payments. Club admins manage members, groups, sessions, and fees. The platform includes a library of 105 exercises across 5 categories, 28 training templates for 7 age groups, and comprehensive analytics with attendance, performance, and season comparison charts.",
     problem:
@@ -277,6 +306,7 @@ export const projects: Project[] = [
       "Vercel",
     ],
     featured: true,
+    progress: 100,
     overview:
       "IRO Beautyzone\u2019s website serves as the digital storefront for a premium nail art studio in Suadiye, Kad\u0131k\u00f6y, Istanbul. With a 4.9/5 customer satisfaction rating prominently displayed, the site builds trust through client testimonials and showcases the studio\u2019s work through a curated gallery. The 24/7 online booking system converts visitors into appointments.",
     problem:
