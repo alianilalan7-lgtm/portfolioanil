@@ -1,22 +1,29 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { Project } from "@/data/projects";
-
-const statusColors: Record<string, string> = {
-  live: "bg-green-500/20 text-green-400 border-green-500/30",
-  beta: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-  mvp: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-  "in-progress": "bg-orange-500/20 text-orange-400 border-orange-500/30",
-};
-
-const statusLabels: Record<string, string> = {
-  live: "Live",
-  beta: "Beta",
-  mvp: "MVP",
-  "in-progress": "In Progress",
-};
+import { Link } from "@/i18n/navigation";
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const t = useTranslations("ProjectCard");
+  const tProject = useTranslations();
   const initial = project.title.charAt(0).toUpperCase();
+
+  const statusColors: Record<string, string> = {
+    live: "bg-green-500/20 text-green-400 border-green-500/30",
+    beta: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
+    mvp: "bg-blue-500/20 text-blue-400 border-blue-500/30",
+    "in-progress": "bg-orange-500/20 text-orange-400 border-orange-500/30",
+    paused: "bg-gray-500/20 text-gray-400 border-gray-500/30",
+    completed: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
+  };
+
+  const statusLabels: Record<string, string> = {
+    live: t("statusLive"),
+    beta: t("statusBeta"),
+    mvp: t("statusMvp"),
+    "in-progress": t("statusInProgress"),
+    paused: t("statusPaused"),
+    completed: t("statusCompleted"),
+  };
 
   return (
     <Link href={`/projects/${project.slug}`} className="group">
@@ -42,7 +49,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             {project.title}
           </h3>
           <p className="text-sage/50 text-sm leading-relaxed mb-4 flex-1">
-            {project.description}
+            {tProject(project.descriptionKey)}
           </p>
 
           {/* Tech tags */}
@@ -64,7 +71,7 @@ export default function ProjectCard({ project }: { project: Project }) {
 
           {/* Link */}
           <div className="flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all">
-            Explore Case
+            {t("exploreCase")}
             <span className="material-icons text-sm">arrow_forward</span>
           </div>
         </div>

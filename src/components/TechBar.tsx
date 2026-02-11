@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 const technologies = [
   { name: "Next.js", icon: "web" },
   { name: "React", icon: "code" },
@@ -10,11 +12,13 @@ const technologies = [
 ];
 
 export default function TechBar() {
+  const t = useTranslations("TechBar");
+
   return (
     <section className="py-12 px-6 border-y border-glass-border bg-forest-light/30">
       <div className="max-w-6xl mx-auto">
         <p className="text-sage/40 text-xs uppercase tracking-widest text-center mb-6">
-          Technologies I Work With
+          {t("title")}
         </p>
         <div className="flex flex-wrap justify-center gap-6 md:gap-10">
           {technologies.map((tech) => (

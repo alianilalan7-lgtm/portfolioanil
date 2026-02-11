@@ -1,19 +1,26 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
-
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/certificates", label: "Certificates" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
+import { useTranslations, useLocale } from "next-intl";
+import { Link, usePathname, useRouter } from "@/i18n/navigation";
 
 export default function Navbar() {
+  const t = useTranslations("Navigation");
   const pathname = usePathname();
+  const router = useRouter();
+  const locale = useLocale();
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  const navLinks = [
+    { href: "/" as const, label: t("home") },
+    { href: "/certificates" as const, label: t("certificates") },
+    { href: "/projects" as const, label: t("projects") },
+    { href: "/contact" as const, label: t("contact") },
+  ];
+
+  const switchLocale = (newLocale: string) => {
+    router.replace(pathname, { locale: newLocale as "en" | "tr" });
+  };
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-forest/80 border-b border-glass-border">
@@ -43,6 +50,32 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+
+          {/* Language Switcher */}
+          <div className="flex items-center border border-glass-border rounded-lg overflow-hidden">
+            <button
+              onClick={() => switchLocale("en")}
+              className={`px-3 py-1.5 text-xs font-semibold transition-colors ${
+                locale === "en"
+                  ? "bg-primary text-forest"
+                  : "text-sage/60 hover:text-sage hover:bg-forest-lighter"
+              }`}
+            >
+              EN
+            </button>
+            <div className="w-px h-4 bg-glass-border" />
+            <button
+              onClick={() => switchLocale("tr")}
+              className={`px-3 py-1.5 text-xs font-semibold transition-colors ${
+                locale === "tr"
+                  ? "bg-primary text-forest"
+                  : "text-sage/60 hover:text-sage hover:bg-forest-lighter"
+              }`}
+            >
+              TR
+            </button>
+          </div>
+
           <a
             href="https://github.com/alianilalan7-lgtm"
             target="_blank"
@@ -83,6 +116,35 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            {/* Mobile Language Switcher */}
+            <div className="flex items-center gap-2 pt-2 border-t border-glass-border">
+              <button
+                onClick={() => {
+                  switchLocale("en");
+                  setMobileOpen(false);
+                }}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
+                  locale === "en"
+                    ? "bg-primary text-forest"
+                    : "text-sage/60 border border-glass-border hover:text-sage"
+                }`}
+              >
+                EN
+              </button>
+              <button
+                onClick={() => {
+                  switchLocale("tr");
+                  setMobileOpen(false);
+                }}
+                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
+                  locale === "tr"
+                    ? "bg-primary text-forest"
+                    : "text-sage/60 border border-glass-border hover:text-sage"
+                }`}
+              >
+                TR
+              </button>
+            </div>
           </div>
         </div>
       )}

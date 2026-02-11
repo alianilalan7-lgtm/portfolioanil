@@ -1,6 +1,10 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const tNav = useTranslations("Navigation");
+
   return (
     <footer className="relative z-10 border-t border-glass-border bg-forest/80 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-6 py-12">
@@ -16,22 +20,21 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-sage/50 text-sm leading-relaxed">
-              Full-stack developer crafting digital experiences with modern web
-              technologies.
+              {t("description")}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
             <h4 className="font-heading font-semibold text-sage text-sm mb-4">
-              Quick Links
+              {t("quickLinks")}
             </h4>
             <div className="flex flex-col gap-2">
               {[
-                { href: "/", label: "Home" },
-                { href: "/certificates", label: "Certificates" },
-                { href: "/projects", label: "Projects" },
-                { href: "/contact", label: "Contact" },
+                { href: "/" as const, label: tNav("home") },
+                { href: "/certificates" as const, label: tNav("certificates") },
+                { href: "/projects" as const, label: tNav("projects") },
+                { href: "/contact" as const, label: tNav("contact") },
               ].map((link) => (
                 <Link
                   key={link.href}
@@ -47,7 +50,7 @@ export default function Footer() {
           {/* Connect */}
           <div>
             <h4 className="font-heading font-semibold text-sage text-sm mb-4">
-              Connect
+              {t("connect")}
             </h4>
             <div className="flex gap-3">
               {[
@@ -84,15 +87,14 @@ export default function Footer() {
 
         <div className="border-t border-glass-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sage/40 text-xs">
-            &copy; {new Date().getFullYear()} Ali Anil Alan. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
           <div className="flex gap-4">
             <span className="text-sage/40 text-xs hover:text-sage/60 transition-colors cursor-pointer">
-              Privacy Policy
+              {t("privacy")}
             </span>
             <span className="text-sage/40 text-xs hover:text-sage/60 transition-colors cursor-pointer">
-              Terms of Service
+              {t("terms")}
             </span>
           </div>
         </div>

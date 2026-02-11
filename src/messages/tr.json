@@ -1,0 +1,199 @@
+{
+  "Metadata": {
+    "title": "Ali Anıl Alan | Portfolyo",
+    "description": "Modern web teknolojileriyle dijital deneyimler oluşturan AI Product Builder."
+  },
+  "Navigation": {
+    "home": "Ana Sayfa",
+    "certificates": "Sertifikalar",
+    "projects": "Projeler",
+    "contact": "İletişim"
+  },
+  "Hero": {
+    "availableBadge": "Yeni projeler için müsait",
+    "heading1": "Dijital Deneyimler",
+    "heading2": "Tasarlıyorum",
+    "description": "Performans, erişilebilirlik ve şık kullanıcı arayüzlerine odaklanan modern web uygulamaları geliştiren AI Product Builder.",
+    "viewProjects": "Projeleri Gör",
+    "getInTouch": "İletişime Geç",
+    "heroImageAlt": "AI Dijital Deneyim"
+  },
+  "TechBar": {
+    "title": "Çalıştığım Teknolojiler"
+  },
+  "FeaturedProjects": {
+    "subtitle": "Seçili Çalışmalar",
+    "title": "Öne Çıkan Projeler",
+    "viewAll": "Tüm projeleri gör"
+  },
+  "About": {
+    "subtitle": "Hakkımda",
+    "title": "Temeli",
+    "titleHighlight": "gerçek dünya",
+    "titleEnd": "problemlerine dayanan ürünler geliştiriyorum",
+    "paragraph1": "10 yılı aşkın süredir perakende operasyonlarında çalıştım — takım liderliği, KPI'lar, vardiya planlaması, yoğun tempolu ortamlar ve kriz yönetimi. Bu deneyim bana basit bir ilke kazandırdı: bir çözüm ancak gerçek hayatta işe yararsa anlam taşır.",
+    "paragraph2": "Bugün, bu operasyonel bakış açısını yazılım ve yapay zeka ile birleştirerek pratik web uygulamaları ve MVP'ler geliştiriyorum. Trendlerden çok doğru problem için doğru aracı seçmeyi önemsiyorum.",
+    "paragraph3": "Ana odak alanlarım arasında planlama ve optimizasyon, dashboard'lar ve otomasyon, yapay zeka destekli brifing iş akışları yer alıyor.",
+    "statYears": "Yıllık Operasyon Deneyimi",
+    "statProjects": "Tamamlanan Proje"
+  },
+  "SkillStack": {
+    "subtitle": "Uzmanlık",
+    "title": "Yetenekler & Teknolojiler",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "toolsAi": "Araçlar & AI"
+  },
+  "ContactCTA": {
+    "title": "Birlikte bir şeyler",
+    "titleHighlight": "inşa edelim",
+    "description": "Aklınızda bir proje mi var, yoksa iş birliği mi yapmak istiyorsunuz? Sizden haber almak isterim. Fikirlerinizi hayata geçirelim.",
+    "startConversation": "Sohbet Başlat"
+  },
+  "ContactForm": {
+    "fullName": "Ad Soyad",
+    "namePlaceholder": "Ahmet Yılmaz",
+    "emailAddress": "E-posta Adresi",
+    "emailPlaceholder": "ahmet@ornek.com",
+    "subject": "Konu",
+    "selectSubject": "Bir konu seçin",
+    "subjectProjectInquiry": "Proje Talebi",
+    "subjectFreelance": "Freelance Fırsat",
+    "subjectCollaboration": "İş Birliği",
+    "subjectGeneral": "Genel Soru",
+    "subjectOther": "Diğer",
+    "message": "Mesaj",
+    "messagePlaceholder": "Projeniz hakkında bilgi verin...",
+    "sending": "Gönderiliyor...",
+    "sendMessage": "Mesaj Gönder",
+    "successMessage": "Mesaj başarıyla gönderildi! En kısa sürede dönüş yapacağım.",
+    "errorMessage": "Mesaj gönderilemedi. Lütfen tekrar deneyin veya doğrudan e-posta gönderin."
+  },
+  "ContactPage": {
+    "availableBadge": "İşe Alıma Açık",
+    "title": "İletişime",
+    "titleHighlight": "geçin",
+    "description": "Aklınızda bir proje mi var? Fikirlerinizi hayata geçirmek için nasıl birlikte çalışabileceğimizi konuşalım.",
+    "quickIntroTitle": "Hızlı Tanışma?",
+    "quickIntroDescription": "Yüz yüze bir sohbeti mi tercih edersiniz? Proje ihtiyaçlarınızı görüşmek için kısa bir keşif görüşmesi ayarlayın.",
+    "bookCall": "15 dk Keşif Görüşmesi Ayarla",
+    "connect": "Bağlantılar"
+  },
+  "ProjectsPage": {
+    "title": "Projeler",
+    "description": "AI, sürdürülebilirlik ve modern web geliştirme alanlarını kapsayan proje koleksiyonu.",
+    "searchPlaceholder": "Proje ara...",
+    "noResults": "Proje bulunamadı",
+    "noResultsHint": "Filtrelerinizi veya arama teriminizi ayarlamayı deneyin",
+    "archivalWorks": "Arşiv Çalışmalarını Gör",
+    "allWorks": "Tüm Çalışmalar"
+  },
+  "ProjectCard": {
+    "exploreCase": "Vaka İncele",
+    "statusLive": "Yayında",
+    "statusBeta": "Beta",
+    "statusMvp": "MVP",
+    "statusInProgress": "Gelişim Aşamasında",
+    "statusPaused": "Pause Modda",
+    "statusCompleted": "Tamamlandı"
+  },
+  "ProjectDetail": {
+    "breadcrumbProjects": "Projeler",
+    "projectProgress": "Proje İlerlemesi",
+    "visitLiveDemo": "Canlı Demo",
+    "viewSource": "Kaynak Kodu",
+    "projectOverview": "Proje Özeti",
+    "theProblem": "Problem",
+    "theSolution": "Çözüm",
+    "keyFeatures": "Temel Özellikler",
+    "codeHighlight": "Kod Örneği",
+    "techStack": "Teknoloji Yığını",
+    "team": "Ekip",
+    "statusTimeline": "Durum & Zaman Çizelgesi",
+    "duration": "Süre",
+    "phase": "Aşama",
+    "role": "Rol",
+    "upNext": "Sıradaki"
+  },
+  "CertificatesPage": {
+    "title": "Sertifikalar",
+    "description": "Profesyonel sertifikalar ve tamamlanan eğitim programları.",
+    "verify": "Doğrula",
+    "pdf": "PDF"
+  },
+  "Footer": {
+    "description": "Modern web teknolojileriyle dijital deneyimler oluşturan AI Product Builder.",
+    "quickLinks": "Hızlı Bağlantılar",
+    "connect": "Bağlantılar",
+    "copyright": "Ali Anıl Alan. Tüm hakları saklıdır.",
+    "privacy": "Gizlilik Politikası",
+    "terms": "Kullanım Koşulları"
+  },
+  "Projects": {
+    "pulse": {
+      "description": "Çoklu perspektif analizi ve gerçek zamanlı doğrulama ile yapay zeka destekli haber istihbarat platformu.",
+      "longDescription": "Pulse, çeşitli kaynaklardan haberleri çıkarmak, özetlemek ve doğrulamak için yapay zeka kullanan modern, yüksek performanslı bir haber toplama platformudur. Çoklu perspektif editoryal analizi, tahmin piyasaları entegrasyonu ve doğrulama yetenekleri ile temiz, reklamsız bir okuma deneyimi sunar.",
+      "overview": "Pulse, yapay zeka destekli editoryal analizi gerçek zamanlı doğrulama ile birleştirerek insanların haberleri tüketme biçimini yeniden tanımlıyor. Platform, birden fazla RSS kaynağından içerik toplar, anlamsal olarak benzer haberleri gruplar ve beş farklı tarzda editoryal yeniden yazımlar üretir — derin analitik çözümlemelerden hızlı TL;DR özetlerine kadar.",
+      "problem": "Geleneksel haber platformları genellikle derinlik ve doğrulamadan yoksun tek sesli habercilik sunar. Kullanıcılar bilgi kirliliğinden bunalmış durumdadır; iddiaları çapraz kontrol etmenin, birden fazla perspektifi anlamanın veya gerçekleri anlık olarak doğrulamanın kolay bir yolu yoktur.",
+      "solution": "Pulse'ın editoryal işleme hattı, makalelerden yapılandırılmış bilgi tabloları çıkarmak, 5 editoryal tarzda yeniden yazımlar üretmek ve halüsinasyonları önlemek için sayıları ve tarihleri deterministik olarak doğrulamak için Gemini 2.5 Flash kullanır.",
+      "features": {
+        "aiEditorial": { "title": "AI Editoryal Hattı", "description": "Gemini AI ile bilgi çıkarımı yaparak 5 farklı tarzda (Analitik, TL;DR, Sadece Gerçekler, Basit, Mizahi) yeniden yazımlar üretir." },
+        "prediction": { "title": "Tahmin Piyasaları", "description": "Dr. Marcus Chen tarafından AI destekli olasılık analizi ile gerçek zamanlı Polymarket entegrasyonu." },
+        "ingest": { "title": "Akıllı İçerik Toplama", "description": "Otomatik RSS/Atom keşfi, Readability ile tam metin çıkarımı, içerik hash'leme ve 15 dakikalık çekme aralıkları." },
+        "evidence": { "title": "Kanıt Vurgulama", "description": "İddiaları doğrudan birincil kaynaklara bağlar, sayıları ve tarihleri deterministik olarak doğrular." }
+      }
+    },
+    "smart-planning": {
+      "description": "Perakende mağazaları ve işletmeler için yapay zeka destekli iş gücü çizelgeleme ve vardiya planlama sistemi.",
+      "longDescription": "Smart Planning, perakende mağazaları için tasarlanmış akıllı bir vardiya planlama ve çalışan yönetim sistemidir. İş kuralları, çalışan uygunluğu, beceriler ve bütçe kısıtlamaları temelinde otomatik olarak optimal haftalık çizelgeler oluşturur — sürükle-bırak manuel düzenleme desteği ile.",
+      "overview": "Smart Planning, çalışan becerilerini, uygunluğunu, iş kanunlarını ve bütçe kısıtlamalarını dikkate alan AI destekli bir çizelgeleme motoru ile iş gücü yönetimini dönüştürür. Yöneticiler zaman çizelgesi tabanlı günlük planları görüntüleyebilir, onaylanan vardiyaları kilitleyebilir ve personel seviyelerini optimize etmek için Koruyucu, Dengeli ve Agresif planlama modları arasında geçiş yapabilir.",
+      "problem": "Perakende yöneticileri, çalışan tercihlerini, beceri gereksinimlerini, iş düzenlemelerini ve bütçe limitlerini dengelemeye çalışarak haftalık vardiya çizelgeleri oluşturmak için saatler harcar.",
+      "solution": "Tüm kısıtlamalara uyarak tek tıkla optimal planlar üreten bir otomatik çizelgeleme motoru. Yöneticiler sürükle-bırak ile ince ayar yapabilir, onaylanan vardiyaları kilitleyebilir, bütçeyi gerçek zamanlı takip edebilir.",
+      "features": {
+        "autoScheduling": { "title": "Otomatik Çizelgeleme", "description": "Kurallara, becerilere, uygunluğa ve bütçe kısıtlamalarına dayalı tek tıkla optimal çizelge oluşturma." },
+        "budget": { "title": "Bütçe Yönetimi", "description": "Departmanlar arası dağılım ve planlama modları ile gerçek zamanlı haftalık saat bütçesi takibi." },
+        "employee": { "title": "Çalışan Yönetimi", "description": "Beceriler, departmanlar, uygunluk ve izin takibi ile kapsamlı personel yönetimi." },
+        "timeline": { "title": "Zaman Çizelgesi Görünümü", "description": "Sürükle-bırak düzenleme ve vardiya kilitleme ile günlük detaylı vardiya görselleştirmesi." }
+      }
+    },
+    "gozcu": {
+      "description": "Kurumsal düzeyde envanter, ekipman arıza ve bakım yönetim sistemi (mini-CMMS).",
+      "longDescription": "Gözcü, şirket envanterini yönetmek, ekipman arızalarını ve duruş sürelerini takip etmek, kontrol listeleri, bildirimler ve detaylı denetim kaydı ile önleyici bakım planlamak için kurumsal düzeyde bir Varlık Yönetimi / mini-CMMS web uygulamasıdır.",
+      "overview": "Gözcü, endüstriyel ve üretim ortamları için eksiksiz bir varlık yönetim çözümü sunar. Makine kaydı ve envanter takibinden arıza raporlamaya, duruş analizi, maliyet takibi ve önleyici bakım planlamaya kadar tam yaşam döngüsünü kapsar — rol tabanlı erişim kontrolü ve tam denetim kaydı ile.",
+      "problem": "Üretim ve sanayi şirketleri genellikle ekipman, arıza ve bakım programlarını takip etmek için elektronik tablolara veya eski sistemlere güvenir. Bu, kaçırılan bakım pencerelerine, beklenmedik duruş sürelerine ve arıza kalıplarını analiz edememeye yol açar.",
+      "solution": "Kritik makineleri ve gecikmiş bakımları gösteren sezgisel kontrol panelleri, yaklaşan görevler için otomatik bildirim sistemi, maliyet analizi ile kapsamlı arıza takibi ve tüm raporlar için Excel dışa aktarımı ile modern web tabanlı bir CMMS.",
+      "features": {
+        "machine": { "title": "Makine & Envanter", "description": "Filtreleme, arama ve eksiksiz ekipman yaşam döngüsü takibi ile detaylı makine kaydı." },
+        "failure": { "title": "Arıza Yönetimi", "description": "Duruş takibi, maliyet analizi ve ekipmanlar arası kalıp tespiti ile arıza kayıtları." },
+        "maintenance": { "title": "Bakım Planlama", "description": "Kontrol listesi desteği ve gecikme uyarıları ile haftalık/aylık önleyici bakım planlaması." },
+        "rbac": { "title": "RBAC & Denetim Kaydı", "description": "Tüm kritik operasyonların tam denetim kaydı ile Yönetici, Teknisyen ve Gözlemci rolleri." }
+      }
+    },
+    "academy360": {
+      "description": "Sporcular, antrenörler, veliler ve yöneticiler için rol tabanlı kontrol panellerine sahip çok kiracılı futbol akademisi yönetim platformu.",
+      "longDescription": "Academy360, genç akademileri (8-18 yaş) için tasarlanmış kapsamlı bir futbol oyuncu gelişim platformudur. Sporcular, antrenörler, veliler, kulüp yöneticileri ve süper yöneticiler için rol tabanlı kontrol panelleri sunar — antrenman programları ve beceri takibinden katılım, ödemeler ve performans analitiğine kadar her şeyi kapsar.",
+      "overview": "Academy360, genç futbol akademisi operasyonlarını dijitalleştiren çok kiracılı bir SaaS platformudur. 55'ten fazla API rotası, birleşik kontrol paneli mimarisi ve PWA desteği ile beş farklı kullanıcı rolüne hizmet verir. Antrenörler haftalık antrenman planları oluşturur, beceri puanlarını radar grafikleri ile takip eder. Sporcular egzersiz tamamlamalarını kaydeder. Veliler çocuklarının gelişimini ve ödemelerini izler.",
+      "problem": "Genç futbol akademileri genellikle oyuncu gelişimini elektronik tablolar, WhatsApp grupları ve kağıt tabanlı sistemlerle yönetir. Antrenörler, teknik, fiziksel ve davranışsal boyutlarda bireysel beceri ilerlemesini sistematik olarak takip edecek araçlardan yoksundur.",
+      "solution": "Organizasyonlar arası veri izolasyonunu sağlayan rol tabanlı erişim kontrolü ve Satır Düzeyi Güvenlik ile amaca yönelik bir platform. Zorluk seviyelerine sahip yapılandırılmış egzersiz kütüphanesi, antrenör beceri puanlama, haftalık plan oluşturucu ve kapsamlı bir manuel ödeme takip sistemi içerir.",
+      "features": {
+        "dashboards": { "title": "Rol Tabanlı Paneller", "description": "Sporcular, antrenörler, veliler, kulüp yöneticileri ve süper yöneticiler için sorunsuz rol geçişi ile beş özel deneyim." },
+        "training": { "title": "Antrenman & Egzersiz Kütüphanesi", "description": "3 zorluk seviyesine sahip 5 kategoride 105 egzersiz, 7 yaş grubu için 28 şablon ve haftalık plan oluşturucu." },
+        "skill": { "title": "Beceri Takibi & Analitik", "description": "Radar grafikleri ile bireysel beceri puanlama, zayıf yön analizi, oyuncu karşılaştırma ve aylık gelişim arşivleri." },
+        "multiTenant": { "title": "Çok Kiracılı Mimari", "description": "Supabase RLS, OTP kimlik doğrulama ve 55'ten fazla doğrulanmış API uç noktası ile güvenli organizasyon izolasyonu." }
+      }
+    },
+    "iro-beautyzone": {
+      "description": "Online randevu alma, hizmet galerisi ve müşteri yorumları ile premium tırnak sanatı stüdyosu web sitesi.",
+      "longDescription": "IRO Beautyzone, İstanbul'daki premium bir tırnak sanatı stüdyosu için şık, mobil öncelikli bir web sitesidir. Online randevu alma, hizmet vitrini, müşteri yorumları ve galeri sunar — ziyaretçileri randevuya dönüştürmek için tasarlanmıştır.",
+      "overview": "IRO Beautyzone web sitesi, Suadiye, Kadıköy, İstanbul'daki premium tırnak sanatı stüdyosunun dijital vitrini olarak hizmet verir. 4.9/5 müşteri memnuniyet puanı belirgin şekilde gösterilir, müşteri yorumları ile güven oluşturur ve stüdyonun çalışmalarını özenle seçilmiş bir galeri ile sergiler.",
+      "problem": "Güzellik stüdyoları genellikle randevular için telefon aramalarına ve Instagram DM'lerine güvenir, bu da kaçırılan randevulara ve gelir kaybına yol açar. İşlerini sergileyen ve randevu almayı zahmetsiz kılan profesyonel bir online varlığa ihtiyaçları vardır.",
+      "solution": "Randevu için belirgin harekete geçirici butonlar, anlık iletişim için WhatsApp entegrasyonu, iş kalitesini sergileyen görsel galeri ve güven oluşturan müşteri yorumları ile mobil öncelikli bir web sitesi — stüdyonun markasını yansıtan premium bir tasarımla.",
+      "features": {
+        "booking": { "title": "Online Randevu", "description": "Müşterilerin her zaman, her yerden ziyaret planlayabildiği 7/24 randevu alma sistemi." },
+        "gallery": { "title": "Hizmet Galerisi", "description": "Detaylı açıklamalar ve fiyat bilgileri ile tırnak sanatı hizmetlerinin görsel vitrini." },
+        "reviews": { "title": "Müşteri Yorumları", "description": "Ekip üyelerini isimleriyle vurgulayan doğrulanmış müşteri yorumlarını içeren yorum karuseli." },
+        "whatsapp": { "title": "WhatsApp Entegrasyonu", "description": "Anlık iletişim ve hızlı randevu sorguları için doğrudan WhatsApp bağlantısı." }
+      }
+    }
+  }
+}

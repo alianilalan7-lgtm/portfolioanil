@@ -1,16 +1,10 @@
 "use client";
 
 import { useState } from "react";
-
-const subjects = [
-  "Project Inquiry",
-  "Freelance Opportunity",
-  "Collaboration",
-  "General Question",
-  "Other",
-];
+import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
+  const t = useTranslations("ContactForm");
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,6 +14,14 @@ export default function ContactForm() {
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
+
+  const subjects = [
+    { value: "Project Inquiry", label: t("subjectProjectInquiry") },
+    { value: "Freelance Opportunity", label: t("subjectFreelance") },
+    { value: "Collaboration", label: t("subjectCollaboration") },
+    { value: "General Question", label: t("subjectGeneral") },
+    { value: "Other", label: t("subjectOther") },
+  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +52,7 @@ export default function ContactForm() {
           htmlFor="name"
           className="block text-sm font-medium text-sage/70 mb-2"
         >
-          Full Name
+          {t("fullName")}
         </label>
         <input
           type="text"
@@ -61,7 +63,7 @@ export default function ContactForm() {
             setFormData((prev) => ({ ...prev, name: e.target.value }))
           }
           className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
-          placeholder="John Doe"
+          placeholder={t("namePlaceholder")}
         />
       </div>
 
@@ -71,7 +73,7 @@ export default function ContactForm() {
           htmlFor="email"
           className="block text-sm font-medium text-sage/70 mb-2"
         >
-          Email Address
+          {t("emailAddress")}
         </label>
         <input
           type="email"
@@ -82,7 +84,7 @@ export default function ContactForm() {
             setFormData((prev) => ({ ...prev, email: e.target.value }))
           }
           className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
-          placeholder="john@example.com"
+          placeholder={t("emailPlaceholder")}
         />
       </div>
 
@@ -92,7 +94,7 @@ export default function ContactForm() {
           htmlFor="subject"
           className="block text-sm font-medium text-sage/70 mb-2"
         >
-          Subject
+          {t("subject")}
         </label>
         <select
           id="subject"
@@ -104,11 +106,11 @@ export default function ContactForm() {
           className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all appearance-none"
         >
           <option value="" disabled>
-            Select a subject
+            {t("selectSubject")}
           </option>
           {subjects.map((s) => (
-            <option key={s} value={s}>
-              {s}
+            <option key={s.value} value={s.value}>
+              {s.label}
             </option>
           ))}
         </select>
@@ -120,7 +122,7 @@ export default function ContactForm() {
           htmlFor="message"
           className="block text-sm font-medium text-sage/70 mb-2"
         >
-          Message
+          {t("message")}
         </label>
         <textarea
           id="message"
@@ -131,7 +133,7 @@ export default function ContactForm() {
             setFormData((prev) => ({ ...prev, message: e.target.value }))
           }
           className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
-          placeholder="Tell me about your project..."
+          placeholder={t("messagePlaceholder")}
         />
       </div>
 
@@ -146,11 +148,11 @@ export default function ContactForm() {
             <span className="material-icons animate-spin text-lg">
               autorenew
             </span>
-            Sending...
+            {t("sending")}
           </>
         ) : (
           <>
-            Send Message
+            {t("sendMessage")}
             <span className="material-icons text-lg">send</span>
           </>
         )}
@@ -160,13 +162,13 @@ export default function ContactForm() {
       {status === "success" && (
         <div className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
           <span className="material-icons text-lg">check_circle</span>
-          Message sent successfully! I&apos;ll get back to you soon.
+          {t("successMessage")}
         </div>
       )}
       {status === "error" && (
         <div className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
           <span className="material-icons text-lg">error</span>
-          Failed to send message. Please try again or email me directly.
+          {t("errorMessage")}
         </div>
       )}
     </form>

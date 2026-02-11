@@ -1,8 +1,10 @@
-import Link from "next/link";
+import { useTranslations } from "next-intl";
 import { projects } from "@/data/projects";
 import ProjectCard from "./ProjectCard";
+import { Link } from "@/i18n/navigation";
 
 export default function FeaturedProjects() {
+  const t = useTranslations("FeaturedProjects");
   const featured = projects.filter((p) => p.featured);
 
   return (
@@ -11,17 +13,17 @@ export default function FeaturedProjects() {
         <div className="flex items-end justify-between mb-12">
           <div>
             <p className="text-primary text-sm font-medium mb-2">
-              Selected Work
+              {t("subtitle")}
             </p>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage">
-              Featured Projects
+              {t("title")}
             </h2>
           </div>
           <Link
             href="/projects"
             className="hidden md:inline-flex items-center gap-1 text-sage/50 text-sm hover:text-primary transition-colors"
           >
-            View all projects
+            {t("viewAll")}
             <span className="material-icons text-sm">arrow_forward</span>
           </Link>
         </div>
@@ -36,7 +38,7 @@ export default function FeaturedProjects() {
           href="/projects"
           className="md:hidden inline-flex items-center gap-1 text-sage/50 text-sm hover:text-primary transition-colors mt-8"
         >
-          View all projects
+          {t("viewAll")}
           <span className="material-icons text-sm">arrow_forward</span>
         </Link>
       </div>
