@@ -215,7 +215,7 @@ async function renderEditorial(article: Article) {
     descriptionKey: "Projects.academy360.description",
     longDescriptionKey: "Projects.academy360.longDescription",
     image: "/images/academy360.jpg",
-    status: "live",
+    status: "in-progress",
     category: "SaaS",
     techStack: [
       "Next.js 16",
