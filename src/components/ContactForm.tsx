@@ -32,10 +32,12 @@ export default function ContactForm() {
         body: JSON.stringify(formData),
       });
 
-      if (!res.ok) throw new Error("Failed to send");
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error || "Failed to send");
       setStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
-    } catch {
+    } catch (err) {
+      console.error("Contact form error:", err);
       setStatus("error");
     }
   };

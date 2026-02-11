@@ -76,9 +76,10 @@ export async function POST(req: NextRequest) {
     }
 
     return NextResponse.json({ success: true, id: data?.id });
-  } catch {
+  } catch (err) {
+    console.error("Send email error:", err);
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: err instanceof Error ? err.message : "Internal server error" },
       { status: 500 }
     );
   }
