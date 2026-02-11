@@ -40,6 +40,18 @@ export async function generateMetadata({
       ],
       apple: "/apple-icon.png",
     },
+    openGraph: {
+      title: t("title"),
+      description: t("description"),
+      siteName: "Ali Anil Alan",
+      type: "website",
+      locale: locale === "tr" ? "tr_TR" : "en_US",
+    },
+    twitter: {
+      card: "summary",
+      title: t("title"),
+      description: t("description"),
+    },
     alternates: {
       languages: {
         en: "/en",
