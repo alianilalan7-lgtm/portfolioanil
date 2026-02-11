@@ -60,7 +60,7 @@ export async function POST(req: NextRequest) {
     const safeMessage = message.trim().slice(0, 2000);
 
     const { data, error } = await resend.emails.send({
-      from: "Portfolio <onboarding@resend.dev>",
+      from: "Ali Anil Alan <contact@alianil.com>",
       to: ["alianilappstore@gmail.com"],
       subject: `Portfolio Contact: ${safeSubject}`,
       react: ContactEmail({
