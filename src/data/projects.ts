@@ -272,7 +272,7 @@ async function renderEditorial(article: Article) {
     longDescriptionKey: "Projects.iro-beautyzone.longDescription",
     image: "/images/iro-beautyzone-logo.jpg",
     gallery: ["/images/iro-beautyzone.jpg"],
-    status: "live",
+    status: "in-progress",
     category: "Web App",
     techStack: [
       "Next.js",
