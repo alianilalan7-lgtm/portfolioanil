@@ -85,18 +85,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-glass-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-glass-border mt-8 pt-8 text-center">
           <p className="text-sage/40 text-xs">
             &copy; {new Date().getFullYear()} {t("copyright")}
           </p>
-          <div className="flex gap-4">
-            <span className="text-sage/40 text-xs hover:text-sage/60 transition-colors cursor-pointer">
-              {t("privacy")}
-            </span>
-            <span className="text-sage/40 text-xs hover:text-sage/60 transition-colors cursor-pointer">
-              {t("terms")}
-            </span>
-          </div>
         </div>
       </div>
     </footer>
