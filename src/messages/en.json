@@ -194,6 +194,19 @@
         "reviews": { "title": "Client Reviews", "description": "Testimonial carousel featuring verified client reviews highlighting team members by name." },
         "whatsapp": { "title": "WhatsApp Integration", "description": "Direct WhatsApp contact for instant communication and quick booking inquiries." }
       }
+    },
+    "tvn-agency": {
+      "description": "Corporate agency website designed and developed from scratch, now fully live in production.",
+      "longDescription": "TVN Agency is a modern, conversion-focused web experience built to reflect the agency's brand identity with clarity and confidence. The project was delivered end-to-end by me, from design direction and content structure to implementation and production deployment.",
+      "overview": "The website was built to create a strong first impression, communicate services clearly, and guide visitors toward contact actions. It runs as a fully responsive production site with clean UI language and performance-focused optimization.",
+      "problem": "The agency needed a modern digital presence that could build trust, explain services quickly, and turn traffic into qualified contact requests.",
+      "solution": "I developed a custom Next.js corporate website with performance optimization and solid SEO fundamentals. Visual hierarchy, content flow, and CTA placement were designed specifically for conversion-focused user journeys.",
+      "features": {
+        "branding": { "title": "Brand-Driven Design", "description": "A modern visual language crafted to reflect the agency identity with confidence." },
+        "performance": { "title": "High Performance", "description": "Fast loading pages and smooth interactions through optimized frontend structure." },
+        "seo": { "title": "SEO Foundations", "description": "Semantic structure and clean metadata setup to improve search visibility." },
+        "contact": { "title": "Conversion-Focused Contact Flow", "description": "Clear CTA strategy that guides visitors quickly into contact actions." }
+      }
     }
   }
 }

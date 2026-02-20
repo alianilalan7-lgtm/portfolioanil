@@ -154,6 +154,7 @@ function ProjectDetailContent({
                   gozcu: "bg-[#f0f4f8]",
                   academy360: "bg-[#2bae7e]",
                   "iro-beautyzone": "bg-[#9a8174]",
+                  "tvn-agency": "bg-black",
                 }[project.slug] || "bg-forest-lighter"
               }`}>
                 {project.image ? (
@@ -168,6 +169,7 @@ function ProjectDetailContent({
                         gozcu: "object-contain p-3",
                         academy360: "object-contain p-8",
                         "iro-beautyzone": "object-contain p-6",
+                        "tvn-agency": "object-contain p-6",
                       }[project.slug] || "object-cover"
                     }`}
                     sizes="(max-width: 1024px) 100vw, 66vw"

@@ -321,6 +321,56 @@ async function renderEditorial(article: Article) {
     liveUrl: "https://iro-beautyzone.vercel.app",
     sourceUrl: "https://github.com/alianilalan7-lgtm/-robeautyzone",
   },
+  {
+    slug: "tvn-agency",
+    title: "TVN Agency",
+    descriptionKey: "Projects.tvn-agency.description",
+    longDescriptionKey: "Projects.tvn-agency.longDescription",
+    image: "/images/tvn_logo-02.png",
+    status: "live",
+    category: "Web App",
+    techStack: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Framer Motion",
+      "Vercel",
+    ],
+    featured: true,
+    progress: 100,
+    overviewKey: "Projects.tvn-agency.overview",
+    problemKey: "Projects.tvn-agency.problem",
+    solutionKey: "Projects.tvn-agency.solution",
+    features: [
+      {
+        titleKey: "Projects.tvn-agency.features.branding.title",
+        descriptionKey: "Projects.tvn-agency.features.branding.description",
+        icon: "auto_awesome",
+      },
+      {
+        titleKey: "Projects.tvn-agency.features.performance.title",
+        descriptionKey: "Projects.tvn-agency.features.performance.description",
+        icon: "speed",
+      },
+      {
+        titleKey: "Projects.tvn-agency.features.seo.title",
+        descriptionKey: "Projects.tvn-agency.features.seo.description",
+        icon: "travel_explore",
+      },
+      {
+        titleKey: "Projects.tvn-agency.features.contact.title",
+        descriptionKey: "Projects.tvn-agency.features.contact.description",
+        icon: "call",
+      },
+    ],
+    team: [{ name: "Ali Anil Alan", role: "Product Designer & Developer" }],
+    timeline: {
+      duration: "Completed",
+      phase: "Production Live",
+      role: "Solo Developer",
+    },
+    liveUrl: "https://www.tvn.agency/",
+  },
 ];
 
 export const categories = ["All Works", "AI Labs", "SaaS", "Web App"];

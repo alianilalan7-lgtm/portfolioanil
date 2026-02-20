@@ -194,6 +194,19 @@
         "reviews": { "title": "Müşteri Yorumları", "description": "Ekip üyelerini isimleriyle vurgulayan doğrulanmış müşteri yorumlarını içeren yorum karuseli." },
         "whatsapp": { "title": "WhatsApp Entegrasyonu", "description": "Anlık iletişim ve hızlı randevu sorguları için doğrudan WhatsApp bağlantısı." }
       }
+    },
+    "tvn-agency": {
+      "description": "TVN Agency için sıfırdan tasarlanıp geliştirilen, prod ortamında yayına alınmış kurumsal web sitesi.",
+      "longDescription": "TVN Agency, ajansın marka kimliğini güçlü şekilde yansıtan, performans ve dönüşüm odaklı modern bir web deneyimidir. Tasarım, içerik yapısı ve teknik geliştirme süreci uçtan uca tarafımdan yönetilerek canlıya alınmıştır.",
+      "overview": "Proje; güçlü bir ilk izlenim, net hizmet anlatımı ve iletişim odaklı kullanıcı akışı hedefiyle inşa edildi. Tam responsive yapı, temiz arayüz dili ve yüksek hız odaklı optimizasyonlarla prod ortamında aktif olarak yayınlanıyor.",
+      "problem": "Ajansın dijital vitrini, marka güvenini artıracak modern bir görünüm, anlaşılır hizmet sunumu ve ziyaretçiyi hızlı aksiyona yönlendiren bir yapı gerektiriyordu.",
+      "solution": "Next.js tabanlı, performans optimizasyonları ve SEO temel ayarlarıyla desteklenen özel bir kurumsal site geliştirildi. Görsel hiyerarşi, içerik akışı ve iletişim CTA'ları dönüşüm odaklı şekilde kurgulandı.",
+      "features": {
+        "branding": { "title": "Marka Odaklı Tasarım", "description": "Ajans kimliğini yansıtan, modern ve güven veren bir görsel dil." },
+        "performance": { "title": "Yüksek Performans", "description": "Hızlı açılış süreleri ve akıcı deneyim için optimize edilmiş sayfa yapısı." },
+        "seo": { "title": "SEO Temelleri", "description": "Arama motoru görünürlüğü için temiz semantik yapı ve meta düzeni." },
+        "contact": { "title": "Dönüşüm Odaklı İletişim", "description": "Ziyaretçileri hızlıca iletişime yönlendiren net CTA ve akış tasarımı." }
+      }
     }
   }
 }
