@@ -1,6 +1,12 @@
 export interface CaseStudy {
   slug: string;
-  projectSlug: "smart-planning" | "pulse" | "gozcu";
+  projectSlug:
+    | "smart-planning"
+    | "pulse"
+    | "gozcu"
+    | "academy360"
+    | "iro-beautyzone"
+    | "tvn-agency";
   summaryTr: string;
   summaryEn: string;
   durationTr: string;
@@ -52,5 +58,46 @@ export const caseStudies: CaseStudy[] = [
     outcomeEn:
       "Unplanned downtime dropped, maintenance follow-up became structured, and operational risk visibility increased.",
   },
+  {
+    slug: "academy360-case-study",
+    projectSlug: "academy360",
+    summaryTr:
+      "Futbol akademilerinde dağınık operasyonu tek platformda yönetmek için çok kiracılı, rol tabanlı bir yönetim altyapısı geliştirildi.",
+    summaryEn:
+      "A multi-tenant, role-based platform was built to centralize fragmented football academy operations.",
+    durationTr: "16 hafta",
+    durationEn: "16 weeks",
+    outcomeTr:
+      "Antrenman, gelişim takibi ve yönetim süreçleri tek akışta birleşti; ekiplerin operasyon yükü azaldı.",
+    outcomeEn:
+      "Training, player progress tracking, and admin workflows were unified, reducing operational overhead for teams.",
+  },
+  {
+    slug: "iro-beautyzone-case-study",
+    projectSlug: "iro-beautyzone",
+    summaryTr:
+      "Stüdyo görünürlüğünü ve randevu dönüşümünü artırmak için mobil öncelikli, rezervasyon odaklı bir web deneyimi tasarlandı.",
+    summaryEn:
+      "A mobile-first, conversion-focused website was crafted to improve studio visibility and appointment conversion.",
+    durationTr: "4 hafta",
+    durationEn: "4 weeks",
+    outcomeTr:
+      "Randevuya dönüşen ziyaretçi oranı yükseldi, iletişim süreci hızlandı ve marka algısı güçlendi.",
+    outcomeEn:
+      "Visitor-to-booking conversion improved, communication became faster, and brand perception strengthened.",
+  },
+  {
+    slug: "tvn-agency-case-study",
+    projectSlug: "tvn-agency",
+    summaryTr:
+      "Ajansın dijital vitrini için sıfırdan, performans ve iletişim dönüşümü odaklı kurumsal bir web sitesi inşa edildi.",
+    summaryEn:
+      "A corporate website was built from scratch for the agency with strong focus on performance and contact conversion.",
+    durationTr: "5 hafta",
+    durationEn: "5 weeks",
+    outcomeTr:
+      "Marka sunumu netleşti, sayfa performansı iyileşti ve ziyaretçilerin iletişim aksiyonuna geçişi hızlandı.",
+    outcomeEn:
+      "Brand positioning became clearer, page performance improved, and visitor progression to contact actions accelerated.",
+  },
 ];
-
