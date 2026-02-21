@@ -32,6 +32,9 @@ export default function Footer() {
             <div className="flex flex-col gap-2">
               {[
                 { href: "/" as const, label: tNav("home") },
+                { href: "/services" as const, label: tNav("services") },
+                { href: "/process-pricing" as const, label: tNav("processPricing") },
+                { href: "/blog" as const, label: tNav("blog") },
                 { href: "/certificates" as const, label: tNav("certificates") },
                 { href: "/projects" as const, label: tNav("projects") },
                 { href: "/contact" as const, label: tNav("contact") },

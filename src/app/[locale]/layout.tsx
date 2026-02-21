@@ -29,8 +29,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
+  const metadataBase = new URL(configuredSiteUrl);
+  const localePath = locale === routing.defaultLocale ? "/" : `/${locale}`;
 
   return {
+    metadataBase,
     title: t("title"),
     description: t("description"),
     icons: {
@@ -44,17 +48,28 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
       siteName: "Ali Anil Alan",
+      url: localePath,
       type: "website",
       locale: locale === "tr" ? "tr_TR" : "en_US",
+      images: [
+        {
+          url: "/apple-icon.png",
+          width: 180,
+          height: 180,
+          alt: "Ali Anil Alan",
+        },
+      ],
     },
     twitter: {
       card: "summary",
       title: t("title"),
       description: t("description"),
+      images: ["/apple-icon.png"],
     },
     alternates: {
+      canonical: localePath,
       languages: {
-        en: "/en",
+        en: "/",
         tr: "/tr",
       },
     },

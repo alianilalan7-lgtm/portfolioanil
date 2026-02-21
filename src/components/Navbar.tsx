@@ -13,6 +13,9 @@ export default function Navbar() {
 
   const navLinks = [
     { href: "/" as const, label: t("home") },
+    { href: "/services" as const, label: t("services") },
+    { href: "/process-pricing" as const, label: t("processPricing") },
+    { href: "/blog" as const, label: t("blog") },
     { href: "/certificates" as const, label: t("certificates") },
     { href: "/projects" as const, label: t("projects") },
     { href: "/contact" as const, label: t("contact") },
