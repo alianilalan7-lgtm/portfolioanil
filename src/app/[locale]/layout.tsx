@@ -53,18 +53,18 @@ export async function generateMetadata({
       locale: locale === "tr" ? "tr_TR" : "en_US",
       images: [
         {
-          url: "/apple-icon.png",
-          width: 180,
-          height: 180,
-          alt: "Ali Anil Alan",
+          url: "/opengraph-image",
+          width: 1200,
+          height: 630,
+          alt: "Ali Anil Alan - Freelance AI & SaaS Developer",
         },
       ],
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: t("title"),
       description: t("description"),
-      images: ["/apple-icon.png"],
+      images: ["/opengraph-image"],
     },
     alternates: {
       canonical: localePath,
