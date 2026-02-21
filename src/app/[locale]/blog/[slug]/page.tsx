@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { blogPosts, BlogContentBlock } from "@/data/blogs";
+import { blogPosts, BlogContentBlock, getLocalizedBlogPost } from "@/data/blogs";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
@@ -21,7 +21,9 @@ export default async function BlogDetailPage({
   const post = blogPosts.find((item) => item.slug === slug && item.status === "published");
   if (!post) return notFound();
 
-  return <BlogDetailContent locale={locale} post={post} />;
+  const localizedPost = getLocalizedBlogPost(post, locale);
+
+  return <BlogDetailContent locale={locale} post={localizedPost} />;
 }
 
 function BlogDetailContent({

@@ -1,15 +1,17 @@
-import { useTranslations } from "next-intl";
-import { blogPosts } from "@/data/blogs";
+import { useLocale, useTranslations } from "next-intl";
+import { blogPosts, getLocalizedBlogPost } from "@/data/blogs";
 import { Link } from "@/i18n/navigation";
 
 export default function BlogPage() {
   const t = useTranslations("BlogPage");
+  const locale = useLocale();
   const publishedPosts = blogPosts
     .filter((post) => post.status === "published")
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
+    )
+    .map((post) => getLocalizedBlogPost(post, locale));
   const featuredPosts = publishedPosts.filter((post) => post.featured);
 
   return (

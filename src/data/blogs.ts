@@ -23,6 +23,17 @@ export interface BlogPost {
   content?: BlogContentBlock[];
 }
 
+export type BlogLocale = "tr" | "en";
+
+export interface BlogLocaleVariant {
+  title?: string;
+  excerpt?: string;
+  readTime?: string;
+  category?: string;
+  tags?: string[];
+  content?: BlogContentBlock[];
+}
+
 export const blogPosts: BlogPost[] = [
   {
     slug: "saas-uygulamasi-gelistirme-maliyeti-2026",
@@ -687,3 +698,554 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+const blogLocaleVariants: Record<
+  string,
+  Partial<Record<BlogLocale, BlogLocaleVariant>>
+> = {
+  "saas-uygulamasi-gelistirme-maliyeti-2026": {
+    en: {
+      title: "SaaS Development Cost in 2026: A Practical Pricing Guide",
+      excerpt:
+        "Realistic SaaS pricing ranges for 2026, what drives cost, and how to launch an MVP faster with less risk.",
+      category: "SaaS",
+      tags: ["SaaS", "MVP", "Freelance", "Cost"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "\"How much does it cost to build a SaaS product?\" This is one of the most common questions freelance developers get.",
+        },
+        {
+          type: "paragraph",
+          text: "In 2026, SaaS development cost changes significantly based on scope, team model, and technology choices.",
+        },
+        { type: "heading", text: "What Is SaaS?" },
+        {
+          type: "paragraph",
+          text: "SaaS (Software as a Service) is a subscription-based software model delivered over the internet.",
+        },
+        { type: "subheading", text: "Common examples" },
+        {
+          type: "list",
+          items: ["CRM systems", "Booking platforms", "Dashboard products", "AI tools"],
+        },
+        { type: "heading", text: "2026 SaaS Cost Ranges" },
+        { type: "subheading", text: "Basic MVP SaaS" },
+        {
+          type: "paragraph",
+          text: "Example: booking system or basic dashboard product.",
+        },
+        { type: "subheading", text: "Core features" },
+        {
+          type: "list",
+          items: ["User authentication", "Admin panel", "Database", "Basic dashboard"],
+        },
+        {
+          type: "stats",
+          items: [
+            { label: "Duration", value: "4-8 weeks" },
+            { label: "Cost", value: "4,000 - 10,000 USD" },
+          ],
+        },
+        { type: "subheading", text: "Mid-level SaaS" },
+        {
+          type: "list",
+          items: [
+            "Role-based access",
+            "Payments",
+            "API integrations",
+            "Reporting modules",
+          ],
+        },
+        {
+          type: "stats",
+          items: [
+            { label: "Duration", value: "2-4 months" },
+            { label: "Cost", value: "10,000 - 25,000 USD" },
+          ],
+        },
+        { type: "subheading", text: "Advanced SaaS platform" },
+        {
+          type: "list",
+          items: [
+            "Multi-role architecture",
+            "Subscription engine",
+            "Advanced analytics",
+            "Scalable infrastructure",
+          ],
+        },
+        {
+          type: "stats",
+          items: [
+            { label: "Duration", value: "4-8 months" },
+            { label: "Cost", value: "25,000 - 60,000 USD" },
+          ],
+        },
+        { type: "heading", text: "Biggest Cost Drivers" },
+        { type: "subheading", text: "1. Feature scope" },
+        {
+          type: "paragraph",
+          text: "The number and complexity of features is usually the strongest pricing variable.",
+        },
+        { type: "subheading", text: "2. AI integration" },
+        {
+          type: "paragraph",
+          text: "AI features can increase development cost, but they often multiply product value.",
+        },
+        { type: "subheading", text: "3. Agency vs freelance model" },
+        {
+          type: "list",
+          items: [
+            "Agencies can be 50-100% more expensive",
+            "Freelance teams can be faster and more flexible in MVP phase",
+          ],
+        },
+        { type: "heading", text: "How to Reduce SaaS Cost" },
+        {
+          type: "list",
+          items: [
+            "Use an MVP-first scope",
+            "Use modern stack choices like Next.js + Supabase",
+            "Ship small, validate fast, then expand",
+          ],
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "SaaS pricing in 2026 has a wide range, but a clear MVP plan helps you launch faster and spend smarter.",
+        },
+      ],
+    },
+  },
+  "mvp-nedir-startuplar-icin-hizli-urun-gelistirme-rehberi": {
+    en: {
+      title: "What Is an MVP? A Fast Product Guide for Startups",
+      excerpt:
+        "How to launch the smallest useful version of your product, validate demand, and reduce execution risk.",
+      category: "Startup",
+      tags: ["MVP", "Startup", "SaaS", "Product Development"],
+      content: [
+        { type: "heading", text: "What Is an MVP?" },
+        {
+          type: "paragraph",
+          text: "MVP (Minimum Viable Product) means launching the most basic usable version of your product quickly.",
+        },
+        { type: "subheading", text: "Main goals" },
+        {
+          type: "list",
+          items: [
+            "Validate the idea",
+            "Observe real user behavior",
+            "Avoid wasting time and budget",
+          ],
+        },
+        {
+          type: "paragraph",
+          text: "Many successful products like Airbnb, Dropbox, and Uber started with MVP logic.",
+        },
+        { type: "heading", text: "Why Start with MVP?" },
+        {
+          type: "paragraph",
+          text: "Many startups fail because they build features nobody really needs. MVP prevents that.",
+        },
+        { type: "heading", text: "What a SaaS MVP Should Include" },
+        {
+          type: "list",
+          items: [
+            "User signup and login",
+            "Basic dashboard",
+            "One core feature",
+            "Simple admin panel",
+          ],
+        },
+        { type: "heading", text: "MVP Delivery Steps" },
+        {
+          type: "list",
+          items: [
+            "Validate target user and problem",
+            "Reduce features to essentials",
+            "Build quickly with a modern stack",
+            "Launch and collect real usage data",
+          ],
+        },
+        { type: "heading", text: "Typical Timeline" },
+        {
+          type: "stats",
+          items: [
+            { label: "MVP average", value: "4-8 weeks" },
+            { label: "Agency timeline", value: "3-6 months" },
+          ],
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "MVP is one of the most reliable ways to lower risk and bring a product to market faster.",
+        },
+      ],
+    },
+  },
+  "kucuk-isletmeler-icin-yapay-zeka-otomasyonu-gercek-kullanim": {
+    en: {
+      title: "AI Automation for Small Businesses (Real Use Cases)",
+      excerpt:
+        "Practical AI automation scenarios that help small businesses save time, reduce costs, and improve revenue.",
+      category: "AI Automation",
+      tags: ["AI", "Automation", "Small Business", "Operations"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "AI is no longer only for large enterprises. Small businesses are applying it in daily operations.",
+        },
+        { type: "subheading", text: "1. Automated support chatbots" },
+        {
+          type: "paragraph",
+          text: "AI chatbots can answer customer questions 24/7, handle bookings, and resolve common FAQ requests.",
+        },
+        { type: "subheading", text: "2. Internal operations automation" },
+        {
+          type: "list",
+          items: [
+            "Automatic report generation",
+            "Less repetitive spreadsheet work",
+            "Faster dashboard creation",
+          ],
+        },
+        { type: "subheading", text: "3. Booking and appointment systems" },
+        {
+          type: "paragraph",
+          text: "AI-enabled reservation flows can reduce double-booking, send reminders, and lower no-show rates.",
+        },
+        { type: "subheading", text: "4. Sales and marketing automation" },
+        {
+          type: "list",
+          items: [
+            "Email draft generation",
+            "Campaign ideas",
+            "Content production support",
+          ],
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "AI automation is now a practical competitive advantage, not a luxury.",
+        },
+      ],
+    },
+  },
+  "freelancer-mi-ajans-mi-web-uygulamasi-gelistirirken-hangisi-daha-mantikli": {
+    en: {
+      title:
+        "Freelancer or Agency? Which Model Makes More Sense for Web App Development?",
+      excerpt:
+        "A practical comparison of agency and freelance models across cost, speed, flexibility, and communication.",
+      category: "Freelance",
+      tags: ["Freelance", "Agency", "SaaS", "Cost"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "One of the biggest project decisions is choosing between a freelancer and an agency.",
+        },
+        { type: "heading", text: "Agency Advantages" },
+        {
+          type: "list",
+          items: [
+            "Larger team capacity",
+            "Design, development, and marketing under one roof",
+            "Structured enterprise-style processes",
+          ],
+        },
+        {
+          type: "stats",
+          items: [{ label: "Typical agency budget", value: "15,000 - 100,000 USD" }],
+        },
+        { type: "heading", text: "Freelance Advantages" },
+        {
+          type: "list",
+          items: [
+            "Lower cost",
+            "Direct communication",
+            "Faster decisions",
+            "Flexible delivery process",
+          ],
+        },
+        {
+          type: "stats",
+          items: [{ label: "Typical freelance SaaS budget", value: "4,000 - 25,000 USD" }],
+        },
+        { type: "heading", text: "Which One Fits Your Case?" },
+        {
+          type: "list",
+          items: [
+            "If you are building an MVP: Freelancer",
+            "If you need a large corporate platform: Agency",
+            "If speed matters for early testing: Freelancer",
+            "If you need 6+ specialists: Agency",
+          ],
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "For most startups, starting with a freelance model is the more practical first step.",
+        },
+      ],
+    },
+  },
+  "kucuk-isletmeler-icin-online-rezervasyon-sistemi-nasil-kurulur": {
+    en: {
+      title: "How to Build an Online Booking System for Small Businesses",
+      excerpt:
+        "A practical setup guide for restaurants, clinics, salons, and service businesses that need reliable booking flows.",
+      category: "SaaS",
+      tags: ["Booking", "Small Business", "Operations", "SaaS"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "If you run a restaurant, clinic, salon, or consultancy, online booking is now a core requirement.",
+        },
+        { type: "subheading", text: "1. Define your needs" },
+        {
+          type: "list",
+          items: [
+            "Hourly or daily scheduling?",
+            "Staff-based assignment?",
+            "Do you need SMS reminders?",
+          ],
+        },
+        { type: "subheading", text: "2. Core features" },
+        {
+          type: "list",
+          items: [
+            "Calendar view",
+            "Admin panel",
+            "Customer records",
+            "Reminder system",
+            "Conflict prevention",
+          ],
+        },
+        { type: "subheading", text: "3. Off-the-shelf vs custom software" },
+        {
+          type: "list",
+          items: [
+            "Off-the-shelf: faster start, limited customization",
+            "Custom software: tailored flow, better long-term flexibility",
+          ],
+        },
+        { type: "subheading", text: "4. Typical setup cost" },
+        {
+          type: "stats",
+          items: [
+            { label: "Basic booking system", value: "3,000 - 8,000 USD" },
+            { label: "AI-assisted booking system", value: "8,000 - 15,000 USD" },
+          ],
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "The right booking system lowers no-show rates and simplifies daily operations.",
+        },
+      ],
+    },
+  },
+  "supabase-mi-firebase-mi-startuplar-icin-hangisi-daha-mantikli": {
+    en: {
+      title: "Supabase or Firebase? Which One Is Better for Startups?",
+      excerpt:
+        "A startup-focused backend comparison of Supabase and Firebase based on flexibility, speed, and long-term sustainability.",
+      category: "Backend",
+      tags: ["Supabase", "Firebase", "Startup", "Architecture"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "Backend choice is critical in early product stages. Supabase and Firebase are the most common options.",
+        },
+        { type: "heading", text: "Supabase strengths" },
+        {
+          type: "list",
+          items: [
+            "PostgreSQL foundation",
+            "Open-source ecosystem",
+            "Full SQL capabilities",
+            "Flexible relational modeling",
+          ],
+        },
+        { type: "heading", text: "Firebase strengths" },
+        {
+          type: "list",
+          items: [
+            "Google infrastructure",
+            "Strong real-time capabilities",
+            "Very fast initial setup",
+          ],
+        },
+        { type: "heading", text: "Which one for startups?" },
+        {
+          type: "paragraph",
+          text: "If you need SQL, scalable SaaS architecture, and less vendor lock-in, Supabase is usually a stronger choice.",
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "For long-term SaaS products, Supabase is often the more sustainable path.",
+        },
+      ],
+    },
+  },
+  "ai-dashboard-nedir-isletmeler-icin-gercek-zamanli-veri-yonetimi": {
+    en: {
+      title:
+        "What Is an AI Dashboard? Real-Time Data Management for Businesses",
+      excerpt:
+        "How AI dashboards generate actionable insights through automated reporting, analysis, and prediction.",
+      category: "AI",
+      tags: ["AI Dashboard", "Data", "Analytics", "Business"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "AI dashboards are intelligent control panels that analyze business data and produce meaningful insights.",
+        },
+        { type: "heading", text: "What does an AI dashboard provide?" },
+        {
+          type: "list",
+          items: [
+            "Automated reporting",
+            "Sales analysis",
+            "Performance tracking",
+            "Forecasting",
+          ],
+        },
+        { type: "heading", text: "Who should use it?" },
+        {
+          type: "list",
+          items: ["Retail", "E-commerce", "Logistics", "Agencies"],
+        },
+        { type: "stats", items: [{ label: "Typical build time", value: "4-10 weeks" }] },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "Businesses that cannot interpret their data struggle to stay competitive.",
+        },
+      ],
+    },
+  },
+  "vardiya-planlama-yazilimi-nedir-perakende-icin-dijital-cozum": {
+    en: {
+      title: "What Is Shift Planning Software? A Digital Retail Solution",
+      excerpt:
+        "How shift planning software improves staffing quality, reduces overtime risk, and supports data-driven retail operations.",
+      category: "SaaS",
+      tags: ["Shift Planning", "Retail", "Scheduling", "Operations"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "Manual shift planning causes errors and inefficiency. Shift planning software automates this workflow.",
+        },
+        { type: "heading", text: "Key benefits" },
+        {
+          type: "list",
+          items: [
+            "Staff demand analysis",
+            "Overtime control",
+            "Sales-based planning",
+            "KPI visibility",
+          ],
+        },
+        { type: "heading", text: "Best fit" },
+        {
+          type: "list",
+          items: ["Stores", "Multi-branch businesses", "Restaurants"],
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "Better planning directly improves profit margin and operational stability.",
+        },
+      ],
+    },
+  },
+  "web-uygulamasi-gelistirme-suresi-ne-kadar-surer": {
+    en: {
+      title: "How Long Does Web App Development Take?",
+      excerpt:
+        "Typical timelines for simple, mid-level, and advanced web applications, plus the factors that drive delivery speed.",
+      category: "Product",
+      tags: ["Web App", "Timeline", "Planning", "MVP"],
+      content: [
+        { type: "heading", text: "Simple Application" },
+        { type: "stats", items: [{ label: "Typical timeline", value: "4-6 weeks" }] },
+        { type: "heading", text: "Mid-Level Application" },
+        { type: "stats", items: [{ label: "Typical timeline", value: "2-4 months" }] },
+        { type: "heading", text: "Advanced Platform" },
+        { type: "stats", items: [{ label: "Typical timeline", value: "4-8 months" }] },
+        { type: "heading", text: "What affects timeline?" },
+        {
+          type: "list",
+          items: [
+            "Feature scope",
+            "Team size",
+            "Design complexity",
+          ],
+        },
+      ],
+    },
+  },
+  "ai-product-builder-nedir-yeni-nesil-yazilim-gelistirme-modeli": {
+    en: {
+      title: "What Is an AI Product Builder? A New Software Delivery Model",
+      excerpt:
+        "How AI Product Builders accelerate MVP delivery, AI integration, and automation architecture for modern products.",
+      category: "AI Engineering",
+      tags: ["AI Product Builder", "MVP", "Automation", "SaaS"],
+      content: [
+        { type: "heading", text: "Introduction" },
+        {
+          type: "paragraph",
+          text: "An AI Product Builder is a specialist who uses AI to speed up product development from idea to release.",
+        },
+        { type: "heading", text: "What does this role do?" },
+        {
+          type: "list",
+          items: [
+            "Turns ideas into MVPs",
+            "Implements AI integrations",
+            "Builds automation systems",
+            "Designs SaaS architecture",
+          ],
+        },
+        { type: "heading", text: "Why it matters" },
+        {
+          type: "paragraph",
+          text: "Compared with traditional workflows, AI-assisted delivery can reduce development time by around 30-50% in many cases.",
+        },
+        { type: "heading", text: "Conclusion" },
+        {
+          type: "paragraph",
+          text: "AI-assisted product delivery is now a strong competitive advantage.",
+        },
+      ],
+    },
+  },
+};
+
+export function getLocalizedBlogPost(post: BlogPost, locale: string): BlogPost {
+  if (locale !== "en") return post;
+
+  const variant = blogLocaleVariants[post.slug]?.en;
+  if (!variant) return post;
+
+  return {
+    ...post,
+    title: variant.title ?? post.title,
+    excerpt: variant.excerpt ?? post.excerpt,
+    readTime: variant.readTime ?? post.readTime,
+    category: variant.category ?? post.category,
+    tags: variant.tags ?? post.tags,
+    content: variant.content ?? post.content,
+  };
+}
