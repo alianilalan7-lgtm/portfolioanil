@@ -52,6 +52,21 @@ export default function ProjectCard({ project }: { project: Project }) {
             {tProject(project.descriptionKey)}
           </p>
 
+          <div className="mb-4 rounded-lg border border-glass-border bg-forest-lighter/40 p-3 space-y-1.5">
+            <p className="text-[11px] text-sage/55 leading-relaxed line-clamp-2">
+              <span className="text-primary/90 font-medium">{t("problemLabel")}:</span>{" "}
+              {tProject(project.problemKey)}
+            </p>
+            <p className="text-[11px] text-sage/55 leading-relaxed line-clamp-2">
+              <span className="text-primary/90 font-medium">{t("solutionLabel")}:</span>{" "}
+              {tProject(project.solutionKey)}
+            </p>
+            <p className="text-[11px] text-sage/55 leading-relaxed line-clamp-2">
+              <span className="text-primary/90 font-medium">{t("impactLabel")}:</span>{" "}
+              {tProject(project.impactKey)}
+            </p>
+          </div>
+
           {/* Tech tags */}
           <div className="flex flex-wrap gap-2 mb-4">
             {project.techStack.slice(0, 3).map((tech) => (

@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Ali Anıl Alan | Portfolyo",
-    "description": "Modern web teknolojileriyle dijital deneyimler oluşturan AI Product Builder."
+    "title": "Ali Anıl Alan | Freelance AI & SaaS Developer",
+    "description": "Freelance AI developer olarak SaaS MVP, dashboard ve otomasyon sistemleri geliştiriyorum."
   },
   "Navigation": {
     "home": "Ana Sayfa",
@@ -14,9 +14,9 @@
   },
   "Hero": {
     "availableBadge": "Yeni projeler için müsait",
-    "heading1": "Dijital Deneyimler",
-    "heading2": "Tasarlıyorum",
-    "description": "Performans, erişilebilirlik ve şık kullanıcı arayüzlerine odaklanan modern web uygulamaları geliştiren AI Product Builder.",
+    "heading1": "AI Destekli SaaS, Dashboard ve",
+    "heading2": "Otomasyon Sistemleri Geliştiriyorum",
+    "description": "Startup'lar ve işletmeler için MVP, web uygulaması ve yapay zeka entegrasyonları geliştiriyorum.",
     "viewProjects": "Projeleri Gör",
     "getInTouch": "İletişime Geç",
     "heroImageAlt": "AI Dijital Deneyim"
@@ -38,7 +38,8 @@
     "paragraph2": "Bugün, bu operasyonel bakış açısını yazılım ve yapay zeka ile birleştirerek pratik web uygulamaları ve MVP'ler geliştiriyorum. Trendlerden çok doğru problem için doğru aracı seçmeyi önemsiyorum.",
     "paragraph3": "Ana odak alanlarım arasında planlama ve optimizasyon, dashboard'lar ve otomasyon, yapay zeka destekli brifing iş akışları yer alıyor.",
     "statYears": "Yıllık Operasyon Deneyimi",
-    "statProjects": "Tamamlanan Proje"
+    "statProjects": "Tamamlanan Proje",
+    "conversionLine": "Sadece yazılım geliştirmiyorum, iş süreçlerini anlayarak ürün tasarlıyorum."
   },
   "SkillStack": {
     "subtitle": "Uzmanlık",
@@ -84,7 +85,7 @@
   },
   "ServicesPage": {
     "title": "Hizmetler",
-    "description": "Kurucular, ajanslar ve ekipler icin hizli teslimat ve production kalitesinde freelance urun gelistirme hizmetleri.",
+    "description": "Freelance SaaS developer olarak kuruculara, ajanslara ve ekiplere MVP, dashboard ve AI otomasyon odaklı ürün geliştirme hizmetleri sunuyorum.",
     "whatYouGet": "Neler Sunuyorum",
     "deliveryModels": "Calisma Modelleri",
     "ctaTitle": "Bu hizmetlerden birine mi ihtiyacin var?",
@@ -180,7 +181,10 @@
     "statusMvp": "MVP",
     "statusInProgress": "Gelişim Aşamasında",
     "statusPaused": "Pause Modda",
-    "statusCompleted": "Tamamlandı"
+    "statusCompleted": "Tamamlandı",
+    "problemLabel": "Problem",
+    "solutionLabel": "Çözüm",
+    "impactLabel": "Etki"
   },
   "ProjectDetail": {
     "breadcrumbProjects": "Projeler",
@@ -222,11 +226,24 @@
       "problem": "Geleneksel haber platformları genellikle derinlik ve doğrulamadan yoksun tek sesli habercilik sunar. Kullanıcılar bilgi kirliliğinden bunalmış durumdadır; iddiaları çapraz kontrol etmenin, birden fazla perspektifi anlamanın veya gerçekleri anlık olarak doğrulamanın kolay bir yolu yoktur.",
       "solution": "Pulse'ın editoryal işleme hattı, makalelerden yapılandırılmış bilgi tabloları çıkarmak, 5 editoryal tarzda yeniden yazımlar üretmek ve halüsinasyonları önlemek için sayıları ve tarihleri deterministik olarak doğrulamak için Gemini 2.5 Flash kullanır.",
       "features": {
-        "aiEditorial": { "title": "AI Editoryal Hattı", "description": "Gemini AI ile bilgi çıkarımı yaparak 5 farklı tarzda (Analitik, TL;DR, Sadece Gerçekler, Basit, Mizahi) yeniden yazımlar üretir." },
-        "prediction": { "title": "Tahmin Piyasaları", "description": "Dr. Marcus Chen tarafından AI destekli olasılık analizi ile gerçek zamanlı Polymarket entegrasyonu." },
-        "ingest": { "title": "Akıllı İçerik Toplama", "description": "Otomatik RSS/Atom keşfi, Readability ile tam metin çıkarımı, içerik hash'leme ve 15 dakikalık çekme aralıkları." },
-        "evidence": { "title": "Kanıt Vurgulama", "description": "İddiaları doğrudan birincil kaynaklara bağlar, sayıları ve tarihleri deterministik olarak doğrular." }
-      }
+        "aiEditorial": {
+          "title": "AI Editoryal Hattı",
+          "description": "Gemini AI ile bilgi çıkarımı yaparak 5 farklı tarzda (Analitik, TL;DR, Sadece Gerçekler, Basit, Mizahi) yeniden yazımlar üretir."
+        },
+        "prediction": {
+          "title": "Tahmin Piyasaları",
+          "description": "Dr. Marcus Chen tarafından AI destekli olasılık analizi ile gerçek zamanlı Polymarket entegrasyonu."
+        },
+        "ingest": {
+          "title": "Akıllı İçerik Toplama",
+          "description": "Otomatik RSS/Atom keşfi, Readability ile tam metin çıkarımı, içerik hash'leme ve 15 dakikalık çekme aralıkları."
+        },
+        "evidence": {
+          "title": "Kanıt Vurgulama",
+          "description": "İddiaları doğrudan birincil kaynaklara bağlar, sayıları ve tarihleri deterministik olarak doğrular."
+        }
+      },
+      "impact": "Doğrulanmış haber içgörüleriyle karar hızını artırır ve bilgi kirliliğini azaltır."
     },
     "smart-planning": {
       "description": "Perakende mağazaları ve işletmeler için yapay zeka destekli iş gücü çizelgeleme ve vardiya planlama sistemi.",
@@ -235,11 +252,24 @@
       "problem": "Perakende yöneticileri, çalışan tercihlerini, beceri gereksinimlerini, iş düzenlemelerini ve bütçe limitlerini dengelemeye çalışarak haftalık vardiya çizelgeleri oluşturmak için saatler harcar.",
       "solution": "Tüm kısıtlamalara uyarak tek tıkla optimal planlar üreten bir otomatik çizelgeleme motoru. Yöneticiler sürükle-bırak ile ince ayar yapabilir, onaylanan vardiyaları kilitleyebilir, bütçeyi gerçek zamanlı takip edebilir.",
       "features": {
-        "autoScheduling": { "title": "Otomatik Çizelgeleme", "description": "Kurallara, becerilere, uygunluğa ve bütçe kısıtlamalarına dayalı tek tıkla optimal çizelge oluşturma." },
-        "budget": { "title": "Bütçe Yönetimi", "description": "Departmanlar arası dağılım ve planlama modları ile gerçek zamanlı haftalık saat bütçesi takibi." },
-        "employee": { "title": "Çalışan Yönetimi", "description": "Beceriler, departmanlar, uygunluk ve izin takibi ile kapsamlı personel yönetimi." },
-        "timeline": { "title": "Zaman Çizelgesi Görünümü", "description": "Sürükle-bırak düzenleme ve vardiya kilitleme ile günlük detaylı vardiya görselleştirmesi." }
-      }
+        "autoScheduling": {
+          "title": "Otomatik Çizelgeleme",
+          "description": "Kurallara, becerilere, uygunluğa ve bütçe kısıtlamalarına dayalı tek tıkla optimal çizelge oluşturma."
+        },
+        "budget": {
+          "title": "Bütçe Yönetimi",
+          "description": "Departmanlar arası dağılım ve planlama modları ile gerçek zamanlı haftalık saat bütçesi takibi."
+        },
+        "employee": {
+          "title": "Çalışan Yönetimi",
+          "description": "Beceriler, departmanlar, uygunluk ve izin takibi ile kapsamlı personel yönetimi."
+        },
+        "timeline": {
+          "title": "Zaman Çizelgesi Görünümü",
+          "description": "Sürükle-bırak düzenleme ve vardiya kilitleme ile günlük detaylı vardiya görselleştirmesi."
+        }
+      },
+      "impact": "Vardiya planlama süresini düşürür, operasyonel hataları ve fazla mesai riskini azaltır."
     },
     "gozcu": {
       "description": "Kurumsal düzeyde envanter, ekipman arıza ve bakım yönetim sistemi (mini-CMMS).",
@@ -248,11 +278,24 @@
       "problem": "Üretim ve sanayi şirketleri genellikle ekipman, arıza ve bakım programlarını takip etmek için elektronik tablolara veya eski sistemlere güvenir. Bu, kaçırılan bakım pencerelerine, beklenmedik duruş sürelerine ve arıza kalıplarını analiz edememeye yol açar.",
       "solution": "Kritik makineleri ve gecikmiş bakımları gösteren sezgisel kontrol panelleri, yaklaşan görevler için otomatik bildirim sistemi, maliyet analizi ile kapsamlı arıza takibi ve tüm raporlar için Excel dışa aktarımı ile modern web tabanlı bir CMMS.",
       "features": {
-        "machine": { "title": "Makine & Envanter", "description": "Filtreleme, arama ve eksiksiz ekipman yaşam döngüsü takibi ile detaylı makine kaydı." },
-        "failure": { "title": "Arıza Yönetimi", "description": "Duruş takibi, maliyet analizi ve ekipmanlar arası kalıp tespiti ile arıza kayıtları." },
-        "maintenance": { "title": "Bakım Planlama", "description": "Kontrol listesi desteği ve gecikme uyarıları ile haftalık/aylık önleyici bakım planlaması." },
-        "rbac": { "title": "RBAC & Denetim Kaydı", "description": "Tüm kritik operasyonların tam denetim kaydı ile Yönetici, Teknisyen ve Gözlemci rolleri." }
-      }
+        "machine": {
+          "title": "Makine & Envanter",
+          "description": "Filtreleme, arama ve eksiksiz ekipman yaşam döngüsü takibi ile detaylı makine kaydı."
+        },
+        "failure": {
+          "title": "Arıza Yönetimi",
+          "description": "Duruş takibi, maliyet analizi ve ekipmanlar arası kalıp tespiti ile arıza kayıtları."
+        },
+        "maintenance": {
+          "title": "Bakım Planlama",
+          "description": "Kontrol listesi desteği ve gecikme uyarıları ile haftalık/aylık önleyici bakım planlaması."
+        },
+        "rbac": {
+          "title": "RBAC & Denetim Kaydı",
+          "description": "Tüm kritik operasyonların tam denetim kaydı ile Yönetici, Teknisyen ve Gözlemci rolleri."
+        }
+      },
+      "impact": "Plansız duruşları ve bakım gecikmelerini azaltarak operasyonel sürekliliği güçlendirir."
     },
     "academy360": {
       "description": "Sporcular, antrenörler, veliler ve yöneticiler için rol tabanlı kontrol panellerine sahip çok kiracılı futbol akademisi yönetim platformu.",
@@ -261,11 +304,24 @@
       "problem": "Genç futbol akademileri genellikle oyuncu gelişimini elektronik tablolar, WhatsApp grupları ve kağıt tabanlı sistemlerle yönetir. Antrenörler, teknik, fiziksel ve davranışsal boyutlarda bireysel beceri ilerlemesini sistematik olarak takip edecek araçlardan yoksundur.",
       "solution": "Organizasyonlar arası veri izolasyonunu sağlayan rol tabanlı erişim kontrolü ve Satır Düzeyi Güvenlik ile amaca yönelik bir platform. Zorluk seviyelerine sahip yapılandırılmış egzersiz kütüphanesi, antrenör beceri puanlama, haftalık plan oluşturucu ve kapsamlı bir manuel ödeme takip sistemi içerir.",
       "features": {
-        "dashboards": { "title": "Rol Tabanlı Paneller", "description": "Sporcular, antrenörler, veliler, kulüp yöneticileri ve süper yöneticiler için sorunsuz rol geçişi ile beş özel deneyim." },
-        "training": { "title": "Antrenman & Egzersiz Kütüphanesi", "description": "3 zorluk seviyesine sahip 5 kategoride 105 egzersiz, 7 yaş grubu için 28 şablon ve haftalık plan oluşturucu." },
-        "skill": { "title": "Beceri Takibi & Analitik", "description": "Radar grafikleri ile bireysel beceri puanlama, zayıf yön analizi, oyuncu karşılaştırma ve aylık gelişim arşivleri." },
-        "multiTenant": { "title": "Çok Kiracılı Mimari", "description": "Supabase RLS, OTP kimlik doğrulama ve 55'ten fazla doğrulanmış API uç noktası ile güvenli organizasyon izolasyonu." }
-      }
+        "dashboards": {
+          "title": "Rol Tabanlı Paneller",
+          "description": "Sporcular, antrenörler, veliler, kulüp yöneticileri ve süper yöneticiler için sorunsuz rol geçişi ile beş özel deneyim."
+        },
+        "training": {
+          "title": "Antrenman & Egzersiz Kütüphanesi",
+          "description": "3 zorluk seviyesine sahip 5 kategoride 105 egzersiz, 7 yaş grubu için 28 şablon ve haftalık plan oluşturucu."
+        },
+        "skill": {
+          "title": "Beceri Takibi & Analitik",
+          "description": "Radar grafikleri ile bireysel beceri puanlama, zayıf yön analizi, oyuncu karşılaştırma ve aylık gelişim arşivleri."
+        },
+        "multiTenant": {
+          "title": "Çok Kiracılı Mimari",
+          "description": "Supabase RLS, OTP kimlik doğrulama ve 55'ten fazla doğrulanmış API uç noktası ile güvenli organizasyon izolasyonu."
+        }
+      },
+      "impact": "Sporcu gelişimini ölçülebilir hale getirir ve kulüp yönetimini tek platformda toplar."
     },
     "iro-beautyzone": {
       "description": "Online randevu alma, hizmet galerisi ve müşteri yorumları ile premium tırnak sanatı stüdyosu web sitesi.",
@@ -274,11 +330,24 @@
       "problem": "Güzellik stüdyoları genellikle randevular için telefon aramalarına ve Instagram DM'lerine güvenir, bu da kaçırılan randevulara ve gelir kaybına yol açar. İşlerini sergileyen ve randevu almayı zahmetsiz kılan profesyonel bir online varlığa ihtiyaçları vardır.",
       "solution": "Randevu için belirgin harekete geçirici butonlar, anlık iletişim için WhatsApp entegrasyonu, iş kalitesini sergileyen görsel galeri ve güven oluşturan müşteri yorumları ile mobil öncelikli bir web sitesi — stüdyonun markasını yansıtan premium bir tasarımla.",
       "features": {
-        "booking": { "title": "Online Randevu", "description": "Müşterilerin her zaman, her yerden ziyaret planlayabildiği 7/24 randevu alma sistemi." },
-        "gallery": { "title": "Hizmet Galerisi", "description": "Detaylı açıklamalar ve fiyat bilgileri ile tırnak sanatı hizmetlerinin görsel vitrini." },
-        "reviews": { "title": "Müşteri Yorumları", "description": "Ekip üyelerini isimleriyle vurgulayan doğrulanmış müşteri yorumlarını içeren yorum karuseli." },
-        "whatsapp": { "title": "WhatsApp Entegrasyonu", "description": "Anlık iletişim ve hızlı randevu sorguları için doğrudan WhatsApp bağlantısı." }
-      }
+        "booking": {
+          "title": "Online Randevu",
+          "description": "Müşterilerin her zaman, her yerden ziyaret planlayabildiği 7/24 randevu alma sistemi."
+        },
+        "gallery": {
+          "title": "Hizmet Galerisi",
+          "description": "Detaylı açıklamalar ve fiyat bilgileri ile tırnak sanatı hizmetlerinin görsel vitrini."
+        },
+        "reviews": {
+          "title": "Müşteri Yorumları",
+          "description": "Ekip üyelerini isimleriyle vurgulayan doğrulanmış müşteri yorumlarını içeren yorum karuseli."
+        },
+        "whatsapp": {
+          "title": "WhatsApp Entegrasyonu",
+          "description": "Anlık iletişim ve hızlı randevu sorguları için doğrudan WhatsApp bağlantısı."
+        }
+      },
+      "impact": "Online randevu dönüşümünü artırır ve manuel iletişim yükünü azaltır."
     },
     "tvn-agency": {
       "description": "TVN Agency için sıfırdan tasarlanıp geliştirilen, prod ortamında yayına alınmış kurumsal web sitesi.",
@@ -287,11 +356,24 @@
       "problem": "Ajansın dijital vitrini, marka güvenini artıracak modern bir görünüm, anlaşılır hizmet sunumu ve ziyaretçiyi hızlı aksiyona yönlendiren bir yapı gerektiriyordu.",
       "solution": "Next.js tabanlı, performans optimizasyonları ve SEO temel ayarlarıyla desteklenen özel bir kurumsal site geliştirildi. Görsel hiyerarşi, içerik akışı ve iletişim CTA'ları dönüşüm odaklı şekilde kurgulandı.",
       "features": {
-        "branding": { "title": "Marka Odaklı Tasarım", "description": "Ajans kimliğini yansıtan, modern ve güven veren bir görsel dil." },
-        "performance": { "title": "Yüksek Performans", "description": "Hızlı açılış süreleri ve akıcı deneyim için optimize edilmiş sayfa yapısı." },
-        "seo": { "title": "SEO Temelleri", "description": "Arama motoru görünürlüğü için temiz semantik yapı ve meta düzeni." },
-        "contact": { "title": "Dönüşüm Odaklı İletişim", "description": "Ziyaretçileri hızlıca iletişime yönlendiren net CTA ve akış tasarımı." }
-      }
+        "branding": {
+          "title": "Marka Odaklı Tasarım",
+          "description": "Ajans kimliğini yansıtan, modern ve güven veren bir görsel dil."
+        },
+        "performance": {
+          "title": "Yüksek Performans",
+          "description": "Hızlı açılış süreleri ve akıcı deneyim için optimize edilmiş sayfa yapısı."
+        },
+        "seo": {
+          "title": "SEO Temelleri",
+          "description": "Arama motoru görünürlüğü için temiz semantik yapı ve meta düzeni."
+        },
+        "contact": {
+          "title": "Dönüşüm Odaklı İletişim",
+          "description": "Ziyaretçileri hızlıca iletişime yönlendiren net CTA ve akış tasarımı."
+        }
+      },
+      "impact": "Marka güvenini güçlendirir, ziyaretçileri nitelikli iletişim talebine dönüştürür."
     }
   }
 }

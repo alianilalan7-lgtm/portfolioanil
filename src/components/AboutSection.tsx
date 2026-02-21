@@ -19,6 +19,12 @@ export default function AboutSection() {
           <p>{t("paragraph3")}</p>
         </div>
 
+        <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
+          <p className="text-sage text-base md:text-lg leading-relaxed">
+            {t("conversionLine")}
+          </p>
+        </div>
+
         {/* Stats */}
         <div className="flex gap-12 mt-10 pt-8 border-t border-glass-border">
           {[

@@ -1,7 +1,7 @@
 {
   "Metadata": {
-    "title": "Ali Anil Alan | Portfolio",
-    "description": "AI Product Builder crafting digital experiences with modern web technologies."
+    "title": "Ali Anil Alan | Freelance AI & SaaS Developer",
+    "description": "Freelance AI developer building SaaS MVPs, dashboards, and automation systems."
   },
   "Navigation": {
     "home": "Home",
@@ -14,9 +14,9 @@
   },
   "Hero": {
     "availableBadge": "Available for new projects",
-    "heading1": "Crafting Digital",
-    "heading2": "Experiences",
-    "description": "AI Product Builder specializing in building modern web applications with a focus on performance, accessibility, and elegant user interfaces.",
+    "heading1": "I Build AI-Powered SaaS,",
+    "heading2": "Dashboards & Automation Systems",
+    "description": "I help startups and businesses ship MVPs, web applications, and practical AI integrations.",
     "viewProjects": "View Projects",
     "getInTouch": "Get in Touch",
     "heroImageAlt": "AI Digital Experience"
@@ -38,7 +38,8 @@
     "paragraph2": "Today, I combine that operational mindset with software and AI to build practical web applications and MVPs. I care less about trends and more about choosing the right tool for the right problem.",
     "paragraph3": "My main focus areas include planning & optimization, dashboards and automation, and AI-powered briefing workflows.",
     "statYears": "Years in Operations",
-    "statProjects": "Projects Built"
+    "statProjects": "Projects Built",
+    "conversionLine": "I do not just ship code; I design products by understanding business operations."
   },
   "SkillStack": {
     "subtitle": "Expertise",
@@ -84,7 +85,7 @@
   },
   "ServicesPage": {
     "title": "Services",
-    "description": "Freelance product engineering for founders, agencies, and teams that need fast execution with production quality.",
+    "description": "Freelance SaaS developer for founders, agencies, and teams that need MVP, dashboard, and AI automation delivery with production quality.",
     "whatYouGet": "What You Get",
     "deliveryModels": "Delivery Models",
     "ctaTitle": "Need one of these services?",
@@ -180,7 +181,10 @@
     "statusMvp": "MVP",
     "statusInProgress": "In Progress",
     "statusPaused": "Paused",
-    "statusCompleted": "Completed"
+    "statusCompleted": "Completed",
+    "problemLabel": "Problem",
+    "solutionLabel": "Solution",
+    "impactLabel": "Impact"
   },
   "ProjectDetail": {
     "breadcrumbProjects": "Projects",
@@ -222,11 +226,24 @@
       "problem": "Traditional news platforms deliver single-voice reporting that often lacks depth and verification. Users are overwhelmed by information pollution, with no easy way to cross-reference claims, understand multiple perspectives, or verify facts in real-time.",
       "solution": "Pulse's editorial render pipeline uses Gemini 2.5 Flash to extract structured fact tables from articles, generate rewrites in 5 editorial styles, and deterministically verify numbers and dates to prevent hallucinations. Combined with Polymarket prediction integration and smart bookmarking, users get a complete intelligence toolkit.",
       "features": {
-        "aiEditorial": { "title": "AI Editorial Pipeline", "description": "Generates rewrites in 5 styles (Analytic, TL;DR, Fact Only, Simple, Humor) with fact extraction using Gemini AI." },
-        "prediction": { "title": "Prediction Markets", "description": "Real-time Polymarket integration with AI-powered probability analysis by Dr. Marcus Chen." },
-        "ingest": { "title": "Smart Ingest System", "description": "Automatic RSS/Atom discovery, full-text extraction with Readability, content hashing, and 15-min fetch intervals." },
-        "evidence": { "title": "Evidence Highlighting", "description": "Links claims directly to primary sources with deterministic verification of numbers and dates." }
-      }
+        "aiEditorial": {
+          "title": "AI Editorial Pipeline",
+          "description": "Generates rewrites in 5 styles (Analytic, TL;DR, Fact Only, Simple, Humor) with fact extraction using Gemini AI."
+        },
+        "prediction": {
+          "title": "Prediction Markets",
+          "description": "Real-time Polymarket integration with AI-powered probability analysis by Dr. Marcus Chen."
+        },
+        "ingest": {
+          "title": "Smart Ingest System",
+          "description": "Automatic RSS/Atom discovery, full-text extraction with Readability, content hashing, and 15-min fetch intervals."
+        },
+        "evidence": {
+          "title": "Evidence Highlighting",
+          "description": "Links claims directly to primary sources with deterministic verification of numbers and dates."
+        }
+      },
+      "impact": "Increases decision speed with verified multi-source news insights and less information noise."
     },
     "smart-planning": {
       "description": "AI-powered workforce scheduling and shift planning system for retail stores and businesses.",
@@ -235,11 +252,24 @@
       "problem": "Retail managers spend hours manually creating weekly shift schedules, juggling employee preferences, skill requirements, labor regulations, and budget limits. Mistakes lead to understaffing, overtime costs, and employee dissatisfaction.",
       "solution": "An auto-scheduling engine that generates optimal plans with one click, respecting all constraints. Managers can fine-tune with drag-and-drop, lock approved shifts, track budget in real-time, and get instant validation against business rules.",
       "features": {
-        "autoScheduling": { "title": "Auto Scheduling", "description": "One-click optimal schedule generation based on rules, skills, availability, and budget constraints." },
-        "budget": { "title": "Budget Management", "description": "Real-time weekly hour budget tracking with distribution across departments and planning modes." },
-        "employee": { "title": "Employee Management", "description": "Complete personnel management with skills, departments, availability, and leave tracking." },
-        "timeline": { "title": "Timeline View", "description": "Daily detailed shift visualization with drag-and-drop editing and shift locking." }
-      }
+        "autoScheduling": {
+          "title": "Auto Scheduling",
+          "description": "One-click optimal schedule generation based on rules, skills, availability, and budget constraints."
+        },
+        "budget": {
+          "title": "Budget Management",
+          "description": "Real-time weekly hour budget tracking with distribution across departments and planning modes."
+        },
+        "employee": {
+          "title": "Employee Management",
+          "description": "Complete personnel management with skills, departments, availability, and leave tracking."
+        },
+        "timeline": {
+          "title": "Timeline View",
+          "description": "Daily detailed shift visualization with drag-and-drop editing and shift locking."
+        }
+      },
+      "impact": "Reduces shift planning time while lowering overtime risk and staffing errors."
     },
     "gozcu": {
       "description": "Enterprise-grade inventory, equipment failure, and maintenance management system (mini-CMMS).",
@@ -248,11 +278,24 @@
       "problem": "Manufacturing and industrial companies often rely on spreadsheets or outdated systems to track equipment, failures, and maintenance schedules. This leads to missed maintenance windows, unexpected downtime, and inability to analyze failure patterns.",
       "solution": "A modern web-based CMMS with intuitive dashboards showing critical machines and overdue maintenance, automated notification system for upcoming tasks, comprehensive failure tracking with cost analysis, and Excel export for all reports.",
       "features": {
-        "machine": { "title": "Machine & Inventory", "description": "Detailed machine registry with filtering, search, and complete equipment lifecycle tracking." },
-        "failure": { "title": "Failure Management", "description": "Failure records with downtime tracking, cost analysis, and pattern detection across equipment." },
-        "maintenance": { "title": "Maintenance Planning", "description": "Weekly/monthly preventive maintenance scheduling with checklist support and overdue alerts." },
-        "rbac": { "title": "RBAC & Audit Log", "description": "Admin, Technician, and Observer roles with complete audit logging of all critical operations." }
-      }
+        "machine": {
+          "title": "Machine & Inventory",
+          "description": "Detailed machine registry with filtering, search, and complete equipment lifecycle tracking."
+        },
+        "failure": {
+          "title": "Failure Management",
+          "description": "Failure records with downtime tracking, cost analysis, and pattern detection across equipment."
+        },
+        "maintenance": {
+          "title": "Maintenance Planning",
+          "description": "Weekly/monthly preventive maintenance scheduling with checklist support and overdue alerts."
+        },
+        "rbac": {
+          "title": "RBAC & Audit Log",
+          "description": "Admin, Technician, and Observer roles with complete audit logging of all critical operations."
+        }
+      },
+      "impact": "Cuts unplanned downtime and maintenance delays for more reliable operations."
     },
     "academy360": {
       "description": "Multi-tenant football academy management platform with role-based dashboards for athletes, coaches, parents, and admins.",
@@ -261,11 +304,24 @@
       "problem": "Youth football academies typically manage player development through spreadsheets, WhatsApp groups, and paper-based systems. Coaches lack tools to systematically track individual skill progression across technical, physical, and behavioral dimensions. Parents have no visibility into their child's training attendance or development trajectory. Club administrators struggle with member management, payment tracking, and cross-group coordination.",
       "solution": "A purpose-built platform with role-based access control and Row-Level Security ensuring data isolation between organizations. The unified dashboard architecture serves all roles from a single URL namespace with automatic role switching. Features include a structured exercise library with difficulty levels, a completion tracking system, coach skill scoring with radar chart visualization, weekly plan builder, player comparison tools, and a complete manual payment tracking system — all wrapped in a mobile-responsive PWA.",
       "features": {
-        "dashboards": { "title": "Role-Based Dashboards", "description": "Five tailored experiences for athletes, coaches, parents, club admins, and super admins with seamless role switching." },
-        "training": { "title": "Training & Exercise Library", "description": "105 exercises across 5 categories with 3 difficulty levels, 28 age-group templates, and weekly plan builder." },
-        "skill": { "title": "Skill Tracking & Analytics", "description": "Individual skill scoring with radar charts, weakness analysis, player comparison, and monthly development archives." },
-        "multiTenant": { "title": "Multi-Tenant Architecture", "description": "Secure organization isolation with Supabase RLS, OTP authentication, and 55+ validated API endpoints." }
-      }
+        "dashboards": {
+          "title": "Role-Based Dashboards",
+          "description": "Five tailored experiences for athletes, coaches, parents, club admins, and super admins with seamless role switching."
+        },
+        "training": {
+          "title": "Training & Exercise Library",
+          "description": "105 exercises across 5 categories with 3 difficulty levels, 28 age-group templates, and weekly plan builder."
+        },
+        "skill": {
+          "title": "Skill Tracking & Analytics",
+          "description": "Individual skill scoring with radar charts, weakness analysis, player comparison, and monthly development archives."
+        },
+        "multiTenant": {
+          "title": "Multi-Tenant Architecture",
+          "description": "Secure organization isolation with Supabase RLS, OTP authentication, and 55+ validated API endpoints."
+        }
+      },
+      "impact": "Makes player development measurable and centralizes academy operations in one platform."
     },
     "iro-beautyzone": {
       "description": "Premium nail art studio website with online appointment booking, service gallery, and client reviews.",
@@ -274,11 +330,24 @@
       "problem": "Beauty studios often rely on phone calls and Instagram DMs for bookings, leading to missed appointments and lost revenue. They need a professional online presence that showcases their work and makes booking effortless.",
       "solution": "A mobile-first website with prominent call-to-action buttons for booking, WhatsApp integration for instant communication, a visual gallery showcasing work quality, and client testimonials that build trust — all wrapped in a premium design that reflects the studio's brand.",
       "features": {
-        "booking": { "title": "Online Booking", "description": "24/7 appointment booking system allowing clients to schedule visits anytime, anywhere." },
-        "gallery": { "title": "Service Gallery", "description": "Visual showcase of nail art services with detailed descriptions and pricing information." },
-        "reviews": { "title": "Client Reviews", "description": "Testimonial carousel featuring verified client reviews highlighting team members by name." },
-        "whatsapp": { "title": "WhatsApp Integration", "description": "Direct WhatsApp contact for instant communication and quick booking inquiries." }
-      }
+        "booking": {
+          "title": "Online Booking",
+          "description": "24/7 appointment booking system allowing clients to schedule visits anytime, anywhere."
+        },
+        "gallery": {
+          "title": "Service Gallery",
+          "description": "Visual showcase of nail art services with detailed descriptions and pricing information."
+        },
+        "reviews": {
+          "title": "Client Reviews",
+          "description": "Testimonial carousel featuring verified client reviews highlighting team members by name."
+        },
+        "whatsapp": {
+          "title": "WhatsApp Integration",
+          "description": "Direct WhatsApp contact for instant communication and quick booking inquiries."
+        }
+      },
+      "impact": "Improves online booking conversion and reduces manual booking communication."
     },
     "tvn-agency": {
       "description": "Corporate agency website designed and developed from scratch, now fully live in production.",
@@ -287,11 +356,24 @@
       "problem": "The agency needed a modern digital presence that could build trust, explain services quickly, and turn traffic into qualified contact requests.",
       "solution": "I developed a custom Next.js corporate website with performance optimization and solid SEO fundamentals. Visual hierarchy, content flow, and CTA placement were designed specifically for conversion-focused user journeys.",
       "features": {
-        "branding": { "title": "Brand-Driven Design", "description": "A modern visual language crafted to reflect the agency identity with confidence." },
-        "performance": { "title": "High Performance", "description": "Fast loading pages and smooth interactions through optimized frontend structure." },
-        "seo": { "title": "SEO Foundations", "description": "Semantic structure and clean metadata setup to improve search visibility." },
-        "contact": { "title": "Conversion-Focused Contact Flow", "description": "Clear CTA strategy that guides visitors quickly into contact actions." }
-      }
+        "branding": {
+          "title": "Brand-Driven Design",
+          "description": "A modern visual language crafted to reflect the agency identity with confidence."
+        },
+        "performance": {
+          "title": "High Performance",
+          "description": "Fast loading pages and smooth interactions through optimized frontend structure."
+        },
+        "seo": {
+          "title": "SEO Foundations",
+          "description": "Semantic structure and clean metadata setup to improve search visibility."
+        },
+        "contact": {
+          "title": "Conversion-Focused Contact Flow",
+          "description": "Clear CTA strategy that guides visitors quickly into contact actions."
+        }
+      },
+      "impact": "Strengthens brand trust and converts visitors into qualified contact requests."
     }
   }
 }

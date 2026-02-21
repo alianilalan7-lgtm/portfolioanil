@@ -17,6 +17,7 @@ export interface Project {
   overviewKey: string;
   problemKey: string;
   solutionKey: string;
+  impactKey: string;
   features: ProjectFeature[];
   team: { name: string; role: string }[];
   timeline: { duration: string; phase: string; role: string };
@@ -49,6 +50,7 @@ export const projects: Project[] = [
     overviewKey: "Projects.pulse.overview",
     problemKey: "Projects.pulse.problem",
     solutionKey: "Projects.pulse.solution",
+    impactKey: "Projects.pulse.impact",
     features: [
       {
         titleKey: "Projects.pulse.features.aiEditorial.title",
@@ -124,6 +126,7 @@ async function renderEditorial(article: Article) {
     overviewKey: "Projects.smart-planning.overview",
     problemKey: "Projects.smart-planning.problem",
     solutionKey: "Projects.smart-planning.solution",
+    impactKey: "Projects.smart-planning.impact",
     features: [
       {
         titleKey: "Projects.smart-planning.features.autoScheduling.title",
@@ -179,6 +182,7 @@ async function renderEditorial(article: Article) {
     overviewKey: "Projects.gozcu.overview",
     problemKey: "Projects.gozcu.problem",
     solutionKey: "Projects.gozcu.solution",
+    impactKey: "Projects.gozcu.impact",
     features: [
       {
         titleKey: "Projects.gozcu.features.machine.title",
@@ -230,6 +234,7 @@ async function renderEditorial(article: Article) {
     overviewKey: "Projects.academy360.overview",
     problemKey: "Projects.academy360.problem",
     solutionKey: "Projects.academy360.solution",
+    impactKey: "Projects.academy360.impact",
     features: [
       {
         titleKey: "Projects.academy360.features.dashboards.title",
@@ -286,6 +291,7 @@ async function renderEditorial(article: Article) {
     overviewKey: "Projects.iro-beautyzone.overview",
     problemKey: "Projects.iro-beautyzone.problem",
     solutionKey: "Projects.iro-beautyzone.solution",
+    impactKey: "Projects.iro-beautyzone.impact",
     features: [
       {
         titleKey: "Projects.iro-beautyzone.features.booking.title",
@@ -341,6 +347,7 @@ async function renderEditorial(article: Article) {
     overviewKey: "Projects.tvn-agency.overview",
     problemKey: "Projects.tvn-agency.problem",
     solutionKey: "Projects.tvn-agency.solution",
+    impactKey: "Projects.tvn-agency.impact",
     features: [
       {
         titleKey: "Projects.tvn-agency.features.branding.title",
