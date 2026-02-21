@@ -30,6 +30,9 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
   const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
+  const googleSiteVerification =
+    process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+    "google8f0ece0a413df90c";
   const metadataBase = new URL(configuredSiteUrl);
   const localePath = locale === routing.defaultLocale ? "/" : `/${locale}`;
 
@@ -72,6 +75,9 @@ export async function generateMetadata({
         en: "/",
         tr: "/tr",
       },
+    },
+    verification: {
+      google: googleSiteVerification,
     },
   };
 }
