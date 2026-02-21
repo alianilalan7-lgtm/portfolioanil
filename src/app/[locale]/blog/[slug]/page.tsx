@@ -34,13 +34,19 @@ function BlogDetailContent({
   post: (typeof blogPosts)[number];
 }) {
   const isTr = locale === "tr";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
+  const localizedPrefix = isTr ? "/tr" : "";
+  const shareUrl = `${siteUrl}${localizedPrefix}/blog/${post.slug}`;
+  const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+    shareUrl
+  )}`;
 
   return (
     <div className="pt-28 pb-20 px-6">
       <article className="max-w-4xl mx-auto">
         <nav className="flex items-center gap-2 text-sm text-sage/40 mb-8">
           <Link href="/blog" className="hover:text-primary transition-colors">
-            {isTr ? "Bloga Don" : "Back to Blog"}
+            {isTr ? "Bloga Dön" : "Back to Blog"}
           </Link>
           <span className="material-icons text-xs">chevron_right</span>
           <span className="text-sage/70 truncate">{post.title}</span>
@@ -71,6 +77,18 @@ function BlogDetailContent({
               </span>
             ))}
           </div>
+
+          <div className="mt-5">
+            <a
+              href={linkedInShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:text-primary-light transition-colors"
+            >
+              <span className="material-icons text-sm">share</span>
+              {isTr ? "LinkedIn'de Paylaş" : "Share on LinkedIn"}
+            </a>
+          </div>
         </header>
 
         <div className="glass-card p-6 md:p-8 space-y-5">
@@ -85,18 +103,18 @@ function BlogDetailContent({
 
         <section className="glass-card mt-8 p-6 md:p-8">
           <h2 className="font-heading text-2xl font-semibold text-sage mb-3">
-            {isTr ? "Benzer bir SaaS projesi mi planliyorsun?" : "Planning a similar SaaS product?"}
+            {isTr ? "Benzer bir SaaS projesi mi planlıyorsun?" : "Planning a similar SaaS product?"}
           </h2>
           <p className="text-sage/55 leading-relaxed mb-5">
             {isTr
-              ? "Kapsam, MVP siralamasi ve teslim takvimi icin birlikte net bir yol haritasi cikarabiliriz."
+              ? "Kapsam, MVP sıralaması ve teslim takvimi için birlikte net bir yol haritası çıkarabiliriz."
               : "We can define scope, MVP milestones, and a realistic delivery timeline together."}
           </p>
           <Link
             href="/contact"
             className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
           >
-            {isTr ? "Iletisime Gec" : "Contact"}
+            {isTr ? "İletişime Geç" : "Contact"}
             <span className="material-icons text-sm">arrow_forward</span>
           </Link>
         </section>

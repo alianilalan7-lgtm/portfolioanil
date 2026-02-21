@@ -90,6 +90,69 @@ export default async function LocaleLayout({
   }
 
   setRequestLocale(locale);
+  const tMeta = await getTranslations({ locale, namespace: "Metadata" });
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
+  const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`;
+  const localizedBaseUrl = `${configuredSiteUrl}${localePrefix}`;
+  const languageCode = locale === "tr" ? "tr-TR" : "en-US";
+
+  const schemaItems: Record<string, unknown>[] = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${configuredSiteUrl}#person`,
+      name: "Ali Anil Alan",
+      url: configuredSiteUrl,
+      image: `${configuredSiteUrl}/images/profile.png`,
+      jobTitle: "Freelance AI & SaaS Developer",
+      description: tMeta("description"),
+      sameAs: [
+        "https://github.com/alianilalan7-lgtm",
+        "https://www.linkedin.com/in/ali-an%C4%B1l-alan-a77a7468/",
+        "https://x.com/alianilalan",
+      ],
+      knowsAbout: [
+        "SaaS development",
+        "MVP development",
+        "AI workflow integration",
+        "Dashboard development",
+        "Automation systems",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": `${localizedBaseUrl}#service`,
+      name: "Ali Anil Alan",
+      url: localizedBaseUrl,
+      inLanguage: languageCode,
+      areaServed: "Worldwide",
+      description: tMeta("description"),
+      provider: {
+        "@id": `${configuredSiteUrl}#person`,
+      },
+      serviceType: [
+        "SaaS MVP Development",
+        "AI Automation Development",
+        "Dashboard and Admin Panel Development",
+        "Web Application Development",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": `${localizedBaseUrl}#website`,
+      url: localizedBaseUrl,
+      name: "Ali Anil Alan",
+      inLanguage: languageCode,
+      description: tMeta("description"),
+      potentialAction: {
+        "@type": "SearchAction",
+        target: `${localizedBaseUrl}/projects?query={search_term_string}`,
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ];
 
   return (
     <html lang={locale} className="scroll-smooth">
@@ -98,6 +161,13 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         />
+        {schemaItems.map((item, index) => (
+          <script
+            key={`schema-${index}`}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
+          />
+        ))}
       </head>
       <body
         className={`${inter.variable} ${lexend.variable} font-display antialiased bg-forest text-sage`}

@@ -23,7 +23,7 @@ export default function HeroSection() {
           </div>
 
           {/* Main heading */}
-          <h1 className="font-heading text-5xl md:text-7xl xl:text-8xl font-bold text-sage leading-tight mb-6">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-[3.75rem] 2xl:text-[4.25rem] font-bold text-sage leading-[1.08] tracking-[-0.01em] mb-6">
             {t("heading1")}
             <br />
             <span className="text-primary">{t("heading2")}</span>

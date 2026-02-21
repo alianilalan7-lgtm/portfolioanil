@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blogs";
+import { caseStudies } from "@/data/case-studies";
 import { projects } from "@/data/projects";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
@@ -9,7 +10,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticEnPaths = [
     "",
     "/services",
+    "/process",
     "/process-pricing",
+    "/case-studies",
+    "/faq",
     "/blog",
     "/projects",
     "/contact",
@@ -18,7 +22,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticTrPaths = [
     "/tr",
     "/tr/services",
+    "/tr/process",
     "/tr/process-pricing",
+    "/tr/case-studies",
+    "/tr/faq",
     "/tr/blog",
     "/tr/projects",
     "/tr/contact",
@@ -85,5 +92,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]);
 
-  return [...staticEntries, ...projectEntries, ...blogEntries, ...blogPostEntries];
+  const caseStudyEntries = caseStudies.flatMap((study) => [
+    {
+      url: `${siteUrl}/case-studies/${study.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.72,
+    },
+    {
+      url: `${siteUrl}/tr/case-studies/${study.slug}`,
+      lastModified: now,
+      changeFrequency: "monthly" as const,
+      priority: 0.72,
+    },
+  ]);
+
+  return [
+    ...staticEntries,
+    ...projectEntries,
+    ...blogEntries,
+    ...blogPostEntries,
+    ...caseStudyEntries,
+  ];
 }

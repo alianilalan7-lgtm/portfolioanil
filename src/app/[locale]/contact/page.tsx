@@ -1,14 +1,7 @@
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
 import ContactForm from "@/components/ContactForm";
 
-export default function ContactPage({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
-  // We need to await params for the locale but setRequestLocale needs to be called synchronously
-  // In the parent layout we already call setRequestLocale, so translations work here
+export default function ContactPage() {
   const t = useTranslations("ContactPage");
 
   return (
@@ -50,7 +43,7 @@ export default function ContactPage({
                 {t("quickIntroDescription")}
               </p>
               <a
-                href="#"
+                href="mailto:alianilappstore@gmail.com?subject=Discovery%20Call%20Request"
                 className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:text-primary-light transition-colors"
               >
                 <span className="material-icons text-sm">calendar_today</span>

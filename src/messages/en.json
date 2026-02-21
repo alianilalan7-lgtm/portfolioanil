@@ -10,7 +10,12 @@
     "blog": "Blog",
     "certificates": "Certificates",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "caseStudies": "Case Studies",
+    "faq": "FAQ",
+    "process": "Process",
+    "more": "More",
+    "bookCall": "Book Call"
   },
   "Hero": {
     "availableBadge": "Available for new projects",

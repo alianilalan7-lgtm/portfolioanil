@@ -33,7 +33,9 @@ export default function Footer() {
               {[
                 { href: "/" as const, label: tNav("home") },
                 { href: "/services" as const, label: tNav("services") },
-                { href: "/process-pricing" as const, label: tNav("processPricing") },
+                { href: "/process" as const, label: tNav("process") },
+                { href: "/case-studies" as const, label: tNav("caseStudies") },
+                { href: "/faq" as const, label: tNav("faq") },
                 { href: "/blog" as const, label: tNav("blog") },
                 { href: "/certificates" as const, label: tNav("certificates") },
                 { href: "/projects" as const, label: tNav("projects") },
