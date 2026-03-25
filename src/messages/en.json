@@ -215,6 +215,11 @@
     "verify": "Verify",
     "pdf": "PDF"
   },
+  "Error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "retry": "Try Again"
+  },
   "Footer": {
     "description": "AI Product Builder crafting digital experiences with modern web technologies.",
     "quickLinks": "Quick Links",
@@ -353,6 +358,32 @@
         }
       },
       "impact": "Improves online booking conversion and reduces manual booking communication."
+    },
+    "orni": {
+      "description": "Early childhood education ecosystem connecting kindergartens, instructors, and parents in one platform.",
+      "longDescription": "Orni is a comprehensive early childhood education platform for ages 0–6 that brings together kindergartens, independent instructors, and parents. Parents can discover schools with advanced filters, explore instructor profiles, register for weekly workshops, and read verified reviews — all in one place.",
+      "overview": "Orni addresses the fragmented nature of early education discovery. Parents navigating kindergarten choices and workshop registrations for young children face scattered information across Instagram, WhatsApp groups, and word-of-mouth. Orni centralizes the entire experience: filtering schools by city, age group, pedagogical approach, and budget; exploring instructor profiles; booking art, drama, music, and nature workshops; and reading moderated parent reviews.",
+      "problem": "Parents of young children struggle to find reliable, filtered information about kindergartens and early education workshops. The process is fragmented across social media, phone calls, and manual searches — leading to poor choices and missed opportunities for early development.",
+      "solution": "A three-sided marketplace platform where kindergartens publish profiles and manage enrollment, instructors create workshop schedules and connect with schools, and parents discover, filter, book, and review — all with a calm, accessible design built around the needs of families with young children.",
+      "features": {
+        "discovery": {
+          "title": "School & Workshop Discovery",
+          "description": "Filter kindergartens by city, age group, pedagogical approach (Montessori, Waldorf, Reggio Emilia), and price range."
+        },
+        "workshop": {
+          "title": "Workshop Calendar & Booking",
+          "description": "Weekly and monthly workshop calendar for art, drama, music, and nature activities with one-click registration and capacity tracking."
+        },
+        "instructor": {
+          "title": "Instructor Profiles",
+          "description": "Dedicated profiles for early education instructors showing specialization, experience, pedagogical approach, and available workshops."
+        },
+        "reviews": {
+          "title": "Verified Parent Reviews",
+          "description": "5-star moderated review system with real parent experiences for kindergartens and instructors."
+        }
+      },
+      "impact": "Simplifies early education decisions for families and gives kindergartens and instructors a professional digital presence."
     },
     "tvn-agency": {
       "description": "Corporate agency website designed and developed from scratch, now fully live in production.",

@@ -215,6 +215,11 @@
     "verify": "Doğrula",
     "pdf": "PDF"
   },
+  "Error": {
+    "title": "Bir şeyler ters gitti",
+    "description": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+    "retry": "Tekrar Dene"
+  },
   "Footer": {
     "description": "Modern web teknolojileriyle dijital deneyimler oluşturan AI Product Builder.",
     "quickLinks": "Hızlı Bağlantılar",
@@ -353,6 +358,32 @@
         }
       },
       "impact": "Online randevu dönüşümünü artırır ve manuel iletişim yükünü azaltır."
+    },
+    "orni": {
+      "description": "0–6 yaş erken çocukluk eğitim ekosistemi: anaokulları, eğitmenler ve ebeveynleri tek platformda buluşturuyor.",
+      "longDescription": "Orni, 0–6 yaş grubuna yönelik kapsamlı bir erken çocukluk eğitim platformudur. Anaokulları, bağımsız eğitmenler ve ebeveynleri tek bir çatı altında toplar. Ebeveynler gelişmiş filtrelerle okul keşfedebilir, eğitmen profillerini inceleyebilir, haftalık atölyelerine ön kayıt yaptırabilir ve doğrulanmış yorumları okuyabilir.",
+      "overview": "Orni, erken eğitim keşfinin parçalı yapısını çözüyor. Küçük çocukları için anaokulu ve atölye araştıran ebeveynler; Instagram, WhatsApp grupları ve kulaktan kulağa yayılan bilgilere muhtaç kalıyor. Orni tüm deneyimi tek noktada topluyor: şehir, yaş grubu, pedagojik yaklaşım ve bütçeye göre okul filtreleme; eğitmen profillerini keşfetme; sanat, drama, müzik ve doğa atölyelerine kayıt olma; moderasyonlu veli yorumlarını okuma.",
+      "problem": "Küçük çocukların ebeveynleri, anaokulları ve erken eğitim atölyeleri hakkında güvenilir, filtrelenmiş bilgiye ulaşmakta zorlanıyor. Süreç sosyal medya, telefon görüşmeleri ve manuel araştırma arasında dağılmış durumda.",
+      "solution": "Üç taraflı bir pazar yeri: anaokulları profil yayınlayıp kayıt yönetir; eğitmenler atölye takvimi oluşturup okullarla eşleşir; ebeveynler keşfeder, filtreler, kayıt olur ve yorum yazar — tümü küçük çocuklu ailelerin ihtiyaçlarına göre tasarlanmış sakin ve erişilebilir bir arayüzde.",
+      "features": {
+        "discovery": {
+          "title": "Okul & Atölye Keşfi",
+          "description": "Anaokullarını şehir, yaş grubu, pedagojik yaklaşım (Montessori, Waldorf, Reggio Emilia) ve fiyat aralığına göre filtrele."
+        },
+        "workshop": {
+          "title": "Atölye Takvimi & Kayıt",
+          "description": "Sanat, drama, müzik ve doğa etkinlikleri için haftalık/aylık atölye takvimi; tek tıkla ön kayıt ve otomatik kontenjan takibi."
+        },
+        "instructor": {
+          "title": "Eğitmen Profilleri",
+          "description": "Erken çocukluk eğitmenleri için uzmanlık, deneyim, pedagojik yaklaşım ve mevcut atölyeleri gösteren detaylı profil sayfaları."
+        },
+        "reviews": {
+          "title": "Doğrulanmış Veli Yorumları",
+          "description": "Anaokulları ve eğitmenler için moderasyonlu, gerçek veli deneyimleriyle desteklenen 5 yıldız değerlendirme sistemi."
+        }
+      },
+      "impact": "Ailelerin erken eğitim kararlarını kolaylaştırır; anaokulu ve eğitmenlere profesyonel bir dijital varlık sunar."
     },
     "tvn-agency": {
       "description": "TVN Agency için sıfırdan tasarlanıp geliştirilen, prod ortamında yayına alınmış kurumsal web sitesi.",
