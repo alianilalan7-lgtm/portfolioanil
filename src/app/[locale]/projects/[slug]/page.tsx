@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
+import Reveal from "@/components/fx/Reveal";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -29,6 +30,28 @@ export default async function ProjectDetailPage({
   return <ProjectDetailContent project={project} nextProject={nextProject} />;
 }
 
+// Active states get the lime accent; everything else stays muted.
+const LIME_STATUSES = ["live", "beta", "mvp", "in-progress"];
+
+// Per-slug brand backdrops + object-fit for the showcase frame (logos vs. shots).
+const MEDIA_BG: Record<string, string> = {
+  pulse: "bg-[#0a0a0a]",
+  "smart-planning": "bg-[#eef2f7]",
+  gozcu: "bg-[#f0f4f8]",
+  academy360: "bg-[#2bae7e]",
+  "iro-beautyzone": "bg-[#9a8174]",
+  "tvn-agency": "bg-black",
+};
+
+const MEDIA_FIT: Record<string, string> = {
+  pulse: "object-contain p-4",
+  "smart-planning": "object-contain p-3",
+  gozcu: "object-contain p-3",
+  academy360: "object-contain p-8",
+  "iro-beautyzone": "object-contain p-6",
+  "tvn-agency": "object-contain p-6",
+};
+
 function ProjectDetailContent({
   project,
   nextProject,
@@ -40,15 +63,6 @@ function ProjectDetailContent({
   const tCard = useTranslations("ProjectCard");
   const tAll = useTranslations();
 
-  const statusColors: Record<string, string> = {
-    live: "bg-green-500/20 text-green-400 border-green-500/30",
-    beta: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-    mvp: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-    "in-progress": "bg-orange-500/20 text-orange-400 border-orange-500/30",
-    paused: "bg-gray-500/20 text-gray-400 border-gray-500/30",
-    completed: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  };
-
   const statusLabels: Record<string, string> = {
     live: tCard("statusLive"),
     beta: tCard("statusBeta"),
@@ -58,73 +72,85 @@ function ProjectDetailContent({
     completed: tCard("statusCompleted"),
   };
 
+  const isActiveStatus = LIME_STATUSES.includes(project.status);
+
+  const timelineRows: [string, string][] = [
+    [t("duration"), project.timeline.duration],
+    [t("phase"), project.timeline.phase],
+    [t("role"), project.timeline.role],
+  ];
+
   return (
-    <div className="pt-28 pb-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-sage/40 mb-8">
-          <Link href="/projects" className="hover:text-primary transition-colors">
-            {t("breadcrumbProjects")}
-          </Link>
-          <span className="material-icons text-xs">chevron_right</span>
-          <span className="text-sage/70">{project.title}</span>
-        </nav>
+    <div className="max-w-7xl mx-auto px-6 pt-28 pb-24 md:pt-32">
+      {/* Breadcrumb */}
+      <nav className="mb-10 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-faint">
+        <Link href="/projects" className="transition-colors hover:text-lime">
+          {t("breadcrumbProjects")}
+        </Link>
+        <span aria-hidden className="text-line-strong">
+          /
+        </span>
+        <span className="text-muted">{project.title}</span>
+      </nav>
 
-        {/* Header */}
-        <div className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
+      {/* Header */}
+      <header className="mb-14">
+        <div className="mb-5 flex flex-wrap items-center gap-3">
+          <span className="tag-term">
             <span
-              className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium border ${statusColors[project.status]}`}
+              className={`mr-1.5 ${isActiveStatus ? "text-lime" : "text-faint"}`}
             >
-              {statusLabels[project.status]}
+              ●
             </span>
-            <span className="text-sage/30 text-sm">{project.category}</span>
+            {statusLabels[project.status]}
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-faint">
+            // {project.category}
+          </span>
+        </div>
+
+        <h1 className="font-display text-4xl font-bold uppercase leading-[1.04] tracking-tight text-paper md:text-5xl xl:text-6xl">
+          {project.title}
+        </h1>
+        <p className="mt-5 max-w-3xl text-base leading-relaxed text-muted md:text-lg">
+          {tAll(project.longDescriptionKey)}
+        </p>
+
+        {/* Tech tags */}
+        <div className="mt-7 flex flex-wrap gap-2">
+          {project.techStack.map((tech) => (
+            <span key={tech} className="tag-term">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+        {/* Progress */}
+        <div className="mt-8 max-w-md border border-line bg-surface p-5">
+          <div className="mb-3 flex items-center justify-between font-mono text-xs uppercase tracking-[0.14em]">
+            <span className="text-faint">// {t("projectProgress")}</span>
+            <span className="text-lime">{project.progress}%</span>
           </div>
-
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-sage mb-4">
-            {project.title}
-          </h1>
-          <p className="text-sage/50 text-lg max-w-3xl">
-            {tAll(project.longDescriptionKey)}
-          </p>
-
-          {/* Tech tags */}
-          <div className="flex flex-wrap gap-2 mt-6">
-            {project.techStack.map((tech) => (
-              <span
-                key={tech}
-                className="px-3 py-1.5 text-sm rounded-lg bg-forest-lighter text-sage/60 border border-glass-border"
-              >
-                {tech}
-              </span>
-            ))}
+          <div className="h-1.5 w-full overflow-hidden bg-surface-2">
+            <div
+              className="h-full origin-left bg-lime"
+              style={{ transform: `scaleX(${project.progress / 100})` }}
+            />
           </div>
+        </div>
 
-          {/* Progress bar */}
-          <div className="mt-6">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-sage/40 text-sm">{t("projectProgress")}</span>
-              <span className="text-primary text-sm font-medium">{project.progress}%</span>
-            </div>
-            <div className="h-2 rounded-full bg-forest-lighter overflow-hidden">
-              <div
-                className="h-full rounded-full bg-gradient-to-r from-primary to-primary-light transition-all duration-500"
-                style={{ width: `${project.progress}%` }}
-              />
-            </div>
-          </div>
-
-          {/* Action buttons */}
-          <div className="flex flex-wrap gap-3 mt-8">
+        {/* Action buttons */}
+        {(project.liveUrl || project.sourceUrl) && (
+          <div className="mt-8 flex flex-wrap gap-3">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
+                className="btn-term btn-term--solid"
               >
-                <span className="material-icons text-lg">open_in_new</span>
-                {t("visitLiveDemo")}
+                &gt; {t("visitLiveDemo")}
+                <span aria-hidden>↗</span>
               </a>
             )}
             {project.sourceUrl && (
@@ -132,263 +158,218 @@ function ProjectDetailContent({
                 href={project.sourceUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-glass-border text-sage rounded-xl hover:border-primary/30 hover:text-primary transition-all"
+                className="btn-term"
               >
-                <span className="material-icons text-lg">code</span>
-                {t("viewSource")}
+                &gt; {t("viewSource")}
+                <span aria-hidden>{"</>"}</span>
               </a>
             )}
           </div>
-        </div>
+        )}
+      </header>
 
-        {/* Main content grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left - Main content */}
-          <div className="lg:col-span-2 space-y-10">
-            {/* Project image */}
-            <div className="glass-card p-2">
-              <div className={`relative h-64 md:h-80 rounded-xl overflow-hidden ${
-                {
-                  pulse: "bg-[#0a0a0a]",
-                  "smart-planning": "bg-[#eef2f7]",
-                  gozcu: "bg-[#f0f4f8]",
-                  academy360: "bg-[#2bae7e]",
-                  "iro-beautyzone": "bg-[#9a8174]",
-                  "tvn-agency": "bg-black",
-                }[project.slug] || "bg-forest-lighter"
-              }`}>
-                {project.image ? (
+      {/* Main content grid */}
+      <div className="grid grid-cols-1 gap-10 lg:grid-cols-3">
+        {/* Left — main content */}
+        <div className="space-y-12 lg:col-span-2">
+          {/* Project image */}
+          <Reveal className="group relative overflow-hidden border border-line" y={20}>
+            <div
+              className={`relative h-64 md:h-80 ${
+                MEDIA_BG[project.slug] || "bg-surface-2"
+              }`}
+            >
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  className={MEDIA_FIT[project.slug] || "object-cover"}
+                  sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <span className="font-display text-4xl font-bold uppercase text-line-strong">
+                    {project.title}
+                  </span>
+                </div>
+              )}
+            </div>
+          </Reveal>
+
+          {/* Gallery — grayscale → color on hover */}
+          {project.gallery && project.gallery.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              {project.gallery.map((img, i) => (
+                <div
+                  key={img}
+                  className="group relative h-52 overflow-hidden border border-line bg-surface-2 md:h-64"
+                >
                   <Image
-                    src={project.image}
-                    alt={project.title}
+                    src={img}
+                    alt={`${project.title} — ${i + 2}`}
                     fill
-                    className={`${
-                      {
-                        pulse: "object-contain p-4",
-                        "smart-planning": "object-contain p-3",
-                        gozcu: "object-contain p-3",
-                        academy360: "object-contain p-8",
-                        "iro-beautyzone": "object-contain p-6",
-                        "tvn-agency": "object-contain p-6",
-                      }[project.slug] || "object-cover"
-                    }`}
-                    sizes="(max-width: 1024px) 100vw, 66vw"
-                    priority
+                    className="object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
                   />
-                ) : (
-                  <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-terracotta/10 flex items-center justify-center">
-                    <span className="font-heading text-4xl font-bold text-sage/15">
-                      {project.title}
-                    </span>
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Gallery */}
-            {project.gallery && project.gallery.length > 0 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {project.gallery.map((img, i) => (
-                  <div key={i} className="glass-card p-2">
-                    <div className="relative h-52 md:h-64 rounded-xl bg-forest-lighter overflow-hidden">
-                      <Image
-                        src={img}
-                        alt={`${project.title} screenshot ${i + 2}`}
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 1024px) 100vw, 33vw"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {/* Overview */}
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-sage mb-4">
-                {t("projectOverview")}
-              </h2>
-              <p className="text-sage/60 leading-relaxed">{tAll(project.overviewKey)}</p>
-            </div>
-
-            {/* Problem */}
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-sage mb-4">
-                {t("theProblem")}
-              </h2>
-              <p className="text-sage/60 leading-relaxed">{tAll(project.problemKey)}</p>
-            </div>
-
-            {/* Solution */}
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-sage mb-4">
-                {t("theSolution")}
-              </h2>
-              <p className="text-sage/60 leading-relaxed">{tAll(project.solutionKey)}</p>
-            </div>
-
-            {/* Key Features */}
-            <div>
-              <h2 className="font-heading text-2xl font-bold text-sage mb-6">
-                {t("keyFeatures")}
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {project.features.map((feature) => (
-                  <div
-                    key={feature.titleKey}
-                    className="glass-card glass-card-hover p-5"
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20 mb-3">
-                      <span className="material-icons text-primary text-xl">
-                        {feature.icon}
-                      </span>
-                    </div>
-                    <h3 className="font-heading font-semibold text-sage mb-2">
-                      {tAll(feature.titleKey)}
-                    </h3>
-                    <p className="text-sage/50 text-sm leading-relaxed">
-                      {tAll(feature.descriptionKey)}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Code Snippet */}
-            {project.codeSnippet && (
-              <div>
-                <h2 className="font-heading text-2xl font-bold text-sage mb-4">
-                  {t("codeHighlight")}
-                </h2>
-                <div className="glass-card overflow-hidden">
-                  <div className="flex items-center justify-between px-5 py-3 border-b border-glass-border bg-forest-lighter/50">
-                    <div className="flex items-center gap-2">
-                      <span className="material-icons text-primary text-sm">code</span>
-                      <span className="text-sage/70 text-sm font-medium">
-                        {project.codeSnippet.title}
-                      </span>
-                    </div>
-                    <span className="text-sage/30 text-xs uppercase tracking-wider">
-                      {project.codeSnippet.language}
-                    </span>
-                  </div>
-                  <pre className="p-5 overflow-x-auto text-sm leading-relaxed">
-                    <code className="text-sage/70">{project.codeSnippet.code}</code>
-                  </pre>
                 </div>
-              </div>
-            )}
-          </div>
-
-          {/* Right - Sidebar */}
-          <div className="space-y-6">
-            {/* Tech Stack */}
-            <div className="glass-card p-6">
-              <h3 className="font-heading font-semibold text-sage mb-4 flex items-center gap-2">
-                <span className="material-icons text-primary text-lg">
-                  layers
-                </span>
-                {t("techStack")}
-              </h3>
-              <div className="space-y-3">
-                {project.techStack.map((tech) => (
-                  <div
-                    key={tech}
-                    className="flex items-center gap-3 py-2 border-b border-glass-border last:border-0"
-                  >
-                    <span className="material-icons text-sage/30 text-sm">
-                      check_circle
-                    </span>
-                    <span className="text-sage/70 text-sm">{tech}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
+          )}
 
-            {/* Team */}
-            <div className="glass-card p-6">
-              <h3 className="font-heading font-semibold text-sage mb-4 flex items-center gap-2">
-                <span className="material-icons text-primary text-lg">
-                  group
-                </span>
-                {t("team")}
-              </h3>
-              <div className="space-y-3">
-                {project.team.map((member) => (
-                  <div
-                    key={member.name}
-                    className="flex items-center gap-3 py-2 border-b border-glass-border last:border-0"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
-                      <span className="text-primary text-xs font-bold">
-                        {member.name
-                          .split(" ")
-                          .map((n) => n[0])
-                          .join("")}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sage text-sm font-medium">
-                        {member.name}
-                      </p>
-                      <p className="text-sage/40 text-xs">{member.role}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          {/* Overview */}
+          <section>
+            <h2 className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-lime">
+              // {t("projectOverview")}
+            </h2>
+            <p className="leading-relaxed text-muted">
+              {tAll(project.overviewKey)}
+            </p>
+          </section>
+
+          {/* Problem */}
+          <section>
+            <h2 className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-lime">
+              // {t("theProblem")}
+            </h2>
+            <p className="leading-relaxed text-muted">
+              {tAll(project.problemKey)}
+            </p>
+          </section>
+
+          {/* Solution */}
+          <section>
+            <h2 className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-lime">
+              // {t("theSolution")}
+            </h2>
+            <p className="leading-relaxed text-muted">
+              {tAll(project.solutionKey)}
+            </p>
+          </section>
+
+          {/* Key Features */}
+          <section>
+            <h2 className="mb-6 font-mono text-xs uppercase tracking-[0.18em] text-lime">
+              // {t("keyFeatures")}
+            </h2>
+            <div className="grid grid-cols-1 gap-px border border-line bg-line md:grid-cols-2">
+              {project.features.map((feature, i) => (
+                <div key={feature.titleKey} className="bg-surface p-6">
+                  <span className="font-mono text-xs tracking-wider text-lime">
+                    [{String(i + 1).padStart(2, "0")}]
+                  </span>
+                  <h3 className="mt-3 font-display text-base font-bold uppercase tracking-tight text-paper">
+                    {tAll(feature.titleKey)}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">
+                    {tAll(feature.descriptionKey)}
+                  </p>
+                </div>
+              ))}
             </div>
+          </section>
 
-            {/* Timeline */}
-            <div className="glass-card p-6">
-              <h3 className="font-heading font-semibold text-sage mb-4 flex items-center gap-2">
-                <span className="material-icons text-primary text-lg">
-                  schedule
-                </span>
-                {t("statusTimeline")}
-              </h3>
-              <div className="space-y-3">
-                <div className="flex justify-between py-2 border-b border-glass-border">
-                  <span className="text-sage/40 text-sm">{t("duration")}</span>
-                  <span className="text-sage/70 text-sm">
-                    {project.timeline.duration}
+          {/* Code Snippet */}
+          {project.codeSnippet && (
+            <section>
+              <h2 className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-lime">
+                // {t("codeHighlight")}
+              </h2>
+              <div className="border border-line bg-surface">
+                <div className="flex items-center justify-between border-b border-line px-4 py-2.5 font-mono text-xs">
+                  <span className="text-muted">
+                    <span className="text-lime">&gt;</span>{" "}
+                    {project.codeSnippet.title}
+                  </span>
+                  <span className="uppercase tracking-[0.14em] text-faint">
+                    {project.codeSnippet.language}
                   </span>
                 </div>
-                <div className="flex justify-between py-2 border-b border-glass-border">
-                  <span className="text-sage/40 text-sm">{t("phase")}</span>
-                  <span className="text-sage/70 text-sm">
-                    {project.timeline.phase}
-                  </span>
-                </div>
-                <div className="flex justify-between py-2">
-                  <span className="text-sage/40 text-sm">{t("role")}</span>
-                  <span className="text-sage/70 text-sm">
-                    {project.timeline.role}
-                  </span>
-                </div>
+                <pre className="overflow-x-auto p-5 text-sm leading-relaxed">
+                  <code className="font-mono text-muted">
+                    {project.codeSnippet.code}
+                  </code>
+                </pre>
               </div>
-            </div>
-          </div>
+            </section>
+          )}
         </div>
 
-        {/* Next Project */}
-        <div className="mt-16 pt-12 border-t border-glass-border">
-          <p className="text-sage/40 text-sm mb-4">{t("upNext")}</p>
-          <Link
-            href={`/projects/${nextProject.slug}`}
-            className="group inline-flex items-center gap-4"
-          >
-            <div>
-              <h3 className="font-heading text-2xl font-bold text-sage group-hover:text-primary transition-colors">
-                {nextProject.title}
-              </h3>
-              <p className="text-sage/50 text-sm">{tAll(nextProject.descriptionKey)}</p>
+        {/* Right — sidebar */}
+        <aside className="space-y-6">
+          {/* Tech Stack */}
+          <div className="border border-line bg-surface p-6">
+            <p className="mb-4 border-b border-line pb-3 font-mono text-xs uppercase tracking-[0.18em] text-faint">
+              // {t("techStack")}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.techStack.map((tech) => (
+                <span key={tech} className="tag-term">
+                  {tech}
+                </span>
+              ))}
             </div>
-            <span className="material-icons text-3xl text-sage/30 group-hover:text-primary group-hover:translate-x-1 transition-all">
-              arrow_forward
-            </span>
-          </Link>
-        </div>
+          </div>
+
+          {/* Team */}
+          <div className="border border-line bg-surface p-6">
+            <p className="mb-4 border-b border-line pb-3 font-mono text-xs uppercase tracking-[0.18em] text-faint">
+              // {t("team")}
+            </p>
+            <div className="space-y-3">
+              {project.team.map((member) => (
+                <div key={member.name} className="flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center border border-line font-mono text-xs text-lime">
+                    {member.name
+                      .split(" ")
+                      .map((n) => n[0])
+                      .join("")}
+                  </span>
+                  <div>
+                    <p className="text-sm text-paper">{member.name}</p>
+                    <p className="font-mono text-xs text-faint">{member.role}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Timeline */}
+          <div className="border border-line bg-surface p-6">
+            <p className="mb-4 border-b border-line pb-3 font-mono text-xs uppercase tracking-[0.18em] text-faint">
+              // {t("statusTimeline")}
+            </p>
+            <dl className="divide-y divide-line">
+              {timelineRows.map(([label, value]) => (
+                <div
+                  key={label}
+                  className="flex items-center justify-between gap-4 py-2.5 font-mono text-xs"
+                >
+                  <dt className="uppercase tracking-wider text-faint">
+                    {label}
+                  </dt>
+                  <dd className="text-paper">{value}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </aside>
+      </div>
+
+      {/* Next Project */}
+      <div className="mt-16 border-t border-line pt-10">
+        <p className="eyebrow mb-4">// {t("upNext")}</p>
+        <h3 className="font-display text-2xl font-bold uppercase tracking-tight text-paper md:text-3xl">
+          {nextProject.title}
+        </h3>
+        <p className="mb-6 mt-2 max-w-2xl text-sm leading-relaxed text-muted">
+          {tAll(nextProject.descriptionKey)}
+        </p>
+        <Link href={`/projects/${nextProject.slug}`} className="btn-term">
+          &gt; {tCard("exploreCase")}
+          <span aria-hidden>→</span>
+        </Link>
       </div>
     </div>
   );

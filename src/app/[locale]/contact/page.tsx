@@ -1,111 +1,111 @@
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import ContactForm from "@/components/ContactForm";
+import SectionHeader from "@/components/fx/SectionHeader";
+
+const SOCIALS: { label: string; href: string; handle: string }[] = [
+  {
+    label: "LINKEDIN",
+    href: "https://www.linkedin.com/in/ali-an%C4%B1l-alan-a77a7468/",
+    handle: "@alianilalan",
+  },
+  {
+    label: "X",
+    href: "https://x.com/alianilalan",
+    handle: "@alianilalan",
+  },
+  {
+    label: "GITHUB",
+    href: "https://github.com/alianilalan7-lgtm",
+    handle: "@alianilalan",
+  },
+];
 
 export default function ContactPage() {
   const t = useTranslations("ContactPage");
+  const locale = useLocale();
+  const isTr = locale === "tr";
 
   return (
-    <div className="pt-28 pb-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-6">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
-            </span>
-            <span className="text-primary text-sm font-medium">
-              {t("availableBadge")}
-            </span>
+    <div className="max-w-7xl mx-auto px-6 pt-28 pb-20 md:pt-32">
+      <SectionHeader
+        index="09"
+        label={isTr ? "İLETİŞİM" : "CONTACT"}
+        meta="OPEN_CHANNEL"
+      />
+
+      {/* Header */}
+      <header className="mt-12 mb-12 max-w-3xl">
+        <span className="tag-term mb-7 inline-flex items-center gap-2">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping-slow absolute inline-flex h-full w-full bg-lime opacity-70" />
+            <span className="relative inline-flex h-2 w-2 bg-lime" />
+          </span>
+          {t("availableBadge")}
+        </span>
+
+        <h1 className="font-display uppercase font-bold text-paper leading-[1.02] tracking-tight text-[2rem] sm:text-[2.75rem] md:text-[3.5rem]">
+          {t("title")}{" "}
+          <span className="text-lime">{t("titleHighlight")}.</span>
+        </h1>
+        <p className="mt-6 text-muted text-base md:text-lg leading-relaxed">
+          {t("description")}
+        </p>
+      </header>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Left — quick intro + social links */}
+        <aside className="space-y-6">
+          {/* Quick intro */}
+          <div className="term-card p-6">
+            <p className="eyebrow mb-4">
+              // {isTr ? "HIZLI TANIŞMA" : "QUICK INTRO"}
+            </p>
+            <h2 className="font-display uppercase font-bold text-paper tracking-tight text-lg mb-3">
+              {t("quickIntroTitle")}
+            </h2>
+            <p className="font-mono text-sm text-muted leading-relaxed mb-6">
+              {t("quickIntroDescription")}
+            </p>
+            <a
+              href="mailto:alianilappstore@gmail.com?subject=Discovery%20Call%20Request"
+              className="btn-term w-full justify-center"
+            >
+              &gt; {t("bookCall")}
+            </a>
           </div>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-sage mb-4">
-            {t("title")} <span className="text-primary">{t("titleHighlight")}</span>
-          </h1>
-          <p className="text-sage/50 text-lg max-w-xl mx-auto">
-            {t("description")}
-          </p>
-        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {/* Left sidebar */}
-          <div className="space-y-6">
-            {/* Quick intro */}
-            <div className="glass-card p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <span className="material-icons text-primary">
-                  quick_reference_all
-                </span>
-                <h3 className="font-heading font-semibold text-sage">
-                  {t("quickIntroTitle")}
-                </h3>
-              </div>
-              <p className="text-sage/50 text-sm leading-relaxed mb-4">
-                {t("quickIntroDescription")}
-              </p>
-              <a
-                href="mailto:alianilappstore@gmail.com?subject=Discovery%20Call%20Request"
-                className="inline-flex items-center gap-2 text-primary text-sm font-medium hover:text-primary-light transition-colors"
-              >
-                <span className="material-icons text-sm">calendar_today</span>
-                {t("bookCall")}
-              </a>
-            </div>
-
-            {/* Social links */}
-            <div className="glass-card p-6">
-              <h3 className="font-heading font-semibold text-sage mb-4">
-                {t("connect")}
-              </h3>
-              <div className="space-y-3">
-                {[
-                  {
-                    icon: "work",
-                    label: "LinkedIn",
-                    href: "https://www.linkedin.com/in/ali-an%C4%B1l-alan-a77a7468/",
-                    handle: "@alianilalan",
-                  },
-                  {
-                    icon: "alternate_email",
-                    label: "X (Twitter)",
-                    href: "https://x.com/alianilalan",
-                    handle: "@alianilalan",
-                  },
-                  {
-                    icon: "code",
-                    label: "GitHub",
-                    href: "https://github.com/alianilalan7-lgtm",
-                    handle: "@alianilalan",
-                  },
-                ].map((social) => (
+          {/* Social links */}
+          <div className="term-card p-6">
+            <p className="eyebrow mb-4">// {t("connect")}</p>
+            <ul className="flex flex-col">
+              {SOCIALS.map((social) => (
+                <li key={social.label}>
                   <a
-                    key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 py-2 px-3 rounded-lg hover:bg-forest-lighter transition-colors group"
+                    className="group flex items-center justify-between gap-4 border-t border-line py-3 font-mono text-sm transition-colors"
                   >
-                    <div className="w-9 h-9 rounded-lg bg-forest-lighter border border-glass-border flex items-center justify-center group-hover:border-primary/30 transition-colors">
-                      <span className="material-icons text-sage/50 text-lg group-hover:text-primary transition-colors">
-                        {social.icon}
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-sage text-sm font-medium">
-                        {social.label}
-                      </p>
-                      <p className="text-sage/40 text-xs">{social.handle}</p>
-                    </div>
+                    <span className="text-paper transition-colors group-hover:text-lime">
+                      {social.label}
+                    </span>
+                    <span className="text-faint transition-colors group-hover:text-lime">
+                      {social.handle} ↗
+                    </span>
                   </a>
-                ))}
-              </div>
-            </div>
+                </li>
+              ))}
+            </ul>
           </div>
+        </aside>
 
-          {/* Form */}
-          <div className="lg:col-span-2">
-            <div className="glass-card p-8">
-              <ContactForm />
-            </div>
+        {/* Form */}
+        <div className="lg:col-span-2">
+          <div className="term-card p-6 md:p-8">
+            <p className="eyebrow mb-6">
+              // {isTr ? "MESAJ_GÖNDER" : "SEND_MESSAGE"}
+            </p>
+            <ContactForm />
           </div>
         </div>
       </div>

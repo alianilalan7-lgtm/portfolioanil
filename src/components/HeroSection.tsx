@@ -1,72 +1,76 @@
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import StarBorder from "./StarBorder";
+import DecryptText from "@/components/fx/DecryptText";
+import Reveal from "@/components/fx/Reveal";
+
+const SYSTEM_INFO: [string, React.ReactNode][] = [
+  ["STACK", "NEXT.JS / REACT"],
+  ["LANG", "TS / PYTHON"],
+  ["DATA", "SUPABASE / PG"],
+  ["LOCATION", "TR / REMOTE"],
+  ["STATUS", <span key="s" className="text-lime">● AVAILABLE</span>],
+  ["RESPONSE", "< 24H"],
+];
 
 export default function HeroSection() {
   const t = useTranslations("Hero");
 
   return (
-    <section className="pt-32 pb-20 px-6 xl:pt-40 xl:pb-28">
-      <div className="max-w-6xl 2xl:max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 xl:gap-16 items-center">
-        {/* Left - Content */}
+    <section className="relative max-w-7xl mx-auto px-6 pt-28 pb-16 md:pt-32">
+      <div className="section-label mb-12">
+        <span>
+          <span className="idx">[01]</span> // HERO
+        </span>
+        <span className="rule" />
+        <span className="text-faint">SECTION_START</span>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+        {/* Left — content */}
         <div>
-          {/* Available badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping-slow absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-primary" />
-            </span>
-            <span className="text-primary text-sm font-medium">
-              {t("availableBadge")}
-            </span>
-          </div>
+          <p className="eyebrow mb-7">// FREELANCE AI &amp; SAAS DEVELOPER</p>
 
-          {/* Main heading */}
-          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl xl:text-[3.75rem] 2xl:text-[4.25rem] font-bold text-sage leading-[1.08] tracking-[-0.01em] mb-6">
-            {t("heading1")}
-            <br />
-            <span className="text-primary">{t("heading2")}</span>
-          </h1>
+          <DecryptText
+            as="h1"
+            text={`${t("heading1")} ${t("heading2")}`}
+            cursor
+            className="font-display uppercase font-bold text-paper leading-[1.04] tracking-tight text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] xl:text-[4.25rem] mb-7"
+          />
 
-          <p className="text-sage/60 text-lg md:text-xl max-w-2xl leading-relaxed mb-10">
+          <p className="text-muted text-base md:text-lg max-w-2xl leading-relaxed mb-4">
             {t("description")}
           </p>
+          <p className="font-mono text-sm text-faint max-w-2xl leading-relaxed mb-10">
+            Operasyonel deneyimi mühendislikle birleştirerek gerçekten işe yarayan ürünler kuruyorum.
+          </p>
 
-          {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4">
-            <Link
-              href="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
-            >
-              {t("viewProjects")}
-              <span className="material-icons text-lg">arrow_forward</span>
+            <Link href="/projects" className="btn-term btn-term--solid">
+              &gt; {t("viewProjects")}
             </Link>
-            <StarBorder as="div" color="#84A59D" speed="5s" className="rounded-xl">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 border border-glass-border text-sage rounded-xl hover:border-primary/30 hover:text-primary transition-all glass-card"
-              >
-                {t("getInTouch")}
-                <span className="material-icons text-lg">mail_outline</span>
-              </Link>
-            </StarBorder>
+            <Link href="/contact" className="btn-term">
+              &gt; {t("getInTouch")}
+            </Link>
           </div>
         </div>
 
-        {/* Right - Hero Image */}
-        <div className="hidden md:flex items-center justify-center relative">
-          <div className="relative w-full max-w-lg" style={{ maskImage: 'radial-gradient(ellipse at center, black 30%, transparent 75%)', WebkitMaskImage: 'radial-gradient(ellipse at center, black 30%, transparent 75%)' }}>
-            <Image
-              src="/images/hero-ai.jpg"
-              alt={t("heroImageAlt")}
-              width={600}
-              height={600}
-              className="relative w-full h-auto mix-blend-lighten opacity-60 scale-110"
-              priority
-            />
-          </div>
-        </div>
+        {/* Right — system info terminal box */}
+        <Reveal as="aside" className="border border-line bg-surface/60 p-6 hidden lg:block" y={16}>
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint pb-4 mb-4 border-b border-line">
+            // SYSTEM_INFO
+          </p>
+          <dl className="flex flex-col gap-3.5">
+            {SYSTEM_INFO.map(([k, v]) => (
+              <div key={k} className="flex items-center justify-between gap-4 font-mono text-xs">
+                <dt className="text-faint uppercase tracking-wider">{k}</dt>
+                <dd className="text-paper">{v}</dd>
+              </div>
+            ))}
+          </dl>
+          <p className="font-mono text-xs text-muted mt-5 pt-4 border-t border-line">
+            SHELL <span className="text-lime float-right">~/ready _</span>
+          </p>
+        </Reveal>
       </div>
     </section>
   );

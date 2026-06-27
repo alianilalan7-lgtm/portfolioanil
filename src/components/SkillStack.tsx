@@ -1,4 +1,6 @@
 import { useTranslations } from "next-intl";
+import SectionHeader from "@/components/fx/SectionHeader";
+import Reveal from "@/components/fx/Reveal";
 
 const skillGroups = [
   {
@@ -43,42 +45,54 @@ export default function SkillStack() {
   const t = useTranslations("SkillStack");
 
   return (
-    <section className="py-20 px-6 bg-forest-light/20">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <p className="text-primary text-sm font-medium mb-2">{t("subtitle")}</p>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage">
-            {t("title")}
-          </h2>
-        </div>
+    <section id="skills" className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <SectionHeader index="05" label="YETENEKLER" meta={`${skillGroups.length} STACK`} />
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {skillGroups.map((group) => (
-            <div key={group.titleKey} className="glass-card glass-card-hover p-6">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
-                  <span className="material-icons text-primary text-xl">
-                    {group.icon}
-                  </span>
-                </div>
-                <h3 className="font-heading font-semibold text-sage">
-                  {t(group.titleKey)}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-3 py-1.5 text-sm rounded-lg bg-forest-lighter text-sage/70 border border-glass-border hover:border-primary/30 hover:text-primary transition-all cursor-default"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
+      <Reveal
+        as="h2"
+        className="mt-12 font-display uppercase font-bold text-paper leading-[1.05] tracking-tight text-[1.75rem] sm:text-[2.25rem] md:text-[3rem]"
+      >
+        {t("title")}
+      </Reveal>
+
+      {/* Terminal table: three stack columns split by hairlines */}
+      <Reveal
+        as="div"
+        delay={0.08}
+        className="mt-10 grid grid-cols-1 md:grid-cols-3 border border-line bg-surface divide-y md:divide-y-0 md:divide-x divide-line"
+      >
+        {skillGroups.map((group) => (
+          <div key={group.titleKey} className="p-6 md:p-8">
+            {/* column header — mono uppercase lime path */}
+            <div className="flex items-baseline justify-between gap-3 pb-4 mb-5 border-b border-line">
+              <h3 className="font-mono text-sm uppercase tracking-[0.18em] text-lime">
+                // {t(group.titleKey)}
+              </h3>
+              <span className="font-mono text-[11px] text-faint">
+                [{String(group.skills.length).padStart(2, "0")}]
+              </span>
             </div>
-          ))}
-        </div>
-      </div>
+
+            {/* skill rows — mono terminal lines */}
+            <ul className="flex flex-col gap-3 font-mono text-sm">
+              {group.skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="group/row flex items-center gap-2.5 text-muted transition-colors hover:text-paper"
+                >
+                  <span
+                    className="text-lime/60 transition-colors group-hover/row:text-lime"
+                    aria-hidden
+                  >
+                    &gt;
+                  </span>
+                  <span>{skill}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </Reveal>
     </section>
   );
 }

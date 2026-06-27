@@ -40,68 +40,53 @@ export default function Navbar() {
         setMoreOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleOutsideClick);
     return () => document.removeEventListener("mousedown", handleOutsideClick);
   }, []);
 
+  const linkCls = (href: string) =>
+    `font-mono text-xs uppercase tracking-[0.16em] transition-colors hover:text-lime ${
+      isActive(href) ? "text-lime" : "text-muted"
+    }`;
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-forest/80 border-b border-glass-border">
-      <div className="max-w-7xl mx-auto px-6 h-[72px] flex items-center justify-between gap-4">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center border border-primary/30 group-hover:bg-primary/30 transition-colors">
-            <span className="text-primary font-heading font-bold text-sm">A</span>
-          </div>
-          <span className="font-heading font-semibold text-sage">
-            alianil<span className="text-primary">.com</span>
+    <nav className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-ink/85 border-b border-line">
+      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-4">
+        {/* Wordmark */}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping-slow absolute inline-flex h-full w-full bg-lime opacity-70" />
+            <span className="relative inline-flex h-2 w-2 bg-lime" />
+          </span>
+          <span className="font-mono font-bold text-sm tracking-wide text-paper">
+            ALI<span className="text-lime">_</span>ANIL<span className="text-lime">_</span>ALAN
           </span>
         </Link>
 
-        {/* Desktop Primary Links */}
-        <div className="hidden md:flex items-center gap-7">
+        {/* Desktop primary links */}
+        <div className="hidden md:flex items-center gap-6">
           {primaryLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`text-sm transition-colors hover:text-primary ${
-                isActive(link.href)
-                  ? "text-primary font-medium"
-                  : "text-sage/70"
-              }`}
-            >
-              {link.label}
+            <Link key={link.href} href={link.href} className={linkCls(link.href)}>
+              [{link.label}]
             </Link>
           ))}
-
-          <Link
-            href="/contact"
-            className="inline-flex items-center px-4 py-2 rounded-lg bg-primary text-forest text-sm font-semibold hover:bg-primary-light transition-colors"
-          >
-            {t("bookCall")}
-          </Link>
         </div>
 
-        {/* Desktop Actions */}
+        {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-3">
-          <div className="flex items-center border border-glass-border rounded-lg overflow-hidden">
+          <div className="flex items-center border border-line">
             <button
               onClick={() => switchLocale("en")}
-              className={`px-3 py-1.5 text-xs font-semibold transition-colors ${
-                locale === "en"
-                  ? "bg-primary text-forest"
-                  : "text-sage/60 hover:text-sage hover:bg-forest-lighter"
+              className={`px-2.5 py-1.5 font-mono text-[11px] font-medium transition-colors ${
+                locale === "en" ? "bg-lime text-ink" : "text-muted hover:text-paper"
               }`}
             >
               EN
             </button>
-            <div className="w-px h-4 bg-glass-border" />
             <button
               onClick={() => switchLocale("tr")}
-              className={`px-3 py-1.5 text-xs font-semibold transition-colors ${
-                locale === "tr"
-                  ? "bg-primary text-forest"
-                  : "text-sage/60 hover:text-sage hover:bg-forest-lighter"
+              className={`px-2.5 py-1.5 font-mono text-[11px] font-medium transition-colors border-l border-line ${
+                locale === "tr" ? "bg-lime text-ink" : "text-muted hover:text-paper"
               }`}
             >
               TR
@@ -111,94 +96,80 @@ export default function Navbar() {
           <div ref={moreMenuRef} className="relative">
             <button
               onClick={() => setMoreOpen((prev) => !prev)}
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-glass-border text-sage/80 hover:text-primary hover:border-primary/30 transition-colors text-sm"
+              className="font-mono text-xs uppercase tracking-[0.16em] px-3 py-1.5 border border-line text-muted hover:text-lime hover:border-line-strong transition-colors"
               aria-expanded={moreOpen}
               aria-haspopup="menu"
             >
-              {t("more")}
-              <span className="material-icons text-base">
-                {moreOpen ? "expand_less" : "expand_more"}
-              </span>
+              {t("more")} {moreOpen ? "[-]" : "[+]"}
             </button>
 
             {moreOpen && (
-              <div className="absolute top-12 right-0 w-56 rounded-xl border border-glass-border bg-forest/95 backdrop-blur-xl p-2 shadow-xl">
+              <div className="absolute top-11 right-0 w-56 border border-line bg-surface/98 backdrop-blur-md p-1">
                 {secondaryLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
-                    className={`block rounded-lg px-3 py-2 text-sm transition-colors ${
-                      isActive(link.href)
-                        ? "text-primary bg-primary/10"
-                        : "text-sage/70 hover:text-primary hover:bg-primary/10"
-                    }`}
                     onClick={() => setMoreOpen(false)}
+                    className={`block font-mono text-xs uppercase tracking-[0.14em] px-3 py-2.5 transition-colors ${
+                      isActive(link.href) ? "text-lime bg-lime/5" : "text-muted hover:text-lime hover:bg-lime/5"
+                    }`}
                   >
                     {link.label}
                   </Link>
                 ))}
-
                 <a
                   href="https://github.com/alianilalan7-lgtm"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 block rounded-lg px-3 py-2 text-sm text-sage/70 hover:text-primary hover:bg-primary/10 transition-colors"
+                  className="block font-mono text-xs uppercase tracking-[0.14em] px-3 py-2.5 text-muted hover:text-lime hover:bg-lime/5 transition-colors"
                 >
-                  GitHub
+                  GitHub ↗
                 </a>
               </div>
             )}
           </div>
+
+          <Link href="/contact" className="btn-term btn-term--solid !py-2 !px-4 !text-[11px]">
+            &gt; {t("bookCall")}
+          </Link>
         </div>
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden text-sage/70 hover:text-primary transition-colors"
+          className="md:hidden font-mono text-paper hover:text-lime transition-colors text-lg leading-none"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          <span className="material-icons">
-            {mobileOpen ? "close" : "menu"}
-          </span>
+          {mobileOpen ? "✕" : "≡"}
         </button>
       </div>
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-glass-border bg-forest/95 backdrop-blur-xl">
-          <div className="px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden border-t border-line bg-ink/98 backdrop-blur-md">
+          <div className="px-6 py-5 flex flex-col gap-4">
             {primaryLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className={`text-sm transition-colors hover:text-primary ${
-                  isActive(link.href)
-                    ? "text-primary font-medium"
-                    : "text-sage/70"
-                }`}
+                className={linkCls(link.href)}
               >
-                {link.label}
+                [{link.label}]
               </Link>
             ))}
 
-            <div className="border-t border-glass-border pt-3">
-              <p className="text-xs uppercase tracking-wide text-sage/40 mb-2">
-                {t("more")}
-              </p>
-              <div className="flex flex-col gap-2">
+            <div className="border-t border-line pt-3">
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-faint mb-3">// {t("more")}</p>
+              <div className="flex flex-col gap-3">
                 {secondaryLinks.map((link) => (
                   <Link
                     key={link.href}
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className={`text-sm transition-colors hover:text-primary ${
-                      isActive(link.href)
-                        ? "text-primary font-medium"
-                        : "text-sage/70"
-                    }`}
+                    className={linkCls(link.href)}
                   >
-                    {link.label}
+                    [{link.label}]
                   </Link>
                 ))}
               </div>
@@ -207,21 +178,19 @@ export default function Navbar() {
             <Link
               href="/contact"
               onClick={() => setMobileOpen(false)}
-              className="inline-flex justify-center items-center px-4 py-2 rounded-lg bg-primary text-forest text-sm font-semibold"
+              className="btn-term btn-term--solid justify-center"
             >
-              {t("bookCall")}
+              &gt; {t("bookCall")}
             </Link>
 
-            <div className="flex items-center gap-2 pt-2 border-t border-glass-border">
+            <div className="flex items-center gap-2 pt-2 border-t border-line">
               <button
                 onClick={() => {
                   switchLocale("en");
                   setMobileOpen(false);
                 }}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-                  locale === "en"
-                    ? "bg-primary text-forest"
-                    : "text-sage/60 border border-glass-border hover:text-sage"
+                className={`px-3 py-1.5 font-mono text-[11px] font-medium border border-line transition-colors ${
+                  locale === "en" ? "bg-lime text-ink border-lime" : "text-muted hover:text-paper"
                 }`}
               >
                 EN
@@ -231,10 +200,8 @@ export default function Navbar() {
                   switchLocale("tr");
                   setMobileOpen(false);
                 }}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-colors ${
-                  locale === "tr"
-                    ? "bg-primary text-forest"
-                    : "text-sage/60 border border-glass-border hover:text-sage"
+                className={`px-3 py-1.5 font-mono text-[11px] font-medium border border-line transition-colors ${
+                  locale === "tr" ? "bg-lime text-ink border-lime" : "text-muted hover:text-paper"
                 }`}
               >
                 TR

@@ -1,6 +1,8 @@
 import { useLocale, useTranslations } from "next-intl";
 import { blogPosts, getLocalizedBlogPost } from "@/data/blogs";
 import { Link } from "@/i18n/navigation";
+import SectionHeader from "@/components/fx/SectionHeader";
+import Reveal from "@/components/fx/Reveal";
 
 export default function BlogPage() {
   const t = useTranslations("BlogPage");
@@ -15,122 +17,132 @@ export default function BlogPage() {
   const featuredPosts = publishedPosts.filter((post) => post.featured);
 
   return (
-    <div className="pt-28 pb-20 px-6">
-      <div className="max-w-6xl mx-auto">
-        <header className="mb-12">
-          <div className="flex items-center gap-3 mb-4">
-            <h1 className="font-heading text-4xl md:text-5xl font-bold text-sage">
-              {t("title")}
-            </h1>
-            <span className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium">
-              {publishedPosts.length}
-            </span>
-          </div>
-          <p className="text-sage/50 text-lg max-w-3xl">{t("description")}</p>
-        </header>
+    <div className="pt-28 pb-24 md:pt-32">
+      {/* Header */}
+      <header className="max-w-7xl mx-auto px-6">
+        <p className="eyebrow mb-6">// BLOG</p>
+        <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+          <h1 className="font-display uppercase font-bold text-paper leading-[1.04] tracking-tight text-[2.25rem] sm:text-[3rem] md:text-[3.75rem]">
+            {t("title")}
+          </h1>
+          <span className="font-mono text-xs uppercase tracking-[0.18em] text-faint">
+            <span className="text-lime">{String(publishedPosts.length).padStart(2, "0")}</span> // POSTS
+          </span>
+        </div>
+        <p className="text-muted text-base md:text-lg max-w-3xl leading-relaxed mt-6">
+          {t("description")}
+        </p>
+      </header>
 
-        {featuredPosts.length > 0 && (
-          <section className="mb-12">
-            <h2 className="font-heading text-2xl font-semibold text-sage mb-6">
-              {t("featured")}
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {featuredPosts.map((post) => (
-                <article key={post.slug} className="glass-card p-6">
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <span className="px-2.5 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-medium">
-                      {post.category}
+      {/* Featured posts — larger cards */}
+      {featuredPosts.length > 0 && (
+        <section className="max-w-7xl mx-auto px-6 mt-20 md:mt-24">
+          <SectionHeader
+            index="01"
+            label={t("featured").toUpperCase()}
+            meta={String(featuredPosts.length).padStart(2, "0")}
+          />
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featuredPosts.map((post, i) => (
+              <Reveal key={post.slug} delay={i * 0.08} y={20}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  aria-label={post.title}
+                  className="group term-card flex h-full flex-col p-7 md:p-8"
+                >
+                  <div className="flex items-center justify-between gap-3 font-mono text-xs">
+                    <span className="text-lime">
+                      [{String(i + 1).padStart(2, "0")}]
                     </span>
-                    <span className="text-sage/40 text-xs">
+                    <span className="text-faint">
                       {post.publishedAt} · {post.readTime}
                     </span>
                   </div>
-                  <h3 className="font-heading text-xl font-semibold text-sage mb-2">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="hover:text-primary transition-colors"
-                    >
-                      {post.title}
-                    </Link>
-                  </h3>
-                  <p className="text-sage/50 text-sm leading-relaxed mb-4">
-                    {post.excerpt}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-2 py-1 text-xs rounded-md bg-forest-lighter text-sage/60 border border-glass-border"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="mt-5 pt-4 border-t border-glass-border/70">
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1 text-primary text-sm font-medium hover:gap-2 transition-all"
-                    >
-                      {t("readMore")}
-                      <span className="material-icons text-sm">arrow_forward</span>
-                    </Link>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        )}
 
-        <section>
-          <h2 className="font-heading text-2xl font-semibold text-sage mb-6">
-            {t("allPosts")}
-          </h2>
+                  <span className="tag-term mt-5 self-start">{post.category}</span>
 
-          {publishedPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {publishedPosts.map((post) => (
-                <article key={post.slug} className="glass-card glass-card-hover p-6">
-                  <div className="flex items-center justify-between gap-3 mb-3">
-                    <span className="text-primary text-xs font-medium">{post.category}</span>
-                    <span className="text-sage/40 text-xs">{post.readTime}</span>
-                  </div>
-                  <h3 className="font-heading text-lg font-semibold text-sage mb-2">
+                  <h2 className="mt-5 font-display text-2xl md:text-[1.75rem] font-bold uppercase leading-tight tracking-tight text-paper transition-colors duration-200 group-hover:text-lime">
                     {post.title}
-                  </h3>
-                  <p className="text-sage/50 text-sm leading-relaxed mb-4">
+                  </h2>
+                  <p className="mt-3 text-sm md:text-base leading-relaxed text-muted line-clamp-3">
                     {post.excerpt}
                   </p>
-                  <div className="flex items-center justify-between">
-                    <span className="text-sage/35 text-xs">{post.publishedAt}</span>
-                    <Link
-                      href={`/blog/${post.slug}`}
-                      className="inline-flex items-center gap-1 text-primary text-sm font-medium hover:gap-2 transition-all"
-                    >
-                      {t("readMore")}
-                      <span className="material-icons text-sm">arrow_forward</span>
-                    </Link>
+
+                  <div className="mt-auto pt-7">
+                    <div className="flex flex-wrap gap-2">
+                      {post.tags.slice(0, 4).map((tag) => (
+                        <span key={tag} className="tag-term">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    <span className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-paper transition-colors duration-200 group-hover:text-lime">
+                      <span className="text-lime">&gt;</span> {t("readMore")}
+                    </span>
                   </div>
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="glass-card p-10 text-center">
-              <span className="material-icons text-5xl text-sage/25 mb-4">article</span>
-              <p className="text-sage/50 text-lg mb-2">{t("emptyTitle")}</p>
-              <p className="text-sage/35 text-sm max-w-xl mx-auto mb-6">
-                {t("emptyDescription")}
-              </p>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
-              >
-                {t("emptyCta")}
-                <span className="material-icons text-sm">arrow_forward</span>
-              </Link>
-            </div>
-          )}
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </section>
-      </div>
+      )}
+
+      {/* All posts grid */}
+      <section className="max-w-7xl mx-auto px-6 mt-20 md:mt-24">
+        <SectionHeader
+          index="02"
+          label={t("allPosts").toUpperCase()}
+          meta={String(publishedPosts.length).padStart(2, "0")}
+        />
+
+        {publishedPosts.length > 0 ? (
+          <div className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {publishedPosts.map((post, i) => (
+              <Reveal key={post.slug} delay={(i % 3) * 0.06} y={20}>
+                <Link
+                  href={`/blog/${post.slug}`}
+                  aria-label={post.title}
+                  className="group term-card flex h-full flex-col p-6"
+                >
+                  <div className="flex items-center justify-between gap-3 font-mono text-xs">
+                    <span className="tag-term">{post.category}</span>
+                    <span className="text-faint">{post.readTime}</span>
+                  </div>
+
+                  <h2 className="mt-4 font-display text-lg font-bold uppercase leading-tight tracking-tight text-paper transition-colors duration-200 group-hover:text-lime">
+                    {post.title}
+                  </h2>
+                  <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-3">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="mt-auto flex items-center justify-between gap-3 pt-6 font-mono text-xs">
+                    <span className="text-faint">{post.publishedAt}</span>
+                    <span className="inline-flex items-center gap-1 uppercase tracking-[0.08em] text-paper transition-colors duration-200 group-hover:text-lime">
+                      <span className="text-lime">&gt;</span> {t("readMore")}
+                    </span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        ) : (
+          <div className="mt-10 border border-line bg-surface px-6 py-16 text-center md:py-20">
+            <p className="font-mono text-xs uppercase tracking-[0.18em] text-lime mb-5">
+              // NO_POSTS
+            </p>
+            <p className="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-paper mb-3">
+              {t("emptyTitle")}
+            </p>
+            <p className="font-mono text-sm text-muted max-w-xl mx-auto leading-relaxed mb-8">
+              {t("emptyDescription")}
+            </p>
+            <Link href="/contact" className="btn-term btn-term--solid">
+              &gt; {t("emptyCta")}
+            </Link>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

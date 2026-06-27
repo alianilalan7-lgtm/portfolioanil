@@ -1,40 +1,33 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import SectionHeader from "@/components/fx/SectionHeader";
 
 export default function ContactCTA() {
   const t = useTranslations("ContactCTA");
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="glass-card p-12 md:p-16">
-          <span className="material-icons text-4xl text-primary mb-4">
-            handshake
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage mb-4">
-            {t("title")}{" "}
-            <span className="text-primary">{t("titleHighlight")}</span>
-          </h2>
-          <p className="text-sage/50 text-lg max-w-xl mx-auto mb-8">
-            {t("description")}
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-3.5 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
-            >
-              {t("startConversation")}
-              <span className="material-icons text-lg">arrow_forward</span>
-            </Link>
-            <a
-              href="mailto:alianilappstore@gmail.com"
-              className="inline-flex items-center gap-2 px-8 py-3.5 border border-glass-border text-sage rounded-xl hover:border-primary/30 hover:text-primary transition-all"
-            >
-              <span className="material-icons text-lg">mail_outline</span>
-              alianilappstore@gmail.com
-            </a>
-          </div>
-        </div>
+    <section className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <SectionHeader index="08" label="İLETİŞİM" meta="END_OF_FILE" />
+
+      <h2 className="mt-12 font-display uppercase font-bold text-paper leading-[0.98] tracking-tight text-[2.25rem] sm:text-[3.25rem] md:text-[4.5rem] xl:text-[5.5rem]">
+        {t("title")}{" "}
+        <span className="text-lime">{t("titleHighlight")}.</span>
+      </h2>
+
+      <p className="mt-6 text-muted text-base md:text-lg max-w-2xl leading-relaxed">
+        {t("description")}
+      </p>
+
+      <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5">
+        <Link href="/contact" className="btn-term btn-term--solid">
+          &gt; {t("startConversation")}
+        </Link>
+        <a
+          href="mailto:anilalanluvi@gmail.com"
+          className="font-mono text-sm md:text-base text-muted border-b border-line pb-1 transition-colors hover:text-lime hover:border-lime"
+        >
+          anilalanluvi@gmail.com
+        </a>
       </div>
     </section>
   );

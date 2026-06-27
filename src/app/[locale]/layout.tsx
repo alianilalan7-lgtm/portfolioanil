@@ -1,21 +1,27 @@
 import type { Metadata } from "next";
-import { Inter, Lexend } from "next/font/google";
+import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "../globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/fx/SmoothScroll";
+import Cursor from "@/components/fx/Cursor";
+import ScrollProgress from "@/components/fx/ScrollProgress";
+import Grain from "@/components/fx/Grain";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
-const inter = Inter({
-  variable: "--font-inter",
+const grotesk = Space_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
-const lexend = Lexend({
-  variable: "--font-lexend",
+const jbmono = JetBrains_Mono({
+  variable: "--font-jbmono",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export function generateStaticParams() {
@@ -176,26 +182,17 @@ export default async function LocaleLayout({
         ))}
       </head>
       <body
-        className={`${inter.variable} ${lexend.variable} font-display antialiased bg-forest text-sage`}
+        className={`${grotesk.variable} ${jbmono.variable} font-mono antialiased bg-ink text-paper`}
       >
         <NextIntlClientProvider>
-          {/* Organic glow orbs */}
-          <div
-            className="orb-sage"
-            style={{ top: "-200px", left: "-100px" }}
-          />
-          <div
-            className="orb-sand"
-            style={{ top: "400px", right: "-150px" }}
-          />
-          <div
-            className="orb-sage"
-            style={{ bottom: "200px", left: "30%" }}
-          />
-
-          <Navbar />
-          <main className="relative z-10 min-h-screen">{children}</main>
-          <Footer />
+          <Grain />
+          <ScrollProgress />
+          <Cursor />
+          <SmoothScroll>
+            <Navbar />
+            <main className="relative z-10 min-h-screen">{children}</main>
+            <Footer />
+          </SmoothScroll>
         </NextIntlClientProvider>
       </body>
     </html>

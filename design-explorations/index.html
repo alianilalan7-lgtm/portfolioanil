@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>alianil.com · Tasarım Yönleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0b0b0e; --surface:#15151b; --line:#26262f;
+    --text:#f2f2f5; --muted:#9a9aa8; --accent:#7c8cff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:radial-gradient(1200px 700px at 70% -10%, #1a1a2e 0%, var(--bg) 55%);
+    color:var(--text); font-family:"Inter",system-ui,sans-serif;
+    min-height:100vh; -webkit-font-smoothing:antialiased;
+    padding:clamp(28px,6vw,80px);
+  }
+  header{max-width:1000px;margin:0 auto 56px}
+  .eyebrow{font-family:"Space Grotesk";letter-spacing:.22em;text-transform:uppercase;font-size:12px;color:var(--accent);font-weight:500}
+  h1{font-family:"Space Grotesk";font-size:clamp(34px,6vw,60px);font-weight:700;line-height:1.05;letter-spacing:-.02em;margin:18px 0 16px}
+  header p{color:var(--muted);max-width:640px;font-size:clamp(15px,1.4vw,18px);line-height:1.6}
+  .grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr}}
+  .card{
+    position:relative;display:block;text-decoration:none;color:inherit;overflow:hidden;
+    border:1px solid var(--line);border-radius:18px;background:var(--surface);
+    padding:30px;min-height:260px;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .35s;
+    display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .card:hover{transform:translateY(-6px);border-color:#3b3b4a}
+  .card .swatch{position:absolute;inset:0;opacity:.16;pointer-events:none}
+  .tag{font-family:"Space Grotesk";font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .card h2{font-family:"Space Grotesk";font-size:26px;font-weight:700;margin:14px 0 8px;letter-spacing:-.01em}
+  .card p{color:var(--muted);font-size:14.5px;line-height:1.55;position:relative;z-index:1}
+  .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;position:relative;z-index:1}
+  .pill{font-size:11.5px;border:1px solid var(--line);border-radius:999px;padding:5px 11px;color:var(--muted)}
+  .go{font-family:"Space Grotesk";font-weight:500;font-size:14px;margin-top:22px;display:inline-flex;align-items:center;gap:8px;position:relative;z-index:1}
+  .go span{transition:transform .3s}
+  .card:hover .go span{transform:translateX(5px)}
+  .num{position:absolute;top:22px;right:26px;font-family:"Space Grotesk";font-weight:700;font-size:46px;opacity:.10}
+  .s-b{background:linear-gradient(135deg,#c6ff3a,#0a0a0a)}
+  .s-c{background:radial-gradient(circle at 30% 20%,#6d7bff,#9b4dff 40%,#0a0a18 80%)}
+  .note{max-width:1000px;margin:18px auto 0;color:var(--muted);font-size:13px;background:rgba(124,140,255,.06);border:1px solid var(--line);border-radius:12px;padding:14px 18px;line-height:1.6}
+  footer{max-width:1000px;margin:40px auto 0;color:var(--muted);font-size:13px;line-height:1.7}
+</style>
+</head>
+<body>
+  <header>
+    <div class="eyebrow">alianil.com · tasarım keşfi · v2</div>
+    <h1>İki yön. Rötuş aşaması.</h1>
+    <p>Ali Anıl Alan — Freelance AI &amp; SaaS Developer. Seçilen iki yön: <strong>Brutalist Terminal</strong> ve <strong>Sinematik Aurora</strong>. Renk, font ve animasyonlarda iyileştirme yapılıyor.</p>
+  </header>
+
+  <div class="grid">
+    <a class="card" href="./02-brutalist.html">
+      <div class="swatch s-b"></div><div class="num">B</div>
+      <div>
+        <div class="tag">Yön B</div>
+        <h2>Brutalist · Tech Terminal</h2>
+        <p>Siyah zemin, monospace, ham mühendis ruhu. Şifre çözülen yazılar, hız marquee'leri, crosshair imleç, sert geçişler.</p>
+      </div>
+      <div>
+        <div class="meta"><span class="pill">Mono + Grotesk</span><span class="pill">Yüksek kontrast</span><span class="pill">Rötuşlanıyor</span></div>
+        <div class="go">Aç <span>→</span></div>
+      </div>
+    </a>
+
+    <a class="card" href="./03-cinematic.html">
+      <div class="swatch s-c"></div><div class="num">C</div>
+      <div>
+        <div class="tag">Yön C</div>
+        <h2>Sinematik AI · Aurora</h2>
+        <p>Koyu zemin, aurora ışıması, cam yüzeyler. Fütüristik premium SaaS hissi. Hero scale reveal, parlayan orblar, pinli scroll-stack kartlar.</p>
+      </div>
+      <div>
+        <div class="meta"><span class="pill">Display + Inter</span><span class="pill">Glow + Glass</span><span class="pill">Rötuşlanıyor</span></div>
+        <div class="go">Aç <span>→</span></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="note">⚙️ Bu iki yön üzerinde renk paleti, tipografi ve hareket iyileştirmeleri yapılıyor. Statik önizlemeler <code>previews/</code> klasöründe; canlı GSAP efektleri için dosyaları tarayıcıda aç.</div>
+
+  <footer>© 2026 Ali Anıl Alan · Tasarım keşfi · GSAP + ScrollTrigger</footer>
+</body>
+</html>

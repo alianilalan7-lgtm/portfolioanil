@@ -1,22 +1,21 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { Project } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
+
+// Brutalist status palette: active states get the lime accent, the rest stay muted.
+const LIME_STATUSES = new Set<Project["status"]>([
+  "live",
+  "beta",
+  "mvp",
+  "in-progress",
+]);
 
 export default function ProjectCard({ project }: { project: Project }) {
   const t = useTranslations("ProjectCard");
   const tProject = useTranslations();
-  const initial = project.title.charAt(0).toUpperCase();
 
-  const statusColors: Record<string, string> = {
-    live: "bg-green-500/20 text-green-400 border-green-500/30",
-    beta: "bg-yellow-500/20 text-yellow-400 border-yellow-500/30",
-    mvp: "bg-blue-500/20 text-blue-400 border-blue-500/30",
-    "in-progress": "bg-orange-500/20 text-orange-400 border-orange-500/30",
-    paused: "bg-gray-500/20 text-gray-400 border-gray-500/30",
-    completed: "bg-emerald-500/20 text-emerald-400 border-emerald-500/30",
-  };
-
-  const statusLabels: Record<string, string> = {
+  const statusLabels: Record<Project["status"], string> = {
     live: t("statusLive"),
     beta: t("statusBeta"),
     mvp: t("statusMvp"),
@@ -25,70 +24,94 @@ export default function ProjectCard({ project }: { project: Project }) {
     completed: t("statusCompleted"),
   };
 
+  const isActive = LIME_STATUSES.has(project.status);
+
+  const caseLines: [string, string][] = [
+    [t("problemLabel"), tProject(project.problemKey)],
+    [t("solutionLabel"), tProject(project.solutionKey)],
+    [t("impactLabel"), tProject(project.impactKey)],
+  ];
+
   return (
-    <Link href={`/projects/${project.slug}`} className="group">
-      <div className="glass-card glass-card-hover p-1 h-full flex flex-col">
-        {/* Initial letter */}
-        <div className="relative h-48 rounded-t-xl overflow-hidden bg-forest-light flex items-center justify-center">
-          <span className="font-heading text-8xl font-bold text-primary/20 group-hover:text-primary/35 transition-colors duration-500 select-none">
-            {initial}
+    <Link
+      href={`/projects/${project.slug}`}
+      aria-label={project.title}
+      className="group term-card flex h-full flex-col"
+    >
+      {/* Media — grayscale → color on hover */}
+      <div className="relative h-44 overflow-hidden border-b border-line bg-black">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          className="object-cover brightness-90 grayscale transition-all duration-500 group-hover:scale-105 group-hover:brightness-100 group-hover:grayscale-0"
+        />
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-lime opacity-0 mix-blend-multiply transition-opacity duration-200 group-hover:opacity-20"
+        />
+
+        {/* Status badge */}
+        <span className="tag-term absolute left-3 top-3 z-10 bg-ink/80 backdrop-blur-sm">
+          <span className={`mr-1.5 ${isActive ? "text-lime" : "text-faint"}`}>
+            ●
           </span>
-          {/* Status badge */}
-          <div className="absolute top-3 left-3 z-10">
-            <span
-              className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border backdrop-blur-sm ${statusColors[project.status]}`}
-            >
-              {statusLabels[project.status]}
+          {statusLabels[project.status]}
+        </span>
+
+        {/* Category */}
+        <span className="absolute right-3 top-3 z-10 font-mono text-[10px] uppercase tracking-[0.18em] text-faint">
+          // {project.category}
+        </span>
+      </div>
+
+      {/* Body */}
+      <div className="flex flex-1 flex-col p-5">
+        <h3 className="font-display text-lg font-bold uppercase leading-tight tracking-tight text-paper transition-colors duration-200 group-hover:text-lime">
+          {project.title}
+        </h3>
+        <p className="mt-2 text-sm leading-relaxed text-muted line-clamp-2">
+          {tProject(project.descriptionKey)}
+        </p>
+
+        {/* Problem / Solution / Impact — terminal log style */}
+        <dl className="mt-4 divide-y divide-line border border-line">
+          {caseLines.map(([label, value]) => (
+            <div key={label} className="px-3 py-2">
+              <dt className="font-mono text-[10px] uppercase tracking-[0.14em] text-faint">
+                <span className="text-lime">&gt;</span> {label}
+              </dt>
+              <dd className="mt-0.5 text-[11px] leading-relaxed text-muted line-clamp-2">
+                {value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        {/* Tech stack */}
+        <div className="mt-4 flex flex-wrap gap-2">
+          {project.techStack.slice(0, 3).map((tech) => (
+            <span key={tech} className="tag-term">
+              {tech}
             </span>
-          </div>
+          ))}
+          {project.techStack.length > 3 && (
+            <span className="tag-term text-faint">
+              +{project.techStack.length - 3}
+            </span>
+          )}
         </div>
 
-        {/* Content */}
-        <div className="p-5 flex flex-col flex-1">
-          <h3 className="font-heading font-semibold text-sage text-lg mb-2 group-hover:text-primary transition-colors">
-            {project.title}
-          </h3>
-          <p className="text-sage/50 text-sm leading-relaxed mb-4 flex-1">
-            {tProject(project.descriptionKey)}
-          </p>
-
-          <div className="mb-4 rounded-lg border border-glass-border bg-forest-lighter/40 p-3 space-y-1.5">
-            <p className="text-[11px] text-sage/55 leading-relaxed line-clamp-2">
-              <span className="text-primary/90 font-medium">{t("problemLabel")}:</span>{" "}
-              {tProject(project.problemKey)}
-            </p>
-            <p className="text-[11px] text-sage/55 leading-relaxed line-clamp-2">
-              <span className="text-primary/90 font-medium">{t("solutionLabel")}:</span>{" "}
-              {tProject(project.solutionKey)}
-            </p>
-            <p className="text-[11px] text-sage/55 leading-relaxed line-clamp-2">
-              <span className="text-primary/90 font-medium">{t("impactLabel")}:</span>{" "}
-              {tProject(project.impactKey)}
-            </p>
-          </div>
-
-          {/* Tech tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {project.techStack.slice(0, 3).map((tech) => (
-              <span
-                key={tech}
-                className="px-2 py-1 text-xs rounded-md bg-forest-lighter text-sage/60 border border-glass-border"
-              >
-                {tech}
-              </span>
-            ))}
-            {project.techStack.length > 3 && (
-              <span className="px-2 py-1 text-xs rounded-md bg-forest-lighter text-sage/40 border border-glass-border">
-                +{project.techStack.length - 3}
-              </span>
-            )}
-          </div>
-
-          {/* Link */}
-          <div className="flex items-center gap-1 text-primary text-sm font-medium group-hover:gap-2 transition-all">
-            {t("exploreCase")}
-            <span className="material-icons text-sm">arrow_forward</span>
-          </div>
+        {/* Footer */}
+        <div className="mt-auto flex items-center gap-1.5 border-t border-line pt-4 font-mono text-xs uppercase tracking-[0.14em] text-lime transition-all duration-200 group-hover:gap-3">
+          <span>&gt; {t("exploreCase")}</span>
+          <span
+            aria-hidden
+            className="transition-transform duration-200 group-hover:translate-x-1"
+          >
+            →
+          </span>
         </div>
       </div>
     </Link>

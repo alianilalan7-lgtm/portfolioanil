@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 
+const LABEL_CLASS =
+  "block font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-2";
+const FIELD_CLASS =
+  "w-full bg-surface border border-line px-4 py-3 font-mono text-sm text-paper placeholder-faint transition-colors focus:outline-none focus:border-lime";
+
 export default function ContactForm() {
   const t = useTranslations("ContactForm");
   const [formData, setFormData] = useState({
@@ -45,94 +50,94 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-6" noValidate>
       {/* Name */}
       <div>
-        <label
-          htmlFor="name"
-          className="block text-sm font-medium text-sage/70 mb-2"
-        >
+        <label htmlFor="name" className={LABEL_CLASS}>
           {t("fullName")}
         </label>
         <input
           type="text"
           id="name"
+          name="name"
           required
           value={formData.name}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, name: e.target.value }))
           }
-          className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+          className={FIELD_CLASS}
           placeholder={t("namePlaceholder")}
         />
       </div>
 
       {/* Email */}
       <div>
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-sage/70 mb-2"
-        >
+        <label htmlFor="email" className={LABEL_CLASS}>
           {t("emailAddress")}
         </label>
         <input
           type="email"
           id="email"
+          name="email"
           required
           value={formData.email}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, email: e.target.value }))
           }
-          className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
+          className={FIELD_CLASS}
           placeholder={t("emailPlaceholder")}
         />
       </div>
 
       {/* Subject */}
       <div>
-        <label
-          htmlFor="subject"
-          className="block text-sm font-medium text-sage/70 mb-2"
-        >
+        <label htmlFor="subject" className={LABEL_CLASS}>
           {t("subject")}
         </label>
-        <select
-          id="subject"
-          required
-          value={formData.subject}
-          onChange={(e) =>
-            setFormData((prev) => ({ ...prev, subject: e.target.value }))
-          }
-          className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all appearance-none"
-        >
-          <option value="" disabled>
-            {t("selectSubject")}
-          </option>
-          {subjects.map((s) => (
-            <option key={s.value} value={s.value}>
-              {s.label}
+        <div className="relative">
+          <select
+            id="subject"
+            name="subject"
+            required
+            value={formData.subject}
+            onChange={(e) =>
+              setFormData((prev) => ({ ...prev, subject: e.target.value }))
+            }
+            className={`${FIELD_CLASS} appearance-none pr-10`}
+          >
+            <option value="" disabled>
+              {t("selectSubject")}
             </option>
-          ))}
-        </select>
+            {subjects.map((s) => (
+              <option key={s.value} value={s.value}>
+                {s.label}
+              </option>
+            ))}
+          </select>
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-mono text-sm text-faint"
+          >
+            ▾
+          </span>
+        </div>
       </div>
 
       {/* Message */}
       <div>
-        <label
-          htmlFor="message"
-          className="block text-sm font-medium text-sage/70 mb-2"
-        >
+        <label htmlFor="message" className={LABEL_CLASS}>
           {t("message")}
         </label>
         <textarea
           id="message"
+          name="message"
           required
           rows={5}
           value={formData.message}
           onChange={(e) =>
             setFormData((prev) => ({ ...prev, message: e.target.value }))
           }
-          className="w-full px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all resize-none"
+          className={`${FIELD_CLASS} resize-none`}
           placeholder={t("messagePlaceholder")}
         />
       </div>
@@ -141,35 +146,29 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="btn-term btn-term--solid w-full justify-center disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {status === "sending" ? (
-          <>
-            <span className="material-icons animate-spin text-lg">
-              autorenew
-            </span>
-            {t("sending")}
-          </>
-        ) : (
-          <>
-            {t("sendMessage")}
-            <span className="material-icons text-lg">send</span>
-          </>
-        )}
+        {status === "sending"
+          ? `> ${t("sending")}`
+          : `> ${t("sendMessage")}`}
       </button>
 
       {/* Status messages */}
       {status === "success" && (
-        <div className="flex items-center gap-2 p-4 rounded-xl bg-green-500/10 border border-green-500/20 text-green-400 text-sm">
-          <span className="material-icons text-lg">check_circle</span>
-          {t("successMessage")}
-        </div>
+        <p
+          role="status"
+          className="border border-lime/40 bg-lime/5 px-4 py-3 font-mono text-sm text-lime"
+        >
+          &gt; {t("successMessage")}
+        </p>
       )}
       {status === "error" && (
-        <div className="flex items-center gap-2 p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm">
-          <span className="material-icons text-lg">error</span>
-          {t("errorMessage")}
-        </div>
+        <p
+          role="alert"
+          className="border border-red-500/40 bg-red-500/5 px-4 py-3 font-mono text-sm text-red-400"
+        >
+          [ERROR] {t("errorMessage")}
+        </p>
       )}
     </form>
   );

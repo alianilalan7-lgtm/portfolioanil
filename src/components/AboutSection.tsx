@@ -1,44 +1,84 @@
 import { useTranslations } from "next-intl";
 import { projects } from "@/data/projects";
+import SectionHeader from "@/components/fx/SectionHeader";
+import Reveal from "@/components/fx/Reveal";
+import Counter from "@/components/fx/Counter";
 
 export default function AboutSection() {
   const t = useTranslations("About");
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <p className="text-primary text-sm font-medium mb-2">{t("subtitle")}</p>
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage mb-6">
-          {t("title")}{" "}
-          <span className="text-primary">{t("titleHighlight")}</span>{" "}
-          {t("titleEnd")}
-        </h2>
-        <div className="space-y-4 text-sage/60 text-lg leading-relaxed">
-          <p>{t("paragraph1")}</p>
-          <p>{t("paragraph2")}</p>
-          <p>{t("paragraph3")}</p>
-        </div>
+    <section id="about" className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <SectionHeader index="04" label="HAKKIMDA" meta="WHOAMI" />
 
-        <div className="mt-6 rounded-xl border border-primary/20 bg-primary/5 p-4">
-          <p className="text-sage text-base md:text-lg leading-relaxed">
+      <div className="mt-12 grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-16 items-start">
+        {/* Left — narrative */}
+        <Reveal as="div">
+          <p className="eyebrow mb-6">// {t("subtitle")}</p>
+
+          <h2 className="font-display uppercase font-bold text-paper leading-[1.08] tracking-tight text-[1.75rem] sm:text-[2.25rem] md:text-[2.75rem] mb-8">
+            {t("title")} <span className="text-lime">{t("titleHighlight")}</span>{" "}
+            {t("titleEnd")}
+          </h2>
+
+          <div className="space-y-5 max-w-2xl">
+            <p className="text-paper text-base md:text-lg leading-relaxed">
+              {t("paragraph1")}
+            </p>
+            <p className="font-mono text-sm md:text-[15px] text-muted leading-relaxed">
+              {t("paragraph2")}
+            </p>
+            <p className="text-muted text-base md:text-lg leading-relaxed">
+              {t("paragraph3")}
+            </p>
+          </div>
+
+          {/* conversion line — brutalist accent */}
+          <p className="mt-9 max-w-2xl border-l-2 border-lime pl-5 py-1 font-mono text-sm md:text-base text-paper leading-relaxed">
+            <span className="text-lime" aria-hidden>
+              &gt;{" "}
+            </span>
             {t("conversionLine")}
           </p>
-        </div>
+        </Reveal>
 
-        {/* Stats */}
-        <div className="flex gap-12 mt-10 pt-8 border-t border-glass-border">
-          {[
-            { number: "10+", label: t("statYears") },
-            { number: `${projects.length}`, label: t("statProjects") },
-          ].map((stat) => (
-            <div key={stat.label}>
-              <p className="font-heading text-3xl font-bold text-primary">
-                {stat.number}
-              </p>
-              <p className="text-sage/40 text-sm mt-1">{stat.label}</p>
-            </div>
-          ))}
-        </div>
+        {/* Right — dev counters */}
+        <Reveal
+          as="div"
+          delay={0.1}
+          className="border border-line bg-surface-2 divide-y divide-line"
+        >
+          <div className="p-7 md:p-8">
+            <Counter
+              value={10}
+              suffix="+"
+              className="block font-display font-bold leading-none text-lime text-5xl md:text-6xl"
+            />
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
+              {t("statYears")}
+            </p>
+          </div>
+
+          <div className="p-7 md:p-8">
+            <Counter
+              value={projects.length}
+              suffix="+"
+              className="block font-display font-bold leading-none text-lime text-5xl md:text-6xl"
+            />
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
+              {t("statProjects")}
+            </p>
+          </div>
+
+          <div className="p-7 md:p-8">
+            <span className="block font-display font-bold leading-none text-lime text-4xl md:text-5xl tracking-tight">
+              AI-FIRST
+            </span>
+            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.22em] text-muted">
+              // APPROACH
+            </p>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

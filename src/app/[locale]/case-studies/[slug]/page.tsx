@@ -4,6 +4,7 @@ import { caseStudies } from "@/data/case-studies";
 import { projects } from "@/data/projects";
 import { routing } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import Reveal from "@/components/fx/Reveal";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -28,96 +29,124 @@ export default async function CaseStudyDetailPage({
 
   const tAll = await getTranslations({ locale });
 
+  const sections: { label: string; body: string }[] = [
+    { label: isTr ? "PROBLEM" : "PROBLEM", body: tAll(project.problemKey) },
+    { label: isTr ? "ÇÖZÜM" : "SOLUTION", body: tAll(project.solutionKey) },
+    {
+      label: isTr ? "SONUÇ / ETKİ" : "OUTCOME / IMPACT",
+      body: tAll(project.impactKey),
+    },
+  ];
+
   return (
-    <div className="pt-28 pb-20 px-6">
-      <article className="max-w-5xl mx-auto">
-        <nav className="flex items-center gap-2 text-sm text-sage/40 mb-8">
-          <Link href="/case-studies" className="hover:text-primary transition-colors">
-            {isTr ? "Case Study'lere Don" : "Back to Case Studies"}
+    <div className="max-w-7xl mx-auto px-6 pt-28 pb-24 md:pt-32 md:pb-32">
+      <article>
+        {/* Breadcrumb */}
+        <nav className="mb-10 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-faint">
+          <Link href="/case-studies" className="transition-colors hover:text-lime">
+            {isTr ? "VAKALAR" : "CASES"}
           </Link>
-          <span className="material-icons text-xs">chevron_right</span>
-          <span className="text-sage/70 truncate">{project.title}</span>
+          <span aria-hidden className="text-faint">
+            /
+          </span>
+          <span className="truncate text-muted">{project.title}</span>
         </nav>
 
-        <header className="mb-10">
-          <h1 className="font-heading text-3xl md:text-5xl font-bold text-sage mb-3">
+        {/* Header */}
+        <header className="mb-14">
+          <p className="eyebrow mb-6">// {project.category}</p>
+          <h1 className="font-display uppercase font-bold text-paper leading-[1.04] tracking-tight text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] mb-6">
             {project.title}
           </h1>
-          <p className="text-sage/55 text-lg leading-relaxed max-w-4xl">
+          <p className="text-muted text-base md:text-lg leading-relaxed max-w-3xl">
             {isTr ? study.summaryTr : study.summaryEn}
           </p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 space-y-8">
-            <section className="glass-card p-6 md:p-8">
-              <h2 className="font-heading text-2xl font-semibold text-sage mb-3">
-                {isTr ? "Problem" : "Problem"}
-              </h2>
-              <p className="text-sage/60 leading-relaxed">{tAll(project.problemKey)}</p>
-            </section>
-
-            <section className="glass-card p-6 md:p-8">
-              <h2 className="font-heading text-2xl font-semibold text-sage mb-3">
-                {isTr ? "Cozum" : "Solution"}
-              </h2>
-              <p className="text-sage/60 leading-relaxed">{tAll(project.solutionKey)}</p>
-            </section>
-
-            <section className="glass-card p-6 md:p-8">
-              <h2 className="font-heading text-2xl font-semibold text-sage mb-3">
-                {isTr ? "Sonuc / Etki" : "Outcome / Impact"}
-              </h2>
-              <p className="text-sage/60 leading-relaxed">{tAll(project.impactKey)}</p>
-            </section>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-10 lg:gap-16 items-start">
+          {/* Sections — terminal spine */}
+          <div className="space-y-8">
+            {sections.map((s, i) => (
+              <Reveal
+                key={s.label}
+                as="section"
+                delay={i * 0.08}
+                y={20}
+                className="border-l border-line pl-6"
+              >
+                <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-lime">
+                  // {s.label}
+                </p>
+                <p className="text-base leading-relaxed text-muted">{s.body}</p>
+              </Reveal>
+            ))}
           </div>
 
-          <aside className="space-y-4">
-            <section className="glass-card p-5">
-              <p className="text-sage/40 text-xs uppercase tracking-wider mb-1">
-                {isTr ? "Sure" : "Duration"}
+          {/* Sidebar — system info box */}
+          <Reveal
+            as="aside"
+            y={16}
+            className="border border-line bg-surface/60 p-6 space-y-6"
+          >
+            {/* Meta */}
+            <div>
+              <p className="mb-3 border-b border-line pb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+                // META
               </p>
-              <p className="text-primary font-heading text-xl font-semibold">
-                {isTr ? study.durationTr : study.durationEn}
-              </p>
-            </section>
+              <dl className="flex flex-col gap-3.5 font-mono text-xs">
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="uppercase tracking-wider text-faint">
+                    {isTr ? "SÜRE" : "DURATION"}
+                  </dt>
+                  <dd className="text-paper">
+                    {isTr ? study.durationTr : study.durationEn}
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt className="uppercase tracking-wider text-faint">
+                    {isTr ? "KATEGORİ" : "CATEGORY"}
+                  </dt>
+                  <dd className="text-paper">{project.category}</dd>
+                </div>
+              </dl>
+            </div>
 
-            <section className="glass-card p-5">
-              <p className="text-sage/40 text-xs uppercase tracking-wider mb-2">
-                {isTr ? "Teknoloji" : "Technology"}
+            {/* Stack */}
+            <div>
+              <p className="mb-3 border-b border-line pb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-faint">
+                // STACK
               </p>
               <div className="flex flex-wrap gap-2">
                 {project.techStack.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-2 py-1 text-xs rounded-md bg-forest-lighter text-sage/60 border border-glass-border"
-                  >
+                  <span key={tech} className="tag-term">
                     {tech}
                   </span>
                 ))}
               </div>
-            </section>
+            </div>
 
-            <section className="glass-card p-5">
-              <p className="text-sage/40 text-xs uppercase tracking-wider mb-2">
-                {isTr ? "Canli Sonuc" : "Live Result"}
+            {/* Live result */}
+            <div>
+              <p className="mb-3 border-b border-line pb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-lime">
+                // {isTr ? "CANLI_SONUÇ" : "LIVE_RESULT"}
               </p>
-              <p className="text-sage/60 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed text-muted">
                 {isTr ? study.outcomeTr : study.outcomeEn}
               </p>
-            </section>
+            </div>
 
-            <Link
-              href="/contact"
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
-            >
-              {isTr ? "Benzer Proje Konusalim" : "Discuss a Similar Project"}
-              <span className="material-icons text-sm">arrow_forward</span>
-            </Link>
-          </aside>
+            {/* Actions */}
+            <div className="flex flex-col items-start gap-3 pt-1">
+              <Link href={`/projects/${project.slug}`} className="btn-term">
+                &gt; {isTr ? "PROJEYİ_GÖR" : "VIEW_PROJECT"}
+              </Link>
+              <Link href="/contact" className="btn-term btn-term--solid">
+                &gt; {isTr ? "BENZER_PROJE_KONUŞALIM" : "DISCUSS_PROJECT"}
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </article>
     </div>
   );
 }
-

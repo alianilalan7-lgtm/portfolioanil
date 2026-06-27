@@ -2,6 +2,8 @@
 
 import { FormEvent, useState } from "react";
 import { useLocale } from "next-intl";
+import SectionHeader from "@/components/fx/SectionHeader";
+import Reveal from "@/components/fx/Reveal";
 
 type Status = "idle" | "sending" | "success" | "error";
 
@@ -39,67 +41,80 @@ export default function LeadMagnetSection() {
   };
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-4xl mx-auto glass-card p-8 md:p-10">
-        <p className="text-primary text-sm font-medium mb-2">
-          {isTr ? "Ücretsiz Kaynak" : "Free Resource"}
+    <section className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+      <SectionHeader
+        index="07"
+        label={isTr ? "KAYNAK" : "RESOURCE"}
+        meta={isTr ? "PDF / ÜCRETSİZ" : "PDF / FREE"}
+      />
+
+      <Reveal className="mt-12 bg-surface-2 border border-line p-8 md:p-12">
+        <p className="eyebrow mb-5">
+          // {isTr ? "ÜCRETSİZ KAYNAK" : "FREE RESOURCE"}
         </p>
-        <h2 className="font-heading text-3xl md:text-4xl font-bold text-sage mb-3">
+        <h2 className="font-display uppercase font-bold text-paper tracking-tight leading-[1.05] text-2xl md:text-4xl mb-4">
           {isTr
             ? "SaaS Geliştirme Checklist PDF"
             : "SaaS Development Checklist PDF"}
         </h2>
-        <p className="text-sage/55 mb-6">
+        <p className="font-mono text-sm text-muted max-w-2xl leading-relaxed mb-8">
           {isTr
             ? "E-posta bırak, checklist'i indir ve MVP sürecini daha net planla."
             : "Drop your email, download the checklist, and plan your MVP process with clarity."}
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col sm:flex-row gap-3 max-w-2xl"
+        >
+          <label htmlFor="lead-email" className="sr-only">
+            {isTr ? "E-posta adresi" : "Email address"}
+          </label>
           <input
+            id="lead-email"
             type="email"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={isTr ? "ornek@mail.com" : "you@example.com"}
-            className="flex-1 px-4 py-3 rounded-xl bg-forest-lighter border border-glass-border text-sage placeholder-sage/30 focus:outline-none focus:border-primary/50"
+            className="flex-1 bg-surface border border-line px-4 py-3 font-mono text-sm text-paper placeholder-faint transition-colors focus:outline-none focus:border-lime"
           />
           <button
             type="submit"
             disabled={status === "sending"}
-            className="px-6 py-3 rounded-xl bg-primary text-forest font-semibold hover:bg-primary-light transition-colors disabled:opacity-60"
+            className="btn-term btn-term--solid disabled:opacity-60 disabled:cursor-not-allowed"
           >
             {status === "sending"
               ? isTr
-                ? "Gönderiliyor"
-                : "Sending"
+                ? "> GÖNDERİLİYOR…"
+                : "> SENDING…"
               : isTr
-              ? "E-posta Bırak"
-              : "Leave Email"}
+              ? "> E-POSTA_BIRAK"
+              : "> LEAVE_EMAIL"}
           </button>
         </form>
 
         {status === "success" && (
-          <div className="mt-4 text-sm text-primary">
+          <p className="mt-6 font-mono text-sm text-lime" role="status">
             <a
               href="/downloads/saas-gelistirme-checklist.pdf"
               download
-              className="inline-flex items-center gap-2 hover:text-primary-light transition-colors"
+              className="underline-offset-4 hover:underline"
             >
-              <span className="material-icons text-sm">download</span>
-              {isTr ? "PDF indir" : "Download PDF"}
+              &gt; {isTr ? "PDF_İNDİR" : "DOWNLOAD_PDF"}
             </a>
-          </div>
+          </p>
         )}
 
         {status === "error" && (
-          <p className="mt-4 text-sm text-red-400">
+          <p className="mt-6 font-mono text-sm text-red-400" role="alert">
+            [ERROR]{" "}
             {isTr
               ? "Şu anda gönderilemedi. Lütfen biraz sonra tekrar dene."
               : "Could not submit right now. Please try again shortly."}
           </p>
         )}
-      </div>
+      </Reveal>
     </section>
   );
 }

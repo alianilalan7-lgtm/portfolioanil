@@ -1,4 +1,6 @@
 import { Link } from "@/i18n/navigation";
+import SectionHeader from "@/components/fx/SectionHeader";
+import Reveal from "@/components/fx/Reveal";
 
 const steps = [
   {
@@ -97,97 +99,104 @@ export default async function ProcessPage({
   const isTr = locale === "tr";
 
   return (
-    <div className="pt-28 pb-20 px-6">
-      <div className="max-w-5xl mx-auto">
-        <header className="mb-10">
-          <p className="text-primary text-sm font-medium mb-3">
-            {isTr ? "Çalışma Modeli" : "Delivery Model"}
-          </p>
-          <h1 className="font-heading text-4xl md:text-5xl font-bold text-sage mb-3">
+    <div className="pt-28 pb-24 md:pt-32 md:pb-32">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Page header */}
+        <SectionHeader
+          index="01"
+          label={isTr ? "Çalışma Modeli" : "Delivery Model"}
+          meta="HOW_I_WORK"
+        />
+
+        <Reveal as="header" className="mt-10 max-w-3xl">
+          <h1 className="font-display text-[2rem] sm:text-[2.75rem] md:text-[3.5rem] font-bold uppercase leading-[1.04] tracking-tight text-paper">
             {isTr ? "Nasıl Çalışırım?" : "How I Work"}
           </h1>
-          <p className="text-sage/55 text-lg max-w-3xl leading-relaxed">
+          <p className="mt-6 text-muted text-base md:text-lg leading-relaxed">
             {isTr
               ? "Süreç netliği freelance projelerde en güçlü güven sinyalidir. Bu yapı sayesinde kapsam, zaman ve çıktı beklentisi baştan şeffaf olur."
               : "Process clarity is one of the strongest trust signals in freelance delivery. I follow the same transparent flow in every project."}
           </p>
-        </header>
+        </Reveal>
 
-        <section className="relative mb-12">
-          <div className="hidden md:block absolute left-[23px] top-6 bottom-6 w-px bg-gradient-to-b from-primary/60 via-primary/25 to-transparent" />
+        {/* Steps */}
+        <section className="mt-20 md:mt-28">
+          <SectionHeader
+            index="02"
+            label={isTr ? "Adımlar" : "Steps"}
+            meta={`0${steps.length} STEPS`}
+          />
 
-          <div className="space-y-4">
-          {steps.map((step, index) => (
-            <article key={step.tr.title} className="glass-card p-5 md:p-6">
-              <div className="md:grid md:grid-cols-[96px_1fr] md:gap-6 items-start">
-                <div className="flex md:flex-col items-center md:items-start gap-3 md:gap-2 mb-4 md:mb-0">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/25 flex items-center justify-center">
-                    <span className="material-icons text-primary">{step.icon}</span>
+          <div className="mt-10 border border-line bg-surface divide-y divide-line">
+            {steps.map((step, index) => {
+              const s = isTr ? step.tr : step.en;
+              return (
+                <Reveal
+                  key={step.en.title}
+                  as="div"
+                  delay={index * 0.05}
+                  className="group grid grid-cols-1 md:grid-cols-[92px_1fr] gap-3 md:gap-8 p-6 md:p-8 transition-colors hover:bg-surface-2"
+                >
+                  <span className="font-mono text-2xl md:text-3xl leading-none text-lime">
+                    [0{index + 1}]
+                  </span>
+
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <h2 className="font-display text-lg md:text-xl font-bold uppercase leading-tight tracking-tight text-paper transition-colors group-hover:text-lime">
+                        {s.title}
+                      </h2>
+                      <span className="tag-term">{s.duration}</span>
+                    </div>
+
+                    <p className="mt-3 text-sm md:text-[15px] leading-relaxed text-muted max-w-2xl">
+                      {s.summary}
+                    </p>
+
+                    <p className="mt-4 flex items-start gap-2 font-mono text-sm text-paper">
+                      <span className="text-lime" aria-hidden>
+                        &gt;
+                      </span>
+                      <span>
+                        <span className="text-faint">
+                          {isTr ? "ÇIKTI" : "DELIVERABLE"}:
+                        </span>{" "}
+                        {s.deliverable}
+                      </span>
+                    </p>
                   </div>
-                  <p className="text-primary/85 font-heading text-xl leading-none">
-                    {`0${index + 1}`}
-                  </p>
-                </div>
-
-                <div>
-                  <div className="flex flex-wrap items-center gap-2 mb-2">
-                    <h2 className="font-heading text-xl font-semibold text-sage">
-                      {isTr ? step.tr.title : step.en.title}
-                    </h2>
-                    <span className="inline-flex items-center px-2.5 py-1 rounded-md border border-primary/25 bg-primary/10 text-primary text-xs font-medium">
-                      {isTr ? step.tr.duration : step.en.duration}
-                    </span>
-                  </div>
-
-                  <p className="text-sage/55 leading-relaxed mb-3">
-                    {isTr ? step.tr.summary : step.en.summary}
-                  </p>
-
-                  <p className="text-sm text-sage/70">
-                    <span className="text-sage/45 mr-1">
-                      {isTr ? "Çıktı:" : "Deliverable:"}
-                    </span>
-                    <span className="text-primary/95">
-                      {isTr ? step.tr.deliverable : step.en.deliverable}
-                    </span>
-                  </p>
-                </div>
-              </div>
-            </article>
-          ))}
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 
-        <section className="glass-card p-8 md:p-10">
-          <div className="text-center md:text-left">
-            <h2 className="font-heading text-2xl md:text-3xl font-bold text-sage mb-3">
-              {isTr ? "Projeni net bir planla başlatalım" : "Start your project with a clear plan"}
-            </h2>
-            <p className="text-sage/50 max-w-2xl mx-auto md:mx-0 mb-6">
-              {isTr
-                ? "Kapsamı birlikte belirleyelim, takvimi netleştirelim ve teslim sürecine hemen başlayalım."
-                : "Let us define scope together, lock the timeline, and move into delivery quickly."}
-            </p>
-          </div>
+        {/* CTA */}
+        <Reveal
+          as="section"
+          className="mt-20 md:mt-28 border border-line bg-surface-2 p-8 md:p-12"
+        >
+          <p className="eyebrow mb-5">{isTr ? "// HAZIR_MISIN" : "// READY"}</p>
+          <h2 className="font-display text-[1.75rem] sm:text-[2.25rem] md:text-[3rem] font-bold uppercase leading-[1.05] tracking-tight text-paper max-w-3xl">
+            {isTr
+              ? "Projeni net bir planla başlatalım"
+              : "Start your project with a clear plan"}
+          </h2>
+          <p className="mt-5 text-muted text-base md:text-lg max-w-2xl leading-relaxed">
+            {isTr
+              ? "Kapsamı birlikte belirleyelim, takvimi netleştirelim ve teslim sürecine hemen başlayalım."
+              : "Let us define scope together, lock the timeline, and move into delivery quickly."}
+          </p>
 
-          <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-forest font-semibold rounded-xl hover:bg-primary-light transition-colors"
-            >
-              {isTr ? "Ücretsiz Görüşme Planla" : "Book a Free Call"}
-              <span className="material-icons text-lg">arrow_forward</span>
+          <div className="mt-8 flex flex-wrap gap-4">
+            <Link href="/contact" className="btn-term btn-term--solid">
+              &gt; {isTr ? "Ücretsiz Görüşme Planla" : "Book a Free Call"}
             </Link>
-
-            <Link
-              href="/case-studies"
-              className="inline-flex items-center gap-2 px-6 py-3 border border-glass-border text-sage rounded-xl hover:border-primary/30 hover:text-primary transition-all"
-            >
-              {isTr ? "Vaka Analizlerini İncele" : "View Case Studies"}
-              <span className="material-icons text-lg">north_east</span>
+            <Link href="/case-studies" className="btn-term">
+              &gt; {isTr ? "Vaka Analizlerini İncele" : "View Case Studies"}
             </Link>
           </div>
-        </section>
+        </Reveal>
       </div>
     </div>
   );
