@@ -382,30 +382,30 @@
       "impact": "Online randevu dönüşümünü artırır ve manuel iletişim yükünü azaltır."
     },
     "hushu": {
-      "description": "Anlamak ve tefekkür için sakin bir mobil Kur'an uygulaması — meali kendi dilinde oku ve dinle.",
-      "longDescription": "Hushu, indekslemek yerine anlamak üzerine kurulu bir mobil Kur'an deneyimidir. Sûreleri düz bir listeden değil, niyetinden yola çıkarak bulur; sade bir meal okur ve anlamı sakin, doğal bir sesle dinlersin — Türkçe, İngilizce ve İspanyolca olarak.",
-      "overview": "Hushu, insanların mobilde Kur'an'la kurduğu ilişkiyi yeniden tasarlıyor. Çoğu uygulama gezinme ve tilavet için optimize edilmişken; Hushu anlam ve huzur için optimize edilmiştir. Bir bölüme niyetten yola çıkılarak ulaşılır, meal sade ve dağınıklıktan uzak biçimde sunulur ve her ayet 'sesli meal' olarak dinlenebilir — okuyucunun kendi dilinde tamamen seslendirilmiş bir meal. Ses, sûre sûre tutarlı ve sakin bir tonda sunulur; freemium modelle tüm kütüphane abonelikle açılır.",
-      "problem": "Çoğu Kur'an uygulaması metni anlaşılacak değil, gezilecek ve okunacak bir şey gibi ele alır. Anlamı kavramak isteyen okuyucu, yoğun ve dağınık meallerle baş başa kalır; sakin bir dinleme yolu bulamaz — ve Türkçe, İngilizce ya da İspanyolca düşünen, yalnız Arapçayı değil anlamı da sesli isteyenler için neredeyse hiçbir şey yoktur.",
-      "solution": "Hushu, bilinçli olarak sade tutulmuş bir okuma arayüzünü her ayet için bir 'sesli meal' ile birleştirir. Gezinme bir sûre indeksinden değil niyetten başlar, meal sakin okuma için dizilir ve özel bir ses üretim hattı, desteklenen her dilde anlamı tutarlı ve doğal biçimde seslendirir. Abonelik ve tam ses kütüphanesi sade bir freemium modelle yönetilir.",
+      "description": "Reklamsız, bilinçli olarak sade bir mobil Kur'an uygulaması — huzur ve derinlik vadeder: meali oku ve dinle, vahiy yolculuğuna çık, Allah'ın isimlerini dört dilde keşfet.",
+      "longDescription": "Hushu, indekslemek yerine anlamak ve derinlik üzerine kurulu bir mobil Kur'an deneyimidir. Sessiz ve reklamsız bir arayüzü her ayet için bir 'sesli meal' ile birleştirir; kronolojik bir vahiy yolculuğu, 99 ismin derinlikleri, bir tefekkür kitaplığı ve bir ezber ekranı sunar — tümü Türkçe, İngilizce, Almanca ve İspanyolca olarak.",
+      "overview": "Hushu, insanların mobilde Kur'an'la kurduğu ilişkiyi yeniden tasarlıyor. Çoğu uygulama gezinme ve tilavet için optimize edilmişken; Hushu anlam, derinlik ve huzur için optimize edilmiştir. Arayüz bilinçli olarak sade ve tamamen reklamsızdır. Her gün, seçtiğin üç hisse göre ayetler önerir; her ayet 'sesli meal' olarak tamamen seslendirilmiş şekilde dinlenebilir; özel bölümler vahiy yolculuğuna sırayla çıkmanı, 99 ismin derinliklerini keşfetmeni, seçili bir kitaplıkla tefekkür etmeni ve ezber yapmanı sağlar — dört dilde: Türkçe, İngilizce, Almanca ve İspanyolca.",
+      "problem": "Çoğu Kur'an uygulaması dağınık, reklam dolu ve metni anlaşılacak değil gezilecek/okunacak bir şey gibi ele alır. Derinlik isteyen okuyucu — anlam, iniş bağlamı, Allah'ın isimleri, tefekkür ve ezber için sakin bir alan — birkaç gürültülü aracı bir araya getirmek zorunda kalır; Türkçe, İngilizce, Almanca ve İspanyolca konuşanlara anlamı sesli sunan neredeyse hiçbir şey yoktur.",
+      "solution": "Hushu derinliği tek bir sessiz, reklamsız uygulamada toplar. 'Sesli meal' her ayeti seslendirir; kronolojik 'Vahiy Yolculuğu' her bölümün neden indiğini bağlamıyla ekler; 99 isim aranabilir bir derinliğe açılır; tefekkür kitaplığı ve ezber ekranı pratiği destekler — ve özel bir ses üretim hattı dört dilde (TR, EN, DE, ES) tutarlı seslendirme sunar; sade bir freemium modelle.",
       "features": {
         "voicedMeal": {
           "title": "Sesli Meal",
-          "description": "Her ayetin tamamen seslendirilmiş mealini sakin ve doğal bir sesle dinle — okunan değil, duyulan anlam."
+          "description": "Her ayetin tamamen seslendirilmiş meali — sakin, doğal bir sesle; Türkçe, İngilizce, Almanca ve İspanyolca."
         },
-        "intent": {
-          "title": "Niyet Bazlı Keşif",
-          "description": "Sûrelere düz bir indeksten değil, aradığın şeyden yola çıkarak ulaş — indeks değil, anlam."
+        "vahiy": {
+          "title": "Vahiy Yolculuğu",
+          "description": "Kur'an'ı indiği sıraya göre oku; her durak, ayetin neden indiğinin bağlamıyla çerçevelenir."
         },
-        "reflection": {
-          "title": "Sakin Okuma & Tefekkür",
-          "description": "Sonsuz kaydırma yerine huzur ve tefekkür için bilinçli olarak sade tutulmuş bir arayüz."
+        "esma": {
+          "title": "Esmâ Derinlikleri",
+          "description": "99 ismi anlam ya da hisse göre keşfet; her biri kendi tefekkür detayına açılır."
         },
-        "languages": {
-          "title": "Üç Dil",
-          "description": "Meali Türkçe, İngilizce ve İspanyolca oku ve dinle; her biri kendi tutarlı seslendirme sesiyle."
+        "tefekkur": {
+          "title": "Tefekkür & Ezber",
+          "description": "Seçili bir tefekkür kitaplığı ve özel bir ezber ekranı — sakin, odaklı ve tamamen reklamsız."
         }
       },
-      "impact": "Kur'an'ı kaydırılan bir şey olmaktan çıkarıp üzerinde durulan bir şeye dönüştürür; anlamı üç dilde erişilebilir, sakin ve dinlenebilir kılar."
+      "impact": "Kur'an'ı kaydırılan bir şey olmaktan çıkarıp üzerinde durulan bir şeye dönüştürür; anlamı, bağlamı ve derinliği dört dilde erişilebilir, sakin ve reklamsız kılar."
     },
     "orni": {
       "description": "0–6 yaş erken çocukluk eğitim ekosistemi: anaokulları, eğitmenler ve ebeveynleri tek platformda buluşturuyor.",

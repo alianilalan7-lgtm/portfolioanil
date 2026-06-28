@@ -382,30 +382,30 @@
       "impact": "Improves online booking conversion and reduces manual booking communication."
     },
     "hushu": {
-      "description": "A reverent mobile Quran app for understanding and reflection — read and listen to the meaning in your own language.",
-      "longDescription": "Hushu is a mobile Quran experience built around understanding rather than indexing. Instead of a flat list of chapters, you reach passages through your intention, read a clear translation, and listen to the meaning narrated in a natural, calm voice — available in Turkish, English, and Spanish.",
-      "overview": "Hushu reframes how people engage with the Quran on mobile. Most apps optimize for navigation and recitation; Hushu optimizes for meaning and presence. A passage is reached through intention, the translation is presented calmly without clutter, and every verse can be heard as a voiced meaning (sesli meal) — a fully narrated translation in the reader's own language. Audio is delivered surah by surah with a consistent, reverent tone, and a freemium model opens the full library through subscription.",
-      "problem": "Most Quran apps treat the text as something to navigate and recite, not to understand. Readers who want to grasp the meaning are left with dense, cluttered translations and no calm way to listen — and almost nothing exists for those who think in Turkish, English, or Spanish and want the meaning, not just the Arabic, spoken aloud.",
-      "solution": "Hushu pairs a deliberately quiet reading interface with a voiced meaning (sesli meal) for every verse. Navigation starts from intention rather than a chapter index, the translation is typeset for calm reading, and a custom audio pipeline produces consistent, natural narration of the meaning in each supported language. Subscriptions and the full audio library are handled through a clean freemium model.",
+      "description": "An ad-free, deliberately minimal Quran app that promises calm and depth — read and listen to the meaning, travel through revelation, and explore the names of God in four languages.",
+      "longDescription": "Hushu is a mobile Quran experience built around understanding and depth rather than indexing. It pairs a deliberately quiet, ad-free interface with a voiced meaning (sesli meal) for every verse, a chronological journey through revelation, contemplative explorations of the 99 names, a reflection library, and a memorization screen — all available in Turkish, English, German, and Spanish.",
+      "overview": "Hushu reframes how people engage with the Quran on mobile. Most apps optimize for navigation and recitation; Hushu optimizes for meaning, depth, and presence. The interface is intentionally minimal and completely ad-free. Each day it offers verses matched to three feelings you choose, every verse can be heard as a fully narrated meaning (sesli meal), and dedicated modules let you travel through revelation in order, explore the depths of the 99 names, reflect through a curated library, and memorize — all in four languages: Turkish, English, German, and Spanish.",
+      "problem": "Most Quran apps are cluttered, ad-filled, and treat the text as something to navigate and recite rather than understand. Readers who want depth — the meaning, the context of revelation, the names of God, a calm space to reflect and memorize — are left stitching together several noisy tools, and almost nothing serves Turkish, English, German, and Spanish speakers with the meaning spoken aloud.",
+      "solution": "Hushu brings depth into one quiet, ad-free app. A voiced meaning (sesli meal) narrates every verse; a chronological 'Revelation Journey' adds the context of why each passage came down; the 99 names open into searchable depth; a reflection library and a memorization screen support practice — and a custom audio pipeline delivers consistent narration across four languages (TR, EN, DE, ES) under a clean freemium model.",
       "features": {
         "voicedMeal": {
           "title": "Voiced Meaning (Sesli Meal)",
-          "description": "Listen to a fully narrated translation of every verse in a natural, calm voice — meaning you can hear, not just read."
+          "description": "A fully narrated translation of every verse in a natural, calm voice — available in Turkish, English, German, and Spanish."
         },
-        "intent": {
-          "title": "Intention-Based Discovery",
-          "description": "Reach passages through what you are seeking rather than a flat chapter index — meaning over indexing."
+        "vahiy": {
+          "title": "Revelation Journey",
+          "description": "Read the Quran in the order it was revealed, each stop framed with the context of why it came down."
         },
-        "reflection": {
-          "title": "Calm Reading & Reflection",
-          "description": "A deliberately quiet interface designed for presence and contemplation instead of endless scrolling."
+        "esma": {
+          "title": "Names of God, in Depth",
+          "description": "Explore the 99 names by meaning or feeling, each opening into its own contemplative detail."
         },
-        "languages": {
-          "title": "Three Languages",
-          "description": "Read and listen to the meaning in Turkish, English, and Spanish, each with its own consistent narrated voice."
+        "tefekkur": {
+          "title": "Reflection & Memorization",
+          "description": "A curated reflection library and a dedicated memorization screen — calm, focused, and entirely ad-free."
         }
       },
-      "impact": "Turns the Quran from something to scroll into something to sit with — making the meaning accessible, calm, and listenable in three languages."
+      "impact": "Turns the Quran from something to scroll into something to sit with — making meaning, context, and depth accessible, calm, and ad-free in four languages."
     },
     "orni": {
       "description": "Early childhood education ecosystem connecting kindergartens, instructors, and parents in one platform.",

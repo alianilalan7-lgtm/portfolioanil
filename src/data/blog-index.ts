@@ -4,6 +4,7 @@ import {
   isAutopilotSlug,
   localizeAutopilotPost,
   getAutopilotSource,
+  getAutopilotRelatedLinks,
 } from "./autopilot";
 
 // Unified accessor over hand-written (blogs.ts) and auto-generated (autopilot)
@@ -31,4 +32,9 @@ export function localizeBlogPost(post: BlogPost, locale: string): BlogPost {
 /** Source attribution for an autopilot post, if any (undefined for hand-written posts). */
 export function blogPostSource(slug: string) {
   return getAutopilotSource(slug);
+}
+
+/** Internal related links for an autopilot post (empty for hand-written posts). */
+export function blogPostRelatedLinks(slug: string) {
+  return getAutopilotRelatedLinks(slug);
 }

@@ -21,6 +21,8 @@ export interface AutopilotPost {
   status?: "published" | "draft";
   /** Original source the post commentary is based on (attribution). */
   source?: { name: string; url: string };
+  /** Internal links for SEO + conversion routing (paths only, e.g. "/services"). */
+  relatedLinks?: { label: string; href: string }[];
   tr: AutopilotLang;
   en: AutopilotLang;
 }
@@ -36,6 +38,12 @@ export function getAutopilotSource(
   slug: string
 ): { name: string; url: string } | undefined {
   return bySlug.get(slug)?.source;
+}
+
+export function getAutopilotRelatedLinks(
+  slug: string
+): { label: string; href: string }[] {
+  return bySlug.get(slug)?.relatedLinks ?? [];
 }
 
 function toBasePost(p: AutopilotPost): BlogPost {

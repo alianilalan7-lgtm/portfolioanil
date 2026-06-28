@@ -7,6 +7,7 @@ import {
   findPublishedBlogPost,
   localizeBlogPost,
   blogPostSource,
+  blogPostRelatedLinks,
 } from "@/data/blog-index";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
@@ -54,6 +55,7 @@ export default async function BlogDetailPage({
 
   const localizedPost = localizeBlogPost(post, locale);
   const source = blogPostSource(slug);
+  const relatedLinks = blogPostRelatedLinks(slug);
   const isTr = locale === "tr";
 
   const articleSchema = blogPostingJsonLd({
@@ -74,7 +76,12 @@ export default async function BlogDetailPage({
   return (
     <>
       <JsonLd data={[articleSchema, breadcrumb]} />
-      <BlogDetailContent locale={locale} post={localizedPost} source={source} />
+      <BlogDetailContent
+        locale={locale}
+        post={localizedPost}
+        source={source}
+        relatedLinks={relatedLinks}
+      />
     </>
   );
 }
@@ -83,10 +90,12 @@ function BlogDetailContent({
   locale,
   post,
   source,
+  relatedLinks,
 }: {
   locale: string;
   post: BlogPost;
   source?: { name: string; url: string };
+  relatedLinks?: { label: string; href: string }[];
 }) {
   const isTr = locale === "tr";
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
@@ -159,6 +168,25 @@ function BlogDetailContent({
             <p className="text-paper/80 leading-relaxed">{post.excerpt}</p>
           )}
         </div>
+
+        {/* Related internal links (SEO + conversion routing) */}
+        {relatedLinks && relatedLinks.length > 0 && (
+          <nav className="mt-14 border-t border-line pt-6">
+            <p className="eyebrow mb-3">// {isTr ? "İLGİLİ" : "RELATED"}</p>
+            <ul className="flex flex-col gap-2">
+              {relatedLinks.map((l) => (
+                <li key={`${l.href}-${l.label}`}>
+                  <Link
+                    href={l.href}
+                    className="font-mono text-sm text-muted transition-colors hover:text-lime"
+                  >
+                    <span className="text-lime">&gt;</span> {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        )}
 
         {/* Source attribution (auto-generated posts) */}
         {source && (

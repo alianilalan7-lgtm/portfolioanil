@@ -114,13 +114,29 @@ if (posts !== undefined) {
         fail(`${where}: tags must be a non-empty string[]`);
       if (p.status !== undefined && !["published", "draft"].includes(p.status))
         fail(`${where}: status must be "published" or "draft"`);
-      if (
-        !p.source ||
-        typeof p.source.name !== "string" ||
-        typeof p.source.url !== "string" ||
-        !/^https?:\/\//.test(p.source.url)
-      )
-        fail(`${where}: source must be {name, url(http...)}`);
+      if (p.source !== undefined) {
+        if (
+          typeof p.source.name !== "string" ||
+          typeof p.source.url !== "string" ||
+          !/^https?:\/\//.test(p.source.url)
+        )
+          fail(`${where}: source, when present, must be {name, url(http...)}`);
+      }
+      if (p.relatedLinks !== undefined) {
+        if (
+          !Array.isArray(p.relatedLinks) ||
+          p.relatedLinks.some(
+            (l) =>
+              !l ||
+              typeof l.label !== "string" ||
+              typeof l.href !== "string" ||
+              !l.href.startsWith("/")
+          )
+        )
+          fail(
+            `${where}: relatedLinks must be {label, href}[] with internal paths (href starts with "/")`
+          );
+      }
       validateLang(p.tr, `${where}.tr`);
       validateLang(p.en, `${where}.en`);
     });
