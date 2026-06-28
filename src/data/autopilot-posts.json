@@ -96,5 +96,228 @@
         }
       ]
     }
+  },
+  {
+    "slug": "how-to-integrate-llm-into-web-app",
+    "publishedAt": "2026-06-28",
+    "readTime": "8 min",
+    "category": "AI",
+    "tags": ["AI", "LLM", "Web Development", "SaaS", "Integration"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI & SaaS development services", "href": "/services" },
+      { "label": "Process & pricing", "href": "/process-pricing" },
+      { "label": "Start your project", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Web Uygulamasına LLM Nasıl Entegre Edilir: Adım Adım Geliştirici Rehberi",
+      "excerpt": "Web uygulamasına LLM nasıl entegre edileceğini öğrenin: doğru API seçimi, sunucu mimarisi, maliyet yönetimi ve streaming uygulama.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Web uygulamasına LLM nasıl entegre edileceği, 2025–2026 döneminde kurucu geliştiricilerin en çok sorduğu teknik sorulardan biri haline geldi. Metin özetleme, belge analizi, akıllı arama veya sohbet arayüzü — neredeyse her SaaS ürünü artık bir dil modeli entegrasyonundan faydalanabiliyor. Bu rehberde, müşteri projelerinde uyguladığım adımları gerçek mimari kararlar ve maliyet gerçekleriyle birlikte paylaşıyorum."
+        },
+        {
+          "type": "heading",
+          "text": "Hangi LLM API'sini Seçmeli?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Üç ana seçenek öne çıkıyor: OpenAI'ın GPT-4o serisi, Anthropic'in Claude serisi ve Google'ın Gemini serisi. Büyük bağlam penceresi ve uzun belge analizine ihtiyaç duyduğunuzda Claude Sonnet 4.6 güçlü bir seçim. Hız ve maliyet öncelikliyse GPT-4o mini veya Gemini 2.0 Flash iyi alternatifler. Üretimde tek bir sağlayıcıya kilitlenmemek için API çağrılarını bir soyutlama katmanının arkasına almak kritik — bunu sonraki bölümde açıklıyorum."
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "label": "GPT-4o (input)", "value": "$2,50 / 1M token" },
+            { "label": "Claude Sonnet 4.6 (input)", "value": "$3,00 / 1M token" },
+            { "label": "Gemini 2.0 Flash (input)", "value": "$0,10 / 1M token" }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Mimari: API Anahtarları Asla İstemci Tarafında Olmamalı"
+        },
+        {
+          "type": "paragraph",
+          "text": "En yaygın hata, LLM API çağrısını doğrudan tarayıcı JavaScript'inden yapmak. Bu, API anahtarınızı herkese açık hale getirir ve sizi faturalama saldırılarına karşı savunmasız bırakır. Doğru mimari her zaman sunucu taraflıdır: kullanıcı isteği → sizin arka ucunuz → LLM API → arka uca yanıt → kullanıcıya yanıt. Next.js API route'ları, FastAPI endpoint'leri veya Express handler'ları — hangisini kullanırsanız kullanın, bu katman şarttır. İstemci tarafındaki kod her zaman kaynak görünümünde okunabilir; API anahtarınız orada bulunmamalı."
+        },
+        {
+          "type": "heading",
+          "text": "Web Uygulamasına LLM Entegrasyonu: Adım Adım"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Bir API anahtarı edinin ve ortam değişkenlerine (.env) ekleyin — asla kaynak koduna gömmeyın veya Git'e işlemeyin.",
+            "Tüm LLM çağrılarını tek bir modüle topladığınız bir API istemci wrapper'ı oluşturun. Bu, sağlayıcıyı ileride değiştirmeyi veya A/B testi yapmayı kolaylaştırır.",
+            "Promptları kaynak kodundan ayırın: bir config dosyasında, veritabanında veya şablon sisteminde tutun. Prompt mühendisliği zamanla değişir; sürüm kontrolü gerektirir.",
+            "Streaming yanıtları uygulayın — kullanıcılar yanıtın tamamını beklemek yerine yazma efekti bekler. Next.js'de ReadableStream, FastAPI'de StreamingResponse ile kolayca uygulanabilir.",
+            "Her çağrıda token sayısını günlüğe alın. Maliyetleri ilk haftada izlemeye başlamazsanız, özellikle yoğun kullanımlı özelliklerde fatura sizi şaşırtabilir.",
+            "Hata işleme ekleyin: rate limit hataları (HTTP 429) için üstel geri çekilme, model zaman aşımı için kullanıcıya anlamlı bir geri bildirim. LLM API'leri mükemmel değildir; kodunuzun bu durumları zarif biçimde ele alması gerekir."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Prompt Mühendisliği: Yapıyı Başından Doğru Kurun"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bugün işe yarayan bir prompt, iki hafta sonra tutarsız sonuçlar verebilir — çünkü model güncellendi ya da kullanıcı davranışı değişti. Bu yüzden promptları kodun içine gömmek yerine veritabanında veya ayrı bir şablon dosyasında tutun. Üretimde farklı prompt sürümlerini A/B test edin: 20 karakterlik bir değişiklik çıktı kalitesini ve token maliyetini ciddi ölçüde etkileyebilir. Sistem promptunu, kullanıcı mesajını ve bağlamı (örneğin belge içeriği) her zaman açıkça ayrı tutun."
+        },
+        {
+          "type": "heading",
+          "text": "Maliyet Yönetimi: LLM Faturanızı Kontrol Altında Tutun"
+        },
+        {
+          "type": "paragraph",
+          "text": "LLM maliyetleri, bağlam penceresi büyüdükçe doğrusal değil katlanarak artar. Gönderdiğiniz her sistem promptu, her konuşma geçmişi turu, her belge parçası token harcar ve faturalanır. Üretimde maliyet kontrolü için üç önlem kritik:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Bağlam penceresini budayın: Tüm konuşma geçmişini değil, son N mesajı gönderin. Çoğu sohbet özelliği için son 6–10 mesaj yeterlidir.",
+            "Sık tekrarlanan sistem promptları için prompt önbellekleme kullanın. Anthropic ve OpenAI ikisi de prompt caching destekliyor; bu, sabit bağlam maliyetini %60–80 oranında düşürebilir.",
+            "Kullanıcı başına günlük token limiti belirleyin. Freemium veya ücretsiz katmanınız varsa, limitlenmemiş kullanım sizi beklenmedik yüksek faturalarla karşı karşıya bırakır."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Sık Sorulan Sorular"
+        },
+        {
+          "type": "subheading",
+          "text": "LLM entegrasyonu ne kadar sürer?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Basit bir sohbet veya özetleme özelliği için, API entegrasyonu birkaç saatte yapılabilir. Kimlik doğrulama, oran sınırlama, günlükleme ve streaming içeren üretim kalitesinde bir entegrasyon 3–5 gün. Birden fazla modeli destekleyen, izleme panelli ve sağlayıcı değiştirilebilir tam bir AI katmanı 2–4 haftalık bir proje."
+        },
+        {
+          "type": "subheading",
+          "text": "Hangi dil veya çerçeve ile başlamalıyım?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Yeni projeler için Next.js ve TypeScript iyi bir başlangıç noktası: ön yüz ve arka ucu tek projede yönetebilir, Vercel'e kolayca deploy edilebilir ve Anthropic/OpenAI SDK'ları TypeScript ile sorunsuz çalışır. Python tabanlı bir arka uç tercih ediyorsanız FastAPI aynı ölçüde güçlü bir seçim; özellikle belge işleme veya vektör veritabanı entegrasyonu varsa Python ekosistemi daha zengin."
+        },
+        {
+          "type": "subheading",
+          "text": "Birden fazla model sağlayıcısını aynı anda kullanabilir miyim?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Evet, ve bunu tavsiye ediyorum. Farklı özellikler farklı modellere yönlendirilebilir: uzun belge analizi için Claude, hızlı metin tamamlama için Gemini Flash, kod üretimi için GPT-4o gibi. Bunun ön koşulu, API çağrılarınızı başından beri bir soyutlama katmanının arkasında tutmanız."
+        },
+        {
+          "type": "paragraph",
+          "text": "Web uygulamasına LLM entegre etmek, doğru mimariden başlanırsa karmaşık değildir. API anahtarlarını sunucu tarafında tutun, promptları koddan ayırın, maliyetleri günlük izleyin — geri kalan her şey bu üç temelden türetilebilir. Projenizi planlamaya yardımcı olmamı istiyorsanız, iletişim sayfasından ulaşabilirsiniz."
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Integrate an LLM into a Web App: A Step-by-Step Developer Guide",
+      "excerpt": "Learn how to integrate an LLM into your web app: choosing the right API, server-side architecture, cost management, and streaming responses.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "How to integrate an LLM into a web app has become one of the most searched technical questions among founders and developers in 2025–2026. Summarization, document analysis, smart search, or conversational interfaces — nearly every SaaS product can benefit from a language model today. In this guide, I walk through the steps I've applied across client projects, with real architecture decisions and cost realities."
+        },
+        {
+          "type": "heading",
+          "text": "Which LLM API Should You Choose?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Three main options dominate: OpenAI's GPT-4o series, Anthropic's Claude series, and Google's Gemini series. For large context windows and long document analysis, Claude Sonnet 4.6 is a strong choice. If speed and cost are the priority, GPT-4o mini or Gemini 2.0 Flash are solid alternatives. To avoid locking yourself into a single provider in production, abstract your LLM calls behind a provider interface — I'll cover that in the next section."
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "label": "GPT-4o (input)", "value": "$2.50 / 1M tokens" },
+            { "label": "Claude Sonnet 4.6 (input)", "value": "$3.00 / 1M tokens" },
+            { "label": "Gemini 2.0 Flash (input)", "value": "$0.10 / 1M tokens" }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Architecture: API Keys Must Never Live Client-Side"
+        },
+        {
+          "type": "paragraph",
+          "text": "The most common mistake is making LLM API calls directly from browser JavaScript. This exposes your API key publicly and leaves you vulnerable to billing attacks. The correct architecture is always server-side: user request → your backend → LLM API → response to backend → response to user. Whether you use Next.js API routes, FastAPI endpoints, or Express handlers, this layer is mandatory. Client-side code is always readable in the browser's source view — your API key must never be there."
+        },
+        {
+          "type": "heading",
+          "text": "How to Integrate an LLM into a Web App: Step by Step"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Obtain an API key and store it in environment variables (.env) — never hardcode it in source or commit it to Git.",
+            "Build an API client wrapper that centralizes all LLM calls in one module. This makes it straightforward to swap providers later or run A/B tests across models.",
+            "Separate prompts from source code: keep them in a config file, database, or template system. Prompt engineering evolves; it needs version control.",
+            "Implement streaming responses — users expect a typing effect, not waiting for the full reply. Next.js ReadableStream or FastAPI's StreamingResponse handles this cleanly.",
+            "Log token counts on every call. If you don't start monitoring costs in the first week, especially on high-traffic features, your invoice will surprise you.",
+            "Add error handling: exponential backoff for rate limit errors (HTTP 429), meaningful user feedback for model timeouts. LLM APIs are not perfect; your code needs to handle these cases gracefully."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Prompt Engineering: Build the Right Structure from the Start"
+        },
+        {
+          "type": "paragraph",
+          "text": "A prompt that works today may produce inconsistent results in two weeks — because the model was updated or user behavior shifted. That's why prompts should live in a database or separate template file, not hardcoded in your source. In production, A/B test different prompt versions: a 20-character change can meaningfully affect both output quality and token cost. Always keep the system prompt, user message, and context (e.g., document content) clearly separated."
+        },
+        {
+          "type": "heading",
+          "text": "Cost Management: Keep Your LLM Invoice Under Control"
+        },
+        {
+          "type": "paragraph",
+          "text": "LLM costs grow exponentially as context windows expand — not linearly. Every system prompt, every conversation history turn, every document chunk burns tokens and gets billed. Three practical measures for production cost control:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Truncate the context window: send the last N messages, not the full conversation history. For most chat features, the last 6–10 messages is sufficient.",
+            "Use prompt caching for frequently repeated system prompts. Both Anthropic and OpenAI support prompt caching; it can cut fixed-context costs by 60–80%.",
+            "Set a per-user daily token limit. If you have a freemium or free tier, uncapped usage exposes you to unexpectedly high invoices."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Frequently Asked Questions"
+        },
+        {
+          "type": "subheading",
+          "text": "How long does LLM integration take?"
+        },
+        {
+          "type": "paragraph",
+          "text": "A simple chat or summarization feature can be wired up at the API level in a few hours. A production-quality integration — with authentication, rate limiting, logging, and streaming — takes 3–5 days. A full AI layer supporting multiple providers with a monitoring dashboard and swappable backends is a 2–4 week project."
+        },
+        {
+          "type": "subheading",
+          "text": "Which language or framework should I start with?"
+        },
+        {
+          "type": "paragraph",
+          "text": "For new projects, Next.js with TypeScript is a strong starting point: you manage frontend and backend in one project, it deploys cleanly to Vercel, and the Anthropic/OpenAI SDKs work well with TypeScript. If you prefer a Python-based backend, FastAPI is an equally solid choice — especially when document processing or vector database integration is involved, where the Python ecosystem is richer."
+        },
+        {
+          "type": "subheading",
+          "text": "Can I use multiple LLM providers at once?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Yes, and I recommend it. Different features can route to different models: Claude for long document analysis, Gemini Flash for quick text completions, GPT-4o for code generation. The prerequisite is that your API calls are behind an abstraction layer from the start — retrofitting this later costs significantly more time than building it in upfront."
+        },
+        {
+          "type": "paragraph",
+          "text": "Integrating an LLM into a web app is not complicated if you start with the right architecture. Keep API keys server-side, separate prompts from code, and monitor costs daily — everything else is derived from those three foundations. If you'd like help planning your integration, reach out through the contact page."
+        }
+      ]
+    }
   }
 ]
