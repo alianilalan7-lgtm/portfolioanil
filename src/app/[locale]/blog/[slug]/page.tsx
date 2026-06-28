@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
-import { blogPosts, BlogContentBlock, getLocalizedBlogPost } from "@/data/blogs";
+import type { BlogContentBlock, BlogPost } from "@/data/blogs";
+import {
+  allBlogPosts,
+  findPublishedBlogPost,
+  localizeBlogPost,
+  blogPostSource,
+} from "@/data/blog-index";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/fx/Reveal";
@@ -10,7 +16,7 @@ import { buildMetadata, blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
-    blogPosts.map((post) => ({ locale, slug: post.slug }))
+    allBlogPosts.map((post) => ({ locale, slug: post.slug }))
   );
 }
 
@@ -20,12 +26,10 @@ export async function generateMetadata({
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { locale, slug } = await params;
-  const post = blogPosts.find(
-    (item) => item.slug === slug && item.status === "published"
-  );
+  const post = findPublishedBlogPost(slug);
   if (!post) return {};
 
-  const localizedPost = getLocalizedBlogPost(post, locale);
+  const localizedPost = localizeBlogPost(post, locale);
   return buildMetadata({
     locale,
     path: `/blog/${post.slug}`,
@@ -45,10 +49,11 @@ export default async function BlogDetailPage({
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const post = blogPosts.find((item) => item.slug === slug && item.status === "published");
+  const post = findPublishedBlogPost(slug);
   if (!post) return notFound();
 
-  const localizedPost = getLocalizedBlogPost(post, locale);
+  const localizedPost = localizeBlogPost(post, locale);
+  const source = blogPostSource(slug);
   const isTr = locale === "tr";
 
   const articleSchema = blogPostingJsonLd({
@@ -69,7 +74,7 @@ export default async function BlogDetailPage({
   return (
     <>
       <JsonLd data={[articleSchema, breadcrumb]} />
-      <BlogDetailContent locale={locale} post={localizedPost} />
+      <BlogDetailContent locale={locale} post={localizedPost} source={source} />
     </>
   );
 }
@@ -77,9 +82,11 @@ export default async function BlogDetailPage({
 function BlogDetailContent({
   locale,
   post,
+  source,
 }: {
   locale: string;
-  post: (typeof blogPosts)[number];
+  post: BlogPost;
+  source?: { name: string; url: string };
 }) {
   const isTr = locale === "tr";
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
@@ -152,6 +159,21 @@ function BlogDetailContent({
             <p className="text-paper/80 leading-relaxed">{post.excerpt}</p>
           )}
         </div>
+
+        {/* Source attribution (auto-generated posts) */}
+        {source && (
+          <p className="mt-12 border-t border-line pt-6 font-mono text-xs text-faint">
+            {isTr ? "Kaynak" : "Source"}:{" "}
+            <a
+              href={source.url}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              className="text-muted underline-offset-2 transition-colors hover:text-lime hover:underline"
+            >
+              {source.name}
+            </a>
+          </p>
+        )}
 
         {/* CTA */}
         <Reveal

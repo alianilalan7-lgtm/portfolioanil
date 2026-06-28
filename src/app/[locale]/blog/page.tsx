@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
-import { blogPosts, getLocalizedBlogPost } from "@/data/blogs";
+import { getPublishedBlogPosts, localizeBlogPost } from "@/data/blog-index";
 import { Link } from "@/i18n/navigation";
 import SectionHeader from "@/components/fx/SectionHeader";
 import Reveal from "@/components/fx/Reveal";
@@ -25,13 +25,12 @@ export async function generateMetadata({
 export default function BlogPage() {
   const t = useTranslations("BlogPage");
   const locale = useLocale();
-  const publishedPosts = blogPosts
-    .filter((post) => post.status === "published")
+  const publishedPosts = getPublishedBlogPosts()
     .sort(
       (a, b) =>
         new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
     )
-    .map((post) => getLocalizedBlogPost(post, locale));
+    .map((post) => localizeBlogPost(post, locale));
   const featuredPosts = publishedPosts.filter((post) => post.featured);
 
   return (

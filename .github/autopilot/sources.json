@@ -1,0 +1,14 @@
+{
+  "note": "RSS/Atom feeds and APIs the blog autopilot fetches. Prefer AI-lab and founder-relevant sources. Fetch a few, not all.",
+  "feeds": [
+    { "name": "OpenAI News", "url": "https://openai.com/news/rss.xml", "topic": "ai-lab" },
+    { "name": "Google AI Blog", "url": "https://blog.google/technology/ai/rss/", "topic": "ai-lab" },
+    { "name": "Google DeepMind", "url": "https://deepmind.google/blog/rss.xml", "topic": "ai-lab" },
+    { "name": "TechCrunch AI", "url": "https://techcrunch.com/category/artificial-intelligence/feed/", "topic": "tech-news" },
+    { "name": "The Verge AI", "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml", "topic": "tech-news" },
+    { "name": "VentureBeat AI", "url": "https://venturebeat.com/category/ai/feed/", "topic": "tech-news" },
+    { "name": "Ars Technica AI", "url": "https://arstechnica.com/ai/feed/", "topic": "tech-news" },
+    { "name": "Hacker News (AI, by date)", "url": "https://hn.algolia.com/api/v1/search_by_date?query=AI&tags=story&numericFilters=points%3E80", "topic": "dev" },
+    { "name": "Hacker News (SaaS, by date)", "url": "https://hn.algolia.com/api/v1/search_by_date?query=SaaS&tags=story&numericFilters=points%3E40", "topic": "dev" }
+  ]
+}

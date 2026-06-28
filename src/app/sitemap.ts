@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { blogPosts } from "@/data/blogs";
+import { getPublishedBlogPosts } from "@/data/blog-index";
 import { caseStudies } from "@/data/case-studies";
 import { projects } from "@/data/projects";
 
@@ -54,7 +54,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]);
 
-  const publishedPosts = blogPosts.filter((post) => post.status === "published");
+  const publishedPosts = getPublishedBlogPosts();
   const lastBlogDate =
     publishedPosts.length > 0
       ? publishedPosts

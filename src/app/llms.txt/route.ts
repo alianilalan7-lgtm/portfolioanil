@@ -1,7 +1,7 @@
 import { SITE_URL } from "@/lib/seo";
 import { projects } from "@/data/projects";
 import { caseStudies } from "@/data/case-studies";
-import { blogPosts, getLocalizedBlogPost } from "@/data/blogs";
+import { getPublishedBlogPosts, localizeBlogPost } from "@/data/blog-index";
 
 /**
  * /llms.txt — a clean, link-rich site map for AI answer engines
@@ -68,14 +68,12 @@ export function GET(): Response {
   lines.push(
     `- [Blog](${SITE_URL}/blog): articles on AI, SaaS, MVP, and freelance development.`
   );
-  const publishedPosts = blogPosts
-    .filter((post) => post.status === "published")
-    .sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-    );
+  const publishedPosts = getPublishedBlogPosts().sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+  );
   for (const post of publishedPosts) {
-    const en = getLocalizedBlogPost(post, "en");
+    const en = localizeBlogPost(post, "en");
     lines.push(
       `- [${en.title}](${SITE_URL}/blog/${post.slug}): ${en.excerpt}`
     );
