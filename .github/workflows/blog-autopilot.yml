@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write # needed to push the generated post
+  id-token: write # required by claude-code-action (OIDC)
 
 concurrency:
   group: blog-autopilot
