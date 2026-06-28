@@ -1,5 +1,23 @@
 import type { JSX } from "react";
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import SectionHeader from "@/components/fx/SectionHeader";
+import { buildMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  return buildMetadata({
+    locale,
+    path: "/faq",
+    title: t("faqTitle"),
+    description: t("faqDescription"),
+  });
+}
 
 type FaqItem = { question: string; answer: string };
 

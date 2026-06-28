@@ -3,6 +3,28 @@
     "title": "Ali Anıl Alan | Freelance AI & SaaS Developer",
     "description": "Freelance AI developer olarak SaaS MVP, dashboard ve otomasyon sistemleri geliştiriyorum."
   },
+  "Seo": {
+    "homeTitle": "Ali Anıl Alan | Freelance AI ve SaaS Developer",
+    "homeDescription": "Freelance AI ve SaaS developer; production kalitesinde MVP, dashboard ve otomasyon sistemleri geliştiriyorum. Fikirden yayına.",
+    "servicesTitle": "Web ve SaaS Geliştirme Hizmetleri | Ali Anıl Alan",
+    "servicesDescription": "Freelance geliştirme hizmetleri: SaaS MVP, yapay zeka otomasyonu, dashboard ve web uygulamaları — production kalitesinde.",
+    "processTitle": "Çalışma Sürecim: Fikirden Yayına | Ali Anıl Alan",
+    "processDescription": "Freelance teslim sürecim — keşif, kapsam, MVP geliştirme ve yayın. Fikirden production'a net kilometre taşları ve gerçekçi takvim.",
+    "processPricingTitle": "Süreç ve Fiyatlandırma | Ali Anıl Alan",
+    "processPricingDescription": "SaaS MVP, dashboard ve yapay zeka otomasyonu için şeffaf freelance süreç ve fiyatlandırma. Projelerin nasıl kapsandığını ve teslim edildiğini gör.",
+    "caseStudiesTitle": "Vaka Analizleri: SaaS ve AI Projeleri | Ali Anıl Alan",
+    "caseStudiesDescription": "SaaS, yapay zeka ve otomasyon ürünlerinin gerçek vaka analizleri — problem, çözüm ve ölçülebilir sonuç.",
+    "faqTitle": "SSS: Freelance SaaS ve MVP Geliştirme | Ali Anıl Alan",
+    "faqDescription": "Freelance web uygulaması geliştirme hakkında sık sorulan sorular: süre, maliyet, MVP kapsamı ve freelancer mı ajans mı.",
+    "blogTitle": "Blog: SaaS, MVP ve AI Geliştirme | Ali Anıl Alan",
+    "blogDescription": "SaaS ürünleri geliştirme, MVP stratejisi, yapay zeka entegrasyonu ve freelance geliştirme üzerine yazılar — gerçek projelerden pratik rehberler.",
+    "projectsTitle": "Projeler ve Portföy: SaaS, AI, Web | Ali Anıl Alan",
+    "projectsDescription": "Ali Anıl Alan tarafından tasarlanıp geliştirilen SaaS platformları, yapay zeka araçları, dashboard ve web uygulamaları portföyü.",
+    "contactTitle": "İletişim: Projeni Başlat | Ali Anıl Alan",
+    "contactDescription": "SaaS, MVP veya yapay zeka otomasyon projeni konuşmak için iletişime geç. Ücretsiz keşif görüşmesi ve yayına net bir yol haritası.",
+    "certificatesTitle": "Sertifikalar ve Yetkinlikler | Ali Anıl Alan",
+    "certificatesDescription": "Yazılım geliştirme, yapay zeka ve bulut alanında profesyonel sertifikalar ve yetkinlikler — işin arkasındaki doğrulanmış eğitim."
+  },
   "Navigation": {
     "home": "Ana Sayfa",
     "services": "Hizmetler",

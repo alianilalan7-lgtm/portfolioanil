@@ -1,8 +1,26 @@
+import type { Metadata } from "next";
 import { useLocale, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { blogPosts, getLocalizedBlogPost } from "@/data/blogs";
 import { Link } from "@/i18n/navigation";
 import SectionHeader from "@/components/fx/SectionHeader";
 import Reveal from "@/components/fx/Reveal";
+import { buildMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  return buildMetadata({
+    locale,
+    path: "/blog",
+    title: t("blogTitle"),
+    description: t("blogDescription"),
+  });
+}
 
 export default function BlogPage() {
   const t = useTranslations("BlogPage");

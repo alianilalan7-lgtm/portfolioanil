@@ -1,14 +1,40 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { setRequestLocale } from "next-intl/server";
 import { blogPosts, BlogContentBlock, getLocalizedBlogPost } from "@/data/blogs";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/fx/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata, blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     blogPosts.map((post) => ({ locale, slug: post.slug }))
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const post = blogPosts.find(
+    (item) => item.slug === slug && item.status === "published"
+  );
+  if (!post) return {};
+
+  const localizedPost = getLocalizedBlogPost(post, locale);
+  return buildMetadata({
+    locale,
+    path: `/blog/${post.slug}`,
+    title: `${localizedPost.title} | Ali Anil Alan`,
+    description: localizedPost.excerpt,
+    type: "article",
+    publishedTime: post.publishedAt,
+    keywords: localizedPost.tags,
+  });
 }
 
 export default async function BlogDetailPage({
@@ -23,8 +49,29 @@ export default async function BlogDetailPage({
   if (!post) return notFound();
 
   const localizedPost = getLocalizedBlogPost(post, locale);
+  const isTr = locale === "tr";
 
-  return <BlogDetailContent locale={locale} post={localizedPost} />;
+  const articleSchema = blogPostingJsonLd({
+    locale,
+    path: `/blog/${post.slug}`,
+    title: localizedPost.title,
+    description: localizedPost.excerpt,
+    datePublished: post.publishedAt,
+    keywords: localizedPost.tags,
+  });
+
+  const breadcrumb = breadcrumbJsonLd(locale, [
+    { name: isTr ? "Ana Sayfa" : "Home", path: "" },
+    { name: "Blog", path: "/blog" },
+    { name: localizedPost.title, path: `/blog/${post.slug}` },
+  ]);
+
+  return (
+    <>
+      <JsonLd data={[articleSchema, breadcrumb]} />
+      <BlogDetailContent locale={locale} post={localizedPost} />
+    </>
+  );
 }
 
 function BlogDetailContent({

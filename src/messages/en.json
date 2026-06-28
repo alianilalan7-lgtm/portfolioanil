@@ -3,6 +3,28 @@
     "title": "Ali Anil Alan | Freelance AI & SaaS Developer",
     "description": "Freelance AI developer building SaaS MVPs, dashboards, and automation systems."
   },
+  "Seo": {
+    "homeTitle": "Ali Anil Alan | Freelance AI & SaaS Developer",
+    "homeDescription": "Freelance AI & SaaS developer building MVPs, dashboards, and automation systems with production-ready quality. From idea to launch.",
+    "servicesTitle": "Web & SaaS Development Services | Ali Anil Alan",
+    "servicesDescription": "Freelance development services: SaaS MVPs, AI automation, dashboards, and web applications built with production-ready quality.",
+    "processTitle": "How I Work: Process from Idea to Launch | Ali Anil Alan",
+    "processDescription": "My freelance delivery process — discovery, scope, MVP build, and launch. Clear milestones and realistic timelines from idea to production.",
+    "processPricingTitle": "Process & Pricing | Ali Anil Alan",
+    "processPricingDescription": "Transparent freelance process and pricing for SaaS MVPs, dashboards, and AI automation. See how projects are scoped, priced, and delivered.",
+    "caseStudiesTitle": "Case Studies: SaaS & AI Projects | Ali Anil Alan",
+    "caseStudiesDescription": "Real-world case studies of SaaS, AI, and automation products — the problem, the solution, and the measurable outcome.",
+    "faqTitle": "FAQ: Freelance SaaS & MVP Development | Ali Anil Alan",
+    "faqDescription": "Answers to common questions about freelance web app development: timeline, cost, MVP scope, and freelancer vs agency.",
+    "blogTitle": "Blog: SaaS, MVP & AI Development | Ali Anil Alan",
+    "blogDescription": "Articles on building SaaS products, MVP strategy, AI integration, and freelance development — practical guides from real projects.",
+    "projectsTitle": "Projects & Portfolio: SaaS, AI, Web Apps | Ali Anil Alan",
+    "projectsDescription": "A portfolio of SaaS platforms, AI tools, dashboards, and web applications designed and built by Ali Anil Alan.",
+    "contactTitle": "Contact: Start Your Project | Ali Anil Alan",
+    "contactDescription": "Get in touch to discuss your SaaS, MVP, or AI automation project. Free discovery call and a clear roadmap to launch.",
+    "certificatesTitle": "Certificates & Credentials | Ali Anil Alan",
+    "certificatesDescription": "Professional certificates and credentials in software development, AI, and cloud — verified training behind the work."
+  },
   "Navigation": {
     "home": "Home",
     "services": "Services",

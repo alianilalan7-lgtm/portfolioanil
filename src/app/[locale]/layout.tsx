@@ -40,12 +40,19 @@ export async function generateMetadata({
     process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
     "google8f0ece0a413df90c";
   const metadataBase = new URL(configuredSiteUrl);
-  const localePath = locale === routing.defaultLocale ? "/" : `/${locale}`;
 
+  // Base/fallback metadata only. Per-page metadata (title, description,
+  // canonical, hreflang, OG url) is set by each page via buildMetadata so that
+  // canonical/alternates are self-referencing instead of pointing at home.
   return {
     metadataBase,
-    title: t("title"),
+    title: {
+      default: t("title"),
+      template: "%s",
+    },
     description: t("description"),
+    authors: [{ name: "Ali Anil Alan", url: configuredSiteUrl }],
+    creator: "Ali Anil Alan",
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "32x32" },
@@ -54,15 +61,12 @@ export async function generateMetadata({
       apple: "/apple-icon.png",
     },
     openGraph: {
-      title: t("title"),
-      description: t("description"),
       siteName: "Ali Anil Alan",
-      url: localePath,
       type: "website",
       locale: locale === "tr" ? "tr_TR" : "en_US",
       images: [
         {
-          url: "/opengraph-image",
+          url: `${configuredSiteUrl}/opengraph-image`,
           width: 1200,
           height: 630,
           alt: "Ali Anil Alan - Freelance AI & SaaS Developer",
@@ -71,15 +75,18 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: t("title"),
-      description: t("description"),
-      images: ["/opengraph-image"],
+      creator: "@alianilalan",
+      images: [`${configuredSiteUrl}/opengraph-image`],
     },
-    alternates: {
-      canonical: localePath,
-      languages: {
-        en: "/",
-        tr: "/tr",
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
       },
     },
     verification: {

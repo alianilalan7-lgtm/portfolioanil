@@ -1,16 +1,38 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { projects } from "@/data/projects";
 import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/fx/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata, creativeWorkJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     projects.map((p) => ({ locale, slug: p.slug }))
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  if (!project) return {};
+
+  const t = await getTranslations({ locale });
+  return buildMetadata({
+    locale,
+    path: `/projects/${project.slug}`,
+    title: `${project.title} — ${project.category} | Ali Anil Alan`,
+    description: t(project.descriptionKey),
+    keywords: [...project.techStack, project.category],
+  });
 }
 
 export default async function ProjectDetailPage({
@@ -27,7 +49,30 @@ export default async function ProjectDetailPage({
   const currentIndex = projects.findIndex((p) => p.slug === slug);
   const nextProject = projects[(currentIndex + 1) % projects.length];
 
-  return <ProjectDetailContent project={project} nextProject={nextProject} />;
+  const t = await getTranslations({ locale });
+  const isTr = locale === "tr";
+
+  const workSchema = creativeWorkJsonLd({
+    locale,
+    path: `/projects/${project.slug}`,
+    name: project.title,
+    description: t(project.descriptionKey),
+    keywords: [...project.techStack, project.category],
+    url: project.liveUrl,
+  });
+
+  const breadcrumb = breadcrumbJsonLd(locale, [
+    { name: isTr ? "Ana Sayfa" : "Home", path: "" },
+    { name: isTr ? "Projeler" : "Projects", path: "/projects" },
+    { name: project.title, path: `/projects/${project.slug}` },
+  ]);
+
+  return (
+    <>
+      <JsonLd data={[workSchema, breadcrumb]} />
+      <ProjectDetailContent project={project} nextProject={nextProject} />
+    </>
+  );
 }
 
 // Active states get the lime accent; everything else stays muted.

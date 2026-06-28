@@ -1,7 +1,25 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { certificates } from "@/data/certificates";
 import SectionHeader from "@/components/fx/SectionHeader";
 import Reveal from "@/components/fx/Reveal";
+import { buildMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  return buildMetadata({
+    locale,
+    path: "/certificates",
+    title: t("certificatesTitle"),
+    description: t("certificatesDescription"),
+  });
+}
 
 export default function CertificatesPage() {
   const t = useTranslations("CertificatesPage");

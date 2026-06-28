@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Link } from "@/i18n/navigation";
 import { caseStudies } from "@/data/case-studies";
@@ -5,11 +6,37 @@ import { projects } from "@/data/projects";
 import { routing } from "@/i18n/routing";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import Reveal from "@/components/fx/Reveal";
+import JsonLd from "@/components/JsonLd";
+import { buildMetadata, creativeWorkJsonLd, breadcrumbJsonLd } from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
     caseStudies.map((item) => ({ locale, slug: item.slug }))
   );
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string; slug: string }>;
+}): Promise<Metadata> {
+  const { locale, slug } = await params;
+  const isTr = locale === "tr";
+  const study = caseStudies.find((item) => item.slug === slug);
+  if (!study) return {};
+  const project = projects.find((p) => p.slug === study.projectSlug);
+  if (!project) return {};
+
+  return buildMetadata({
+    locale,
+    path: `/case-studies/${study.slug}`,
+    title: isTr
+      ? `${project.title} Vaka Analizi | Ali Anıl Alan`
+      : `${project.title} Case Study | Ali Anil Alan`,
+    description: isTr ? study.summaryTr : study.summaryEn,
+    type: "article",
+    keywords: [...project.techStack, project.category],
+  });
 }
 
 export default async function CaseStudyDetailPage({
@@ -29,6 +56,26 @@ export default async function CaseStudyDetailPage({
 
   const tAll = await getTranslations({ locale });
 
+  const workSchema = creativeWorkJsonLd({
+    locale,
+    path: `/case-studies/${study.slug}`,
+    name: isTr
+      ? `${project.title} Vaka Analizi`
+      : `${project.title} Case Study`,
+    description: isTr ? study.summaryTr : study.summaryEn,
+    keywords: [...project.techStack, project.category],
+    url: project.liveUrl,
+  });
+
+  const breadcrumb = breadcrumbJsonLd(locale, [
+    { name: isTr ? "Ana Sayfa" : "Home", path: "" },
+    { name: isTr ? "Vaka Analizleri" : "Case Studies", path: "/case-studies" },
+    {
+      name: isTr ? `${project.title} Vaka Analizi` : `${project.title} Case Study`,
+      path: `/case-studies/${study.slug}`,
+    },
+  ]);
+
   const sections: { label: string; body: string }[] = [
     { label: isTr ? "PROBLEM" : "PROBLEM", body: tAll(project.problemKey) },
     { label: isTr ? "ÇÖZÜM" : "SOLUTION", body: tAll(project.solutionKey) },
@@ -40,6 +87,7 @@ export default async function CaseStudyDetailPage({
 
   return (
     <div className="max-w-7xl mx-auto px-6 pt-28 pb-24 md:pt-32 md:pb-32">
+      <JsonLd data={[workSchema, breadcrumb]} />
       <article>
         {/* Breadcrumb */}
         <nav className="mb-10 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-faint">

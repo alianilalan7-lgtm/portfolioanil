@@ -1,8 +1,26 @@
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { caseStudies } from "@/data/case-studies";
 import { projects } from "@/data/projects";
 import SectionHeader from "@/components/fx/SectionHeader";
 import Reveal from "@/components/fx/Reveal";
+import { buildMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  return buildMetadata({
+    locale,
+    path: "/case-studies",
+    title: t("caseStudiesTitle"),
+    description: t("caseStudiesDescription"),
+  });
+}
 
 export default async function CaseStudiesPage({
   params,

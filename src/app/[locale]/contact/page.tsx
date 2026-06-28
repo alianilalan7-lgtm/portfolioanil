@@ -1,6 +1,24 @@
+import type { Metadata } from "next";
 import { useTranslations, useLocale } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import ContactForm from "@/components/ContactForm";
 import SectionHeader from "@/components/fx/SectionHeader";
+import { buildMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "Seo" });
+  return buildMetadata({
+    locale,
+    path: "/contact",
+    title: t("contactTitle"),
+    description: t("contactDescription"),
+  });
+}
 
 const SOCIALS: { label: string; href: string; handle: string }[] = [
   {
