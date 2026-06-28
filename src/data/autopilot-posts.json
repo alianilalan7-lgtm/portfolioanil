@@ -1,1 +1,100 @@
-[]
+[
+  {
+    "slug": "ai-export-bans-model-fragmentation-saas-founders",
+    "publishedAt": "2026-06-28",
+    "readTime": "5 min",
+    "category": "AI",
+    "tags": ["AI", "SaaS", "Founders"],
+    "status": "published",
+    "source": {
+      "name": "TechCrunch",
+      "url": "https://techcrunch.com/2026/06/27/asian-ai-startups-launch-mythos-like-models-as-anthropics-export-ban-drags-on/"
+    },
+    "tr": {
+      "title": "Yapay Zeka İhracat Yasakları Model Fragmentasyonu Yaratıyor — SaaS Kurucuların Şimdiden Planlaması Gereken Şey",
+      "excerpt": "ABD'nin sınır modellere getirdiği ihracat kısıtlamaları Asya startup'larını alternatiflere itiyor. Ürününüzün yapay zeka mimarisi bölgesel olmak zorunda kalabilir.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "İki hafta önce Trump yönetimi, Anthropic'in en güçlü modelleri Fable 5 ve Mythos'a Amerikalı olmayan kullanıcıların erişimini yasakladı. Günler içinde Asya startup'ları bu boşluğu doldurdu: Tokyo merkezli Sakana AI, Japonca için optimize edilmiş sınır düzeyinde bir model olarak konumlandırdığı Fugu'yu piyasaya sürdü. Çinli siber güvenlik firması 360 ise Mythos seviyesinde yetenekler iddia eden Tulongfeng ve Yitianzhen'i duyurdu. Mesaj açık: Yapay zeka jeopolitiği, ürün geliştiriciler için artık teorik değil."
+        },
+        {
+          "type": "heading",
+          "text": "Bu, kurucular için ne anlama geliyor?"
+        },
+        {
+          "type": "paragraph",
+          "text": "SaaS'ınız küresel müşterilere hitap ediyorsa, bugün seçtiğiniz yapay zeka modelinin yarın her pazarda erişilebilir olacağını artık varsayamazsınız. ABD yasağı yıllık 47 milyar dolarlık gelirle çalışan Anthropic'i etkiledi ve iki haftalık müzakerenin ardından yalnızca kısmen geri alındı. Bu, tek bir model sağlayıcısına bağımlı bir ürün için istikrarlı bir temel değil."
+        },
+        {
+          "type": "paragraph",
+          "text": "Daha derin risk ise pazar kilitlenmesi — ama ters yönde. Sakana AI, Fugu'yu açıkça bir 'riskten korunma aracı' olarak konumlandırıyor: Japon şirketlerinin ABD politikasından bağımsız olarak sınır düzeyinde yapay zekaya her zaman erişimi olmasını sağlamak için. Yerel diller ve kültürler için eğitilmiş bu alternatifler, kısıtlamalar kalksa bile müşterileri geri dönmekten alıkoyacak kadar ikna edici."
+        },
+        {
+          "type": "paragraph",
+          "text": "SaaS geliştiricileri için asıl mesele şu: Yapay zeka modelini saran bir ürün geliştiriyorsanız — metin özetleme, kod üretimi, müşteri desteği, belge analizi — mimarinize hiçbir kontrolünüzün olmadığı hükümet kararlarından kaynaklanan düzenleyici bir risk yerleştirmiş durumdasınız."
+        },
+        {
+          "type": "heading",
+          "text": "Ne yapmalı?"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Yapay zeka model çağrılarınızı bir sağlayıcı arayüzünün arkasına alın. Anthropic veya OpenAI çağrılarını kod tabanınıza doğrudan yazmak yerine bir sarmalayıcı katman oluşturun; bu sayede sağlayıcıyı bölgeye veya müşteriye göre değiştirebilirsiniz.",
+            "Önümüzdeki 12 ay içinde hangi pazarların sizin için önemli olduğunu belirleyin. Japonya, Çin veya Güneydoğu Asya yol haritanızdaysa, bu ülkelerde bugün hangi modellerin erişilebilir olduğunu araştırın.",
+            "Anthropic ve OpenAI'ın ihracat politikası güncellemelerini takip edin. Bu vakada kısıtlamalar iki hafta içinde kısmen tersine döndü — 'yasaklı' her zaman kalıcı değil, ama bunu ürün mimarinizin dışında tutamazsınız.",
+            "Çoklu model mimarisini yalnızca maliyet optimizasyonu için değil, dayanıklılık için de planlayın. Bir sağlayıcı bir bölgede kısıtlanırsa, yeniden yazım gerektirmeden trafiği yönlendirebilecek bir yedeğinizin hazır olması gerekir."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Yapay zeka altyapısı seçimleri artık yalnızca teknik kararlar değil. Model erişiminin bir ülkede bir gece kesilebildiği bir dünyada, bunu başından planlamak yapay zekayı ürününüze kararlılıkla entegre etmekten vazgeçmekten çok daha zekice bir yaklaşım."
+        }
+      ]
+    },
+    "en": {
+      "title": "AI Export Bans Are Creating Model Fragmentation — What SaaS Founders Must Plan For Now",
+      "excerpt": "U.S. export restrictions on frontier AI models are already pushing Asian startups to build alternatives. Your product's AI stack may need to be regional.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Two weeks ago, the Trump administration banned non-Americans from accessing Anthropic's top models, Fable 5 and Mythos. Within days, Asian startups filled the gap: Tokyo-based Sakana AI launched Fugu, positioned as a frontier-level alternative optimized for Japanese language and culture. Chinese cybersecurity firm 360 unveiled Tulongfeng and Yitianzhen, both claiming to match Mythos-level capabilities. The message is clear: AI geopolitics is no longer theoretical for product builders."
+        },
+        {
+          "type": "heading",
+          "text": "What this means for founders"
+        },
+        {
+          "type": "paragraph",
+          "text": "If your SaaS targets global customers, you can no longer assume that the AI model you chose today will be accessible in every market tomorrow. The U.S. ban affected Anthropic — a company running at $47 billion in annual revenue — and was only partially reversed after two weeks of negotiation. That is not a stable foundation for a product that depends on a single model provider."
+        },
+        {
+          "type": "paragraph",
+          "text": "The deeper risk is market lock-in in reverse. Sakana AI explicitly frames Fugu as a hedge — a way for Japanese enterprises to ensure they always have frontier-level AI access, regardless of U.S. policy. If Asian companies route around American models during this window, they may not return even when restrictions lift. Regional alternatives trained on local data and optimized for local languages give users a compelling reason to stay."
+        },
+        {
+          "type": "paragraph",
+          "text": "For SaaS builders specifically: if your product wraps an AI model — summarization, code generation, customer support, document analysis — you now have regulatory risk baked into your architecture, driven by government decisions you have no control over."
+        },
+        {
+          "type": "heading",
+          "text": "What to do about it"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Abstract your AI model calls behind a provider interface. Instead of hardcoding Anthropic or OpenAI calls throughout your codebase, build a thin wrapper layer so you can swap providers per region or per customer without a rewrite.",
+            "Identify which markets matter to your roadmap in the next 12 months. If Japan, China, or Southeast Asia are on the list, research which models are actually accessible there today — not just which ones you want to use.",
+            "Track Anthropic's and OpenAI's export policy updates. In this case, restrictions shifted within two weeks, and the partial reversal shows that 'banned' is not always permanent — but you cannot treat that as a product architecture assumption.",
+            "Plan multi-model architecture for resilience, not just cost optimization. If one provider gets restricted in a region, your fallback should be ready to route traffic without triggering a rewrite sprint."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "AI infrastructure choices are no longer purely technical decisions. In a world where model access can be cut overnight in a given country, planning for this upfront is far smarter than either avoiding AI integration or discovering the constraint at the worst possible moment."
+        }
+      ]
+    }
+  }
+]
