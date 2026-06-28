@@ -80,6 +80,7 @@ const LIME_STATUSES = ["live", "beta", "mvp", "in-progress"];
 
 // Per-slug brand backdrops + object-fit for the showcase frame (logos vs. shots).
 const MEDIA_BG: Record<string, string> = {
+  hushu: "bg-[#0d0f14]",
   pulse: "bg-[#0a0a0a]",
   "smart-planning": "bg-[#eef2f7]",
   gozcu: "bg-[#f0f4f8]",
@@ -89,6 +90,7 @@ const MEDIA_BG: Record<string, string> = {
 };
 
 const MEDIA_FIT: Record<string, string> = {
+  hushu: "object-contain p-4",
   pulse: "object-contain p-4",
   "smart-planning": "object-contain p-3",
   gozcu: "object-contain p-3",

@@ -381,6 +381,32 @@
       },
       "impact": "Online randevu dönüşümünü artırır ve manuel iletişim yükünü azaltır."
     },
+    "hushu": {
+      "description": "Anlamak ve tefekkür için sakin bir mobil Kur'an uygulaması — meali kendi dilinde oku ve dinle.",
+      "longDescription": "Hushu, indekslemek yerine anlamak üzerine kurulu bir mobil Kur'an deneyimidir. Sûreleri düz bir listeden değil, niyetinden yola çıkarak bulur; sade bir meal okur ve anlamı sakin, doğal bir sesle dinlersin — Türkçe, İngilizce ve İspanyolca olarak.",
+      "overview": "Hushu, insanların mobilde Kur'an'la kurduğu ilişkiyi yeniden tasarlıyor. Çoğu uygulama gezinme ve tilavet için optimize edilmişken; Hushu anlam ve huzur için optimize edilmiştir. Bir bölüme niyetten yola çıkılarak ulaşılır, meal sade ve dağınıklıktan uzak biçimde sunulur ve her ayet 'sesli meal' olarak dinlenebilir — okuyucunun kendi dilinde tamamen seslendirilmiş bir meal. Ses, sûre sûre tutarlı ve sakin bir tonda sunulur; freemium modelle tüm kütüphane abonelikle açılır.",
+      "problem": "Çoğu Kur'an uygulaması metni anlaşılacak değil, gezilecek ve okunacak bir şey gibi ele alır. Anlamı kavramak isteyen okuyucu, yoğun ve dağınık meallerle baş başa kalır; sakin bir dinleme yolu bulamaz — ve Türkçe, İngilizce ya da İspanyolca düşünen, yalnız Arapçayı değil anlamı da sesli isteyenler için neredeyse hiçbir şey yoktur.",
+      "solution": "Hushu, bilinçli olarak sade tutulmuş bir okuma arayüzünü her ayet için bir 'sesli meal' ile birleştirir. Gezinme bir sûre indeksinden değil niyetten başlar, meal sakin okuma için dizilir ve özel bir ses üretim hattı, desteklenen her dilde anlamı tutarlı ve doğal biçimde seslendirir. Abonelik ve tam ses kütüphanesi sade bir freemium modelle yönetilir.",
+      "features": {
+        "voicedMeal": {
+          "title": "Sesli Meal",
+          "description": "Her ayetin tamamen seslendirilmiş mealini sakin ve doğal bir sesle dinle — okunan değil, duyulan anlam."
+        },
+        "intent": {
+          "title": "Niyet Bazlı Keşif",
+          "description": "Sûrelere düz bir indeksten değil, aradığın şeyden yola çıkarak ulaş — indeks değil, anlam."
+        },
+        "reflection": {
+          "title": "Sakin Okuma & Tefekkür",
+          "description": "Sonsuz kaydırma yerine huzur ve tefekkür için bilinçli olarak sade tutulmuş bir arayüz."
+        },
+        "languages": {
+          "title": "Üç Dil",
+          "description": "Meali Türkçe, İngilizce ve İspanyolca oku ve dinle; her biri kendi tutarlı seslendirme sesiyle."
+        }
+      },
+      "impact": "Kur'an'ı kaydırılan bir şey olmaktan çıkarıp üzerinde durulan bir şeye dönüştürür; anlamı üç dilde erişilebilir, sakin ve dinlenebilir kılar."
+    },
     "orni": {
       "description": "0–6 yaş erken çocukluk eğitim ekosistemi: anaokulları, eğitmenler ve ebeveynleri tek platformda buluşturuyor.",
       "longDescription": "Orni, 0–6 yaş grubuna yönelik kapsamlı bir erken çocukluk eğitim platformudur. Anaokulları, bağımsız eğitmenler ve ebeveynleri tek bir çatı altında toplar. Ebeveynler gelişmiş filtrelerle okul keşfedebilir, eğitmen profillerini inceleyebilir, haftalık atölyelerine ön kayıt yaptırabilir ve doğrulanmış yorumları okuyabilir.",

@@ -30,6 +30,57 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    slug: "hushu",
+    title: "Hushu",
+    descriptionKey: "Projects.hushu.description",
+    longDescriptionKey: "Projects.hushu.longDescription",
+    image: "/images/hushu.jpg",
+    status: "beta",
+    category: "Mobile",
+    techStack: [
+      "React Native",
+      "Expo",
+      "TypeScript",
+      "Supabase",
+      "ElevenLabs",
+      "RevenueCat",
+    ],
+    featured: true,
+    progress: 90,
+    overviewKey: "Projects.hushu.overview",
+    problemKey: "Projects.hushu.problem",
+    solutionKey: "Projects.hushu.solution",
+    impactKey: "Projects.hushu.impact",
+    features: [
+      {
+        titleKey: "Projects.hushu.features.voicedMeal.title",
+        descriptionKey: "Projects.hushu.features.voicedMeal.description",
+        icon: "record_voice_over",
+      },
+      {
+        titleKey: "Projects.hushu.features.intent.title",
+        descriptionKey: "Projects.hushu.features.intent.description",
+        icon: "explore",
+      },
+      {
+        titleKey: "Projects.hushu.features.reflection.title",
+        descriptionKey: "Projects.hushu.features.reflection.description",
+        icon: "self_improvement",
+      },
+      {
+        titleKey: "Projects.hushu.features.languages.title",
+        descriptionKey: "Projects.hushu.features.languages.description",
+        icon: "translate",
+      },
+    ],
+    team: [{ name: "Ali Anil Alan", role: "AI Product Builder" }],
+    timeline: {
+      duration: "Ongoing",
+      phase: "Beta · TestFlight",
+      role: "Solo Developer",
+    },
+  },
+  {
     slug: "pulse",
     title: "Pulse",
     descriptionKey: "Projects.pulse.description",
@@ -432,4 +483,4 @@ async function renderEditorial(article: Article) {
   },
 ];
 
-export const categories = ["All Works", "AI Labs", "SaaS", "Web App"];
+export const categories = ["All Works", "AI Labs", "SaaS", "Mobile", "Web App"];

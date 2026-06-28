@@ -16,6 +16,7 @@ export default function ProjectsClient() {
     "All Works": t("allWorks"),
     "AI Labs": "AI Labs",
     SaaS: "SaaS",
+    Mobile: "Mobile",
     "Web App": "Web App",
   };
 

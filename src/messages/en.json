@@ -381,6 +381,32 @@
       },
       "impact": "Improves online booking conversion and reduces manual booking communication."
     },
+    "hushu": {
+      "description": "A reverent mobile Quran app for understanding and reflection — read and listen to the meaning in your own language.",
+      "longDescription": "Hushu is a mobile Quran experience built around understanding rather than indexing. Instead of a flat list of chapters, you reach passages through your intention, read a clear translation, and listen to the meaning narrated in a natural, calm voice — available in Turkish, English, and Spanish.",
+      "overview": "Hushu reframes how people engage with the Quran on mobile. Most apps optimize for navigation and recitation; Hushu optimizes for meaning and presence. A passage is reached through intention, the translation is presented calmly without clutter, and every verse can be heard as a voiced meaning (sesli meal) — a fully narrated translation in the reader's own language. Audio is delivered surah by surah with a consistent, reverent tone, and a freemium model opens the full library through subscription.",
+      "problem": "Most Quran apps treat the text as something to navigate and recite, not to understand. Readers who want to grasp the meaning are left with dense, cluttered translations and no calm way to listen — and almost nothing exists for those who think in Turkish, English, or Spanish and want the meaning, not just the Arabic, spoken aloud.",
+      "solution": "Hushu pairs a deliberately quiet reading interface with a voiced meaning (sesli meal) for every verse. Navigation starts from intention rather than a chapter index, the translation is typeset for calm reading, and a custom audio pipeline produces consistent, natural narration of the meaning in each supported language. Subscriptions and the full audio library are handled through a clean freemium model.",
+      "features": {
+        "voicedMeal": {
+          "title": "Voiced Meaning (Sesli Meal)",
+          "description": "Listen to a fully narrated translation of every verse in a natural, calm voice — meaning you can hear, not just read."
+        },
+        "intent": {
+          "title": "Intention-Based Discovery",
+          "description": "Reach passages through what you are seeking rather than a flat chapter index — meaning over indexing."
+        },
+        "reflection": {
+          "title": "Calm Reading & Reflection",
+          "description": "A deliberately quiet interface designed for presence and contemplation instead of endless scrolling."
+        },
+        "languages": {
+          "title": "Three Languages",
+          "description": "Read and listen to the meaning in Turkish, English, and Spanish, each with its own consistent narrated voice."
+        }
+      },
+      "impact": "Turns the Quran from something to scroll into something to sit with — making the meaning accessible, calm, and listenable in three languages."
+    },
     "orni": {
       "description": "Early childhood education ecosystem connecting kindergartens, instructors, and parents in one platform.",
       "longDescription": "Orni is a comprehensive early childhood education platform for ages 0–6 that brings together kindergartens, independent instructors, and parents. Parents can discover schools with advanced filters, explore instructor profiles, register for weekly workshops, and read verified reviews — all in one place.",
