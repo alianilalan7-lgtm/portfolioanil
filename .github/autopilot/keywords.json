@@ -1,37 +1,29 @@
 {
-  "note": "Search-demand seed topics for the autopilot. Pick a target query (or a close long-tail variation) that founders actually Google and that isn't already covered. A small site ranks on specific long-tail / buyer-intent queries, NOT on breaking news. Trending AI developments may be used only as a timely hook inside an evergreen, searchable answer.",
-  "en": [
-    "how to build a SaaS MVP",
-    "how much does it cost to build a SaaS app",
-    "freelance AI developer for startups",
-    "how to add AI to my SaaS product",
-    "MVP development timeline for startups",
-    "freelancer vs agency for MVP development",
-    "AI automation for small business",
-    "how much does it cost to build an AI app",
-    "best tech stack for a SaaS MVP",
-    "how to validate a startup idea with an MVP",
-    "AI dashboard for business reporting",
-    "when to hire a freelance developer vs build in-house",
-    "how to choose features for an MVP",
-    "real-world AI use cases for small businesses",
-    "how to integrate an LLM into a web app"
-  ],
-  "tr": [
-    "SaaS MVP nasıl yapılır",
-    "SaaS uygulaması geliştirme maliyeti",
-    "startup için freelance yazılımcı",
-    "uygulamama yapay zeka nasıl eklerim",
-    "MVP geliştirme süresi ne kadar",
-    "MVP için freelancer mı ajans mı",
-    "küçük işletmeler için yapay zeka otomasyonu",
-    "yapay zeka uygulaması maliyeti",
-    "SaaS için en iyi teknoloji yığını",
-    "startup fikrini MVP ile nasıl test ederim",
-    "işletmeler için AI dashboard",
-    "freelance yazılımcı ne zaman tutulmalı",
-    "MVP için hangi özellikler seçilmeli",
-    "küçük işletmeler için gerçek yapay zeka kullanımları",
-    "web uygulamasına LLM nasıl entegre edilir"
-  ]
+  "note": "Lead-gen seed topics by sector (fallback when topics-queue.json is empty). Each is a specific, costly, recognizable pain that custom software/AI can solve. Goal: the owner thinks 'can you build this for us?' Turkish-first audience (local SMBs). Rotate across sectors.",
+  "sectors": {
+    "perakende": [
+      "Perakendede stok kaybını (shrinkage) yapay zekayla erkenden yakalamak",
+      "Mağaza vardiya planlamasını dakikalara indiren özel yazılım",
+      "Çok şubeli perakendede stok ve satışı tek panelde toplamak",
+      "Perakende günlük raporlamasını Excel'den kurtaran otomasyon",
+      "Müşteri verisini gerçek karara çeviren perakende dashboard'u",
+      "Mağaza içi kampanya etkisini anında ölçen sistem"
+    ],
+    "restoran-kafe": [
+      "Restoranda maliyet/stok kaçağını gerçek zamanlı gösteren sistem",
+      "Kafe zincirinde günlük ciro ve maliyet takibini otomatikleştirmek",
+      "Sipariş ve sadakat verisini tek panelde toplayan mini yazılım",
+      "Menü ve fiyatlandırmayı veriyle yöneten restoran aracı",
+      "Reçete/porsiyon maliyetini otomatik hesaplayan sistem",
+      "Şube performansını karşılaştıran restoran yönetim paneli"
+    ],
+    "mimarlik-insaat": [
+      "Mimarlık ofisinde teklif ve maliyet hazırlamayı yarıya indiren yazılım",
+      "Proje dosyaları ve onay süreçlerini tek yerde toplayan özel araç",
+      "İnşaat şantiyesinde ilerleme ve hakediş raporlamasını otomatikleştirmek",
+      "Mimari sunum/render iş akışını hızlandıran otomasyon",
+      "Malzeme/metraj takibini dijitalleştiren şantiye sistemi",
+      "Müşteri revizyon taleplerini tek akışta yöneten mimari araç"
+    ]
+  }
 }
