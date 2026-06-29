@@ -1,5 +1,15 @@
 {
-  "note": "Lead-gen seed topics by sector (fallback when topics-queue.json is empty). Each is a specific, costly, recognizable pain that custom software/AI can solve. Goal: the owner thinks 'can you build this for us?' Turkish-first audience (local SMBs). Rotate across sectors.",
+  "note": "Mixed seed topics (fallback when topics-queue.json is empty). 'sectors' = Type A lead-gen (owner thinks 'can you build this for us?'). 'genel' = Type B broad evergreen founder/SaaS/AI guides. Alternate Type A <-> Type B for variety; rotate sectors within A. Turkish-first audience.",
+  "genel": [
+    "SaaS uygulaması geliştirme maliyeti ve süresi",
+    "Kendi işime/uygulamama yapay zeka nasıl eklerim",
+    "Küçük işletmeler için pratik yapay zeka otomasyonu örnekleri",
+    "Startup fikrini MVP ile hızlı ve ucuz test etmek",
+    "Freelance geliştirici ile çalışırken sözleşme ve süreçte nelere dikkat etmeli",
+    "İşletmeler için gerçek zamanlı veri dashboard'u nasıl kurulur",
+    "Web uygulamasına LLM (yapay zeka) entegrasyonu: pratik rehber",
+    "MVP için hangi özellikler seçilmeli, hangileri ertelenmeli"
+  ],
   "sectors": {
     "perakende": [
       "Perakendede stok kaybını (shrinkage) yapay zekayla erkenden yakalamak",
