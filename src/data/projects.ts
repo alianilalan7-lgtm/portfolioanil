@@ -36,7 +36,7 @@ export const projects: Project[] = [
     longDescriptionKey: "Projects.hushu.longDescription",
     image: "/images/hushu-icon.png",
     gallery: ["/images/hushu.jpg"],
-    status: "live",
+    status: "completed",
     category: "Mobile",
     techStack: [
       "React Native",
@@ -76,8 +76,8 @@ export const projects: Project[] = [
     ],
     team: [{ name: "Ali Anil Alan", role: "AI Product Builder" }],
     timeline: {
-      duration: "Ongoing",
-      phase: "Live · App Store",
+      duration: "Completed",
+      phase: "Completed · App Store",
       role: "Solo Developer",
     },
     liveUrl: "https://apps.apple.com/app/hushu-quran-reflections/id6764551007",
