@@ -1,0 +1,52 @@
+name: LinkedIn Auto-Share
+
+# Shares the newest unshared blog post to the owner's LinkedIn profile.
+# Runs ~1h after the blog autopilot so the post is already deployed (rich link
+# preview resolves). One post per run. Free; uses a member access token.
+
+on:
+  schedule:
+    - cron: "0 7 * * 1,3,5" # Mon/Wed/Fri 07:00 UTC (~1h after the blog autopilot)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: linkedin-share
+  cancel-in-progress: false
+
+jobs:
+  share:
+    # KILL-SWITCH: set repo variable LINKEDIN_ENABLED == 'true' to enable.
+    if: ${{ vars.LINKEDIN_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Share newest post to LinkedIn
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          SITE_URL: https://alianil.com
+        run: node scripts/autopilot/share-linkedin.mjs
+
+      - name: Commit ledger if changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- .github/autopilot/shared-linkedin.json; then
+            echo "No LinkedIn ledger change."
+            exit 0
+          fi
+          git config user.name "alianil-autopilot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/autopilot/shared-linkedin.json
+          git commit -m "chore(linkedin): shared post $(date -u +%Y-%m-%d)"
+          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
