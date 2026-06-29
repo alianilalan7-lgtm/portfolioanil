@@ -321,6 +321,161 @@
     }
   },
   {
+    "slug": "retail-month-end-stock-gap-ai-detection",
+    "publishedAt": "2026-06-29",
+    "readTime": "7 min",
+    "category": "Perakende",
+    "tags": ["Perakende", "Stok", "Yapay Zeka", "Otomasyon"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Perakende için özel yazılım & otomasyon", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi operasyonun için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Ay Sonu Stok Farkını, Ay Bitmeden Yakalayan Sistem: Perakendede Yapay Zeka Gerçekte Ne Yapıyor?",
+      "excerpt": "Perakendede ay sonu stok farkı çoğu zaman haftalar öncesinden birikiyor. Yapay zeka destekli özel bir sistem bunu erkenden nasıl tespit eder?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Ay sonu sayımı başladığında her şey zaten çoktan olup bitmiş. Mağaza müdürü ve personel saatlerce rafları sayıyor, POS sistemine bakıyor, girdi faturalarıyla karşılaştırıyor — ve mutlaka bir fark çıkıyor. Beş bin, on beş bin, bazen kırk bin TL. Sebebi? Kimse kesin olarak bilmiyor. İade mi yanlış girildi, kasa personeli giriş yapmayı unuttu mu, tedarikçi faturası eksik mi geldi, yoksa raftan çalındı mı? Sorular haftalarca yanıtsız kalıyor çünkü o an elinizde kalan tek şey sayım farkı rakamı. Kanıt, veri, izleme yok."
+        },
+        {
+          "type": "heading",
+          "text": "Bu Fark Neden Hep Ay Sonunda Ortaya Çıkıyor?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Çünkü çoğu perakende mağazası stok takibini reaktif yapıyor: gün boyunca işlemler gerçekleşiyor, ay sonunda bunlar doğrulanmaya çalışılıyor. Bu aradaki süreçte binlerce POS girişi, düzinelerce iade, haftalık teslimatlar ve ara sayımlar var — hiçbiri birbiriyle gerçek zamanlı konuşmuyor. Hata veya kayıp ne zaman başladığını ay sonunda anlayamazsın; çünkü izlediğin tek an o son nokta."
+        },
+        {
+          "type": "heading",
+          "text": "Yapay Zeka Bu Farkı Ay Bitmeden Nasıl Yakalar?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sistem şöyle çalışıyor: POS verisi, giriş faturaları ve varsa tedarikçi EDI akışı günlük olarak tek bir tabloya düşüyor. Her ürün için teorik stok hesaplanıyor: açılış + girişler − satışlar − iadeler. Bu teorik stok, belirli aralıklarda yapılan fiziksel sayım veya barkod taramasıyla karşılaştırılıyor. Aradaki fark beklenenden büyük olduğunda — ya da bir ürün kategorisinde ani bir düşüş gözlemlendiğinde — sistem uyarı gönderiyor. Ay sonunu beklemeye gerek kalmıyor."
+        },
+        {
+          "type": "heading",
+          "text": "Somut Olarak Ne Yapıyor?"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Günlük teorik stok ile fiili stok karşılaştırması: hangi ürünler, hangi mağaza veya rafta beklenenin dışında seyrediyor — her gün görünür.",
+            "Anomali tespiti: belirli bir SKU'da benzer günlere kıyasla anormal bir düşüş varsa sistem bunu otomatik işaretliyor. Her Cuma öğleden sonra belirli bir ürünün kaybı tekrarlanıyorsa bu örüntü görünür hale geliyor.",
+            "Kayıp noktası göstergesi: iade mi, kasa girişi mi, yoksa tedarikçi faturası mı — sistem logları sayesinde farkın hangi süreçte ve hangi zaman diliminde başladığı dar bir pencereye indirgeniyor.",
+            "Yönetici uyarıları: eşik değerleri aşıldığında mağaza müdürüne veya merkeze SMS, e-posta ya da dashboard bildirimi gönderiliyor. Ay sonu sürprizi yerine, Salı sabahı müdahale edilebilir bir uyarı."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Teknik Olarak Nasıl Kurulur?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Perakendede yaygın ERP ve POS sistemlerinin çoğu dışarıya veri verebiliyor: Netsis, Logo, Netsuite ve pek çok POS platformu API ya da veri dışa aktarma imkânı sunuyor. Bu veri bir orta katmana çekiliyor, standartlaştırılıyor ve bir anomali motorundan geçiyor. Kural tabanlı bir sistem veya hafif bir makine öğrenimi modeli yeterli — büyük bir veri bilimi ekibine gerek yok. Gösterge paneli, şube müdürünün her sabah açıp bakacağı şekilde tasarlanıyor: sade, önem sırasına göre sıralı, aksiyon alınabilir."
+        },
+        {
+          "type": "heading",
+          "text": "Gerçekçi Kazanım Ne?"
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "label": "Mağaza başı ay sonu sayım süresi", "value": "4–12 saat" },
+            { "label": "Sistemle anomali tespiti süresi", "value": "Ay sonundan 5–15 gün önce" },
+            { "label": "Müdahale penceresi", "value": "Sıfır günden 2–4 haftaya" }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Sıfır stok farkı garanti etmiyorum — bunu hiçbir sistem veremez. Ama farkın kaynağını dar bir zaman dilimine ve işlem türüne indirgeyebilmek, manuel soruşturma süresini ciddi ölçüde kısaltıyor. Daha önemlisi, bazı kayıpları hâlâ önlenebilirken yakalıyor: iadelerin eksik girildiği günler, kasiyer hatalarının yoğunlaştığı vardiyalar, belirli bir rayon ya da personel etrafında biriken anormallikler."
+        },
+        {
+          "type": "heading",
+          "text": "Kendi Mağazan veya Zincirin için Konuşalım"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu çözümü standart bir kutu yazılım olarak değil, mevcut altyapına ve şube yapına özel bir entegrasyon olarak kuruyorum. Tek mağaza da olur, yirmi şubeli bir zincir de. Önemli olan hangi POS ya da ERP kullandığın, veriyi nasıl topladığın ve farkın bugün hangi aşamada görünür hale geldiği. Birkaç soruyla kapsam netleşir. Kendi operasyonun için benzer bir sistemi konuşmak istersen iletişim sayfasından ulaşabilirsin."
+        }
+      ]
+    },
+    "en": {
+      "title": "Catching Retail Stock Discrepancies Before Month End: What an AI System Actually Does",
+      "excerpt": "Retail stock gaps accumulate weeks before month-end counts reveal them. Here is how a custom AI-backed system detects them early and narrows the source.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "By the time month-end inventory counts begin, the damage is already done. A store manager and two staff members spend hours counting shelves, cross-referencing POS records, comparing against supplier invoices — and a gap always appears. Five thousand, twenty thousand, sometimes far more in lost stock value. The cause? Nobody knows for certain. Was a return entered incorrectly? Did a cashier forget to log a transaction? Did a supplier invoice arrive short? Was product taken from the shelf? The questions remain unanswered for weeks because the only thing left at that moment is a number — the discrepancy total. No trace, no data, no audit trail."
+        },
+        {
+          "type": "heading",
+          "text": "Why Does This Gap Always Show Up at Month End?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Because most retail operations manage inventory reactively: transactions flow throughout the day, and they are only reconciled at month end. In between are thousands of POS entries, dozens of returns, weekly deliveries, and mid-period counts — none of them speaking to each other in real time. By the time you notice the gap, you cannot pinpoint when it started, because the only moment you're tracking is the final one."
+        },
+        {
+          "type": "heading",
+          "text": "How AI Catches the Stock Gap Before Month End"
+        },
+        {
+          "type": "paragraph",
+          "text": "Here is how the system works: POS data, goods-received invoices, and any available supplier EDI feeds are pulled into a single table daily. For each SKU, a theoretical stock level is calculated — opening balance plus inflows minus sales minus returns. This theoretical count is then compared against periodic physical counts or barcode scans taken throughout the week. When the gap between theoretical and actual stock exceeds a threshold — or when a product category shows a sudden unexpected drop — the system flags it. You do not need to wait for month end to know something is wrong."
+        },
+        {
+          "type": "heading",
+          "text": "What It Specifically Does"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Daily theoretical vs. actual stock comparison: which products, in which store or section, are running outside expected levels — visible every day, not once a month.",
+            "Anomaly detection: if a specific SKU shows an unusual decline compared to similar days in prior weeks, the system flags it automatically. If Friday afternoons consistently produce losses on a particular product, that pattern becomes visible rather than buried.",
+            "Loss-point narrowing: whether the gap originates from incorrectly logged returns, cashier errors, or supplier invoice mismatches, the system's transaction logs narrow the source to a specific process and time window.",
+            "Manager alerts: when thresholds are exceeded, the store manager or head office receives a notification — SMS, email, or a dashboard alert. Instead of a surprise at month end, you get an actionable signal on a Tuesday morning while there is still time to investigate."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "How It Is Built"
+        },
+        {
+          "type": "paragraph",
+          "text": "Most retail ERP and POS systems in common use — Netsis, Logo, Netsuite, and many POS platforms — can export data via API or scheduled file exports without requiring a full system replacement. That data is pulled into a standardisation layer and passed through an anomaly engine. A rule-based system or a lightweight anomaly detection model handles the flagging — no data science team required. The dashboard is designed for what a store manager or area supervisor actually opens each morning: clean, ranked by severity, and structured so that every alert points to a specific action."
+        },
+        {
+          "type": "heading",
+          "text": "Realistic Outcomes"
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "label": "Typical month-end count duration per store", "value": "4–12 hours" },
+            { "label": "Time to anomaly detection with system", "value": "5–15 days before month end" },
+            { "label": "Investigation lead time gained", "value": "From zero to 2–4 weeks" }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I do not promise zero stock discrepancies — no system can deliver that. What this does is narrow the source of a gap to a tight time window and transaction type, cutting investigation time significantly. More importantly, it catches some losses while they can still be stopped: the days when returns were being logged incorrectly, the shifts when cashier errors clustered, the aisle or product group where the anomaly consistently originates."
+        },
+        {
+          "type": "heading",
+          "text": "Want to Build This for Your Own Store or Chain?"
+        },
+        {
+          "type": "paragraph",
+          "text": "I build this as a custom integration fitted to your existing infrastructure — a single store or a twenty-branch chain. The starting questions are what POS or ERP you run, how you currently collect transaction data, and at which point discrepancies first become visible in your current process. A few questions is all it takes to scope the right approach. If you'd like to discuss building something similar for your own operation, reach out through the contact page."
+        }
+      ]
+    }
+  },
+  {
     "slug": "how-to-choose-features-for-an-mvp",
     "publishedAt": "2026-06-29",
     "readTime": "7 min",
