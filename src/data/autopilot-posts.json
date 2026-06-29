@@ -319,5 +319,220 @@
         }
       ]
     }
+  },
+  {
+    "slug": "how-to-choose-features-for-an-mvp",
+    "publishedAt": "2026-06-29",
+    "readTime": "7 min",
+    "category": "SaaS",
+    "tags": ["MVP", "SaaS", "Founders", "Product"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "MVP & SaaS development services", "href": "/services" },
+      { "label": "Process & pricing", "href": "/process-pricing" },
+      { "label": "Start your project", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "MVP için Hangi Özellikler Seçilmeli? Kapsamı Doğru Belirlemek için Kurucu Rehberi",
+      "excerpt": "MVP için hangi özelliklerin seçileceği, erken aşama kurucuların en çok takıldığı karardır. Gereksiz özellikleri kesip ilk sürümü nasıl doğru kapsamlandıracağınızı öğrenin.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "MVP için hangi özelliklerin seçileceği, erken aşama kurucuların önünde en çok yığılan sorulardan biri. Elinizde bir fikir var, işe yarayabileceğini biliyorsunuz; ama önünüzde elli maddelik bir özellik listesi var ve neyi kesmeniz gerektiğine dair net bir ilkeniz yok. Her özellik önemli görünüyor, her biri için mantıklı bir gerekçe var. Bu rehber, bütçeniz bitmeden önce — geliştirme başlamadan — o kararları kararlılıkla verebilmeniz için somut bir çerçeve sunuyor."
+        },
+        {
+          "type": "heading",
+          "text": "MVP Kapsam Hatası: Neden Çoğu İlk Sürüm Fazla Büyük Başlıyor"
+        },
+        {
+          "type": "paragraph",
+          "text": "En yaygın MVP hatası az göndermek değil, çok fazla göndermek. Çoğu kurucu özellik listesini bir pazarlık olarak ele alıyor: 'Bunu keseriz ama bunu kesemeyiz.' Sonuç, sekiz şeyi yeterince yapan ama hiçbirini birisini ödemeye ikna edecek kadar iyi yapmayan bir ürün oluyor. MVP'nin amacı etkilemek değil; belirli bir pazar varsayımını mümkün olan en düşük maliyet ve süreyle test etmek. Bunu test etmeye hizmet etmeyen her şey — ileride ne kadar faydalı olursa olsun — fazladan yüktür. Ve bu yük, zaman ve para olarak geri döner."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kapsam kayması çoğunlukla erken aşamada başlar: 'Şimdi ekleyelim, sonradan zor olur' mantığı. Bu düşünce kalıbı, tek başına yüzlerce saatlik geliştirme süresini gereksiz yere artırır. Kullanıcıların hiçbir zaman doğrudan geri bildirim vermediği özellikler için vakit ve bütçe harcanır; asıl ürün gecikmesinin nedeni bu sıkıştırılmış kapsamdır."
+        },
+        {
+          "type": "heading",
+          "text": "MVP için Hangi Özellikler Seçilmeli: Adım Adım Bir Çerçeve"
+        },
+        {
+          "type": "list",
+          "items": [
+            "MVP'nizin müşteri için yaptığı işi tek bir cümleyle yazın. Eğer tek cümleyle yazamıyorsanız odağınız henüz yeterince netleşmemiş demektir. Bu cümle, herhangi bir özellik ekleme tartışmasında başlangıç noktanız olmalı.",
+            "Düşündüğünüz tüm özellikleri listeleyin. Her biri için iki soru sorun: Hangi müşteri sorununu çözüyor? Bu özellik olmadan kullanıcı çekirdek değere ulaşabilir mi? İkinci soruya 'evet' cevabı verebiliyorsanız özellik ikinci sürüme aittir.",
+            "En riskli varsayımınızı belirleyin — yanlış çıkması durumunda tüm fikrinizi çökertecek tek şeyi. Her MVP özelliği bu varsayımı doğrulamalı ya da doğrudan test edilmesini desteklemeli. Bu varsayıma dokunmayan özellikler kesilmelidir.",
+            "'Şimdi gerekli / sonraya bırakılabilir' filtresini uygulayın. Kullanıcı bir özellik olmadan da çekirdek akışı tamamlayıp değer alabiliyorsa, o özelliği ikinci sürüme bırakın. Yapacak şeyler bitmeyecek — hepsini aynı anda yapmaya çalışırken zaman ve bütçe bitecek.",
+            "Her özelliği üç katmana atayın: olmazsa olmaz (kullanıcı çekirdek değere bu olmadan ulaşamaz), olursa iyi (deneyimi önemli ölçüde artırır), güzel olurdu (geri kalan her şey). Yalnızca olmazsa olmazları gönderin; diğerlerine gerçek kullanıcı geri bildirimi aldıktan sonra bakın.",
+            "Geliştirme başlamadan önce kapsamı yazılı olarak dondurun. Ekibiniz veya geliştiricinizle bir özellik dondurma tarihi üzerinde anlaşın ve buna uyun. Kapsam kayması neredeyse hiçbir zaman teknik bir sorun değildir — iletişim ve taahhüt sorunudur."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Özellikleri Keserken Ne Aranmalı"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kesilmesi en zor özellikler genellikle inşa etmekten en çok gurur duyduklarınızdır — karmaşık algoritmalar, özenle tasarlanmış ayarlar ekranları, yönetici panelleri, gelişmiş filtreler. Bunlar nadiren bir kullanıcının kalıp kalmamasına karar verendir. Karar veren şey, çekirdek döngünün işleyip işlemediği ve kullanıcının ilk 90 saniye içinde ne yapması gerektiğini anlayıp anlamadığıdır."
+        },
+        {
+          "type": "paragraph",
+          "text": "Müşterilerle MVP kapsamı belirlerken her özellik için şu soruyu sorarım: 'Kullanıcı bu özellik olmadan ürün için para ödemez mi, yoksa siz sadece onsuz göndermekten mi korkuyorsunuz?' Bu iki neden arasında büyük bir fark var. Birinci, ürün kararıdır. İkincisi, güven sorunudur — ve güven sorununu özellik ekleyerek çözemezsiniz."
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "label": "Kapsam belirleme öncesi tipik MVP özellik listesi", "value": "30–60 madde" },
+            { "label": "Başarılı MVP'lerde gönderilen özellikler", "value": "5–12 madde" },
+            { "label": "Ortalama kesilmesi gereken kapsam oranı", "value": "%60–80" }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Gerçek Hayattan Bir Örnek"
+        },
+        {
+          "type": "paragraph",
+          "text": "Yakın zamanda bir müşterim şu 'birinci aşama' MVP planıyla geldi: kullanıcı kimlik doğrulama, ekip yönetimi, rol tabanlı izinler, beş grafik türüyle bir kontrol paneli, CSV dışa aktarma, e-posta bildirimleri, geri bildirim widget'ı ve Stripe entegrasyonu. Her biri mantıklı görünüyordu; hiçbiri tartışmalı değildi. Ancak hepsini birden inşa etmek dört ila altı ay demekti."
+        },
+        {
+          "type": "paragraph",
+          "text": "Birlikte kapsamı şuna indirdik: Google ile giriş, kullanıcıların gerçekten yanıtlaması gereken soruyu yanıtlayan tek bir grafik ve Stripe'ta tek bir ödeme katmanı. Bu sürüm üç haftada yayına girdi. Altı hafta içinde kullanıcılar hangi kesilen özelliklerin gerçekten önemli olduğunu söyledi — ve hiçbiri başta bağlı oldukları özellikler değildi. Ekip yönetimi ve CSV dışa aktarma değil, belirli bir konuya odaklanmış ikinci grafik türü ve Slack bildirimleri istendi."
+        },
+        {
+          "type": "heading",
+          "text": "Sık Sorulan Sorular"
+        },
+        {
+          "type": "subheading",
+          "text": "Bir MVP'de kaç özellik olmalı?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Evrensel bir sayı yok, ancak iyi kapsamlandırılmış bir SaaS MVP için 5–12 özellik tipik bir aralık. Sayıdan daha önemli olan, her özelliğin çekirdek kullanıcı akışı için gerçekten gerekli olup olmadığı. Üç şeyi mükemmel yapan bir MVP, on beş şeyi yeterince yapan birinden çok daha test edilebilir — ve yatırım alabilir. Yatırımcılar keskin odağı dağınık kapsama tercih eder."
+        },
+        {
+          "type": "subheading",
+          "text": "Paydaşlar ya da yatırımcılar daha fazla özellik isterse ne yapmalıyım?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu bir ürün sorunu değil, önceliklendirme ve iletişim sorunudur. Her özellik talebini test ettiğiniz hipoteze bağlamak doğru yanıt. Bir paydaş X özelliğini istiyorsa şunu sorun: 'Bu özellik birinci sürümde hangi varsayımı doğrulamamıza yardımcı oluyor?' Yanıt 'hiçbirini, ama olursa iyi olur' ise bu tanım gereği MVP sonrası bir özellik. Ürün geliştirmeyi anlayan yatırımcılar şişirilmiş bir MVP'ye değil, keskin ve öğrenme odaklı bir MVP'ye değer verir."
+        },
+        {
+          "type": "subheading",
+          "text": "Çok fazla özellik kestim mi? Bunu nasıl anlarım?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Kalan özellikler eksiksiz bir kullanıcı akışı oluşturmuyorsa çok fazla kesmişsiniz demektir — kullanıcı giriş yapamıyor, çekirdek eylemi gerçekleştiremiyor veya bir çıkmazla karşılaşıyorsa. Bu tabandır. Bu tabanın üstünde, hemen hemen her kurucu az değil fazla kapsam belirliyor. MVP'niz kullanıcının değer önerinizde vaat ettiğiniz tek şeyi yapmasına izin veriyorsa, göndermek ve öğrenmek için yeterli. Öğrenme olmadan eklediğiniz her özellik tahmindir, geri bildirim değil."
+        },
+        {
+          "type": "paragraph",
+          "text": "MVP için doğru özellikleri seçmek yaratıcı bir egzersizden çok bir disiplin meselesi. Amaç her istediğinizi inşa etmek değil; ne inşa ettiğinizin gerçekten inşa etmeye değer olup olmadığını mümkün olan en kısa sürede öğrenmek. Geliştirme başlamadan MVP'nizi kapsamlandırmanıza yardımcı olmamı istiyorsanız, iletişim sayfasından ulaşabilirsiniz."
+        }
+      ]
+    },
+    "en": {
+      "title": "How to Choose Features for an MVP: A Founder's Guide to Scoping Right",
+      "excerpt": "Choosing which features belong in your MVP is the decision most early-stage founders get wrong. Learn how to cut scope without cutting value and ship faster.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "How to choose features for an MVP is one of the questions that stalls more founders than almost any other. You have an idea, you know it could work, but you're sitting in front of a feature list that has grown to fifty items with no clear principle for what to cut. Every feature has a rationale. Every cut feels risky. This guide gives you a concrete framework for making those decisions decisively — before development starts, not after your budget is gone."
+        },
+        {
+          "type": "heading",
+          "text": "The MVP Scoping Mistake: Why Most First Versions Ship Too Big"
+        },
+        {
+          "type": "paragraph",
+          "text": "The most common MVP error isn't shipping too little — it's shipping too much. Most founders treat their feature list as a negotiation: 'We'll cut this, but not that.' The result is a product that does eight things adequately and none of them well enough to make someone pay. The purpose of an MVP is not to impress — it's to test one specific assumption about your market at the lowest possible cost and time. Everything that doesn't serve that test is waste, regardless of how useful it might eventually become."
+        },
+        {
+          "type": "paragraph",
+          "text": "Scope creep typically starts early, driven by the logic of 'it's easier to add this now than later.' That thinking, applied repeatedly, is what pushes a three-week MVP into a five-month project. Time and budget go to features users never directly ask for; the real product gets delayed. The cost isn't just financial — it's the cost of delayed learning about whether the core idea works at all."
+        },
+        {
+          "type": "heading",
+          "text": "How to Choose Features for an MVP: A Step-by-Step Framework"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Write a single sentence that describes the one job your MVP does for the customer. If you can't write it in one sentence, your focus isn't clear enough yet. Every feature addition discussion should start by checking against this sentence.",
+            "List every feature you're considering. For each one, answer two questions: What specific customer problem does it solve? Can the user reach the core value without this feature? If the second answer is 'yes,' the feature belongs in a later release.",
+            "Identify your riskiest assumption — the single thing that, if wrong, makes your whole idea fail. Every MVP feature should either validate or directly enable testing of that assumption. Features that don't touch it should be cut.",
+            "Apply a 'must-launch vs. later' filter to everything that remains. If a user can complete the core flow and get value without a feature, mark it for the second release. You will not run out of things to build — you will run out of time and money trying to build everything at once.",
+            "Assign each feature to one of three tiers: must-have (without it the user can't reach core value), should-have (meaningfully improves the experience), and nice-to-have (everything else). Ship only the must-haves. Revisit the rest after real user feedback.",
+            "Set a hard scope boundary, in writing, before development starts. Agree with your team or developer on a feature freeze date and hold to it. Scope creep is almost never a technical problem — it's a communication and commitment problem."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "What to Look for When Cutting Features"
+        },
+        {
+          "type": "paragraph",
+          "text": "The features that are hardest to cut are usually the ones you're most proud of building — complex algorithms, polished settings screens, admin dashboards, advanced filters. These are rarely what determines whether a user stays or leaves. What determines it is whether the core loop works and whether users understand what to do within the first 90 seconds."
+        },
+        {
+          "type": "paragraph",
+          "text": "When I scope MVPs with clients, the question I ask about each feature is: 'Would a user not pay for this without this feature, or are you just afraid to ship without it?' Those are very different reasons to include something. The first is a product decision. The second is a confidence problem — and you cannot solve a confidence problem by adding more features."
+        },
+        {
+          "type": "stats",
+          "items": [
+            { "label": "Typical MVP feature list before scoping", "value": "30–60 items" },
+            { "label": "Features shipped in successful MVPs", "value": "5–12 items" },
+            { "label": "Scope that needs to be cut on average", "value": "60–80%" }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "A Real-World Example"
+        },
+        {
+          "type": "paragraph",
+          "text": "A recent client came to me with an MVP plan that included user authentication, team management, role-based permissions, a dashboard with five chart types, CSV export, email notifications, a feedback widget, and a Stripe integration — all in 'phase one.' Every item had a reason. None of it was obviously wrong. But building all of it together was four to six months of work."
+        },
+        {
+          "type": "paragraph",
+          "text": "We scoped it down to: login with Google, one chart that answered the specific question their users actually needed to answer, and a single payment tier on Stripe. That version shipped in three weeks instead of four months. Within six weeks, users told them which of the cut features actually mattered — and it was none of the ones they had originally been most attached to. Not team management, not CSV export. What users actually asked for was a second chart focused on a specific metric, and Slack notifications."
+        },
+        {
+          "type": "heading",
+          "text": "Frequently Asked Questions"
+        },
+        {
+          "type": "subheading",
+          "text": "How many features should an MVP have?"
+        },
+        {
+          "type": "paragraph",
+          "text": "There's no universal number, but 5–12 features is a typical range for a well-scoped SaaS MVP. More important than the count is whether each feature is necessary for the core user flow. An MVP that does three things reliably is far more testable — and more fundable — than one that does fifteen things adequately. Investors who understand product development prefer a sharp, focused MVP to a bloated one."
+        },
+        {
+          "type": "subheading",
+          "text": "What if stakeholders or investors want more features?"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is a prioritization and communication challenge, not a product one. The right response is to tie every feature request back to the hypothesis you're testing in version one. If a stakeholder wants feature X, ask: 'Which assumption does this help us validate before we have paying users?' If the answer is 'none, but it would be good to have,' that is the definition of a post-MVP feature. Document it for the backlog and move on."
+        },
+        {
+          "type": "subheading",
+          "text": "How do I know if I've cut too much?"
+        },
+        {
+          "type": "paragraph",
+          "text": "You've cut too much if the remaining features don't form a complete user flow — if a user can't log in, complete the core action, and get value without hitting a dead end. That is the floor. Above that floor, almost every founder over-scopes rather than under-scopes. If your MVP lets a user accomplish the one thing you promised in your value proposition, you have enough to ship and learn. Every feature added beyond that without user feedback is a guess, not a decision."
+        },
+        {
+          "type": "paragraph",
+          "text": "Choosing the right features for an MVP is less a creative exercise and more a discipline problem. The goal is not to build everything you want — it's to learn as fast as possible whether what you're building is worth building at all. If you'd like help scoping your MVP before development starts, reach out through the contact page."
+        }
+      ]
+    }
   }
 ]
