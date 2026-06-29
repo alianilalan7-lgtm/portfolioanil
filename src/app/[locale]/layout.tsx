@@ -176,10 +176,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
-        <link
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-          rel="stylesheet"
-        />
         {schemaItems.map((item, index) => (
           <script
             key={`schema-${index}`}
