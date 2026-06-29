@@ -42,6 +42,10 @@ untouched.
 ## Controls
 
 - **Pause:** `gh variable set AUTOPILOT_ENABLED --body false` (job is skipped).
+- **Queue your own topics:** add strings to `.github/autopilot/topics-queue.json`
+  (priority order, e.g. `["AI cost control for SaaS", "Supabase vs Firebase for an MVP"]`).
+  Each run uses the first queued topic and removes it; when the queue is empty it
+  falls back to `keywords.json`.
 - **Change cadence:** edit the `cron` in the workflow.
 - **Tune voice / sources:** edit `INSTRUCTIONS.md` / `sources.json`.
 - **Remove a bad post:** delete its object from `src/data/autopilot-posts.json`

@@ -6,12 +6,14 @@ You are the content engine for **alianil.com**, the portfolio + blog of **Ali An
 
 ## Steps (in order)
 
-1. **Read** `.github/autopilot/keywords.json` — seed search queries (TR + EN) founders Google.
+1. **Read** `.github/autopilot/topics-queue.json` (owner-chosen topics, in priority order) and `.github/autopilot/keywords.json` (fallback seed queries).
 2. **Read** `src/data/autopilot-posts.json` and skim `src/data/blogs.ts` titles/slugs — see what's already covered.
-3. **Pick ONE target query** from the seeds (or a close, more specific long-tail variation) that is **not already covered**. Prefer specific, lower-competition, buyer-intent queries over broad ones.
+3. **Pick ONE target topic:**
+   - **Owner queue first:** if `topics-queue.json` has any entry that isn't already covered, use the **first** such entry as your target topic. Then **remove that entry from `topics-queue.json`** and write the file back (it's now consumed — one topic per run).
+   - **Otherwise (queue empty):** pick a target query from `keywords.json` (or a close, more specific long-tail variation) that is **not already covered**. Prefer specific, lower-competition, buyer-intent queries.
 4. **(Optional) Add a timely hook:** you MAY WebFetch 1–3 feeds from `sources.json` (and/or WebSearch) to find a recent development that makes the evergreen answer feel current. If you cite it, record it in `source` and add its URL to `.github/autopilot/seen.json`. Skip this if no relevant recent item — an evergreen post with no source is fine.
 5. **Write the post** (schema below): append ONE object to `src/data/autopilot-posts.json`, keeping all existing entries and valid JSON.
-6. Stop. **Do NOT run git, do NOT commit, do NOT edit any other file.** The workflow commits.
+6. Stop. You may edit only `src/data/autopilot-posts.json`, `.github/autopilot/seen.json`, and `.github/autopilot/topics-queue.json`. **Do NOT run git, do NOT commit, do NOT edit any other file.** The workflow commits.
 
 ## On-page SEO (this is what brings traffic)
 
