@@ -4,7 +4,11 @@
     "publishedAt": "2026-06-28",
     "readTime": "5 min",
     "category": "AI",
-    "tags": ["AI", "SaaS", "Founders"],
+    "tags": [
+      "AI",
+      "SaaS",
+      "Founders"
+    ],
     "status": "published",
     "source": {
       "name": "TechCrunch",
@@ -102,12 +106,27 @@
     "publishedAt": "2026-06-28",
     "readTime": "8 min",
     "category": "AI",
-    "tags": ["AI", "LLM", "Web Development", "SaaS", "Integration"],
+    "tags": [
+      "AI",
+      "LLM",
+      "Web Development",
+      "SaaS",
+      "Integration"
+    ],
     "status": "published",
     "relatedLinks": [
-      { "label": "AI & SaaS development services", "href": "/services" },
-      { "label": "Process & pricing", "href": "/process-pricing" },
-      { "label": "Start your project", "href": "/contact" }
+      {
+        "label": "AI & SaaS development services",
+        "href": "/services"
+      },
+      {
+        "label": "Process & pricing",
+        "href": "/process-pricing"
+      },
+      {
+        "label": "Start your project",
+        "href": "/contact"
+      }
     ],
     "tr": {
       "title": "Web Uygulamasına LLM Nasıl Entegre Edilir: Adım Adım Geliştirici Rehberi",
@@ -128,9 +147,18 @@
         {
           "type": "stats",
           "items": [
-            { "label": "GPT-4o (input)", "value": "$2,50 / 1M token" },
-            { "label": "Claude Sonnet 4.6 (input)", "value": "$3,00 / 1M token" },
-            { "label": "Gemini 2.0 Flash (input)", "value": "$0,10 / 1M token" }
+            {
+              "label": "GPT-4o (input)",
+              "value": "$2,50 / 1M token"
+            },
+            {
+              "label": "Claude Sonnet 4.6 (input)",
+              "value": "$3,00 / 1M token"
+            },
+            {
+              "label": "Gemini 2.0 Flash (input)",
+              "value": "$0,10 / 1M token"
+            }
           ]
         },
         {
@@ -233,9 +261,18 @@
         {
           "type": "stats",
           "items": [
-            { "label": "GPT-4o (input)", "value": "$2.50 / 1M tokens" },
-            { "label": "Claude Sonnet 4.6 (input)", "value": "$3.00 / 1M tokens" },
-            { "label": "Gemini 2.0 Flash (input)", "value": "$0.10 / 1M tokens" }
+            {
+              "label": "GPT-4o (input)",
+              "value": "$2.50 / 1M tokens"
+            },
+            {
+              "label": "Claude Sonnet 4.6 (input)",
+              "value": "$3.00 / 1M tokens"
+            },
+            {
+              "label": "Gemini 2.0 Flash (input)",
+              "value": "$0.10 / 1M tokens"
+            }
           ]
         },
         {
@@ -325,12 +362,26 @@
     "publishedAt": "2026-06-29",
     "readTime": "7 min",
     "category": "Perakende",
-    "tags": ["Perakende", "Stok", "Yapay Zeka", "Otomasyon"],
+    "tags": [
+      "Perakende",
+      "Stok",
+      "Yapay Zeka",
+      "Otomasyon"
+    ],
     "status": "published",
     "relatedLinks": [
-      { "label": "Perakende için özel yazılım & otomasyon", "href": "/services" },
-      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
-      { "label": "Kendi operasyonun için konuşalım", "href": "/contact" }
+      {
+        "label": "Perakende için özel yazılım & otomasyon",
+        "href": "/services"
+      },
+      {
+        "label": "Nasıl çalışıyorum & fiyatlandırma",
+        "href": "/process-pricing"
+      },
+      {
+        "label": "Kendi operasyonun için konuşalım",
+        "href": "/contact"
+      }
     ],
     "tr": {
       "title": "Ay Sonu Stok Farkını, Ay Bitmeden Yakalayan Sistem: Perakendede Yapay Zeka Gerçekte Ne Yapıyor?",
@@ -384,9 +435,18 @@
         {
           "type": "stats",
           "items": [
-            { "label": "Mağaza başı ay sonu sayım süresi", "value": "4–12 saat" },
-            { "label": "Sistemle anomali tespiti süresi", "value": "Ay sonundan 5–15 gün önce" },
-            { "label": "Müdahale penceresi", "value": "Sıfır günden 2–4 haftaya" }
+            {
+              "label": "Mağaza başı ay sonu sayım süresi",
+              "value": "4–12 saat"
+            },
+            {
+              "label": "Sistemle anomali tespiti süresi",
+              "value": "Ay sonundan 5–15 gün önce"
+            },
+            {
+              "label": "Müdahale penceresi",
+              "value": "Sıfır günden 2–4 haftaya"
+            }
           ]
         },
         {
@@ -455,9 +515,18 @@
         {
           "type": "stats",
           "items": [
-            { "label": "Typical month-end count duration per store", "value": "4–12 hours" },
-            { "label": "Time to anomaly detection with system", "value": "5–15 days before month end" },
-            { "label": "Investigation lead time gained", "value": "From zero to 2–4 weeks" }
+            {
+              "label": "Typical month-end count duration per store",
+              "value": "4–12 hours"
+            },
+            {
+              "label": "Time to anomaly detection with system",
+              "value": "5–15 days before month end"
+            },
+            {
+              "label": "Investigation lead time gained",
+              "value": "From zero to 2–4 weeks"
+            }
           ]
         },
         {
@@ -480,12 +549,26 @@
     "publishedAt": "2026-06-29",
     "readTime": "7 min",
     "category": "SaaS",
-    "tags": ["MVP", "SaaS", "Founders", "Product"],
+    "tags": [
+      "MVP",
+      "SaaS",
+      "Founders",
+      "Product"
+    ],
     "status": "published",
     "relatedLinks": [
-      { "label": "MVP & SaaS development services", "href": "/services" },
-      { "label": "Process & pricing", "href": "/process-pricing" },
-      { "label": "Start your project", "href": "/contact" }
+      {
+        "label": "MVP & SaaS development services",
+        "href": "/services"
+      },
+      {
+        "label": "Process & pricing",
+        "href": "/process-pricing"
+      },
+      {
+        "label": "Start your project",
+        "href": "/contact"
+      }
     ],
     "tr": {
       "title": "MVP için Hangi Özellikler Seçilmeli? Kapsamı Doğru Belirlemek için Kurucu Rehberi",
@@ -537,9 +620,18 @@
         {
           "type": "stats",
           "items": [
-            { "label": "Kapsam belirleme öncesi tipik MVP özellik listesi", "value": "30–60 madde" },
-            { "label": "Başarılı MVP'lerde gönderilen özellikler", "value": "5–12 madde" },
-            { "label": "Ortalama kesilmesi gereken kapsam oranı", "value": "%60–80" }
+            {
+              "label": "Kapsam belirleme öncesi tipik MVP özellik listesi",
+              "value": "30–60 madde"
+            },
+            {
+              "label": "Başarılı MVP'lerde gönderilen özellikler",
+              "value": "5–12 madde"
+            },
+            {
+              "label": "Ortalama kesilmesi gereken kapsam oranı",
+              "value": "%60–80"
+            }
           ]
         },
         {
@@ -638,9 +730,18 @@
         {
           "type": "stats",
           "items": [
-            { "label": "Typical MVP feature list before scoping", "value": "30–60 items" },
-            { "label": "Features shipped in successful MVPs", "value": "5–12 items" },
-            { "label": "Scope that needs to be cut on average", "value": "60–80%" }
+            {
+              "label": "Typical MVP feature list before scoping",
+              "value": "30–60 items"
+            },
+            {
+              "label": "Features shipped in successful MVPs",
+              "value": "5–12 items"
+            },
+            {
+              "label": "Scope that needs to be cut on average",
+              "value": "60–80%"
+            }
           ]
         },
         {
@@ -686,6 +787,89 @@
         {
           "type": "paragraph",
           "text": "Choosing the right features for an MVP is less a creative exercise and more a discipline problem. The goal is not to build everything you want — it's to learn as fast as possible whether what you're building is worth building at all. If you'd like help scoping your MVP before development starts, reach out through the contact page."
+        }
+      ]
+    }
+  },
+  {
+    "slug": "hushu-is-live",
+    "publishedAt": "2026-06-30",
+    "readTime": "3 min",
+    "category": "Ürün",
+    "tags": [
+      "HUSHU",
+      "Kur'an",
+      "Ürün",
+      "Lansman"
+    ],
+    "status": "published",
+    "relatedLinks": [
+      {
+        "label": "HUSHU projesini incele",
+        "href": "/projects/hushu"
+      },
+      {
+        "label": "Benzer bir proje konuşalım",
+        "href": "/contact"
+      }
+    ],
+    "tr": {
+      "title": "HUSU yayında: genişlik değil, derinlik",
+      "excerpt": "Kur'an'a bir sayfa numarasıyla değil, bir his ile başlayan; her ayetin anlamını kendi dilinde sakin bir sesle dinleten bir uygulama. Artık App Store'da.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Bugün, uzun süredir sessizce üzerinde çalıştığımız bir projeyi paylaşıyoruz: HUSU."
+        },
+        {
+          "type": "paragraph",
+          "text": "Çoğu uygulama genişlikte yarışır — daha çok özellik, daha çok araç, daha çok sayı. Biz farklı bir soruyla başladık: ya merkeze derinliği koysaydık? Hızlıca geçmek yerine bir ayetin yanında durmak, anlamını duymak, üstünde düşünmek."
+        },
+        {
+          "type": "heading",
+          "text": "HUSU neyi farklı yapıyor?"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Bir sayfa numarasıyla değil, bir his ile açıyorsun",
+            "Her ayetin anlamını kendi dilinde, sakin bir sesle dinliyorsun (Türkçe, İngilizce, İspanyolca)",
+            "Reklamsız, gürültüsüz, tefekküre alan bırakan bir okuma"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Sessizce, acele etmeden hazırladık. Aynı sükûnetle açarsın umarım. HUSU artık App Store'da yayında."
+        }
+      ]
+    },
+    "en": {
+      "title": "HUSHU is live: depth over breadth",
+      "excerpt": "A Quran app that starts from a feeling, not a page number — hear the meaning of each verse in your own language, in a calm voice. Now on the App Store.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Today we're sharing something we've been quietly building for a long time: HUSHU."
+        },
+        {
+          "type": "paragraph",
+          "text": "Most apps compete on breadth — more features, more tools, more numbers. We started from a different question: what if we put depth at the center? Not moving through faster, but staying with a single verse — hearing its meaning, sitting with it, reflecting."
+        },
+        {
+          "type": "heading",
+          "text": "What makes HUSHU different"
+        },
+        {
+          "type": "list",
+          "items": [
+            "You begin with a feeling, not a page number",
+            "You hear the meaning of each verse in your own language, in a calm voice (Turkish, English, Spanish)",
+            "An ad-free, quiet reading that leaves room for reflection"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "It was made quietly, without rushing. We hope you open it with the same calm. HUSHU is now live on the App Store."
         }
       ]
     }

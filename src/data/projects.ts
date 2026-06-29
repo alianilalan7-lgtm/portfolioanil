@@ -36,7 +36,7 @@ export const projects: Project[] = [
     longDescriptionKey: "Projects.hushu.longDescription",
     image: "/images/hushu-icon.png",
     gallery: ["/images/hushu.jpg"],
-    status: "beta",
+    status: "live",
     category: "Mobile",
     techStack: [
       "React Native",
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       "RevenueCat",
     ],
     featured: true,
-    progress: 90,
+    progress: 100,
     overviewKey: "Projects.hushu.overview",
     problemKey: "Projects.hushu.problem",
     solutionKey: "Projects.hushu.solution",
@@ -77,9 +77,10 @@ export const projects: Project[] = [
     team: [{ name: "Ali Anil Alan", role: "AI Product Builder" }],
     timeline: {
       duration: "Ongoing",
-      phase: "Beta · TestFlight",
+      phase: "Live · App Store",
       role: "Solo Developer",
     },
+    liveUrl: "https://apps.apple.com/app/hushu-quran-reflections/id6764551007",
   },
   {
     slug: "pulse",
