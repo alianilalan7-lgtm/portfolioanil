@@ -19,6 +19,8 @@ export interface AutopilotPost {
   category: string;
   tags: string[];
   status?: "published" | "draft";
+  /** "announcement" posts are exempt from the CI depth gate (validate.mjs). */
+  kind?: "article" | "announcement";
   /** Original source the post commentary is based on (attribution). */
   source?: { name: string; url: string };
   /** Internal links for SEO + conversion routing (paths only, e.g. "/services"). */

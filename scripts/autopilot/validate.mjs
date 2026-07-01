@@ -19,6 +19,15 @@ const BLOCK_TYPES = new Set([
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+// Depth gate — a shallow post can never ship. Applies per language to every
+// post published on/after DEPTH_RULE_SINCE (earlier posts are grandfathered)
+// unless the post is explicitly marked `"kind": "announcement"`.
+const DEPTH_RULE_SINCE = "2026-07-01";
+const MIN_WORDS = 700; // hard floor; INSTRUCTIONS.md targets 900–1400
+const MIN_BLOCKS = 10;
+const MIN_HEADINGS = 4; // "heading" (H2) blocks
+const MIN_LISTS = 1;
+
 const errors = [];
 const fail = (msg) => errors.push(msg);
 
@@ -58,6 +67,42 @@ function validateContent(blocks, where) {
         fail(`${at}: "stats" needs items: {label,value}[]`);
     }
   });
+}
+
+const wordCount = (s) =>
+  typeof s === "string" ? s.trim().split(/\s+/).filter(Boolean).length : 0;
+
+function countWords(blocks) {
+  let words = 0;
+  for (const b of blocks) {
+    if (!b || typeof b !== "object") continue;
+    words += wordCount(b.text);
+    if (Array.isArray(b.items)) {
+      for (const it of b.items) {
+        if (typeof it === "string") words += wordCount(it);
+        else if (it && typeof it === "object")
+          words += wordCount(`${it.label ?? ""} ${it.value ?? ""}`);
+      }
+    }
+  }
+  return words;
+}
+
+function validateDepth(lang, where) {
+  const blocks = Array.isArray(lang?.content) ? lang.content : [];
+  const words = countWords(blocks);
+  const headings = blocks.filter((b) => b?.type === "heading").length;
+  const lists = blocks.filter((b) => b?.type === "list").length;
+  if (words < MIN_WORDS)
+    fail(
+      `${where}: too shallow — ${words} words (hard floor ${MIN_WORDS}, target 900–1400)`
+    );
+  if (blocks.length < MIN_BLOCKS)
+    fail(`${where}: only ${blocks.length} content blocks (min ${MIN_BLOCKS})`);
+  if (headings < MIN_HEADINGS)
+    fail(`${where}: only ${headings} H2 "heading" blocks (min ${MIN_HEADINGS})`);
+  if (lists < MIN_LISTS)
+    fail(`${where}: needs at least ${MIN_LISTS} "list" block`);
 }
 
 function validateLang(lang, where) {
@@ -114,6 +159,8 @@ if (posts !== undefined) {
         fail(`${where}: tags must be a non-empty string[]`);
       if (p.status !== undefined && !["published", "draft"].includes(p.status))
         fail(`${where}: status must be "published" or "draft"`);
+      if (p.kind !== undefined && !["article", "announcement"].includes(p.kind))
+        fail(`${where}: kind must be "article" or "announcement"`);
       if (p.source !== undefined) {
         if (
           typeof p.source.name !== "string" ||
@@ -139,6 +186,14 @@ if (posts !== undefined) {
       }
       validateLang(p.tr, `${where}.tr`);
       validateLang(p.en, `${where}.en`);
+      if (
+        typeof p.publishedAt === "string" &&
+        p.publishedAt >= DEPTH_RULE_SINCE &&
+        p.kind !== "announcement"
+      ) {
+        validateDepth(p.tr, `${where}.tr`);
+        validateDepth(p.en, `${where}.en`);
+      }
     });
     console.log(`Checked ${posts.length} autopilot post(s).`);
   }

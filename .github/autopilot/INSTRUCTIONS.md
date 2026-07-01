@@ -18,8 +18,9 @@ The owner topic queue (step 1) overrides this — if it has a topic, use it rega
    - **Owner queue first:** if `topics-queue.json` has any entry that isn't already covered, use the **first** such entry as your target topic. Then **remove that entry from `topics-queue.json`** and write the file back (it's now consumed — one topic per run).
    - **Otherwise (queue empty):** `keywords.json` has sector groups (`perakende`, `restoran-kafe`, `mimarlik-insaat` → Type A) and a `genel` group (Type B). Look at the last few published posts and pick for **variety** — alternate Type A ↔ Type B, and rotate sectors within Type A. Choose one topic that is **not already covered**.
 4. **(Optional) Add a timely hook:** you MAY WebFetch 1–3 feeds from `sources.json` (and/or WebSearch) to find a recent development that makes the evergreen answer feel current. If you cite it, record it in `source` and add its URL to `.github/autopilot/seen.json`. Skip this if no relevant recent item — an evergreen post with no source is fine.
-5. **Write the post** (schema below): append ONE object to `src/data/autopilot-posts.json`, keeping all existing entries and valid JSON.
-6. Stop. You may edit only `src/data/autopilot-posts.json`, `.github/autopilot/seen.json`, and `.github/autopilot/topics-queue.json`. **Do NOT run git, do NOT commit, do NOT edit any other file.** The workflow commits.
+5. **Write the post** (schema below, Depth section is mandatory): append ONE object to `src/data/autopilot-posts.json`, keeping all existing entries and valid JSON.
+6. **Depth self-check:** count the words of `tr.content` and `en.content`. If either is under 900, go back and expand with substance before finishing.
+7. Stop. You may edit only `src/data/autopilot-posts.json`, `.github/autopilot/seen.json`, and `.github/autopilot/topics-queue.json`. **Do NOT run git, do NOT commit, do NOT edit any other file.** The workflow commits.
 
 ## Content shape
 
@@ -35,12 +36,25 @@ The owner topic queue (step 1) overrides this — if it has a topic, use it rega
 
 **Title = curiosity + specificity + sector.** Make them want to click. Good: "Perakendede stok kaybını yapay zeka nasıl erkenden yakalıyor — ve çoğu zincir neden hâlâ fark edemiyor?" Bad: "Retail inventory management software".
 
+## Depth — every post, non-negotiable
+
+CI rejects shallow posts: `scripts/autopilot/validate.mjs` **fails the whole run** for any post under **700 words per language**, under **10 content blocks**, under **4 H2 headings**, or without a **list**. A rejected post is thrown away — the day's slot is wasted. Write to these targets instead:
+
+- **900–1400 words per language** (aim ~1100). Depth comes from substance — concrete examples, edge cases, trade-offs, honest number ranges — never from filler or repetition.
+- **At least 4 H2 sections** (`heading`), with `subheading`s where useful.
+- **One worked mini-scenario** (its own H2): a realistic (fictional but plausible) business walked through problem → solution in concrete steps — what data flows where, what the owner sees on which screen, what changes in the weekly routine. This is the section that makes the reader picture *their* business.
+- **One FAQ section**: an H2 like "Sık Sorulan Sorular" / "FAQ" followed by **at least 3** question (`subheading`) + answer (`paragraph`) pairs. Questions = what the reader would actually type into Google or an AI assistant. This wins answer-engine citations.
+- **A `stats` block where natural** (honest ranges only, never invented precision).
+- **Self-check before finishing:** count the words of each language. If either is under 900, expand with substance (a second example, an objection handled, a cost breakdown) — then re-check.
+
+Only exception: if the owner topic queue explicitly asks for a short announcement, set `"kind": "announcement"` on the post — that exempts it from the depth gate. Never use it otherwise.
+
 ## On-page SEO (this is what brings traffic)
 
 - The **target query** (or a very close variant) MUST appear in: the **title**, the **slug**, the **excerpt**, the **first paragraph**, and **at least one H2 heading** — naturally, not stuffed.
 - **Title:** curiosity-driven, specific, sector-named; include the query. (e.g. "Restoranlarda Maliyet Kaçağını Gerçek Zamanlı Gösteren Sistem — ve Çoğu İşletmenin Neden Ay Sonunu Beklediği")
-- **Length: ~800–1200 words** per language. Longer, genuinely useful evergreen content ranks better.
-- **Format for answer-engines & skimmers:** clear H2/H3 structure, a `list` of actionable steps, and where natural a short FAQ-style Q&A (as subheading + paragraph pairs). This also helps AI answer engines cite you.
+- **Length: see the Depth section above — 900–1400 words per language is mandatory.** Longer, genuinely useful evergreen content ranks better.
+- **Format for answer-engines & skimmers:** clear H2/H3 structure, a `list` of actionable steps, and the required FAQ section (subheading + paragraph pairs). This also helps AI answer engines cite you.
 - **Practical & opinionated:** concrete numbers/ranges, real trade-offs, "here's what I'd actually do." Generic filler ranks for nothing.
 
 ## Internal links (SEO + turning readers into leads) — REQUIRED
@@ -69,8 +83,18 @@ Add **2–3 `relatedLinks`** (internal paths only) that fit the topic. Always in
       { "type": "paragraph", "text": "Hook — sektör sahibinin tanıdığı somut, pahalı bir dert." },
       { "type": "heading", "text": "Bu, [sektör] için ne anlama geliyor?" },
       { "type": "paragraph", "text": "Özel çözüm — somut olarak ne yapar, hangi veriyi kullanır." },
+      { "type": "heading", "text": "Gerçek bir senaryo: [örnek işletme]" },
+      { "type": "paragraph", "text": "Problem → çözüm, adım adım: hangi veri nereye akıyor, sahibi hangi ekranda ne görüyor, haftalık rutinde ne değişiyor." },
       { "type": "heading", "text": "Nasıl kurulur (kısaca)" },
       { "type": "list", "items": ["...", "...", "..."] },
+      { "type": "stats", "items": [{ "label": "Manuel işte azalma", "value": "haftada 4–6 saat" }] },
+      { "type": "heading", "text": "Sık Sorulan Sorular" },
+      { "type": "subheading", "text": "Okuyucunun Google'a gerçekten yazacağı soru 1?" },
+      { "type": "paragraph", "text": "Dürüst, net cevap." },
+      { "type": "subheading", "text": "Soru 2?" },
+      { "type": "paragraph", "text": "..." },
+      { "type": "subheading", "text": "Soru 3?" },
+      { "type": "paragraph", "text": "..." },
       { "type": "paragraph", "text": "Davet — kendi operasyonun için benzerini konuşalım." }
     ]
   },
@@ -82,7 +106,7 @@ Add **2–3 `relatedLinks`** (internal paths only) that fit the topic. Always in
 }
 ```
 
-`source` is OPTIONAL (include only when you actually cite an article). `relatedLinks` is required (2–3, internal `/...` paths only).
+`source` is OPTIONAL (include only when you actually cite an article). `relatedLinks` is required (2–3, internal `/...` paths only). `kind` is OPTIONAL and defaults to `"article"`; `"announcement"` is only for owner-queue short announcements (see Depth section).
 
 ### Content block types (only these)
 - `{ "type": "heading", "text": "..." }` (H2)
@@ -94,6 +118,7 @@ Add **2–3 `relatedLinks`** (internal paths only) that fit the topic. Always in
 ## Rules (non-negotiable)
 
 - **Exactly ONE post** per run. Never bulk-generate.
+- **Depth gate:** 900–1400 words per language, ≥4 H2, worked scenario, FAQ with ≥3 Q&A (see Depth section — CI hard-fails thin posts). A thin post is worse than no post; if a topic can't honestly reach that depth, pick another topic.
 - **Topic must be a specific sector pain** (retail / F&B / architecture-construction) that an owner would search for or instantly recognize — and that custom software/AI can solve. Not generic, not news, not "how to build an MVP".
 - **Always end with the invitation** to discuss a custom build for the reader's own business.
 - **Both languages**, faithful translation, same structure/meaning.

@@ -13,7 +13,12 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import Reveal from "@/components/fx/Reveal";
 import JsonLd from "@/components/JsonLd";
-import { buildMetadata, blogPostingJsonLd, breadcrumbJsonLd } from "@/lib/seo";
+import {
+  buildMetadata,
+  blogPostingJsonLd,
+  breadcrumbJsonLd,
+  localizedUrl,
+} from "@/lib/seo";
 
 export function generateStaticParams() {
   return routing.locales.flatMap((locale) =>
@@ -36,6 +41,7 @@ export async function generateMetadata({
     path: `/blog/${post.slug}`,
     title: `${localizedPost.title} | Ali Anil Alan`,
     description: localizedPost.excerpt,
+    image: localizedUrl(locale, `/blog/${post.slug}/opengraph-image`),
     type: "article",
     publishedTime: post.publishedAt,
     keywords: localizedPost.tags,
@@ -123,38 +129,56 @@ function BlogDetailContent({
           </span>
         </nav>
 
-        {/* Header */}
-        <Reveal as="header" className="mb-14" y={16}>
-          <div className="flex flex-wrap items-center gap-3 font-mono text-xs">
-            <span className="tag-term">{post.category}</span>
-            <span className="text-faint">{post.publishedAt}</span>
-            <span className="text-line-strong">·</span>
-            <span className="text-faint">{post.readTime}</span>
-          </div>
-
-          <h1 className="mt-6 font-display uppercase font-bold text-paper leading-[1.06] tracking-tight text-[2rem] sm:text-[2.75rem] md:text-[3.25rem]">
-            {post.title}
-          </h1>
-          <p className="mt-6 text-muted text-lg leading-relaxed">{post.excerpt}</p>
-
-          <div className="mt-7 flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span key={tag} className="tag-term">
-                {tag}
+        {/* Header — hero panel (engineering grid + lime eyebrow) */}
+        <Reveal
+          as="header"
+          className="relative mb-14 overflow-hidden border border-line bg-ink"
+          y={16}
+        >
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 opacity-30"
+            style={{
+              backgroundImage:
+                "linear-gradient(#242424 1px, transparent 1px), linear-gradient(90deg, #242424 1px, transparent 1px)",
+              backgroundSize: "56px 56px",
+            }}
+          />
+          <div className="relative p-6 sm:p-8 md:p-10">
+            <p className="font-mono text-xs uppercase tracking-[0.2em]">
+              <span className="text-lime">// {post.category}</span>{" "}
+              <span className="text-faint">
+                — {post.publishedAt} — {post.readTime}
               </span>
-            ))}
-          </div>
+            </p>
 
-          <div className="mt-8 border-t border-line pt-7">
-            <a
-              href={linkedInShareUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-paper transition-colors duration-200 hover:text-lime"
-            >
-              <span className="text-lime">&gt;</span>
-              {isTr ? "LINKEDIN'DE PAYLAŞ" : "SHARE ON LINKEDIN"}
-            </a>
+            <h1 className="mt-5 font-display uppercase font-bold text-paper leading-[1.06] tracking-tight text-[1.75rem] sm:text-[2.5rem] md:text-[3rem]">
+              {post.title}
+            </h1>
+
+            <div className="mt-6 flex flex-wrap gap-2">
+              {post.tags.map((tag) => (
+                <span key={tag} className="tag-term">
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <p className="mt-6 max-w-2xl text-muted text-lg leading-relaxed">
+              {post.excerpt}
+            </p>
+
+            <div className="mt-7 border-t border-line pt-6">
+              <a
+                href={linkedInShareUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.08em] text-paper transition-colors duration-200 hover:text-lime"
+              >
+                <span className="text-lime">&gt;</span>
+                {isTr ? "LINKEDIN'DE PAYLAŞ" : "SHARE ON LINKEDIN"}
+              </a>
+            </div>
           </div>
         </Reveal>
 
