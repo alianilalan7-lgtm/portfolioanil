@@ -873,5 +873,194 @@
         }
       ]
     }
+  },
+  {
+    "slug": "restaurant-real-time-cost-leak-dashboard",
+    "publishedAt": "2026-07-01",
+    "readTime": "7 min",
+    "category": "Restoran",
+    "tags": [
+      "Restoran",
+      "Maliyet",
+      "Yapay Zeka",
+      "Otomasyon"
+    ],
+    "status": "published",
+    "relatedLinks": [
+      {
+        "label": "Restoran & kafe için özel yazılım & otomasyon",
+        "href": "/services"
+      },
+      {
+        "label": "Nasıl çalışıyorum & fiyatlandırma",
+        "href": "/process-pricing"
+      },
+      {
+        "label": "Kendi işletmen için konuşalım",
+        "href": "/contact"
+      }
+    ],
+    "tr": {
+      "title": "Restoranda Maliyet Kaçağını Gerçek Zamanlı Gösteren Panel — ve Çoğu İşletme Bunu Neden Ay Sonuna Kadar Fark Etmiyor?",
+      "excerpt": "Restoranda maliyet kaçağı çoğu zaman ay sonu P&L'de ortaya çıkar. Gerçek zamanlı bir panel bu kaçağı günlük olarak nasıl gösterir, anlatıyorum.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Ay sonunda P&L'e bakıyorsun ve gıda maliyeti oranı yine planlanandan yüksek çıkıyor. Reçeteye göre porsiyon başına maliyet belli, ama gerçek rakamlar öyle demiyor. Bir aşçı biraz fazla peynir koymuş, iptal edilen bir sipariş malzemesiyle birlikte çöpe gitmiş, tedarikçi son birkaç ayda fiyatları sessizce artırmış, bir garson arkadaşına küçük bir ikramda bulunmuş — hiçbiri tek başına büyük görünmüyor ama toplandığında kâr marjının önemli bir kısmını yiyor. Peki bunu ay sonunu beklemeden, olay olduğu gün nasıl görürsün? Cevap, restoranda maliyet kaçağını gerçek zamanlı gösteren bir panelde saklı."
+        },
+        {
+          "type": "heading",
+          "text": "Restoranda Maliyet Kaçağını Gerçek Zamanlı Gösteren Panel Ne Yapar?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu panel; POS'tan gelen günlük satış verisini, her menü kaleminin reçete bazlı teorik maliyetini ve tedarikçiden gelen alım faturalarını tek bir yerde birleştirir. Her akşam kapanışta sistem şunu hesaplar: bugün satılan her ürün için olması gereken malzeme maliyeti neydi, depo/stok hareketlerine göre gerçekte ne kadar malzeme tüketildi, ve aradaki fark hangi yönde büyüyor. Bir tatlının reçetesi 40 gram çikolata gerektiriyorsa ama depo çıkışları haftalık ortalamanın belirgin şekilde üzerinde bir tüketim gösteriyorsa, bu ay sonunu beklemeden görünür hale gelir. İptal edilen siparişler, ikramlar ve indirimler de ayrı bir kalemde işaretlenir — böylece 'kayıp mı, israf mı, yoksa bilinçli bir yönetim kararı mı' sorusunun cevabı ay sonunda değil, o gün alınır. Eşik değerleri sabit bir yüzde değil, geçmiş haftaların ortalamasına göre dinamik olarak belirlenir — böylece normal dalgalanmalar gereksiz uyarı üretmez, sadece gerçek sapmalar öne çıkar."
+        },
+        {
+          "type": "heading",
+          "text": "Nasıl Kurulur (Kısaca)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "POS sisteminden (bulut tabanlı ya da yerel) günlük satış detayını API veya periyodik export ile çekmek",
+            "Her menü kalemi için reçete/porsiyon maliyet tablosu oluşturmak: malzeme miktarı × güncel birim fiyat",
+            "Tedarikçi faturalarını (e-fatura entegrasyonu ya da basit manuel giriş) sisteme aktarıp birim fiyat güncellemelerini otomatik yansıtmak",
+            "Teorik tüketim ile depo/stok çıkışlarını karşılaştıran bir anomali motoru kurmak — eşik aşıldığında otomatik uyarı üretir",
+            "Şube müdürüne veya merkeze günlük özet ve eşik aşımı uyarısı gönderen sade bir dashboard/bildirim katmanı"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Bu Sadece Çok Şubeli Zincirler İçin mi?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hayır. Tek bir restoran ya da kafede bile günlük yüzlerce sipariş, onlarca reçete kalemi ve haftalık tedarikçi teslimatı var — kaçağın nerede oluştuğunu izlemeye yetecek veri hacmi zaten mevcut. Çok şubeli bir zincirde ek olarak şubeler arası karşılaştırma imkânı doğuyor: hangi şube ortalamanın üzerinde israf üretiyor, hangisinde porsiyon tutarlılığı daha iyi — bu da eğitim ve prosedür kararlarını somut veriye dayandırıyor."
+        },
+        {
+          "type": "subheading",
+          "text": "Mevcut POS'umu veya Tedarikçi Sürecimi Değiştirmem Gerekir mi?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Genelde hayır. Yaygın restoran POS sistemlerinin çoğu satış verisini API veya periyodik export ile dışarı verebiliyor. Tedarikçi faturaları e-fatura formatında geliyorsa otomatik aktarılabiliyor; değilse haftalık 10-15 dakikalık basit bir manuel giriş ekranına indirgenebiliyor. Panel, mevcut sürecinin üzerine kuruluyor; süreci baştan değiştirmiyor."
+        },
+        {
+          "type": "heading",
+          "text": "Gerçekçi Kazanım Ne?"
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "Tespit süresi",
+              "value": "Ay sonu yerine 1-3 gün içinde"
+            },
+            {
+              "label": "Haftalık manuel maliyet raporlaması",
+              "value": "Birkaç saat azalma"
+            },
+            {
+              "label": "Şubeler arası kıyaslama",
+              "value": "Günlük, ay sonu beklemeden"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Gıda maliyetini sıfıra indirmeyi vaat etmiyorum — hiçbir sistem bunu garanti edemez, insan hatası ve tedarik dalgalanmaları her zaman olacak. Ama kaçağın nerede başladığını haftalar yerine günler içinde görebilmek hem müdürün hem mutfağın davranışını değiştiriyor: porsiyon tutarlılığı artıyor, ikram/iptal kayıtları daha dikkatli tutuluyor, tedarikçi fiyat artışları fark edilmeden geçmiyor. Ayrıca mutfak ekibi, verinin izlendiğini bildiğinde porsiyonlamada kendiliğinden daha tutarlı davranmaya başlıyor — bu da sistemin en çok fark edilmeyen ama en değerli etkilerinden biri. Tek şubeli bir restoranda bile bu, ay sonunda beklenmedik bir marj kaybıyla karşılaşmamak demek."
+        },
+        {
+          "type": "heading",
+          "text": "Kendi Restoranın veya Şube Zincirin İçin Konuşalım"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu paneli kutu bir ürün olarak değil, kullandığın POS'a, tedarikçi süreçlerine ve menü yapına özel bir entegrasyon olarak kuruyorum. Tek bir mekan da olur, çok şubeli bir zincir de — önemli olan bugün hangi POS'u kullandığın ve maliyet verisini şu an nasıl takip ettiğin. Kendi operasyonun için benzer bir sistemi konuşmak istersen birkaç soruyla başlayabiliriz."
+        }
+      ]
+    },
+    "en": {
+      "title": "The Real-Time Panel That Shows Where a Restaurant's Cost Is Leaking — and Why Most Owners Don't Catch It Until Month End",
+      "excerpt": "Restaurant cost leakage usually shows up in the month-end P&L. Here's how a real-time panel surfaces it daily instead, before it compounds.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "You look at the P&L at month end and the food cost percentage is higher than planned, again. The recipe says the per-portion cost should be low, but the actual numbers disagree. A cook plated a bit too much cheese, a cancelled order's ingredients went straight into the trash, a supplier quietly raised prices over the last few months, a server comped a drink for a friend — none of it looks big on its own, but together it eats a meaningful chunk of your margin. So how do you see this the day it happens, instead of waiting for month end? The answer is a real-time panel that shows exactly where a restaurant's cost is leaking."
+        },
+        {
+          "type": "heading",
+          "text": "What Does a Real-Time Restaurant Cost-Leak Panel Actually Do?"
+        },
+        {
+          "type": "paragraph",
+          "text": "This panel pulls together daily POS sales data, the recipe-based theoretical cost of every menu item, and incoming supplier invoices into one place. Every night at close, it calculates: what the ingredient cost should have been for everything sold that day, how much was actually consumed according to inventory movements, and which direction the gap is growing. If a dessert's recipe calls for 40 grams of chocolate but stockroom withdrawals show noticeably higher consumption than the weekly average, that becomes visible without waiting for month end. Cancelled orders, comps, and discounts are flagged separately too — so the question of 'was this loss, waste, or a deliberate management call' gets answered the same day, not a month later. Thresholds aren't a fixed percentage — they're set dynamically against recent weeks' averages, so normal day-to-day fluctuation doesn't trigger noise and only genuine deviations surface."
+        },
+        {
+          "type": "heading",
+          "text": "How It's Built (Briefly)"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Pull daily sales detail from the POS (cloud-based or on-premise) via API or scheduled export",
+            "Build a recipe/portion cost table for every menu item: ingredient quantity × current unit price",
+            "Feed in supplier invoices (via e-invoice integration or simple manual entry) so unit price updates flow through automatically",
+            "Set up an anomaly engine that compares theoretical consumption against actual stock withdrawals — and flags it automatically once a threshold is crossed",
+            "Add a simple dashboard/notification layer that sends the manager or head office a daily summary plus threshold alerts"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Is This Only for Multi-Location Chains?"
+        },
+        {
+          "type": "paragraph",
+          "text": "No. Even a single restaurant or café generates hundreds of daily orders, dozens of recipe line items, and weekly supplier deliveries — there's already enough data volume to track where a leak originates. A multi-location chain gets an additional benefit: cross-branch comparison. Which location produces above-average waste, which one holds tighter portion consistency — turning training and procedure decisions into something backed by data rather than guesswork."
+        },
+        {
+          "type": "subheading",
+          "text": "Do I Need to Replace My Current POS or Supplier Process?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Usually not. Most common restaurant POS systems can export sales data via API or scheduled file export. If supplier invoices arrive as e-invoices, they can be pulled in automatically; if not, a simple manual-entry screen reduces it to about 10-15 minutes a week. The panel builds on top of your existing process — it doesn't require replacing it."
+        },
+        {
+          "type": "heading",
+          "text": "What's the Realistic Payoff?"
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "Detection time",
+              "value": "1-3 days instead of month end"
+            },
+            {
+              "label": "Weekly manual cost reporting",
+              "value": "Several hours saved"
+            },
+            {
+              "label": "Cross-branch comparison",
+              "value": "Daily, without waiting for month end"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "I don't promise zero food cost leakage — no system can guarantee that, human error and supply fluctuations will always exist. But seeing where a leak starts within days instead of weeks changes behavior on both sides: portion consistency improves, comps and cancellations get logged more carefully, and supplier price increases stop slipping through unnoticed. Kitchen staff also tend to plate more consistently once they know the data is being watched — one of the quieter but more valuable effects of putting a system like this in place. Even in a single-location restaurant, that means not getting hit with a surprise margin loss at month end."
+        },
+        {
+          "type": "heading",
+          "text": "Want to Build This for Your Own Restaurant or Chain?"
+        },
+        {
+          "type": "paragraph",
+          "text": "I build this as a custom integration fitted to the POS you use, your supplier processes, and your menu structure — not as an off-the-shelf product. It works for a single location or a multi-branch chain; what matters is which POS you run today and how you currently track cost data. If you'd like to discuss building something similar for your own operation, a few questions is all it takes to get started."
+        }
+      ]
+    }
   }
 ]
