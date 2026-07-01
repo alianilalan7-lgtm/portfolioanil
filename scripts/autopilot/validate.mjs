@@ -22,7 +22,7 @@ const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 // Depth gate — a shallow post can never ship. Applies per language to every
 // post published on/after DEPTH_RULE_SINCE (earlier posts are grandfathered)
 // unless the post is explicitly marked `"kind": "announcement"`.
-const DEPTH_RULE_SINCE = "2026-07-01";
+const DEPTH_RULE_SINCE = "2026-07-02";
 const MIN_WORDS = 700; // hard floor; INSTRUCTIONS.md targets 900–1400
 const MIN_BLOCKS = 10;
 const MIN_HEADINGS = 4; // "heading" (H2) blocks
