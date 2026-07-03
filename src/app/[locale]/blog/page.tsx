@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { getPublishedBlogPosts, localizeBlogPost } from "@/data/blog-index";
@@ -32,6 +33,10 @@ export default function BlogPage() {
     )
     .map((post) => localizeBlogPost(post, locale));
   const featuredPosts = publishedPosts.filter((post) => post.featured);
+  // Per-post generated OG cover (same Brutalist Terminal card the link
+  // previews use) — the img route is locale-prefixed, unlike <Link> hrefs.
+  const coverSrc = (slug: string) =>
+    `${locale === "tr" ? "/tr" : ""}/blog/${slug}/opengraph-image`;
 
   return (
     <div className="pt-28 pb-24 md:pt-32">
@@ -67,6 +72,16 @@ export default function BlogPage() {
                   aria-label={post.title}
                   className="group term-card flex h-full flex-col p-7 md:p-8"
                 >
+                  <div className="mb-6 overflow-hidden border border-line">
+                    <Image
+                      src={coverSrc(post.slug)}
+                      alt=""
+                      width={1200}
+                      height={630}
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
                   <div className="flex items-center justify-between gap-3 font-mono text-xs">
                     <span className="text-lime">
                       [{String(i + 1).padStart(2, "0")}]
@@ -121,6 +136,16 @@ export default function BlogPage() {
                   aria-label={post.title}
                   className="group term-card flex h-full flex-col p-6"
                 >
+                  <div className="mb-5 overflow-hidden border border-line">
+                    <Image
+                      src={coverSrc(post.slug)}
+                      alt=""
+                      width={1200}
+                      height={630}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      className="h-auto w-full"
+                    />
+                  </div>
                   <div className="flex items-center justify-between gap-3 font-mono text-xs">
                     <span className="tag-term">{post.category}</span>
                     <span className="text-faint">{post.readTime}</span>
