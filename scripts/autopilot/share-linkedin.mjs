@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 // Shares the newest not-yet-shared published blog post to the owner's LinkedIn
 // profile (one per run). Bilingual: Turkish first, then English, then the link.
+// The post's OG card is uploaded to LinkedIn and attached as the article
+// thumbnail, so the share renders with a rich image instead of a bare text card.
 // No-ops cleanly if the LinkedIn token isn't configured. No dependencies.
 //
 // Env:
@@ -9,6 +11,7 @@
 //   LINKEDIN_VERSION       (default 202606) LinkedIn-Version header (YYYYMM)
 //   DRY_RUN                if set, prints the post text for the newest article and exits (no token / no posting)
 
+import { Buffer } from "node:buffer";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const POSTS_PATH = "src/data/autopilot-posts.json";
@@ -64,10 +67,14 @@ const commentary = [
   "#SaaS #AI #MVP #Startups #Girişim #Yazılım #FreelanceDeveloper",
 ].join("\n");
 
+// TR OG card matches the Turkish title/description shown on the link card.
+const thumbnailUrl = `${SITE}/tr/blog/${post.slug}/opengraph-image`;
+
 if (DRY) {
   console.log("─── DRY RUN — LinkedIn post preview ───\n");
   console.log(commentary);
   console.log(`\n[link card] ${tr.title} — ${url}`);
+  console.log(`[thumbnail] ${thumbnailUrl}`);
   process.exit(0);
 }
 
@@ -98,7 +105,50 @@ if (!uiRes.ok) {
 const ui = await uiRes.json();
 const author = `urn:li:person:${ui.sub}`;
 
-// 2) Create the post with a rich article link card (card uses the Turkish title).
+// 2) Upload the post's OG card to LinkedIn and get an image URN. Without an
+// explicit thumbnail, an article card built via the Posts API renders as a
+// bare text card (LinkedIn does not auto-scrape og:image here). Best-effort:
+// on any failure we fall back to a thumbnail-less card rather than skip posting.
+async function uploadThumbnail() {
+  try {
+    const imgRes = await fetch(thumbnailUrl);
+    if (!imgRes.ok) throw new Error(`OG image fetch HTTP ${imgRes.status}`);
+    const bytes = Buffer.from(await imgRes.arrayBuffer());
+
+    const initRes = await fetch(
+      "https://api.linkedin.com/rest/images?action=initializeUpload",
+      {
+        method: "POST",
+        headers,
+        body: JSON.stringify({ initializeUploadRequest: { owner: author } }),
+      }
+    );
+    if (!initRes.ok)
+      throw new Error(`initializeUpload HTTP ${initRes.status}: ${await initRes.text()}`);
+    const { value } = await initRes.json();
+    const uploadUrl = value?.uploadUrl;
+    const imageUrn = value?.image;
+    if (!uploadUrl || !imageUrn)
+      throw new Error("initializeUpload response missing uploadUrl/image");
+
+    const putRes = await fetch(uploadUrl, {
+      method: "PUT",
+      headers: { Authorization: `Bearer ${token}`, "Content-Type": "image/png" },
+      body: bytes,
+    });
+    if (!putRes.ok) throw new Error(`upload PUT HTTP ${putRes.status}`);
+
+    console.log(`✓ Uploaded OG thumbnail (${bytes.length} bytes) → ${imageUrn}`);
+    return imageUrn;
+  } catch (err) {
+    console.warn(`⚠ Thumbnail upload skipped (${err.message}). Posting without image.`);
+    return null;
+  }
+}
+
+const thumbnail = await uploadThumbnail();
+
+// 3) Create the post with a rich article link card (card uses the Turkish title).
 const body = {
   author,
   commentary,
@@ -109,7 +159,12 @@ const body = {
     thirdPartyDistributionChannels: [],
   },
   content: {
-    article: { source: url, title: tr.title, description: tr.excerpt },
+    article: {
+      source: url,
+      title: tr.title,
+      description: tr.excerpt,
+      ...(thumbnail ? { thumbnail } : {}),
+    },
   },
   lifecycleState: "PUBLISHED",
   isReshareDisabledByAuthor: false,
