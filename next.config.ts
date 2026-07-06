@@ -11,6 +11,20 @@ const nextConfig: NextConfig = {
     ];
   },
 
+  async redirects() {
+    return [
+      // 'add AI to your business/app' post was removed as a duplicate (commit
+      // 5f06732) after it had already been auto-shared on LinkedIn. Point the
+      // dead share URL at the surviving post that covers the same thesis so the
+      // link no longer 404s and its SEO value is preserved.
+      {
+        source: "/:locale(tr|en)/blog/how-to-add-ai-to-your-business-or-app",
+        destination: "/:locale/blog/how-to-integrate-llm-into-web-app",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {
