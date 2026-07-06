@@ -874,5 +874,276 @@
         }
       ]
     }
+  },
+  {
+    "slug": "how-to-add-ai-to-your-business-or-app",
+    "publishedAt": "2026-07-06",
+    "readTime": "7 min",
+    "category": "AI",
+    "tags": [
+      "AI",
+      "SaaS",
+      "Otomasyon",
+      "Founders"
+    ],
+    "status": "published",
+    "relatedLinks": [
+      {
+        "label": "AI & SaaS geliştirme hizmetlerim",
+        "href": "/services"
+      },
+      {
+        "label": "Web uygulamasına LLM nasıl entegre edilir",
+        "href": "/blog/how-to-integrate-llm-into-web-app"
+      },
+      {
+        "label": "Kendi işin için konuşalım",
+        "href": "/contact"
+      }
+    ],
+    "tr": {
+      "title": "İşine ya da Uygulamana Yapay Zekayı Pratikte Nasıl ve Nereden Eklersin?",
+      "excerpt": "Yapay zeka eklemek istiyorsun ama nereden başlayacağını bilmiyorsun. İşine veya uygulamana pratik, adım adım bir başlangıç çerçevesi.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "İşine ya da uygulamana yapay zekayı pratikte nasıl ve nereden eklersin — bu soruyu son bir yılda konuştuğum hemen her kurucu ve işletme sahibinden duydum. ChatGPT'yi bir kaç kez denedin, belki bir ajanstan 'yapay zeka dönüşümü' teklifi aldın, LinkedIn'de herkes bundan bahsediyor ama sıra sana geldiğinde nereden başlayacağını bilmiyorsun. Sorunun büyük kısmı, çoğu kişinin yanlış yerden başlamasından kaynaklanıyor: önce 'hangi aracı kullanmalıyım' diye soruyorlar, oysa doğru ilk soru 'işimde hangi süreç tekrar ediyor ve zaman yiyor' olmalı. Bu yazıda, müşterilerimle uyguladığım gerçek çerçeveyi paylaşıyorum: teknolojiden değil, problemden başlayan bir yaklaşım."
+        },
+        {
+          "type": "heading",
+          "text": "İşine Yapay Zeka Eklemek Gerçekte Ne Anlama Geliyor?"
+        },
+        {
+          "type": "paragraph",
+          "text": "'Yapay zeka eklemek' dendiğinde akla genelde iki uç geliyor: ya sitene bir sohbet widget'ı koyup üstüne 'yapay zeka destekli' etiketi yapıştırmak, ya da kendi büyük dil modelini sıfırdan eğitmek. İkisi de yanlış hedef. Gerçekte, küçük ve orta ölçekli bir işletme ya da uygulama için yapay zeka eklemek, var olan bir API'yi (OpenAI, Anthropic, Google) kendi verinize ve iş akışınıza bağlamak demek. Model eğitmiyorsunuz; modele doğru bağlamı — müşteri geçmişi, stok durumu, sipariş bilgisi, iç doküman — doğru zamanda veriyorsunuz ve modelin ürettiği yanıtı mevcut iş akışınıza entegre ediyorsunuz."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu ayrım önemli çünkü çoğu başarısız 'yapay zeka projesi' teknik bir başarısızlık değil, kapsam başarısızlığıdır. Şirketler ya çok büyük başlar (tüm müşteri hizmetlerini bir kerede otomatikleştirmeye kalkışır) ya da çok yüzeysel kalır (gerçek veriye hiç dokunmayan, sadece demo amaçlı bir chatbot). İkisi de gerçek değer üretmez; ilki bütçeyi tüketir, ikincisi hiçbir şeyi kanıtlamaz."
+        },
+        {
+          "type": "heading",
+          "text": "Nereden Başlamalısın: Adım Adım Bir Çerçeve"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Tekrarlayan, zaman yiyen ama kritik olmayan bir süreç seç — haftalık rapor hazırlama, müşteri sorularının yanıtlanması, sipariş durumu takibi gibi. Yanlış giderse geri dönüşü kolay olan bir alan seç, en yüksek riskli süreç değil.",
+            "Süreci ölç: şu anda bu iş için ayda kaç saat harcanıyor, kaç kişi dahil oluyor, hata oranı nedir? Bu sayılar olmadan 'işe yaradı mı' sorusuna asla dürüst bir cevap veremezsin.",
+            "Build vs. buy kararını erken ver: standart bir SaaS aracı (örneğin hazır bir destek chatbot'u) ihtiyacını karşılıyor mu, yoksa kendi verine ve iş akışına özel bir entegrasyon mu gerekiyor? Veri ne kadar özelse cevap o kadar özel entegrasyona kayar.",
+            "Küçük bir pilot ile başla — tüm şirkette değil, tek bir ekip, tek bir mağaza ya da tek bir müşteri segmentinde. Pilot gerçek veriyle ve gerçek kullanıcılarla çalışmalı; sahte veriyle yapılan bir demo hiçbir şey kanıtlamaz.",
+            "4-6 hafta boyunca somut metrikleri takip et: zaman kazanımı, hata oranındaki değişim, kullanıcı ya da müşteri memnuniyeti. Öznel izlenim değil, rakam.",
+            "İşe yarıyorsa genişlet, yaramıyorsa neden yaramadığını anla — çoğu zaman sorun modelin yeteneği değil, modele verilen bağlamın eksik ya da yanlış olmasıdır — sonra bir sonraki sürece geç."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Gerçek Bir Senaryo: Küçük Bir E-ticaret İşletmesi"
+        },
+        {
+          "type": "paragraph",
+          "text": "Elli SKU'luk bir online mağaza işleten bir müşterim, haftada yaklaşık on saatini müşteri e-postalarına ayırıyordu — büyük çoğunluğu 'siparişim nerede', 'iade nasıl yapılır', 'bu ürün X ile uyumlu mu' gibi tekrar eden sorulardı. İlk adım, bu soruların gerçekten ne kadarının tekrar ettiğini ölçmekti: son üç ayın e-posta arşivini taradık ve soruların yaklaşık %70'inin yalnızca beş kalıba girdiğini gördük."
+        },
+        {
+          "type": "paragraph",
+          "text": "Kurduğumuz sistem şöyle işliyor: destek kutusuna gelen bir e-posta, sipariş yönetim sisteminden (Shopify) o müşterinin sipariş verisini çekiyor, bu veriyi ve mağazanın iade/kargo politikasını bağlam olarak bir dil modeline veriyor, model bir taslak yanıt üretiyor. Basit ve net durumlarda (sipariş nerede, kargo takip numarası) yanıt otomatik gönderiliyor; belirsiz ya da hassas durumlarda (para iadesi anlaşmazlığı, hasarlı ürün şikayeti) yanıt taslak olarak müşteri temsilcisinin önüne düşüyor, o onaylayıp gönderiyor. Sahibi her sabah bir panelde kaç e-postanın otomatik çözüldüğünü, kaçının insana yönlendirildiğini görüyor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Üç hafta içinde haftalık on saatlik yük altı saate düştü; kalan altı saat büyük ölçüde gerçekten insan kararı gerektiren, karmaşık vakalara ayrılıyor. Hiçbir sipariş verisi işlenmeden önce dış bir sunucuda tutulmuyor — entegrasyon, mağazanın kendi altyapısı içinde çalışacak şekilde kuruldu."
+        },
+        {
+          "type": "heading",
+          "text": "Ne Kadar Sürer, Ne Kadar Tutar?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rakamlar projeye göre değişir ama gerçekçi aralıklar şöyle:"
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "Basit bir pilot entegrasyon (tek süreç, tek ekip)",
+              "value": "1-3 hafta"
+            },
+            {
+              "label": "Üretim kalitesinde entegrasyon (hata yönetimi, izleme, ölçeklenme dahil)",
+              "value": "3-6 hafta"
+            },
+            {
+              "label": "Küçük ölçekte aylık API/altyapı maliyeti",
+              "value": "$50-300"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Bu rakamlar, sıfırdan bir SaaS ürünü inşa etmekten çok daha ucuz ve hızlı — çünkü var olan bir modele bağlanıyorsun, bir tane inşa etmiyorsun. Maliyetin büyük kısmı model API'sinde değil, entegrasyonun doğru veriye bağlanmasında ve hata durumlarının — model yanlış anlarsa ne olur, API çökerse ne olur — düzgün ele alınmasında."
+        },
+        {
+          "type": "heading",
+          "text": "Sık Sorulan Sorular"
+        },
+        {
+          "type": "subheading",
+          "text": "Yapay zeka eklemek için kendi modelimi eğitmem gerekir mi?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Neredeyse hiçbir zaman. İşletmelerin büyük çoğunluğu için var olan bir modele (GPT, Claude, Gemini) doğru bağlam ve doğru prompt vermek yeterli. Kendi modelinizi eğitmek; çok büyük hacimli, çok özel ve genel modellerin cevap veremediği bir veri probleminiz varsa gündeme gelir — bu, işletmelerin çok küçük bir kısmı için geçerli bir durum."
+        },
+        {
+          "type": "subheading",
+          "text": "Hangi süreç yapay zeka eklemek için en uygun başlangıç noktası?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tekrarlayan, kural tabanlı, hacmi yüksek ve yanlış giderse geri dönüşü kolay olan süreçler en iyi başlangıç noktası — sık sorulan soruların yanıtlanması, ilk taslak metin üretimi, kategorilendirme gibi. Geri alınamaz, yüksek riskli kararları (örneğin otomatik ödeme onayı) ilk denemenize dahil etmeyin."
+        },
+        {
+          "type": "subheading",
+          "text": "Bunu kendim mi kurmalıyım, yoksa bir geliştiriciyle mi çalışmalıyım?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Çok basit, tek seferlik denemeler için no-code araçlar (örneğin Zapier'e eklenen bir AI adımı) yeterli olabilir. Ama sistem gerçek müşteri verisine, ödemeye ya da tekrarlanan bir iş akışına dokunduğu andan itibaren hata yönetimi, veri güvenliği ve izlenebilirlik gerektirir — bu noktada bir geliştiriciyle çalışmak, ileride yeniden yazmaktan çok daha ucuza gelir."
+        },
+        {
+          "type": "subheading",
+          "text": "Yapay zeka eklemenin en büyük riski nedir?"
+        },
+        {
+          "type": "paragraph",
+          "text": "En büyük risk teknik değil, kapsam riski: çok büyük başlamak ya da modelin cevaplarını hiç doğrulamadan doğrudan müşteriye göndermek. Küçük başlayıp gerçek metriklerle doğrulamak hem bütçeni hem de müşteri güvenini korur."
+        },
+        {
+          "type": "paragraph",
+          "text": "İşine ya da uygulamana yapay zekayı nereden ekleyeceğine karar vermek, doğru soruyla başladığında sandığından daha az korkutucu. Hangi sürecin işinde en çok zaman yediğini konuşmak istersen, birkaç soruyla nereden başlayacağını netleştirebiliriz."
+        }
+      ]
+    },
+    "en": {
+      "title": "How Do You Actually Add AI to Your Business or App — and Where Do You Start?",
+      "excerpt": "You want to add AI to your business or app but don't know where to start. Here's a practical, step-by-step way to begin.",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "How do you actually add AI to your business or app, and where do you even start? That's the question I hear from nearly every founder and business owner I talk to. You've tried ChatGPT a few times, maybe gotten an 'AI transformation' pitch from an agency, everyone on LinkedIn seems to be talking about it — but when it's your turn, you don't know where to begin. Most of the confusion comes from starting in the wrong place: people ask 'which tool should I use' first, when the right first question is 'which process in my business repeats and eats time.' In this guide I'm sharing the actual framework I use with clients — one that starts from the problem, not the technology."
+        },
+        {
+          "type": "heading",
+          "text": "What Does Adding AI to Your Business Actually Mean?"
+        },
+        {
+          "type": "paragraph",
+          "text": "When people say 'add AI,' they usually picture one of two extremes: bolting a chat widget onto their website and calling it 'AI-powered,' or training their own large language model from scratch. Both miss the target. For most small and mid-sized businesses or apps, adding AI means connecting an existing API — OpenAI, Anthropic, Google — to your own data and workflow. You're not training a model; you're feeding the model the right context — customer history, inventory status, order details, internal documents — at the right moment, and wiring its output into your existing process."
+        },
+        {
+          "type": "paragraph",
+          "text": "This distinction matters because most failed 'AI projects' aren't technical failures — they're scoping failures. Companies either start too big, trying to automate all of customer service at once, or stay too shallow, building a demo chatbot that never touches real data. Neither produces real value; the first burns budget, the second proves nothing."
+        },
+        {
+          "type": "heading",
+          "text": "Where to Start: A Step-by-Step Framework"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Pick a repetitive, time-consuming process that isn't mission-critical — a weekly report, answering customer questions, order-status tracking. Choose something where a wrong answer is easy to recover from, not your highest-stakes workflow.",
+            "Measure the process as it exists today: how many hours per month does it cost, how many people are involved, what's the current error rate? Without these numbers, you can never honestly answer 'did this work.'",
+            "Decide build vs. buy early: does an off-the-shelf SaaS tool — a pre-built support chatbot, for instance — already solve this, or does your data and workflow need a custom integration? The more specific your data, the more the answer tends toward custom.",
+            "Start with a small pilot — one team, one store, one customer segment, not the whole company. The pilot needs to run on real data with real users; a demo built on fake data proves nothing.",
+            "Track concrete metrics for 4-6 weeks: time saved, change in error rate, user or customer satisfaction. Numbers, not gut feeling.",
+            "If it works, expand it. If it doesn't, figure out why — usually the issue isn't the model's capability, it's that the context fed to the model was missing or wrong — then move on to the next process."
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "A Real Scenario: A Small E-Commerce Business"
+        },
+        {
+          "type": "paragraph",
+          "text": "A client running a fifty-SKU online store was spending roughly ten hours a week on customer emails — the vast majority repetitive questions like 'where's my order,' 'how do I return this,' 'is this compatible with X.' The first step was measuring how much of that traffic actually repeated: we scanned three months of email archives and found that about 70% of questions fell into just five patterns."
+        },
+        {
+          "type": "paragraph",
+          "text": "The system we built works like this: an email arriving in the support inbox pulls that customer's order data from the order management system (Shopify), feeds that data along with the store's return and shipping policy to a language model as context, and the model drafts a reply. For simple, clear-cut cases — where's my order, tracking number — the reply is sent automatically; for ambiguous or sensitive cases — refund disputes, damaged-item complaints — the draft lands in front of a support rep who approves and sends it. Every morning, the owner sees a dashboard showing how many emails were resolved automatically and how many were routed to a human."
+        },
+        {
+          "type": "paragraph",
+          "text": "Within three weeks, the ten-hour weekly load dropped to about six hours, and the remaining six hours is largely spent on cases that genuinely need human judgment. No order data is stored on an external server before processing — the integration was built to run inside the store's own infrastructure."
+        },
+        {
+          "type": "heading",
+          "text": "How Long Does It Take, and What Does It Cost?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Numbers vary by project, but here are realistic ranges:"
+        },
+        {
+          "type": "stats",
+          "items": [
+            {
+              "label": "Simple pilot integration (one process, one team)",
+              "value": "1-3 weeks"
+            },
+            {
+              "label": "Production-quality integration (error handling, monitoring, scaling included)",
+              "value": "3-6 weeks"
+            },
+            {
+              "label": "Monthly API/infrastructure cost at small scale",
+              "value": "$50-300"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "These figures are far cheaper and faster than building a SaaS product from scratch, because you're connecting to an existing model, not building one. Most of the cost isn't the model API itself — it's wiring the integration to the right data and handling the failure cases properly: what happens when the model misunderstands, what happens when the API goes down."
+        },
+        {
+          "type": "heading",
+          "text": "Frequently Asked Questions"
+        },
+        {
+          "type": "subheading",
+          "text": "Do I need to train my own model to add AI?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Almost never. For the vast majority of businesses, feeding the right context and the right prompt to an existing model — GPT, Claude, Gemini — is enough. Training your own model only becomes relevant if you have a very high-volume, highly specific data problem that general-purpose models genuinely can't answer — a situation that applies to a very small share of businesses."
+        },
+        {
+          "type": "subheading",
+          "text": "Which process is the best starting point for adding AI?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Repetitive, rule-based, high-volume processes where a wrong answer is easy to recover from are the best starting point — answering frequently asked questions, drafting first-pass text, categorization. Don't include irreversible, high-stakes decisions — like automatically approving a payment — in your first attempt."
+        },
+        {
+          "type": "subheading",
+          "text": "Should I build this myself, or work with a developer?"
+        },
+        {
+          "type": "paragraph",
+          "text": "For very simple, one-off experiments, no-code tools — like a Zapier workflow with an AI step — can be enough. But the moment the system touches real customer data, payments, or a recurring workflow, it needs error handling, data security, and traceability — at that point, working with a developer costs far less than rewriting it later."
+        },
+        {
+          "type": "subheading",
+          "text": "What's the biggest risk in adding AI?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The biggest risk isn't technical — it's scope: starting too big, or sending the model's answers straight to customers without ever verifying them. Starting small and validating with real metrics protects both your budget and your customers' trust."
+        },
+        {
+          "type": "paragraph",
+          "text": "Deciding where to add AI to your business or app is far less intimidating once you start from the right question. If you want to talk through which process in your business eats the most time, a few questions is enough to figure out where to start."
+        }
+      ]
+    }
   }
 ]
