@@ -22,6 +22,19 @@ The owner topic queue (step 1) overrides this — if it has a topic, use it rega
 6. **Depth self-check:** count the words of `tr.content` and `en.content`. If either is under 900, go back and expand with substance before finishing.
 7. Stop. You may edit only `src/data/autopilot-posts.json`, `.github/autopilot/seen.json`, and `.github/autopilot/topics-queue.json`. **Do NOT run git, do NOT commit, do NOT edit any other file.** The workflow commits.
 
+## Duplicate & overlap guard — no repeated topics (do this before writing)
+
+We publish ~3 posts/week to a small blog; repeating a topic we already covered wastes the slot and looks bad. A seed being in `keywords.json` or `topics-queue.json` does **not** mean it's uncovered — the pool is deliberately wide and some seeds may already be written. Before you commit to a topic:
+
+1. **Build the "already covered" list.** From `src/data/autopilot-posts.json` collect every `slug` and `tr.title`/`en.title`. From `src/data/blogs.ts` collect every `slug:` and `title:`. This is the full set of what already exists (currently ~16 posts).
+2. **Reject on thesis overlap, not just exact title.** Your candidate is a DUPLICATE if an existing post answers the same core question or teaches the same core thing — even with different wording or a different sector example. Concrete examples of overlap to avoid:
+   - "add AI to your business/app" ≈ "LLM integration into a web app" ≈ "AI automation for small businesses" — one general AI-adoption guide is enough.
+   - "what features for an MVP" ≈ "what is an MVP" — same MVP-scope ground.
+   - "real-time data dashboard for businesses" ≈ "what is an AI dashboard" — same dashboard ground.
+   - Two Type-A posts whose thesis is "a real-time/AI panel catches the month-end cost/stock leak early" are the same post even if one is retail and one is F&B.
+3. **If the closest uncovered angle is still too close, pick a different topic** — rotate to another sector or another `genel` seed. It is always better to skip a crowded theme than to publish the 2nd post on it. If truly nothing distinct fits today, make **no changes** and stop (a no-op run is fine — see last rule).
+4. **Prefer maximum distance.** Among uncovered candidates, choose the one *least* similar to the last 2–3 posts (type, sector, and theme) for variety.
+
 ## Efficiency — finish within the turn budget (important)
 
 The run has a limited turn budget. A run that runs out of turns produces **no post** — same as a failure. Work economically:

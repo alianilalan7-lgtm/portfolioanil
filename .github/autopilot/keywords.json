@@ -1,31 +1,48 @@
 {
-  "note": "Mixed seed topics (fallback when topics-queue.json is empty). 'sectors' = Type A lead-gen (owner thinks 'can you build this for us?'). 'genel' = Type B broad evergreen founder/SaaS/AI guides. Alternate Type A <-> Type B for variety; rotate sectors within A. Turkish-first audience.",
+  "note": "Seed topics (fallback when topics-queue.json is empty). These are IDEAS, not commands — every one MUST be checked against already-published posts before use (see INSTRUCTIONS.md 'Duplicate & overlap guard'). If the closest seed is already covered by a post in autopilot-posts.json OR blogs.ts, pick a different, genuinely-uncovered angle. 'sectors' = Type A lead-gen (owner thinks 'can you build this for us?'). 'genel' = Type B broad evergreen founder/SaaS/AI guides. Alternate Type A <-> Type B for variety; rotate sectors within A. Turkish-first audience. Keep this pool wide so we never repeat a topic.",
   "genel": [
-    "SaaS uygulaması geliştirme maliyeti ve süresi",
-    "Kendi işime/uygulamama yapay zeka nasıl eklerim",
-    "Küçük işletmeler için pratik yapay zeka otomasyonu örnekleri",
-    "Startup fikrini MVP ile hızlı ve ucuz test etmek",
-    "Freelance geliştirici ile çalışırken sözleşme ve süreçte nelere dikkat etmeli",
-    "İşletmeler için gerçek zamanlı veri dashboard'u nasıl kurulur",
-    "Web uygulamasına LLM (yapay zeka) entegrasyonu: pratik rehber",
-    "MVP için hangi özellikler seçilmeli, hangileri ertelenmeli"
+    "Yapay zeka chatbot'unu müşteri hizmetlerine entegre etmenin gerçek maliyeti ve sınırları",
+    "RAG nedir: kendi dokümanların üzerine soru-cevap yapay zekası nasıl kurulur",
+    "No-code/low-code mu yoksa özel kod mu — hangi durumda hangisi daha ucuza gelir",
+    "Mevcut bir yazılıma yeni özellik eklemek neden bazen sıfırdan yazmaktan pahalıdır",
+    "API entegrasyonu nedir ve iki yazılımı birbirine bağlamak ne kadar sürer",
+    "Yapay zeka ile fatura/döküman okuma (OCR + LLM) iş akışına nasıl oturur",
+    "Uygulamanı App Store/Play Store'a çıkarmadan önce bilmen gereken teknik adımlar",
+    "Aylık bakım anlaşması nedir: bir yazılımın 'bitti'den sonraki gerçek maliyeti",
+    "Web uygulaması mı mobil uygulama mı — küçük işletme için hangisiyle başlanmalı",
+    "Otomasyon araçları (Zapier/Make) nerede yeter, ne zaman özel yazılım şart olur",
+    "Yapay zeka projesinde veri gizliliği ve KVKK: müşteri verisini güvenle kullanmak",
+    "Hazır bloklarla (Stripe/Supabase/Clerk) SaaS'ı daha ucuza ve hızlı kurmak",
+    "Sesli yapay zeka (speech-to-text) küçük işletme telefon trafiğinde ne işe yarar",
+    "Yapay zeka 'agent'ı nedir ve tekrarlayan ofis işini nasıl otomatikleştirir",
+    "Yazılım projesinde sabit fiyat mı saatlik mi — kurucu için doğru model hangisi",
+    "Bir yazılımın performansı yavaşladığında nereye bakılır, ne kadara düzelir",
+    "Kendi verinle eğitilmiş öneri/tahmin modeli küçük işletmeye değer katar mı"
   ],
   "sectors": {
     "perakende": [
-      "Perakendede stok kaybını (shrinkage) yapay zekayla erkenden yakalamak",
-      "Mağaza vardiya planlamasını dakikalara indiren özel yazılım",
       "Çok şubeli perakendede stok ve satışı tek panelde toplamak",
       "Perakende günlük raporlamasını Excel'den kurtaran otomasyon",
-      "Müşteri verisini gerçek karara çeviren perakende dashboard'u",
-      "Mağaza içi kampanya etkisini anında ölçen sistem"
+      "Mağaza içi kampanya etkisini anında ölçen sistem",
+      "Reyon/raf doluluğunu fotoğraftan yapay zekayla kontrol eden araç",
+      "İade ve değişim sürecini dijitalleştirip suistimali yakalayan sistem",
+      "Tedarikçi sipariş noktasını otomatik hesaplayan stok sistemi",
+      "E-ticaret ile mağaza stoğunu gerçek zamanlı senkronize eden köprü yazılım",
+      "Kasadaki fiyat/indirim hatalarını gün içinde yakalayan uyarı sistemi",
+      "Müşteri segment ve sadakat verisini karara çeviren perakende paneli",
+      "Sezon sonu indirim/stok eritme planını veriyle kuran araç"
     ],
     "restoran-kafe": [
-      "Restoranda maliyet/stok kaçağını gerçek zamanlı gösteren sistem",
       "Kafe zincirinde günlük ciro ve maliyet takibini otomatikleştirmek",
       "Sipariş ve sadakat verisini tek panelde toplayan mini yazılım",
       "Menü ve fiyatlandırmayı veriyle yöneten restoran aracı",
       "Reçete/porsiyon maliyetini otomatik hesaplayan sistem",
-      "Şube performansını karşılaştıran restoran yönetim paneli"
+      "Şube performansını karşılaştıran restoran yönetim paneli",
+      "QR menü siparişlerini mutfağa ve kasaya bağlayan sistem",
+      "Gün sonu Z raporunu stok düşümüyle otomatik eşleyen araç",
+      "Kurye/paket sipariş platformlarını tek ekranda toplama",
+      "Rezervasyon ve masa doluluğunu tahminleyen sistem",
+      "Fire/israf takibini kayıt altına alan mutfak paneli"
     ],
     "mimarlik-insaat": [
       "Mimarlık ofisinde teklif ve maliyet hazırlamayı yarıya indiren yazılım",
@@ -33,7 +50,11 @@
       "İnşaat şantiyesinde ilerleme ve hakediş raporlamasını otomatikleştirmek",
       "Mimari sunum/render iş akışını hızlandıran otomasyon",
       "Malzeme/metraj takibini dijitalleştiren şantiye sistemi",
-      "Müşteri revizyon taleplerini tek akışta yöneten mimari araç"
+      "Müşteri revizyon taleplerini tek akışta yöneten mimari araç",
+      "Taşeron/ekip puantajını ve maliyetini takip eden saha sistemi",
+      "İmar/ruhsat evrak durumunu takip eden hatırlatma sistemi",
+      "Fotoğraf tabanlı şantiye ilerleme günlüğü ve raporu",
+      "Malzeme fiyat tekliflerini karşılaştıran satınalma aracı"
     ]
   }
 }
