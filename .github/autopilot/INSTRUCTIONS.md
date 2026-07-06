@@ -22,6 +22,16 @@ The owner topic queue (step 1) overrides this — if it has a topic, use it rega
 6. **Depth self-check:** count the words of `tr.content` and `en.content`. If either is under 900, go back and expand with substance before finishing.
 7. Stop. You may edit only `src/data/autopilot-posts.json`, `.github/autopilot/seen.json`, and `.github/autopilot/topics-queue.json`. **Do NOT run git, do NOT commit, do NOT edit any other file.** The workflow commits.
 
+## Efficiency — finish within the turn budget (important)
+
+The run has a limited turn budget. A run that runs out of turns produces **no post** — same as a failure. Work economically:
+
+- **Read each file at most once.** Read `topics-queue.json`, `keywords.json`, and `autopilot-posts.json` a single time and keep their contents in mind. To check slug collisions in `blogs.ts`, read it once.
+- **Append cheaply — one Edit, deterministic anchor.** The posts file ends with a newline then `]`. To append, do ONE `Edit` whose `old_string` is the final closing bracket of the array (the last `\n]`) and whose `new_string` is `,\n  <your new object>\n]`. Do **not** rewrite the whole file, and do **not** paste existing entries — that is what causes failed edits and burns turns. If your one Edit doesn't match, re-read only the last ~15 lines to get the exact closing bracket, then retry once.
+- **Word-count in your head, not by re-reading.** You wrote the content — count it as you write. Do not re-open the file to count words.
+- **Timely hook is optional and strictly capped:** at most **one** WebSearch or WebFetch, and only if you already have a specific query in mind. If the first attempt returns nothing useful, skip the hook and write an evergreen post — do not keep searching.
+- **Order that wastes the fewest turns:** read inputs → decide topic → write the full post object once (correct length on the first pass) → append with one Edit → update `topics-queue.json` and `seen.json` → stop.
+
 ## Content shape
 
 **Type B (general evergreen):** answer the searched question directly and usefully — practical guide / comparison / cost / real use cases, with steps and honest ranges, ending with the same internal-link CTA. Skip the heavy sector-pain framing.
