@@ -1145,5 +1145,92 @@
         }
       ]
     }
+  },
+  {
+    "slug": "architecture-firm-proposal-preparation-automation",
+    "publishedAt": "2026-07-06",
+    "readTime": "6 min",
+    "category": "Mimarlık",
+    "tags": ["Mimarlık", "İnşaat", "Otomasyon", "Yazılım"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Mimarlık & inşaat için özel yazılım", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi ofisin için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Mimarlık Ofisinde Teklif Hazırlamayı Saatlerden Dakikalara İndiren Sistem Nasıl Çalışıyor?",
+      "excerpt": "Mimarlık ofislerinde teklif hazırlama süreci genelde saatler sürüyor ve her revizyon işi baştan başlatıyor. Özel bir sistem bunu nasıl dakikalara indiriyor?",
+      "content": [
+        { "type": "paragraph", "text": "Saat gecenin on biri ve yarın sabah dokuzda müşteriyle teklif görüşmesi var. Proje ekibi üç saattir aynı teklifi baştan düzenliyor çünkü müşteri son anda 'cephede farklı bir malzeme de görelim' dedi. Metraj tablosu elle güncelleniyor, birim fiyatlar geçen ayki tedarikçi listesinden tek tek kontrol ediliyor, teklif PDF'i baştan dizilip yazıcıya gönderiliyor. Bu sahne, mimarlık ofislerinde teklif hazırlama sürecinin gündelik bir parçası — ayda defalarca tekrarlanıyor ve her seferinde saatlerce mesai, bazen bir gecelik uyku kaybı demek." },
+        { "type": "heading", "text": "Mimarlık Ofisinde Teklif Hazırlama Neden Bu Kadar Zaman Alıyor?" },
+        { "type": "paragraph", "text": "Sorunun kökü basit: teklif süreci hemen her projede sıfırdan başlıyor. Metraj bir Excel dosyasında, malzeme birim fiyatları tedarikçiden gelen bir e-postada, işçilik bedeli geçen yılki bir tekliften kopyalanmış, geçmiş proje maliyetleri ise kimsenin tam hatırlamadığı bir klasörde duruyor. Ofis büyüdükçe ya da aynı anda birden fazla proje teklife dönüştüğünde bu manuel derleme süreci ciddi bir hata riski taşımaya başlıyor: unutulan bir kalem, güncellenmemiş bir birim fiyat, yanlış kopyalanmış bir metraj satırı — hepsi teklifi ya gerçekçi olmayan biçimde düşük ya da müşteriyi kaçıracak kadar yüksek gösterebiliyor. Üstüne bir de teklifin marka kimliğine uygun, düzenli bir PDF olarak sunulması gerekiyor; bu da ayrı bir zaman kaybı ve genelde en son yapılan, en acele iş oluyor." },
+        { "type": "heading", "text": "Peki Ne İnşa Edilebilir: Teklif Hazırlamayı Gerçekten Hızlandıran Sistem" },
+        { "type": "paragraph", "text": "Bir teklif otomasyon aracı üç parçadan oluşuyor. Birincisi, malzeme ve birim fiyat veritabanı: tedarikçi fiyat listeleri düzenli aralıklarla buraya yükleniyor ya da mümkünse doğrudan tedarikçi sisteminden çekiliyor, böylece kimse elle fiyat kontrol etmek zorunda kalmıyor. İkincisi, proje şablonları: konut, ofis, restorasyon gibi proje tipine göre standart kalem grupları önceden tanımlanmış oluyor — her yeni projede sıfırdan liste çıkarmak yerine bu şablon temel alınıyor. Üçüncüsü, geçmiş proje maliyet kayıtları: benzer metrekare ve malzeme sınıfındaki önceki projelerin gerçekleşen maliyeti bir referans tablosunda tutuluyor ve yeni tekliflerin gerçekçiliğini artırıyor. Mimar ya da proje sorumlusu panelde sadece temel parametreleri giriyor: metrekare, kat sayısı, malzeme paketi, varsa özel talepler. Sistem metrajı ve güncel birim fiyatları otomatik eşleştirip toplamı hesaplıyor, ofisin marka kimliğine uygun bir PDF teklif üretiyor. Müşteri toplantı sırasında 'bu malzemeyle de görelim' dediğinde, tek bir seçim değişikliğiyle yeni teklif dakikalar içinde hazır oluyor — masadan kalkmadan." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Bir Mimarlık Ofisi İçin Teklif Süreci Nasıl Değişiyor" },
+        { "type": "paragraph", "text": "Sekiz kişilik bir ofis olan Meridyen Mimarlık'ı örnek alalım — ayda ortalama 15-20 konut ve ofis projesi için teklif hazırlıyorlar. Eski süreçte proje sorumlusu geçmiş bir teklifi Word'de açıp kopyalıyor, metrajı proje bazında elle güncelliyor, malzeme fiyatlarını tedarikçi e-postalarından tek tek kontrol ediyor, toplamı ayrı bir Excel'de hesaplayıp sonunda PDF'e taşıyordu. Bu süreç, orta karmaşıklıkta bir proje için üç ila dört saat sürüyordu — ve müşteri toplantıda bir detay değiştirmek istediğinde bu sürenin büyük kısmı tekrar başa dönüyordu." },
+        { "type": "paragraph", "text": "Yeni sistemde proje sorumlusu web panelinde yeni bir proje kaydı açıyor: metrekare, kat sayısı ve malzeme paketini (standart, orta, üst segment) seçiyor. Sistem otomatik olarak benzer geçmiş projelerden kalem listesini öneriyor; proje sorumlusu yalnızca birkaç özel kalemi elle düzenliyor — ekstra bir oda, özel bir detay, farklı bir cephe kaplaması. Sistem güncel birim fiyat listesinden toplamı hesaplıyor ve ofisin marka şablonuna uygun PDF'i saniyeler içinde üretiyor. Bu süreç artık 20-40 dakikaya iniyor. Daha önemlisi, müşteri toplantı sırasında malzeme değişikliği istediğinde proje sorumlusu panelden paketi değiştirip yeni PDF'i anında yazdırabiliyor — toplantı bitmeden, ofise dönmeye gerek kalmadan." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "list", "items": [
+          "Malzeme ve birim fiyat listesi tek bir tabloya taşınıyor (Excel/CSV içe aktarma ya da tedarikçi entegrasyonu ile).",
+          "Proje tipine göre şablon kalem grupları tanımlanıyor (konut, ofis, restorasyon vb.).",
+          "Basit bir hesaplama motoru, girilen metrekare/malzeme sınıfına göre metraj ve toplamı otomatik çıkarıyor.",
+          "Marka kimliğine uygun PDF şablonu (logo, renk, yazı tipi) bir kez tasarlanıp sisteme bağlanıyor.",
+          "Geçmiş projelerin gerçekleşen maliyeti referans tablosuna ekleniyor, gelecekteki tekliflerin doğruluğunu artırıyor."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Teklif hazırlama süresi", "value": "3-4 saatten 20-40 dakikaya" },
+          { "label": "Malzeme değişikliği revizyon süresi", "value": "toplantı sırasında dakikalar" },
+          { "label": "Haftalık kazanılan zaman", "value": "yaklaşık 4-8 saat" }
+        ] },
+        { "type": "heading", "text": "Gerçekçi Kazanım Ne?" },
+        { "type": "paragraph", "text": "Her ofis için kazanım aynı oranda olmuyor. Şablonlanabilir kalem sayısı arttıkça ve proje tipleri birbirine benzedikçe zaman kazanımı büyüyor; çok özel, tek seferlik ya da alışılmadık projelerde otomasyonun getirisi daha sınırlı kalıyor çünkü şablon dışı kalemler yine elle işleniyor. Söz verebileceğim şey, saatlerce süren bir işin dakikalara inmesi ve — en az bunun kadar değerli olan — güncel olmayan bir fiyattan ya da unutulan bir kalemden kaynaklanan hataların büyük ölçüde ortadan kalkması. Teklif tutarlılığı da artıyor: aynı proje tipi için farklı proje sorumluları artık birbirinden çok farklı yöntemlerle teklif çıkarmıyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Mimarlık ofisi için teklif otomasyonu ne kadar sürede kurulur?" },
+        { "type": "paragraph", "text": "Tek bir proje tipini ve temel bir şablonu kapsayan basit bir pilot 2-3 haftada kurulabilir. Malzeme fiyat entegrasyonu, geçmiş proje referans tablosu ve markaya uygun tam PDF şablonuyla üretim kalitesinde bir sistem genellikle 4-6 hafta sürüyor. Süre, tedarikçi fiyat listelerinin ne kadar düzenli formatta olduğuna ve kaç farklı proje tipinin şablonlanacağına bağlı olarak değişiyor." },
+        { "type": "subheading", "text": "Mevcut Excel şablonlarımızı kullanabilir miyiz?" },
+        { "type": "paragraph", "text": "Evet — genellikle sıfırdan yeni bir mantık icat etmiyoruz. Ofisin yıllar içinde oturttuğu kalem listesi, fiyatlandırma mantığı ve teklif formatı sistemin temeli oluyor; biz bunu manuel Excel işinden çıkarıp otomatik hesaplanan, tekrar kullanılabilir bir yapıya taşıyoruz. Mevcut şablonlarınız ne kadar düzenliyse geçiş o kadar hızlı oluyor." },
+        { "type": "subheading", "text": "Küçük bir ofis için bu yatırıma değer mi?" },
+        { "type": "paragraph", "text": "Ayda birkaç teklif hazırlayan çok küçük ofisler için bazen iyileştirilmiş bir Excel şablonu bile yeterli olabilir. Ancak ayda 10-15'in üzerinde teklif çıkan ya da birden fazla kişinin teklif hazırladığı ofislerde otomasyonun getirisi daha hızlı geri dönüyor, çünkü hem zaman kazanımı hem de teklifler arası tutarlılık büyüyor. Doğru ölçek, ofisin teklif hacmine ve kaç kişinin bu işe dahil olduğuna bağlı." },
+        { "type": "paragraph", "text": "Kendi ofisin için teklif ve maliyet hazırlama sürecini konuşmak istersen, şu an hangi şablonu ya da yazılımı kullandığını, ayda kaç teklif çıkardığını ve en çok zaman kaybettiğin adımın hangisi olduğunu sormakla başlayabiliriz. İletişim sayfasından ulaşabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "How a Custom Tool Cuts Architecture Firm Proposal Preparation From Hours to Minutes",
+      "excerpt": "Architecture firm proposal preparation usually takes hours and restarts from scratch after every revision. Here's how a custom system cuts it to minutes.",
+      "content": [
+        { "type": "paragraph", "text": "It's eleven at night, and there's a proposal meeting with the client at nine tomorrow morning. The project team has been reworking the same proposal for three hours because the client asked, at the last minute, to also see a different facade material. The quantity takeoff is being updated by hand, unit prices are being checked one by one against last month's supplier list, and the proposal PDF is being laid out from scratch before it goes to print. This scene plays out in architecture firm proposal preparation at most firms several times a month — and every time, it means hours of overtime, sometimes a lost night's sleep." },
+        { "type": "heading", "text": "Why Does Proposal Preparation Take So Long at Architecture Firms?" },
+        { "type": "paragraph", "text": "The root of the problem is simple: the proposal process starts from scratch on nearly every project. The quantity takeoff lives in one spreadsheet, material unit prices sit in an email from a supplier, labor costs were copied from last year's proposal, and past project costs are buried in a folder nobody quite remembers. As a firm grows, or when several projects turn into proposals at the same time, this manual assembly process starts carrying real risk of error: a forgotten line item, an unupdated unit price, a wrongly copied quantity row — any of these can make a proposal come in unrealistically low or high enough to lose the client. On top of that, the proposal still has to be delivered as a clean, on-brand PDF, which is its own time sink and usually the most rushed step of all." },
+        { "type": "heading", "text": "What's Actually Buildable: A System That Genuinely Speeds Up Proposal Preparation" },
+        { "type": "paragraph", "text": "A proposal automation tool has three parts. First, a materials and unit-price database: supplier price lists are uploaded on a regular schedule, or pulled directly from the supplier's system where possible, so nobody has to check prices by hand. Second, project templates: standard line-item groups predefined by project type — residential, office, restoration — so every new project starts from a template instead of a blank sheet. Third, historical project cost records: the actual costs of past projects with similar square footage and material class are kept in a reference table, which makes new proposals more realistic. The architect or project lead only enters the basic parameters in a panel: square footage, number of floors, material package, any special requests. The system automatically matches the quantities against current unit prices, calculates the total, and generates an on-brand PDF proposal. When the client says 'let's also see this with a different material' mid-meeting, one dropdown change produces a new proposal in minutes — without anyone leaving the table." },
+        { "type": "heading", "text": "A Real Scenario: How Proposal Preparation Changes at an Architecture Firm" },
+        { "type": "paragraph", "text": "Take Meridyen Mimarlık, an eight-person firm preparing proposals for roughly 15-20 residential and office projects a month. In the old process, the project lead opened a past proposal in Word and copied it, updated the quantity takeoff by hand for the new project, checked material prices one by one against supplier emails, calculated the total in a separate spreadsheet, and finally pasted everything into a PDF. For a mid-complexity project, this took three to four hours — and when the client asked to change a single detail mid-meeting, most of that time started over." },
+        { "type": "paragraph", "text": "In the new system, the project lead opens a new project record in the web panel and selects the square footage, number of floors, and material package (standard, mid, or premium). The system automatically suggests a line-item list from similar past projects; the project lead only edits a handful of specific items — an extra room, a special detail, a different facade cladding. The system calculates the total from the current unit-price list and generates an on-brand PDF within seconds. The whole process now takes 20-40 minutes. More importantly, when the client asks for a material change mid-meeting, the project lead can swap the package in the panel and print the new PDF on the spot — before the meeting ends, without going back to the office." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "list", "items": [
+          "The materials and unit-price list is moved into a single table (via Excel/CSV import or a supplier integration).",
+          "Template line-item groups are defined per project type (residential, office, restoration, and so on).",
+          "A simple calculation engine derives the quantity takeoff and total automatically from the entered square footage and material class.",
+          "An on-brand PDF template (logo, colors, typography) is designed once and wired into the system.",
+          "Actual costs from past projects are added to a reference table, improving the accuracy of future proposals."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Proposal preparation time", "value": "3-4 hours down to 20-40 minutes" },
+          { "label": "Material-change revision time", "value": "minutes, during the meeting" },
+          { "label": "Time freed up per week", "value": "roughly 4-8 hours" }
+        ] },
+        { "type": "heading", "text": "What's the Realistic Payoff?" },
+        { "type": "paragraph", "text": "The payoff isn't the same for every firm. The more line items that can be templated, and the more similar the project types are to each other, the bigger the time savings; for highly custom, one-off, or unusual projects, the payoff is more limited because anything outside the template still has to be handled by hand. What I can promise is that a job taking hours turns into one taking minutes, and — just as valuable — errors caused by an outdated price or a forgotten line item largely disappear. Proposal consistency improves too: different project leads on the same project type stop producing proposals built with wildly different methods." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "How long does it take to set up proposal automation for an architecture firm?" },
+        { "type": "paragraph", "text": "A simple pilot covering one project type and a basic template can be set up in 2-3 weeks. A production-quality system with material price integration, a historical-project reference table, and a full on-brand PDF template usually takes 4-6 weeks. The exact timeline depends on how organized the supplier price lists already are and how many different project types need templates." },
+        { "type": "subheading", "text": "Can we keep using our existing Excel templates?" },
+        { "type": "paragraph", "text": "Yes — we're usually not inventing new logic from scratch. The line-item list, pricing logic, and proposal format your firm has refined over the years becomes the foundation of the system; we move it out of manual spreadsheet work into a reusable, automatically calculated structure. The more organized your existing templates are, the faster the transition." },
+        { "type": "subheading", "text": "Is this worth it for a small firm?" },
+        { "type": "paragraph", "text": "For very small firms preparing only a handful of proposals a month, an improved Excel template alone might be enough. But for firms producing more than 10-15 proposals a month, or where more than one person prepares proposals, automation pays for itself faster, because both the time savings and the consistency across proposals compound. The right scale depends on your proposal volume and how many people are involved in producing them." },
+        { "type": "paragraph", "text": "If you want to talk through the proposal and cost-estimation process at your own firm, we can start with a few questions: what template or software you use today, how many proposals you produce a month, and which step eats the most time. Reach out through the contact page." }
+      ]
+    }
   }
 ]
