@@ -41,6 +41,12 @@ const serviceCards = [
     items: ["service3Item1", "service3Item2", "service3Item3"],
   },
   {
+    icon: "smartphone",
+    titleKey: "service5Title",
+    descriptionKey: "service5Description",
+    items: ["service5Item1", "service5Item2", "service5Item3"],
+  },
+  {
     icon: "tune",
     titleKey: "service4Title",
     descriptionKey: "service4Description",
