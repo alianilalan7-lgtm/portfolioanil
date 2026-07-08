@@ -961,5 +961,100 @@
         { "type": "paragraph", "text": "If you want to talk through the proposal and cost-estimation process at your own firm, we can start with a few questions: what template or software you use today, how many proposals you produce a month, and which step eats the most time. Reach out through the contact page." }
       ]
     }
+  },
+  {
+    "slug": "what-is-rag-ai-document-qa-guide",
+    "publishedAt": "2026-07-08",
+    "readTime": "8 min",
+    "category": "AI",
+    "tags": ["AI", "RAG", "LLM", "SaaS"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI & SaaS development services", "href": "/services" },
+      { "label": "Process & pricing", "href": "/process-pricing" },
+      { "label": "Start your project", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "RAG Nedir? Kendi Dokümanların Üzerine Soru-Cevap Yapay Zekası Nasıl Kurulur",
+      "excerpt": "RAG nedir, nasıl çalışır ve şirket dokümanların üzerine güvenilir bir soru-cevap yapay zekası kurmak gerçekte ne gerektirir?",
+      "content": [
+        { "type": "paragraph", "text": "Muhasebe departmanının bir sözleşme maddesini bulmak için üç yüz PDF'yi tek tek açtığı bir şirket düşünün. Ya da müşteri destek ekibinin aynı soruyu haftada onlarca kez yanıtladığı, her seferinde eski bir Word dokümanını arayarak cevap bulduğu bir SaaS şirketi. Bu şirketlerin çoğu artık aynı soruyu soruyor: 'ChatGPT gibi bir şey ama kendi dokümanlarımızın üzerinde çalışsa olmaz mı?' Cevap RAG (Retrieval-Augmented Generation) — ve bu yazıda RAG nedir, nasıl çalışır ve kendi dokümanların üzerine güvenilir bir soru-cevap sistemi kurmanın gerçekte ne gerektirdiğini anlatıyorum." },
+        { "type": "heading", "text": "RAG Nedir? Basitçe Açıklıyorum" },
+        { "type": "paragraph", "text": "RAG, bir dil modelinin (LLM) yanıt üretirken sadece eğitildiği genel bilgiye değil, sizin sağladığınız özel bir bilgi kümesine de başvurmasını sağlayan bir mimari. Süreç iki adımdan oluşuyor: önce ilgili sorguya en uygun doküman parçaları bir arama motorundan (genellikle bir vektör veritabanı) çekiliyor — buna 'retrieval' deniyor. Sonra bu parçalar, kullanıcının sorusuyla birlikte modele bağlam olarak veriliyor ve model yanıtı bu bağlama dayanarak üretiyor — buna 'generation' deniyor. Model hiçbir zaman sizin dokümanlarınız üzerinde yeniden eğitilmiyor; her sorguda ilgili parçalar anlık olarak modele 'okutuluyor'." },
+        { "type": "heading", "text": "RAG, Sade Bir ChatGPT Sorgusundan Neden Farklı?" },
+        { "type": "paragraph", "text": "Bir LLM'e doğrudan soru sorduğunuzda model yalnızca eğitim verisindeki genel bilgiye dayanıyor — şirketinizin iç sözleşmelerini, ürün dokümantasyonunuzu ya da geçen yılki destek biletlerinizi bilmiyor. Bu dokümanları promptun içine yapıştırmaya çalışabilirsiniz ama bağlam penceresi sınırlı ve maliyetli; binlerce sayfalık bir doküman kümesini her soruda modele göndermek pratik değil. RAG bu sorunu çözüyor: modele her şeyi göndermek yerine, sadece o soruyla alakalı birkaç parçayı gönderiyor. Bu hem maliyeti düşürüyor hem de yanıtın kaynağını gösterebilmenizi sağlıyor — 'bu cevap şu sözleşmenin 4. maddesinden geliyor' diyebiliyorsunuz. Halüsinasyon riski de azalıyor çünkü model uydurmak yerine gerçek bir metne dayanıyor; ancak sıfıra inmiyor, bu konuya aşağıda döneceğim." },
+        { "type": "paragraph", "text": "Bir diğer fark da güncelleme hızında ortaya çıkıyor. Bir modeli yeniden eğitmek günler, hatta haftalar sürebilirken, RAG'de yeni bir doküman eklendiğinde tek yapılması gereken onu parçalayıp vektör veritabanına kaydetmek — birkaç dakika içinde o doküman soru-cevap sisteminin bir parçası haline geliyor. Fiyat listeleri, politika belgeleri ya da devam eden proje dosyaları gibi sürekli değişen içerikler için bu fark, pratikte 'kullanılabilir sistem' ile 'sürekli bakım gerektiren sistem' arasındaki ayrımı belirliyor." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Bir Danışmanlık Şirketinde İç Bilgi Asistanı" },
+        { "type": "paragraph", "text": "Yirmi kişilik bir hukuk ve danışmanlık ofisi olan Vektör Danışmanlık'ı ele alalım (temsili bir örnek). Ofiste on yılı aşkın süredir biriken beş bin civarında sözleşme, iç yönerge ve eski proje raporu var. Yeni bir danışman bir soru sorduğunda — 'bu tip bir tedarik sözleşmesinde gizlilik maddesini nasıl yazmıştık?' — cevabı ya kıdemli bir ortağa sormak ya da eski dosyalarda saatlerce aramak zorunda kalıyordu. Kurulan sistemde önce mevcut dokümanlar (PDF, Word, e-posta arşivi) bir işlem hattından geçiriliyor: her doküman anlamlı parçalara (chunk) bölünüyor, her parça bir embedding modeliyle sayısal vektöre çevriliyor ve bir vektör veritabanına (örneğin pgvector ya da Pinecone) kaydediliyor. Danışman iç sohbet arayüzüne sorusunu yazdığında sistem önce soruyu da bir vektöre çeviriyor, veritabanında en yakın anlamsal eşleşmeleri buluyor, bulunan parçaları soruyla birlikte LLM'e gönderiyor ve LLM bu parçalara dayanarak bir yanıt üretiyor — yanıtın altında hangi dokümandan ve hangi sayfadan geldiği de gösteriliyor. Danışman artık saatlerce arşiv taramak yerine yanıtı otomatik alıyor, kaynağı görüyor ve gerekirse orijinal dokümana tek tıkla ulaşıyor." },
+        { "type": "heading", "text": "RAG Sistemi Nasıl Kurulur: Adım Adım" },
+        { "type": "list", "items": [
+          "Doküman kaynaklarını belirleyin: PDF'ler, Word dosyaları, wiki sayfaları, destek biletleri — hangi veri kümesinin soru-cevap için değerli olduğuna karar verin.",
+          "Dokümanları anlamlı parçalara (chunk) bölün. Parça boyutu çok küçükse bağlam kaybolur, çok büyükse ilgisiz bilgi karışır; genelde 300-800 kelime aralığında başlanır.",
+          "Her parçayı bir embedding modeliyle vektöre çevirin ve bir vektör veritabanına (pgvector, Pinecone, Weaviate gibi) kaydedin.",
+          "Bir retrieval katmanı kurun: kullanıcı sorusu geldiğinde en alakalı parçaları getiren arama mantığı.",
+          "LLM'e gönderilecek prompt şablonunu tasarlayın: sistem talimatı + getirilen parçalar + kullanıcı sorusu.",
+          "Yanıtla birlikte kaynak gösterimini (hangi doküman, hangi bölüm) ekleyin — bu hem güven hem de doğrulama için kritik.",
+          "Yeni doküman eklendiğinde ya da güncellendiğinde vektör veritabanının otomatik güncellenmesini sağlayan bir senkronizasyon mekanizması kurun."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Basit bir pilot RAG sistemi", "value": "2-3 hafta" },
+          { "label": "Üretim kalitesinde, kaynak gösterimli sistem", "value": "6-10 hafta" },
+          { "label": "Aylık vektör veritabanı + LLM maliyeti (orta ölçek)", "value": "kullanım hacmine göre birkaç yüz - birkaç bin dolar arası" }
+        ] },
+        { "type": "heading", "text": "Maliyet ve Sınırlamalar: RAG Her Şeyi Çözmüyor" },
+        { "type": "paragraph", "text": "RAG güçlü ama sihirli değil. Chunking stratejisi yanlış kurulursa model ilgisiz parçaları bağlam olarak alır ve yanıt kalitesi düşer — bu genelde ilk kurulumda en çok zaman harcanan optimizasyon adımı. Yapılandırılmış veriler (örneğin kesin sayısal raporlar, güncel stok miktarları) için RAG doğru araç değil; bu tür sorular için doğrudan bir veritabanı sorgusu ya da SQL tabanlı bir araç çok daha güvenilir. Ayrıca RAG halüsinasyonu tamamen ortadan kaldırmıyor — model bulduğu parçaları yanlış yorumlayabilir ya da parçalar arasında var olmayan bir bağlantı kurabilir. Bu yüzden özellikle hukuki ya da finansal kullanım senaryolarında yanıtın yanına kaynağı göstermek ve kritik kararlarda insan onayını sürecin dışında bırakmamak gerekiyor." },
+        { "type": "paragraph", "text": "Bir diğer pratik sınırlama, doküman kalitesinin doğrudan yanıt kalitesine yansıması. Eski, çelişkili ya da güncelliğini yitirmiş dokümanlar sisteme dahil edilirse model bunları da geçerli bir kaynak gibi kullanır — bu yüzden kurulumdan önce hangi dokümanların hâlâ doğru ve güncel olduğunu gözden geçirmek, teknik kurulumun kendisi kadar önemli bir adım. Küçük ölçekli bir pilotta bu genelde birkaç saatlik bir doküman ayıklama çalışmasıyla çözülüyor; büyük ve dağınık arşivlerde ise ayrı bir 'veri temizliği' aşaması gerekebiliyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "RAG ile fine-tuning arasındaki fark nedir?" },
+        { "type": "paragraph", "text": "Fine-tuning, modelin kendisini sizin verinizle yeniden eğitmek anlamına geliyor — pahalı, zaman alıcı ve veri güncellendiğinde tekrar yapılması gerekiyor. RAG'de model hiç değişmiyor; her sorguda ilgili bilgi anlık olarak bağlam olarak veriliyor. Dokümanlarınız sık güncelleniyorsa (fiyat listesi, politika belgeleri, güncel projeler) RAG neredeyse her zaman daha pratik ve daha ucuz bir yaklaşım." },
+        { "type": "subheading", "text": "Hangi vektör veritabanını seçmeliyim?" },
+        { "type": "paragraph", "text": "Zaten bir PostgreSQL veritabanı kullanıyorsanız pgvector eklentisi genelde en düşük sürtünmeli başlangıç noktası — ayrı bir servis yönetmenize gerek kalmıyor. Daha büyük ölçekte, milyonlarca dokümanla çalışan ürünler için Pinecone ya da Weaviate gibi yönetilen servisler daha uygun olabilir. Küçük ve orta ölçekli bir şirket için genellikle pgvector yeterli ve başlamak için doğru seçim." },
+        { "type": "subheading", "text": "RAG sistemi kurmanın maliyeti ve süresi ne kadar?" },
+        { "type": "paragraph", "text": "Tek bir doküman kümesi ve basit bir sohbet arayüzü içeren bir pilot 2-3 haftada hazır olabilir. Kaynak gösterimi, kullanıcı yetkilendirmesi (kimin hangi dokümana erişebileceği) ve çoklu doküman tipi desteği içeren üretim kalitesinde bir sistem genelde 6-10 hafta sürüyor. Aylık işletme maliyeti kullanım hacmine göre değişiyor ama küçük-orta ölçekli bir şirket için genelde vektör veritabanı ve LLM API çağrıları toplamda aylık birkaç yüz ila birkaç bin dolar arasında kalıyor." },
+        { "type": "subheading", "text": "RAG yanlış ya da uydurma cevap verme riskini tamamen ortadan kaldırıyor mu?" },
+        { "type": "paragraph", "text": "Hayır, azaltıyor ama sıfırlamıyor. Model bulduğu doğru parçaları bile bazen yanlış yorumlayabilir. Bu riski azaltmanın en etkili yolu her yanıtın yanında kaynağı (doküman adı, sayfa/bölüm) göstermek ve kullanıcının orijinal metne tek tıkla ulaşabilmesini sağlamak — böylece yanıt körü körüne değil, doğrulanabilir şekilde kullanılıyor." },
+        { "type": "paragraph", "text": "Şirketinizin kendi dokümanları üzerine bir soru-cevap sistemi kurmayı düşünüyorsanız, en iyi başlangıç noktası hangi doküman kümesinin en çok zaman kaybettirdiğini ve kimin bu sisteme erişmesi gerektiğini netleştirmek. Birkaç soruyla kapsamı çıkarabiliriz — iletişim sayfasından ulaşabilirsiniz." }
+      ]
+    },
+    "en": {
+      "title": "What Is RAG? How to Build a Question-Answering AI on Your Own Documents",
+      "excerpt": "What RAG actually is, how it works, and what it takes to build a reliable Q&A AI on your company's own documents.",
+      "content": [
+        { "type": "paragraph", "text": "Picture a company where the accounting team opens three hundred PDFs one by one to find a single contract clause. Or a SaaS company where the support team answers the same question dozens of times a week, each time digging through an old Word document to find the answer. Most of these companies are now asking the same question: 'Could we have something like ChatGPT, but working on our own documents?' The answer is RAG (Retrieval-Augmented Generation) — and in this guide I explain what RAG is, how it works, and what it actually takes to build a reliable question-answering system on your own documents." },
+        { "type": "heading", "text": "What Is RAG? A Simple Explanation" },
+        { "type": "paragraph", "text": "RAG is an architecture that lets a language model (LLM) draw on a specific knowledge base you provide, instead of relying only on the general knowledge it was trained on. The process has two steps: first, the document chunks most relevant to a given query are pulled from a search engine — usually a vector database. This is called 'retrieval.' Then those chunks are handed to the model as context, together with the user's question, and the model generates its answer based on that context — this is 'generation.' The model is never retrained on your documents; instead, the relevant chunks are 'read into' the model on the fly, for every single query." },
+        { "type": "heading", "text": "Why Is RAG Different From Just Asking ChatGPT a Question?" },
+        { "type": "paragraph", "text": "When you ask an LLM a question directly, the model relies only on the general knowledge baked into its training data — it doesn't know your company's internal contracts, your product documentation, or last year's support tickets. You could try pasting those documents straight into the prompt, but the context window is limited and expensive; sending thousands of pages of documents on every question isn't practical. RAG solves this by sending the model only the handful of chunks relevant to that specific question, instead of everything. This lowers cost and lets you show the source of an answer — you can say 'this comes from clause 4 of that contract.' It also reduces hallucination risk, since the model is grounded in real text instead of making things up — though it doesn't eliminate that risk entirely, which I'll come back to below." },
+        { "type": "heading", "text": "A Real Scenario: An Internal Knowledge Assistant at a Consulting Firm" },
+        { "type": "paragraph", "text": "Take Vektör Danışmanlık, a fictional twenty-person legal and consulting firm used here as a representative example. Over more than a decade, the firm has accumulated roughly five thousand contracts, internal policy documents, and old project reports. When a new consultant had a question — 'how did we usually word the confidentiality clause in this type of procurement contract?' — the answer meant either asking a senior partner or spending hours digging through old files. In the system that was built, existing documents (PDFs, Word files, an email archive) first go through a processing pipeline: each document is split into meaningful chunks, each chunk is converted into a numeric vector by an embedding model, and stored in a vector database (pgvector or Pinecone, for example). When a consultant types a question into the internal chat interface, the system converts the question into a vector too, finds the closest semantic matches in the database, sends those chunks to the LLM along with the question, and the LLM generates an answer grounded in those chunks — with the source document and section shown underneath the answer. Instead of spending hours searching the archive, the consultant now gets an answer automatically, sees its source, and can reach the original document with a single click if needed." },
+        { "type": "heading", "text": "How to Build a RAG System: Step by Step" },
+        { "type": "list", "items": [
+          "Identify your document sources: PDFs, Word files, wiki pages, support tickets — decide which data set is actually worth making searchable.",
+          "Split documents into meaningful chunks. Chunks that are too small lose context; chunks that are too large mix in irrelevant information — most teams start in the 300-800 word range.",
+          "Convert each chunk into a vector with an embedding model and store it in a vector database (pgvector, Pinecone, or Weaviate, for example).",
+          "Build a retrieval layer: the search logic that pulls the most relevant chunks when a user question comes in.",
+          "Design the prompt template sent to the LLM: system instructions plus retrieved chunks plus the user's question.",
+          "Show the source alongside every answer (which document, which section) — this matters for both trust and verification.",
+          "Set up a sync mechanism so the vector database updates automatically whenever a document is added or changed."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Simple pilot RAG system", "value": "2-3 weeks" },
+          { "label": "Production-quality system with source citations", "value": "6-10 weeks" },
+          { "label": "Monthly vector DB + LLM cost (mid-size)", "value": "a few hundred to a few thousand dollars, depending on volume" }
+        ] },
+        { "type": "heading", "text": "Cost and Limitations: RAG Doesn't Solve Everything" },
+        { "type": "paragraph", "text": "RAG is powerful, but not magic. If the chunking strategy is off, the model ends up with irrelevant chunks as context and answer quality drops — this is usually the optimization step that eats the most time during initial setup. For structured data (exact numeric reports, current stock levels), RAG isn't the right tool; a direct database query or a SQL-based tool is far more reliable for that kind of question. RAG also doesn't eliminate hallucination entirely — the model can still misinterpret the chunks it retrieves, or draw a connection between chunks that doesn't actually exist. That's why, especially in legal or financial use cases, showing the source next to every answer and keeping a human in the loop for critical decisions still matters." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "What's the difference between RAG and fine-tuning?" },
+        { "type": "paragraph", "text": "Fine-tuning means retraining the model itself on your data — expensive, time-consuming, and it has to be redone whenever your data changes. With RAG, the model itself never changes; the relevant information is fed in as context on the fly, for every query. If your documents change often (price lists, policy documents, active projects), RAG is almost always the more practical and cheaper approach." },
+        { "type": "subheading", "text": "Which vector database should I choose?" },
+        { "type": "paragraph", "text": "If you're already running PostgreSQL, the pgvector extension is usually the lowest-friction starting point — you don't need to run a separate service. At larger scale, for products working with millions of documents, managed services like Pinecone or Weaviate can be a better fit. For a small or mid-size company, pgvector is typically enough and the right place to start." },
+        { "type": "subheading", "text": "How long does it take to build a RAG system, and what does it cost?" },
+        { "type": "paragraph", "text": "A pilot covering a single document set and a simple chat interface can be ready in 2-3 weeks. A production-quality system with source citations, user-level access control (who can access which documents), and support for multiple document types usually takes 6-10 weeks. Monthly running costs vary with usage, but for a small-to-mid-size company, the vector database plus LLM API calls together typically land somewhere between a few hundred and a few thousand dollars a month." },
+        { "type": "subheading", "text": "Does RAG completely eliminate the risk of wrong or made-up answers?" },
+        { "type": "paragraph", "text": "No — it reduces the risk but doesn't remove it. The model can still misread even the correct chunks it retrieves. The most effective way to reduce this risk is to show the source (document name, page or section) next to every answer and let the user reach the original text in one click — so the answer is used as something verifiable, not something taken on faith." },
+        { "type": "paragraph", "text": "If you're considering building a question-answering system on your own company's documents, the best starting point is figuring out which document set costs you the most time today and who actually needs access to the system. A few questions is usually enough to scope it — reach out through the contact page." }
+      ]
+    }
   }
 ]
