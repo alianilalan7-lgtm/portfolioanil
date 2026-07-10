@@ -1056,5 +1056,92 @@
         { "type": "paragraph", "text": "If you're considering building a question-answering system on your own company's documents, the best starting point is figuring out which document set costs you the most time today and who actually needs access to the system. A few questions is usually enough to scope it — reach out through the contact page." }
       ]
     }
+  },
+  {
+    "slug": "restaurant-food-cost-calculation-system",
+    "publishedAt": "2026-07-10",
+    "readTime": "7 min",
+    "category": "Restoran",
+    "tags": ["Restoran", "Maliyet", "Yapay Zeka", "Otomasyon"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Restoran & kafe için özel yazılım", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi işletmen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Restoranda Porsiyon Maliyetini Otomatik Hesaplayan Sistem — Menü Fiyatları Neden Kör Noktada Belirleniyor?",
+      "excerpt": "Restoranlarda porsiyon maliyeti hesaplama çoğu zaman yılda bir yapılır; bu yüzden bazı menü kalemleri aylarca sessizce zarar ettirir.",
+      "content": [
+        { "type": "paragraph", "text": "Fiyat listesini son güncellediğinizde menünün tamamına yüzde 10 zam yaptınız — ama üç ay sonra kâr marjı yine erimiş durumda. Suçlu belli gibi görünüyor: malzeme fiyatları arttı. Ama gerçek şu ki menüdeki otuz kalemden hangi ikisi ya da üçü sizi asıl zarara sokuyor, kimse net olarak bilmiyor. Çünkü porsiyon maliyeti hesaplama çoğu restoran ve kafede hiç yapılmıyor, ya da yılda bir kez kabaca yapılıp bir daha açılmıyor. Oysa peynir, et, kahve çekirdeği, yağ gibi ana girdilerin fiyatı haftalık dalgalanıyor; menü fiyatı ise aylarca, bazen yıllarca sabit kalıyor." },
+        { "type": "heading", "text": "Restoran ve Kafeler İçin Bu Ne Anlama Geliyor?" },
+        { "type": "paragraph", "text": "Çoğu işletmede fiyatlandırma bir kere yapılır ve nadiren gözden geçirilir: bir reçete kartı hazırlanır, o anki malzeme fiyatlarıyla bir maliyet hesaplanır, üstüne bir kâr marjı eklenir ve fiyat menüye yazılır. Sorun şu ki bu hesap, o günün fiyatlarıyla dondurulmuş bir fotoğraftır. Zeytinyağı fiyatı altı ayda yüzde otuz artabilir, belirli bir peynir türü tedarikçi değişince farklı fiyatlanabilir, porsiyon gramajı mutfakta zamanla kayabilir — personel değişince, tarif 'göz kararı' uygulanınca. Hiçbiri tek başına dramatik değildir ama birikince en çok satan ürünlerden biri sessizce zarar eden bir kaleme dönüşebilir — ve kimse fark etmez, çünkü ciro raporu hâlâ iyi görünür. Kayıp, ciro tablosunda değil, marj tablosunda saklıdır." },
+        { "type": "heading", "text": "Porsiyon Maliyetini Otomatik Hesaplayan Sistem Ne Yapar?" },
+        { "type": "paragraph", "text": "Sistemin temeli basit: her menü kalemi için bir reçete/BOM (malzeme listesi) tanımlanır — hangi üründe kaç gram ya da mililitre hangi girdi kullanılıyor. Bu girdilerin birim fiyatları, tedarikçi faturalarından (e-fatura/e-arşiv XML'i ya da manuel giriş) düzenli olarak güncellenir. Bir malzemenin fiyatı değiştiğinde, o malzemeyi içeren tüm reçetelerin maliyeti otomatik olarak yeniden hesaplanır — elle hiçbir şey yapmaya gerek kalmadan. Sistem her ürün için güncel gıda maliyeti oranını (food cost %) hesaplar ve bu oran belirlediğiniz eşiği (örneğin yüzde 35) aştığında uyarı verir. Böylece 'bu ürün hâlâ kârlı mı?' sorusunun cevabı yılda bir değil, her hafta elinizde olur." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Kahve Molası Zinciri" },
+        { "type": "paragraph", "text": "Altı şubeli bir kafe zinciri düşünün — Kahve Molası. Sahip, kahvaltı tabağının en çok satan üründen biri olduğunu biliyor ama son aylarda genel kâr marjının daraldığını fark ediyor, nedenini bulamıyor. Sistem kurulduktan sonra ilk yapılan iş, en çok satan on ürünün reçetesini gramaj bazında sisteme girmek — beyaz peynir, yumurta, zeytin, ekmek, tereyağı miktarları dahil. Tedarikçi faturaları her hafta sisteme yükleniyor ya da entegrasyon üzerinden otomatik çekiliyor. İkinci ayın sonunda dashboard'da bir uyarı beliriyor: kahvaltı tabağının gıda maliyeti oranı yüzde 28'den yüzde 41'e çıkmış — beyaz peynir fiyatındaki art arda üç zam yüzünden. Menü fiyatı hiç değişmemiş." },
+        { "type": "paragraph", "text": "Şube müdürü artık her Pazartesi sabahı tek bir ekrana bakıyor: 'marj riski' listesi, en yüksek maliyet artışı yaşayan beş ürünü sırayla gösteriyor. Sahip bu veriyle iki seçenek arasında karar veriyor — peynir porsiyonunu 20 gramdan 15 grama indirmek ya da fiyatı birkaç lira artırmak. Menü mühendisliği artık yılda bir yapılan bir toplantı değil, haftalık kontrol edilen bir rutin haline geliyor. Bu, elle tutulan bir Excel tablosuyla da teoride yapılabilir — ama pratikte hiç kimse otuz reçeteyi haftalık olarak elle güncellemiyor, bu yüzden sistem asıl işi görüyor: sürekliliği sağlamak." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "list", "items": [
+          "Reçete/BOM veritabanı: her menü kalemi için gramaj bazlı malzeme listesi tek seferlik olarak sisteme girilir.",
+          "Tedarikçi fiyat verisi: e-fatura/e-arşiv entegrasyonu ya da haftalık manuel fiyat girişiyle malzeme birim fiyatları güncel tutulur.",
+          "Otomatik yeniden hesaplama: bir malzeme fiyatı değiştiğinde, o malzemeyi içeren tüm reçetelerin maliyeti anında yeniden hesaplanır.",
+          "Eşik tabanlı uyarı: gıda maliyeti oranı belirlenen sınırı aştığında yöneticiye bildirim gider.",
+          "Basit dashboard: ürün, güncel maliyet oranı, trend ve öneri tek ekranda."
+        ] },
+        { "type": "paragraph", "text": "Bazı işletmelerde tedarikçi faturaları hâlâ kağıt üzerinde geliyor ya da e-fatura sistemine tam entegre değil. Bu durumda sistem, haftalık on dakikalık bir manuel fiyat girişiyle de çalışıyor — otomasyon kadar hızlı değil ama yılda bir yapılan hesaplamadan çok daha sık. Ayrıca porsiyon gramajının mutfakta zamanla kaymasını (personel değişimi, 'göz kararı' uygulama) yakalamak için periyodik bir fiziksel doğrulama öneriyorum: ayda bir, birkaç üründe gerçek porsiyon tartılıp reçete kaydıyla karşılaştırılıyor. Bu, sistemin veri kalitesini korumasının tek yolu — girdi yanlışsa çıktı da yanlış olur." },
+        { "type": "stats", "items": [
+          { "label": "Elle reçete maliyeti güncelleme sıklığı (tipik işletme)", "value": "Yılda 1 kez" },
+          { "label": "Sistemle güncelleme sıklığı", "value": "Fatura girişinde anında" },
+          { "label": "Tespit edilen düşük marjlı ürün oranı (tipik)", "value": "Menünün %10–20'si" }
+        ] },
+        { "type": "paragraph", "text": "Bu sistem otomatik olarak fiyat artırmıyor veya reçete değiştirmiyor — kararı hâlâ sen veriyorsun. Yaptığı şey, hangi ürünün ne zaman ve ne kadar marj kaybettiğini görünür kılmak. Bazı işletmelerde bu, birkaç üründe porsiyon veya fiyat ayarıyla marjı geri kazanmak anlamına geliyor; bazılarında ise belirli bir ürünü menüden tamamen çıkarma kararı oluyor. Sonuç işletmeden işletmeye değişir ama ortak nokta şu: karar artık tahminle değil, güncel veriyle veriliyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Porsiyon maliyeti hesaplama neden bu kadar önemli?" },
+        { "type": "paragraph", "text": "Çünkü menü fiyatlandırması genelde bir kerelik bir karar gibi ele alınıyor, oysa malzeme maliyetleri sürekli değişiyor. Porsiyon maliyeti düzenli hesaplanmadığında, en çok satan ürünlerden biri bile sessizce zarar eden bir kaleme dönüşebilir — ve bunu fark etmenin tek yolu yıl sonu kâr-zarar tablosuna bakmak oluyor, o noktada aylarca kayıp birikmiş oluyor." },
+        { "type": "subheading", "text": "Küçük, tek şubeli bir kafe için bu sistem gerekli mi, yoksa sadece büyük zincirler mi ihtiyaç duyar?" },
+        { "type": "paragraph", "text": "Aslında tek şubeli işletmeler bundan daha çok fayda görüyor, çünkü büyük zincirlerin aksine bir finans analistleri yok — sahip hem mutfakla hem de fiyatlandırmayla kendisi ilgileniyor. Küçük ölçekte kurulum daha basit: on-onbeş temel reçete, birkaç tedarikçi. Sistem büyümesi işletmeyle birlikte ölçekleniyor." },
+        { "type": "subheading", "text": "Mevcut POS veya muhasebe yazılımımla entegre olur mu?" },
+        { "type": "paragraph", "text": "Çoğu durumda evet. Türkiye'deki e-fatura/e-arşiv altyapısı üzerinden tedarikçi faturaları XML formatında okunabiliyor; bu da malzeme fiyatlarını elle girmeden otomatik güncellemeyi mümkün kılıyor. Entegrasyon yoksa haftalık manuel fiyat girişiyle de aynı fayda büyük ölçüde sağlanıyor, sadece güncelleme sıklığı biraz düşüyor." },
+        { "type": "paragraph", "text": "Bu sistemi standart bir kutu yazılım olarak değil, senin mutfağına ve tedarikçi yapına özel bir kurulum olarak hazırlıyorum. Tek kafe de olur, çok şubeli bir restoran zinciri de. Kendi işletmen için benzer bir sistemi konuşmak istersen birkaç soruyla kapsamı netleştirebiliriz — iletişim sayfasından ulaşabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "The System That Calculates Real Portion Cost in Restaurants — and Why Most Menus Are Priced Blind",
+      "excerpt": "Most restaurants calculate portion cost once a year, so menu items quietly bleed margin for months before anyone notices.",
+      "content": [
+        { "type": "paragraph", "text": "The last time you updated your price list, you raised the entire menu by 10 percent — but three months later, margins are thin again. The obvious suspect is rising ingredient costs. But the real problem is that nobody actually knows which two or three items out of thirty on the menu are the ones losing money. Restaurant portion cost calculation is rarely done consistently — most operators do it once, roughly, when the menu launches, and never revisit it. Meanwhile cheese, meat, coffee beans, and oil prices move weekly, while the menu price stays fixed for months or years." },
+        { "type": "heading", "text": "What This Means for Restaurants and Cafés" },
+        { "type": "paragraph", "text": "In most operations, pricing happens once and is rarely revisited: a recipe card gets written, a cost is calculated against that day's ingredient prices, a margin is added on top, and the price goes on the menu. The problem is that this calculation is a snapshot frozen at that moment. Olive oil prices can climb 30 percent in six months, a specific cheese might price differently after a supplier switch, and portion sizes tend to drift in the kitchen over time as staff change and recipes get eyeballed instead of measured. None of this is dramatic on its own, but compounded, one of your best-selling items can quietly turn into a loss leader — and nobody notices, because the revenue report still looks healthy. The loss doesn't show up in the revenue table. It hides in the margin table." },
+        { "type": "heading", "text": "What a Portion Cost Calculation System Actually Does" },
+        { "type": "paragraph", "text": "The foundation is simple: every menu item gets a recipe/BOM (bill of materials) — exactly how many grams or milliliters of each ingredient it uses. The unit price of each ingredient is kept current from supplier invoices (e-invoice/e-archive XML feeds, or manual entry). When an ingredient's price changes, every recipe that uses it gets its cost recalculated automatically, with no manual work. The system computes a current food cost percentage for every dish and flags it the moment that percentage crosses a threshold you set — say, 35 percent. So the answer to 'is this dish still profitable?' is available every week, not once a year." },
+        { "type": "heading", "text": "A Real Scenario: The Coffee Break Chain" },
+        { "type": "paragraph", "text": "Picture a six-location café chain — Coffee Break. The owner knows the breakfast plate is one of the best sellers, but has noticed overall margin tightening over the past few months without being able to pin down why. Once the system is set up, the first task is entering the recipes for the top ten sellers by weight — feta cheese, eggs, olives, bread, butter, down to the gram. Supplier invoices get uploaded weekly, or pulled automatically through an integration. By the end of month two, an alert shows up on the dashboard: the breakfast plate's food cost percentage has climbed from 28 percent to 41 percent, driven by three consecutive price increases on feta cheese. The menu price never moved." },
+        { "type": "paragraph", "text": "Now the branch manager checks a single screen every Monday morning: a 'margin risk' list ranking the five items with the sharpest cost increases. Armed with that, the owner picks between two options — trim the cheese portion from 20 grams to 15, or raise the price by a small amount. Menu engineering stops being an annual meeting and becomes a weekly routine. In theory this could be done with a manual spreadsheet too — but in practice, nobody updates thirty recipes by hand every week. That's the actual job the system does: making the update happen consistently." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "list", "items": [
+          "Recipe/BOM database: a one-time setup entering the gram-level ingredient list for every menu item.",
+          "Supplier price feed: e-invoice/e-archive integration or weekly manual entry keeps ingredient unit prices current.",
+          "Automatic recalculation: when an ingredient's price changes, every recipe using it is recosted instantly.",
+          "Threshold-based alerts: the manager gets notified the moment a dish's food cost percentage crosses your set limit.",
+          "A simple dashboard: item, current cost ratio, trend, and suggested action on one screen."
+        ] },
+        { "type": "paragraph", "text": "Some businesses still receive supplier invoices on paper or aren't fully wired into e-invoicing. In that case, the system still works with a ten-minute weekly manual price entry — not as fast as automation, but far more frequent than a once-a-year calculation. I also recommend a periodic physical check to catch portion drift in the kitchen (staff turnover, recipes applied 'by eye' instead of by measure): once a month, weigh the actual portion on a handful of items and compare it against the recipe record. That's the only way the system's data stays trustworthy — bad input produces bad output." },
+        { "type": "stats", "items": [
+          { "label": "Manual recipe cost update frequency (typical business)", "value": "Once a year" },
+          { "label": "Update frequency with the system", "value": "Instantly on invoice entry" },
+          { "label": "Share of low-margin items typically found", "value": "10–20% of the menu" }
+        ] },
+        { "type": "paragraph", "text": "This system doesn't automatically raise prices or change recipes — that decision stays with you. What it does is make visible which item is losing margin, and when. In some businesses that means adjusting a portion or a price on a handful of items; in others, it means pulling a specific dish off the menu entirely. The outcome varies business to business, but the common thread is that the decision is now made from current data instead of a guess." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "Why does portion cost calculation matter this much?" },
+        { "type": "paragraph", "text": "Because menu pricing tends to get treated as a one-time decision, while ingredient costs keep moving. Without regular portion cost calculation, even a best-selling item can quietly turn into a loss leader — and the only way to notice is looking at the year-end profit and loss statement, by which point months of loss have already accumulated." },
+        { "type": "subheading", "text": "Does a small, single-location café actually need this, or is it only for large chains?" },
+        { "type": "paragraph", "text": "Single-location operators arguably benefit more, because unlike a chain, they don't have a finance analyst on staff — the owner is handling both the kitchen and the pricing personally. Setup at small scale is simpler too: ten to fifteen core recipes, a handful of suppliers. The system scales with the business, not the other way around." },
+        { "type": "subheading", "text": "Will it integrate with my existing POS or accounting software?" },
+        { "type": "paragraph", "text": "In most cases, yes. In Turkey, supplier invoices flow through the e-invoice/e-archive (e-fatura/e-arşiv) infrastructure as XML, which makes it possible to update ingredient prices automatically without manual entry. Where that integration isn't available, weekly manual price entry delivers most of the same benefit — just at a slightly lower update frequency." },
+        { "type": "paragraph", "text": "I build this as a setup tailored to your kitchen and your supplier relationships, not as off-the-shelf software — whether that's a single café or a multi-branch restaurant chain. If you want to talk through something similar for your own operation, a few questions is enough to scope it — reach out through the contact page." }
+      ]
+    }
   }
 ]
