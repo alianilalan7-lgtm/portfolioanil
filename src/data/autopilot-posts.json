@@ -1234,5 +1234,94 @@
         { "type": "paragraph", "text": "Whichever model you choose, what actually determines the outcome is how precisely the scope is written down and whether the change process is defined upfront. If you want to figure out whether fixed price or hourly fits your own project, a few questions is enough to scope it — reach out through the contact page." }
       ]
     }
+  },
+  {
+    "slug": "retail-empty-shelf-ai-detection",
+    "publishedAt": "2026-07-15",
+    "readTime": "7 min",
+    "category": "Perakende",
+    "tags": ["Perakende", "Stok", "Yapay Zeka", "Mağaza Operasyonu"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Perakende için özel yazılım & otomasyon", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi operasyonun için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Perakendede Raf Boşluğunu Yapay Zeka Nasıl Anında Yakalıyor — ve Çoğu Mağaza Neden Günlerce Fark Edemiyor?",
+      "excerpt": "Rafta ürün bittiğinde POS hâlâ 'stokta' diyor. Raf boşluğunu yapay zeka destekli bir sistem saatler içinde nasıl yakalıyor?",
+      "content": [
+        { "type": "paragraph", "text": "Cuma akşamı en çok satan zeytinyağının rafı boş. Müşteri birkaç saniye rafın önünde duruyor, ürünü göremeyince ya rakip markayı alıyor ya da hiç almadan çıkıyor — ve bunu kimseye söylemiyor. Depoda aynı üründen otuz kutu duruyor, POS sistemi de hâlâ 'stokta' diyor çünkü sistem depo ile mağaza toplamını görüyor, raftaki fiili durumu değil. İşte tam da bu tür bir raf boşluğu, hiçbir alarm tetiklemediği için sabahtan beri boş durmasına rağmen günlerce fark edilmeden kalabiliyor — çünkü hiçbir sistem raftaki gerçek durumu izlemiyor, yalnızca toplam stok rakamını izliyor." },
+        { "type": "heading", "text": "Raf Boşluğu Perakende İçin Ne Anlama Geliyor?" },
+        { "type": "paragraph", "text": "Bu, perakendede 'hayalet stok yokluğu' (phantom stockout) denen bir sorun: sistemde stokta görünüyor ama raf boş, bu yüzden hiçbir uyarı tetiklenmiyor. Depo-mağaza toplamına bakan bir stok yönetim sistemi bu farkı hiçbir zaman yakalayamaz, çünkü gördüğü rakam zaten doğru — sadece yanlış yerde duruyor. Bu, ay sonu sayım farkından farklı bir problem: burada kayıp değil, satılamayan ürün var; müşteri parasıyla elindeyken, ürünü göremediği için alışverişi tamamlayamıyor." },
+        { "type": "paragraph", "text": "Raf doluluğunu gerçek zamanlı izleyen özel bir sistem bu boşluğu kapatır. Sistem şöyle çalışır: mağaza personeli belirli aralıklarla (örneğin her 2-3 saatte bir) kritik reyonların fotoğrafını bir mobil uygulama üzerinden çekiyor ya da yüksek trafikli reyonların üzerine sabit, geniş açılı birkaç kamera yerleştiriliyor. Görüntü tanıma modeli her fotoğrafı planogramla — yani hangi ürünün hangi raf konumunda, ne kadar dolu durması gerektiğiyle — karşılaştırıyor. Boşluk belirlenen eşiği geçtiğinde ya da yüksek ciro yapan bir SKU'da ani bir düşüş algılandığında sistem anında uyarı gönderiyor. Kullanılan veri üç kaynaktan geliyor: planogram (raf haritası), satış hızı verisi (POS'tan) ve fotoğraflardan çıkarılan doluluk oranı. Yavaş hareket eden ürünlerde bu kadar sık kontrol gerekmez; sistemin değeri, en çok satan kalemlere odaklanmasında." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Baharat Market Zinciri" },
+        { "type": "paragraph", "text": "Baharat Market, İstanbul'da dört şubesi olan orta ölçekli bir market zinciri. Şube müdürü Ayşe Hanım'ın ekibi güne her zaman bir 'raf turu' ile başlıyordu ama bu tur subjektifti — personel göze çarpan boşlukları not ediyor, geri kalanını fark etmiyordu. Özellikle hafta sonu yoğunluğunda, en çok satan 25 üründen biri tükendiğinde bunu genelde ancak akşam vardiyası ya da bir müşteri şikayeti sayesinde fark ediyordu." },
+        { "type": "paragraph", "text": "Kurulan sistemde personel artık elindeki tabletle üç ana koridor ve kasa önü teşhir alanının fotoğrafını her 2 saatte bir çekiyor — bu, zaten yaptıkları check-in turuna eklenen 5 dakikalık bir adım. Fotoğraflar otomatik olarak analiz ediliyor ve planogramla karşılaştırılıyor. Sistem, en çok satan 25 üründen herhangi biri planogramın belirgin şekilde altına düştüğünde şube müdürünün telefonuna anlık bildirim gönderiyor: hangi reyon, hangi ürün, tahmini ne zamandan beri boş." },
+        { "type": "paragraph", "text": "Haftalık rutinde değişen şey şu: Ayşe Hanım artık sabah 'her şey yerinde mi' diye dolaşmak yerine, önceliklendirilmiş bir liste görüyor — dashboard'da kırmızı işaretli 2-3 kalem, gerisi yeşil. Depo personeline otomatik bir raf doldurma talebi düşüyor, bu da vardiyalar arası manuel iletişimi büyük ölçüde ortadan kaldırıyor. İlk ay, sistemin ışık koşullarına ve raf açısına alışması için birkaç yanlış alarm çıktı; ikinci aydan itibaren bildirimler büyük ölçüde isabetli hale geldi." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "list", "items": [
+          "Fotoğraf toplama: başlangıçta tüm mağazayı değil, en çok satan 20-30 SKU'nun bulunduğu reyonları kapsayacak şekilde kurun — personel telefonuyla planlı bir turda ya da birkaç sabit geniş açılı kamerayla.",
+          "Planogram eşlemesi: hangi ürünün hangi raf konumunda durması gerektiğini ve normalde ne kadar dolu görünmesi gerektiğini tanımlayan basit bir harita.",
+          "Görüntü tanıma modeli: sıfırdan eğitilmiş bir model değil, hazır nesne tanıma altyapısının mağazanızın raf düzenine göre ince ayarlanmış hali genelde yeterli.",
+          "Eşik tabanlı uyarı: her ürün için aynı hassasiyet gerekmez — yüksek cirolu ürünlerde düşük eşik, yavaş hareket edenlerde daha gevşek bir eşik mantıklı.",
+          "POS/ERP entegrasyonu (ikinci aşama): fotoğraf verisini satış hızı ve tedarik sipariş noktasıyla birleştirerek otomatik raf doldurma taleplerine dönüştürmek."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Tespit süresi", "value": "günlerden 2-4 saate" },
+          { "label": "Başlangıç kapsamı", "value": "en çok satan 20-30 SKU / kritik reyon" },
+          { "label": "Manuel raf turu süresi", "value": "haftada birkaç saat azalma" }
+        ] },
+        { "type": "paragraph", "text": "Sıfır stok yokluğu vaat etmiyorum — bu hiçbir sistemin garanti edebileceği bir şey değil. Ama en çok satan ürünlerde raf boşluğunu saatler içinde fark edip müdahale edebilmek, günlerce fark edilmeyen satış kayıplarını önemli ölçüde azaltıyor. İlk birkaç hafta yanlış alarm sayısı biraz yüksek çıkabilir; eşik değerleri mağazanın gerçek düzenine göre kalibre edildikçe bu düşüyor. Ayrıca sistemin kapsamını genişletmek isterseniz — örneğin sezonluk ürünler ya da kampanyalı reyonlar için ek takip eklemek — bu ilk kurulumdan sonra kademeli olarak yapılabilir; her şeyi ilk günden kapsamak zorunda değilsiniz." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Raf boşluğu tespiti için özel kamera mı gerekiyor?" },
+        { "type": "paragraph", "text": "Hayır, zorunlu değil. Çoğu mağaza personelin telefonuna kurulu basit bir uygulamayla planlı bir fotoğraf turuyla başlıyor. Sabit kameralar, yalnızca en yüksek trafikli birkaç reyon için sonradan eklenen bir optimizasyon — ilk yatırımı büyütmeden başlamak mümkün." },
+        { "type": "subheading", "text": "Bu sadece büyük zincirler için mi mantıklı?" },
+        { "type": "paragraph", "text": "Hayır. Tek şubeli bir mağaza da, kapsamı en çok satan 20-30 ürünle sınırlı tutarak bu sistemi kurabilir. Maliyet şube sayısına değil, kapsanan reyon ve ürün sayısına göre ölçeklenir." },
+        { "type": "subheading", "text": "Mevcut POS veya stok yönetim yazılımımla entegre olur mu?" },
+        { "type": "paragraph", "text": "Evet. Sistem genelde mevcut POS'unuzdan SKU listesini ve satış hızını çekiyor, bunu planogramla eşliyor. Yazılımınızı değiştirmiyor, üzerine bir görsel doğrulama katmanı ekliyor." },
+        { "type": "subheading", "text": "Yanlış alarm çok mu çıkar?" },
+        { "type": "paragraph", "text": "İlk 2-4 hafta evet, biraz fazla çıkabilir — ışık koşulları, raf açısı, hatta gün içindeki gölgelenme gibi faktörler ayarlanmayı gerektiriyor. Eşik değerleri mağazanın gerçek düzenine göre kalibre edildikçe yanlış alarm oranı belirgin şekilde düşüyor. Bu kalibrasyon süresini baştan bir öğrenme dönemi olarak planlamak, personelin sisteme güvenini de daha sağlam kuruyor." },
+        { "type": "paragraph", "text": "Bu sistemi standart bir kutu ürün olarak değil, mağazanın kendi raf düzenine, ürün karmasına ve mevcut POS/ERP altyapısına özel bir entegrasyon olarak kuruyorum. Kendi mağazan veya zincirin için benzer bir sistemi konuşmak istersen, birkaç soruyla kapsamı netleştirebiliriz." }
+      ]
+    },
+    "en": {
+      "title": "How AI Catches an Empty Shelf in Retail Instantly — and Why Most Stores Still Take Days to Notice",
+      "excerpt": "The POS still says 'in stock' while the shelf sits empty. Here's how an AI-backed system catches an empty shelf within hours, not days.",
+      "content": [
+        { "type": "paragraph", "text": "On a Friday evening, the shelf for the best-selling olive oil is empty. A customer stands in front of it for a few seconds, doesn't see the product, and either grabs a competing brand or walks out without buying — and never mentions it to anyone. Thirty units of the same product sit in the backroom, and the POS system still says 'in stock' because it only sees the combined backroom-plus-shelf total, not the actual state of the shelf. This is exactly the kind of empty shelf that can sit empty since the morning and go unnoticed for days, simply because no alarm ever fires — no system is tracking what's actually on the shelf, only the total stock number." },
+        { "type": "heading", "text": "What Does an Empty Shelf Actually Mean for Retail?" },
+        { "type": "paragraph", "text": "This is what's known in retail as a 'phantom stockout': the system shows the item in stock, so no alert ever triggers. A stock management system that only looks at the backroom-plus-store total will never catch this gap, because the number it sees is technically correct — it's just sitting in the wrong place. This is a different problem from a month-end count discrepancy: there's no loss here, just an unsold product; the customer has the money in hand but can't complete the purchase because they can't see the item." },
+        { "type": "paragraph", "text": "A custom system that tracks shelf fullness in real time closes this gap. Here's how it works: store staff photograph critical shelf sections at set intervals (say, every 2-3 hours) using a mobile app, or a few fixed, wide-angle cameras are mounted above the highest-traffic aisles. An image recognition model compares each photo against the planogram — which product belongs in which shelf position, and how full it should normally look. When a gap crosses a defined threshold, or a high-velocity SKU shows a sudden drop, the system sends an instant alert. The data comes from three sources: the planogram (shelf map), sales velocity data (from the POS), and the fullness ratio extracted from the photos. Slow-moving products don't need this level of scrutiny; the system's value comes from focusing on the best sellers." },
+        { "type": "heading", "text": "A Real Scenario: The Baharat Market Chain" },
+        { "type": "paragraph", "text": "Baharat Market is a mid-sized grocery chain with four branches in Istanbul. Store manager Ayşe's team always started the day with a 'shelf walk' — but it was subjective: staff noted whatever gaps caught their eye and missed the rest. Especially during weekend rushes, when one of the top 25 best-selling products sold out, it was usually only noticed by the evening shift or through a customer complaint." },
+        { "type": "paragraph", "text": "With the new system, staff now photograph the three main aisles and the checkout display area with a tablet every 2 hours — a 5-minute addition to a check-in routine they already did. The photos are analyzed automatically and compared against the planogram. Whenever any of the top 25 best-selling products falls noticeably below its expected shelf level, the system sends an instant push notification to the store manager's phone: which aisle, which product, and roughly how long it's been empty." },
+        { "type": "paragraph", "text": "What changes in the weekly routine: instead of walking the floor every morning wondering 'is everything where it should be', Ayşe now sees a prioritized list — 2-3 items flagged red on the dashboard, everything else green. An automatic restock request goes to the backroom staff, which removes most of the manual back-and-forth between shifts. The first month produced a handful of false alerts while the system adjusted to lighting conditions and shelf angles; by the second month, notifications were largely accurate." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "list", "items": [
+          "Photo capture: start by covering the aisles that hold your top 20-30 SKUs, not the whole store — either a staff phone on a scheduled walk, or a few fixed wide-angle cameras.",
+          "Planogram mapping: a simple map defining which product belongs in which shelf position, and roughly how full it should look under normal conditions.",
+          "Image recognition model: not something trained from scratch — an off-the-shelf object detection stack fine-tuned to your store's shelf layout is usually enough.",
+          "Threshold-based alerting: not every product needs the same sensitivity — a lower threshold for high-velocity items, a looser one for slow movers makes sense.",
+          "POS/ERP integration (phase two): combining the photo data with sales velocity and reorder points to turn detections into automatic restock requests."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Detection time", "value": "from days to 2-4 hours" },
+          { "label": "Starting scope", "value": "top 20-30 SKUs / critical aisles" },
+          { "label": "Manual shelf-walk time", "value": "a few hours less per week" }
+        ] },
+        { "type": "paragraph", "text": "I'm not promising zero stockouts — no system can guarantee that. But catching an empty shelf on a best-selling product within hours instead of days meaningfully cuts down on sales lost to gaps nobody noticed. Expect a somewhat higher false-alert rate in the first few weeks; it drops as thresholds get calibrated to your store's actual layout." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "Do I need special cameras to detect an empty shelf?" },
+        { "type": "paragraph", "text": "No, not necessarily. Most stores start with a simple app on staff phones and a scheduled photo walk. Fixed cameras are an optimization added later, only for the handful of highest-traffic aisles — you can start without a large upfront investment." },
+        { "type": "subheading", "text": "Does this only make sense for large chains?" },
+        { "type": "paragraph", "text": "No. A single-location store can build this too, by keeping the scope to its top 20-30 products. Cost scales with the number of aisles and products covered, not the number of branches." },
+        { "type": "subheading", "text": "Will it integrate with my existing POS or inventory software?" },
+        { "type": "paragraph", "text": "Yes. The system typically pulls the SKU list and sales velocity from your existing POS and matches it against the planogram. It doesn't replace your software — it adds a visual verification layer on top." },
+        { "type": "subheading", "text": "Do false alerts happen a lot?" },
+        { "type": "paragraph", "text": "In the first 2-4 weeks, yes, somewhat more than you'd like — lighting conditions and shelf angles need tuning. Once thresholds are calibrated to your store's actual layout, the false-alert rate drops noticeably." },
+        { "type": "paragraph", "text": "I build this as a custom integration tailored to your store's shelf layout, product mix, and existing POS/ERP setup — not as an off-the-shelf box product. If you want to talk through a similar system for your own store or chain, a few questions is enough to scope it." }
+      ]
+    }
   }
 ]
