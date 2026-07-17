@@ -1323,5 +1323,96 @@
         { "type": "paragraph", "text": "I build this as a custom integration tailored to your store's shelf layout, product mix, and existing POS/ERP setup — not as an off-the-shelf box product. If you want to talk through a similar system for your own store or chain, a few questions is enough to scope it." }
       ]
     }
+  },
+  {
+    "slug": "construction-progress-payment-reporting-automation",
+    "publishedAt": "2026-07-17",
+    "readTime": "7 min",
+    "category": "İnşaat",
+    "tags": ["İnşaat", "Mimarlık", "Hakediş", "Otomasyon"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Mimarlık & inşaat için özel yazılım", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi şantiyen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "İnşaat Şantiyesinde Hakediş Raporlamasını Otomatikleştiren Sistem — Ay Sonu Neden Hep Tartışmayla Bitiyor?",
+      "excerpt": "Hakediş hesapları çoğu şantiyede ay sonunda tartışmaya dönüşüyor. Sahadan gelen veriyle otomatik hesaplanan bir hakediş sistemi bunu nasıl önlüyor?",
+      "content": [
+        { "type": "paragraph", "text": "Ayın 25'i geldi ve şantiye şefi masaya hakediş dosyasını bırakıyor: elle doldurulmuş metraj cetveli, tahmini ilerleme yüzdeleri, telefonla çekilmiş birkaç fotoğraf. Proje müdürü bir gününü bu dosyayı satır satır kontrol etmeye harcıyor — hangi imalat gerçekten bitti, hangi kalem fazladan yazılmış, geçen ayki hakedişle bu ay arasında tutarsızlık var mı. Sonunda taşeronla masaya oturulup pazarlık ediliyor, ödeme bir hafta gecikiyor, güven biraz daha aşınıyor. Bu, on binlerce, bazen yüz binlerce liralık bir anlaşmazlık demek — ve üstelik her ay yeniden yaşanıyor, çünkü kimse geçen ayki hatanın bu ay tekrarlanmaması için bir şey değiştirmiyor. Birden fazla şantiyesi olan firmalarda bu tablo üçe dörde katlanıyor; her şantiye şefi kendi Excel dosyasını kendi yöntemiyle tutuyor. Anlaşmazlık çözülene kadar bir sonraki ayın malzeme siparişi de bekliyor, çünkü nakit akışı planı büyük ölçüde bu hakediş ödemesine bağlı. Bu da işi sadece bir muhasebe anlaşmazlığı olmaktan çıkarıp, şantiyenin genel nakit döngüsünü etkileyen bir soruna dönüştürüyor." },
+        { "type": "heading", "text": "Bu, inşaat firmaları için ne anlama geliyor?" },
+        { "type": "paragraph", "text": "Hakediş süreci çoğu firmada hâlâ kağıt üzerinde ya da birbirinden kopuk Excel dosyalarında yürüyor: metraj cetveli bir dosyada, ilerleme fotoğrafları telefon galerisinde, sözleşme birim fiyatları başka bir tabloda duruyor. Bunları ay sonunda bir araya getirip doğrulamak hem zaman alıyor hem de insan hatasına açık — bir hücreye yanlış girilen rakam, binlerce liralık bir farka dönüşebiliyor. Özel bir yazılım bu üç veri kaynağını — sözleşme kalemleri ve birim fiyatlar, saha ilerleme verisi (fotoğraf, ölçüm, check-in) ve önceki hakediş kayıtları — tek bir sistemde birleştirir. Şantiye şefi haftalık ilerlemeyi telefonundan işler, sistem kümülatif tamamlanma yüzdesini ve o ana kadarki hakediş tutarını otomatik hesaplar. Ay sonuna gelindiğinde ortada tartışılacak bir sürpriz kalmaz, çünkü rakamlar zaten haftalık olarak görünür durumdaydı ve sapmalar erken fark edilmişti. Bu da proje müdürünün ay sonunda savunmaya geçmek yerine, hafta içinde küçük düzeltmeler yapmasını sağlıyor." },
+        { "type": "heading", "text": "Gerçek bir senaryo: Marmara Yapı'nın üç şantiyesi" },
+        { "type": "paragraph", "text": "Marmara Yapı, aynı anda üç farklı ilçede konut projesi yürüten orta ölçekli bir müteahhitlik firması. Her şantiyede ayrı bir şantiye şefi, ayrı taşeronlar ve ayrı Excel dosyaları var. Merkez ofisteki proje müdürü, hangi şantiyenin bütçeye göre nerede durduğunu ancak ay sonunda, üç farklı dosyayı elle birleştirerek görebiliyordu — ve genelde iş işten geçmiş bir uyarıyla karşılaşıyordu. Kurulan sistemde her şantiye şefi haftada bir, mobil bir formdan tamamlanan imalat kalemlerini (kaç metrekare sıva yapıldı, kaç ton demir döşendi, hangi kat betonu atıldı) fotoğraflarla birlikte giriyor. Sistem bunu sözleşmedeki birim fiyat listesiyle otomatik eşleştirip kümülatif hakediş tutarını hesaplıyor ve merkez ofisteki panelde üç şantiyeyi yan yana gösteriyor. Proje müdürü artık her Pazartesi sabahı, hangi şantiyenin plana göre geride kaldığını ve hangi taşeronun hakediş talebinin sözleşme kalemleriyle uyuşmadığını görüyor — ay sonunu beklemeden. Hakediş dönemi geldiğinde sistemdeki veriler zaten haftalık olarak onaylanmış durumda; tek yapılması gereken resmi hakediş formunu tek tıkla üretmek." },
+        { "type": "heading", "text": "Hakediş Raporlamasını Otomatikleştiren Sistem Nasıl Kurulur (kısaca)" },
+        { "type": "paragraph", "text": "Teknik olarak ağır bir altyapı gerekmiyor; sahadaki ekibin zaten cebinde taşıdığı telefon ve merkez ofisteki basit bir web paneli yeterli oluyor. Kurulum genelde şu adımlarla ilerliyor:" },
+        { "type": "list", "items": [
+          "Sözleşme kalemleri ve birim fiyatlar sisteme proje bazında bir kere yükleniyor.",
+          "Saha ekibi haftalık ilerlemeyi mobil formdan (fotoğraf + miktar) giriyor; internet olmayan şantiyelerde veri cihazda kaydedilip bağlantı gelince otomatik senkronize oluyor.",
+          "Sistem kümülatif tamamlanma yüzdesini ve hakediş tutarını otomatik hesaplıyor, her dönemi bir öncekiyle karşılaştırıyor.",
+          "Bir kalemde beklenmeyen bir sapma oluştuğunda (örneğin ilerleme aniden fatura tutarından hızlı artıyorsa) merkez ofise otomatik uyarı gönderiliyor.",
+          "Hakediş dönemi sonunda, onaylı veriden resmi rapor tek tıkla üretiliyor — imzaya ve PDF çıktısına hazır halde.",
+          "Merkez ofisteki panel, hangi şantiyenin bütçeye göre nerede durduğunu tek bir özet ekranda gösteriyor; proje müdürü sabah kahvesini içerken önceliklendirmeyi bu ekrandan yapabiliyor."
+        ] },
+        { "type": "heading", "text": "Gerçekçi kazanım ne?" },
+        { "type": "paragraph", "text": "Bu sistemi kurduğum projelerde gördüğüm kazanım şu şekilde özetlenebilir:" },
+        { "type": "stats", "items": [
+          { "label": "Hakediş hazırlama süresi", "value": "2-3 günden yarım güne" },
+          { "label": "Sapmanın fark edilme süresi", "value": "ay sonu yerine haftalık" },
+          { "label": "Taşeron anlaşmazlık görüşmesi", "value": "belirgin şekilde azalıyor" }
+        ] },
+        { "type": "paragraph", "text": "Sıfır anlaşmazlık garanti etmiyorum — inşaat işinde ölçüm her zaman bir miktar yorum ve saha koşulu gerektirir, bu hiçbir yazılımla tamamen ortadan kalkmaz. Ama tartışmayı 'kim haklı' sorusundan 'hangi veri noktası hatalı, ne zaman ve nerede oluştu' sorusuna indirger, bu da çözümü günler yerine saatler içinde kapatmayı mümkün kılar. Ayrıca merkez ofisin birden fazla şantiyeyi aynı anda, gerçek veriyle takip etmesini sağlar; bu da nakit akışı planlamasını çok daha isabetli hale getirir. İlk birkaç hafta, saha ekibi veri girişine alışana kadar bazı girdiler eksik ya da gecikmeli olabilir; bu normal ve kısa sürede düzeliyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Hakediş otomasyonu hangi muhasebe veya ERP sistemiyle çalışır?" },
+        { "type": "paragraph", "text": "Sistem muhasebe yazılımınızın (Logo, Netsis ya da Excel tabanlı bir süreç) yerine geçmiyor; saha ile ofis arasında bir köprü kuruyor. Onaylanan hakediş verisi, muhasebeye Excel/CSV dışa aktarımı ya da API entegrasyonuyla aktarılabiliyor. Hangi sistemi kullandığınıza bağlı olarak entegrasyon bir API bağlantısı ya da düzenli dosya aktarımı şeklinde kuruluyor." },
+        { "type": "subheading", "text": "Küçük bir müteahhitlik firması için bu sistem mantıklı mı, yoksa sadece büyük şirketler için mi?" },
+        { "type": "paragraph", "text": "Tek şantiyeli küçük bir firma için bile Excel karmaşasını ve ay sonu koşuşturmasını azaltıyor. Ama asıl fayda, birden fazla şantiye ya da birden fazla taşeronla aynı anda çalışıldığında büyüyor — çünkü karşılaştırma ve erken uyarı değeri tek bir projede sınırlı, üç dört projede ise kritik hale geliyor." },
+        { "type": "subheading", "text": "Taşeronlar bu sistemi kullanmaya direnç gösterir mi?" },
+        { "type": "paragraph", "text": "Genelde hayır, çünkü fotoğraf tabanlı haftalık giriş, kağıt üzerinde ay sonunda tartışmaktan daha az zaman alıyor. Üstelik taşeron için de fayda var: ilerlemesi haftalık olarak kayıt altına alındığı için hakediş ödemesinin gecikme riski azalıyor ve 'ben bunu yaptım ama kayda geçmedi' tartışması ortadan kalkıyor." },
+        { "type": "subheading", "text": "Mevcut kağıt tabanlı hakediş sürecinden bu sisteme geçiş ne kadar sürüyor?" },
+        { "type": "paragraph", "text": "Tek şantiyeli bir kurulum için sözleşme kalemlerinin sisteme yüklenmesi ve saha ekibinin mobil formu öğrenmesi genelde bir-iki hafta sürüyor. Birden fazla şantiye ve farklı taşeron sözleşme yapıları varsa bu süre üç-dört haftaya çıkabilir; ilk hakediş dönemini eski ve yeni yöntemi paralel yürüterek geçirmek, ekibe güven vermek için işe yarıyor." },
+        { "type": "paragraph", "text": "Kendi şantiyen ya da birden fazla proje yürüten firman için benzer bir hakediş ve ilerleme takip sistemini konuşmak istersen, birkaç soruyla kapsamı netleştirebiliriz." }
+      ]
+    },
+    "en": {
+      "title": "The System That Automates Construction Progress Payment Reporting — Why Does Month-End Always End in a Dispute?",
+      "excerpt": "Progress payment calculations on construction sites often turn into month-end disputes. Here's how a system that auto-calculates from site data prevents that.",
+      "content": [
+        { "type": "paragraph", "text": "The 25th of the month arrives and the site foreman drops the progress payment file on the desk: a hand-filled quantity sheet, estimated completion percentages, a few photos taken on a phone. The project manager spends a full day going through it line by line — which work items are actually finished, which line was overstated, whether this month's numbers line up with last month's. Eventually there's a sit-down with the subcontractor to negotiate, payment slips a week, and trust erodes a little more. That's a dispute worth tens of thousands, sometimes hundreds of thousands of lira — and it repeats every single month, because nobody changes anything to keep last month's mistake from happening again. On firms running multiple sites at once, this scene multiplies by three or four, with each foreman keeping their own spreadsheet in their own way. And until the dispute is resolved, next month's material orders wait too, because the site's cash-flow plan leans heavily on that progress payment landing on time — turning what looks like an accounting disagreement into a cash-flow problem for the whole site." },
+        { "type": "heading", "text": "What this means for construction firms" },
+        { "type": "paragraph", "text": "The progress payment process at most firms still runs on paper or in disconnected spreadsheets: the quantity sheet lives in one file, progress photos sit in a phone gallery, contract unit prices live in yet another table. Pulling these together at month-end to verify them is slow and error-prone — one wrong number in a cell can turn into a discrepancy worth thousands. A custom system merges these three data sources — contract line items and unit prices, site progress data (photos, measurements, check-ins), and prior progress-payment records — into a single place. The foreman logs weekly progress from their phone, and the system automatically calculates the cumulative completion percentage and the progress-payment amount owed to date. By the time month-end arrives, there's no surprise left to argue about, because the numbers were already visible week by week and any deviation was caught early. That also means the project manager spends the week making small corrections instead of playing defense at month-end." },
+        { "type": "heading", "text": "A real scenario: Marmara Yapı's three sites" },
+        { "type": "paragraph", "text": "Marmara Yapı is a mid-sized contracting firm running housing projects on three sites in different districts at once. Each site has its own foreman, its own subcontractors, and its own spreadsheet. The project manager at head office could only see where each site actually stood against budget at month-end, by manually merging three different files — usually with a warning that arrived too late to act on. With the system in place, each foreman logs completed work weekly through a mobile form (how many square meters of plaster, how many tons of rebar, which floor's concrete was poured) along with photos. The system matches this automatically against the contract's unit-price list, calculates the cumulative progress-payment amount, and shows all three sites side by side on the head-office dashboard. Every Monday morning, the project manager now sees which site is falling behind schedule and whose progress-payment claim doesn't match the contract line items — without waiting for month-end. When the progress-payment period arrives, the data in the system has already been approved weekly; the only remaining step is generating the official form with one click." },
+        { "type": "heading", "text": "How Progress Payment Reporting Automation Is Built (Briefly)" },
+        { "type": "paragraph", "text": "Technically this doesn't need heavy infrastructure; the phone the field team already carries and a simple web dashboard at head office are enough. Setup generally follows these steps:" },
+        { "type": "list", "items": [
+          "Contract line items and unit prices are loaded into the system once, per project.",
+          "The field team logs weekly progress through a mobile form (photo + quantity); on sites without internet access, data is saved on the device and synced automatically once a connection is available.",
+          "The system automatically calculates the cumulative completion percentage and progress-payment amount, comparing each period against the last.",
+          "When an unexpected deviation appears on a line item (for example, progress suddenly outpacing the billed amount), head office gets an automatic alert.",
+          "At the end of the progress-payment period, the official report is generated from approved data with one click — ready to sign and export as a PDF.",
+          "The head-office dashboard shows at a glance which site is falling behind budget on one summary screen — the project manager can prioritize a site visit over morning coffee instead of digging through three spreadsheets."
+        ] },
+        { "type": "heading", "text": "What's the realistic payoff?" },
+        { "type": "paragraph", "text": "The payoff I've seen on projects where I've built this can be summarized as follows:" },
+        { "type": "stats", "items": [
+          { "label": "Progress-payment prep time", "value": "2-3 days down to half a day" },
+          { "label": "Time to catch a deviation", "value": "weekly instead of month-end" },
+          { "label": "Subcontractor dispute meetings", "value": "noticeably fewer" }
+        ] },
+        { "type": "paragraph", "text": "I'm not promising zero disputes — construction measurement always involves some judgment and site-specific conditions, and no software erases that entirely. But it shifts the argument from 'who's right' to 'which data point is wrong, and when and where did it happen' — which closes disagreements in hours instead of days. It also lets head office track multiple sites at once with real data, which makes cash-flow planning far more accurate. In the first few weeks, while the field team gets used to logging data, some entries may be missing or late — that's normal and settles quickly." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "Which accounting or ERP system does progress-payment automation work with?" },
+        { "type": "paragraph", "text": "The system doesn't replace your accounting software (Logo, Netsis, or an Excel-based process) — it builds a bridge between the site and the office. Approved progress-payment data can be pushed to accounting via Excel/CSV export or an API integration. Depending on what you already use, the integration is set up as either an API connection or a scheduled file transfer." },
+        { "type": "subheading", "text": "Does this make sense for a small contracting firm, or only for large ones?" },
+        { "type": "paragraph", "text": "Even a small firm running a single site benefits from less spreadsheet chaos and less month-end scrambling. But the real payoff grows once you're running multiple sites or multiple subcontractors at the same time — the value of side-by-side comparison and early warnings is limited on one project and becomes critical across three or four." },
+        { "type": "subheading", "text": "Do subcontractors resist using a system like this?" },
+        { "type": "paragraph", "text": "Usually not, because a photo-based weekly entry takes less time than arguing over paper at month-end. There's a benefit for the subcontractor too: because their progress is logged weekly, the risk of delayed payment drops, and the 'I did this but it never got recorded' argument disappears." },
+        { "type": "subheading", "text": "How long does it take to move from a paper-based progress-payment process to this system?" },
+        { "type": "paragraph", "text": "For a single-site setup, loading the contract line items and getting the field team comfortable with the mobile form usually takes one to two weeks. With multiple sites and different subcontractor contract structures, that can stretch to three or four weeks; running the first progress-payment period in parallel with the old paper process helps build the team's trust in the new numbers." },
+        { "type": "paragraph", "text": "If you want to talk through a similar progress-payment and progress-tracking system for your own site or the multiple projects your firm runs, a few questions is enough to scope it." }
+      ]
+    }
   }
 ]
