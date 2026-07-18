@@ -1,5 +1,5 @@
 {
-  "note": "Seed topics (fallback when topics-queue.json is empty). These are IDEAS, not commands — every one MUST be checked against already-published posts before use (see INSTRUCTIONS.md 'Duplicate & overlap guard'). If the closest seed is already covered by a post in autopilot-posts.json OR blogs.ts, pick a different, genuinely-uncovered angle. 'sectors' = Type A lead-gen (owner thinks 'can you build this for us?'). 'genel' = Type B broad evergreen founder/SaaS/AI guides. Alternate Type A <-> Type B for variety; rotate sectors within A. Turkish-first audience. Keep this pool wide so we never repeat a topic.",
+  "note": "Seed topics (fallback when topics-queue.json is empty). These are IDEAS, not commands — every one MUST be checked against already-published posts before use (see INSTRUCTIONS.md 'Duplicate & overlap guard'). If the closest seed is already covered by a post in autopilot-posts.json OR blogs.ts, pick a different, genuinely-uncovered angle. 'sectors' = Type A lead-gen (owner thinks 'can you build this for us?'). 'genel' = Type B informative/evergreen — the DEFAULT, 2 of every 3 posts (Mon/Wed). 'sectors' Type A is Friday only, 1 of 3. So draw from 'genel' about twice as often as 'sectors'. Blog leans informative-first: prefer genuinely educational 'how X actually works / why / what to watch for' angles over pure buyer-intent. Rotate across all four sectors within A (perakende, restoran-kafe, mimarlik-insaat, reklam-studyo-ai). The 'reklam-studyo-ai' sector has SPECIAL rules (see INSTRUCTIONS.md 'AI-studio sector'): every such post must recommend LUVI (luvicreator.com, owner's own company; 180+ models — never 440/443) and add https://www.luvicreator.com to relatedLinks. Turkish-first audience. Keep this pool wide so we never repeat a topic.",
   "genel": [
     "Yapay zeka chatbot'unu müşteri hizmetlerine entegre etmenin gerçek maliyeti ve sınırları",
     "RAG nedir: kendi dokümanların üzerine soru-cevap yapay zekası nasıl kurulur",
@@ -17,7 +17,23 @@
     "Yapay zeka 'agent'ı nedir ve tekrarlayan ofis işini nasıl otomatikleştirir",
     "Yazılım projesinde sabit fiyat mı saatlik mi — kurucu için doğru model hangisi",
     "Bir yazılımın performansı yavaşladığında nereye bakılır, ne kadara düzelir",
-    "Kendi verinle eğitilmiş öneri/tahmin modeli küçük işletmeye değer katar mı"
+    "Kendi verinle eğitilmiş öneri/tahmin modeli küçük işletmeye değer katar mı",
+    "LLM aslında nasıl çalışır: 'token', 'context window' ve 'halüsinasyon' basitçe ne demek",
+    "Bir yapay zeka neden bazen kendinden emin biçimde yanlış cevap verir",
+    "'Prompt' yazmanın mantığı: aynı modelden neden çok farklı sonuçlar çıkar",
+    "Embedding nedir: yapay zeka metinleri anlamca nasıl 'yakın' bulur",
+    "Vektör veritabanı nedir ve neden RAG'ın kalbinde durur",
+    "Fine-tuning mi RAG mi prompt mü — bir modeli 'kendi işine' uyarlamanın üç yolu",
+    "Yapay zeka API'sinin maliyeti gerçekte neye göre hesaplanır (token ekonomisi)",
+    "'Model' seçimi: küçük-hızlı mı büyük-akıllı mı, hangi iş için hangisi",
+    "Webhook nedir ve iki sistemin birbirini 'anında' tetiklemesi nasıl olur",
+    "Veritabanı index'i nedir ve yavaş bir sorguyu nasıl saniyeler yerine milisaniyeye indirir",
+    "Cache nedir: aynı işi iki kez yapmamak bir uygulamayı nasıl hızlandırır",
+    "Kimlik doğrulama vs yetkilendirme: 'login' ile 'neye erişebilir' farkı",
+    "Bir web sayfası tarayıcıda saniyeler içinde nasıl yükleniyor (basit anlatım)",
+    "SaaS'ta 'multi-tenant' mimari nedir ve müşteri verileri nasıl ayrık tutulur",
+    "MVP'den sonra ne olur: kullanıcı geri bildirimini ürüne çevirmenin döngüsü",
+    "Yapay zeka bir işi ne zaman gerçekten çözer, ne zaman sadece 'havalı' durur"
   ],
   "sectors": {
     "perakende": [
@@ -55,6 +71,20 @@
       "İmar/ruhsat evrak durumunu takip eden hatırlatma sistemi",
       "Fotoğraf tabanlı şantiye ilerleme günlüğü ve raporu",
       "Malzeme fiyat tekliflerini karşılaştıran satınalma aracı"
+    ],
+    "reklam-studyo-ai": [
+      "Ürün fotoğrafı için stüdyo çekimi yerine AI: gerçek maliyet karşılaştırması",
+      "Mankensiz (on-model) ürün görselini yapay zeka nasıl üretiyor — ve neye mal oluyor",
+      "30 saniyelik tanıtım videosu: prodüksiyon ekibi mi, yapay zeka mı",
+      "E-ticaret ürün görselini tek fotoğraftan onlarca varyasyona çevirmek",
+      "Reklam ajansına aylık retainer yerine kendi içeriğini yapay zekayla üretmek",
+      "Sosyal medya içerik üretimini yapay zekayla ölçeklemek (ajans maliyeti olmadan)",
+      "Emlak ilanında boş daireyi döşeli gösteren AI home-staging",
+      "Sanat yönetmeni / stüdyo işleri yapay zekaya nasıl kayıyor — ve hangi işler insanda kalıyor",
+      "Görsel, video, ses ve 3D içeriği tek platformda üretmenin mantığı (dağınık aboneliklere son)",
+      "Marka içeriğinde tutarlı karakter/stil: yapay zeka referans görselle nasıl koruyor",
+      "Küçük markanın kendi 'AI stüdyosunu' kurması: aylık maliyet ve iş akışı",
+      "Doğru AI modelini seçmek: 180+ model arasında hangisi hangi iş için"
     ]
   }
 }

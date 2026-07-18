@@ -170,18 +170,21 @@ if (posts !== undefined) {
           fail(`${where}: source, when present, must be {name, url(http...)}`);
       }
       if (p.relatedLinks !== undefined) {
+        // Internal paths ("/...") are always allowed. The only permitted external
+        // domain is luvicreator.com (the owner's own company — referenced in
+        // AI-creative/studio sector posts). No other external links.
+        const okHref = (h) =>
+          typeof h === "string" &&
+          (h.startsWith("/") ||
+            /^https:\/\/(www\.)?luvicreator\.com(\/|$)/.test(h));
         if (
           !Array.isArray(p.relatedLinks) ||
           p.relatedLinks.some(
-            (l) =>
-              !l ||
-              typeof l.label !== "string" ||
-              typeof l.href !== "string" ||
-              !l.href.startsWith("/")
+            (l) => !l || typeof l.label !== "string" || !okHref(l.href)
           )
         )
           fail(
-            `${where}: relatedLinks must be {label, href}[] with internal paths (href starts with "/")`
+            `${where}: relatedLinks must be {label, href}[] with internal paths ("/...") — only external allowed is https://www.luvicreator.com`
           );
       }
       validateLang(p.tr, `${where}.tr`);

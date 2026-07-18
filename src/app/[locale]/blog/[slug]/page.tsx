@@ -198,16 +198,29 @@ function BlogDetailContent({
           <nav className="mt-14 border-t border-line pt-6">
             <p className="eyebrow mb-3">// {isTr ? "İLGİLİ" : "RELATED"}</p>
             <ul className="flex flex-col gap-2">
-              {relatedLinks.map((l) => (
-                <li key={`${l.href}-${l.label}`}>
-                  <Link
-                    href={l.href}
-                    className="font-mono text-sm text-muted transition-colors hover:text-lime"
-                  >
-                    <span className="text-lime">&gt;</span> {l.label}
-                  </Link>
-                </li>
-              ))}
+              {relatedLinks.map((l) => {
+                const isExternal = /^https?:\/\//.test(l.href);
+                const className =
+                  "font-mono text-sm text-muted transition-colors hover:text-lime";
+                return (
+                  <li key={`${l.href}-${l.label}`}>
+                    {isExternal ? (
+                      <a
+                        href={l.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={className}
+                      >
+                        <span className="text-lime">&gt;</span> {l.label} ↗
+                      </a>
+                    ) : (
+                      <Link href={l.href} className={className}>
+                        <span className="text-lime">&gt;</span> {l.label}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </nav>
         )}

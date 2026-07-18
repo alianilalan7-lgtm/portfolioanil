@@ -23,7 +23,7 @@ jobs:
     # Disable anytime by setting it to false (Settings → Secrets and variables → Actions → Variables).
     if: ${{ vars.AUTOPILOT_ENABLED == 'true' }}
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30 # headroom for longer Type B posts (1400-1800 words); public repo = free minutes
     steps:
       - name: Checkout
         uses: actions/checkout@v4
