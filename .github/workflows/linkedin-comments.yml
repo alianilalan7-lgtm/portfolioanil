@@ -1,0 +1,43 @@
+name: LinkedIn Comments Check
+
+# Manually-triggered utility: lists comments on the autopilot's LinkedIn shares
+# using the same member token as the auto-share workflow. Read-only; prints
+# results to the job log. Pass a space-separated URN list to check specific
+# posts, or leave empty to check the built-in list of known shares.
+
+on:
+  workflow_dispatch:
+    inputs:
+      urns:
+        description: "Space-separated share URNs (empty = all known shares)"
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  comments:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fetch comments for each share
+        env:
+          LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
+          URNS_INPUT: ${{ inputs.urns }}
+        run: |
+          set -u
+          KNOWN_URNS="urn:li:share:7477391573903745024 urn:li:share:7478034562573557760 urn:li:share:7478747951431880705 urn:li:share:7479858132807249920 urn:li:share:7480552211198926848 urn:li:share:7481291364429733888 urn:li:share:7482378728157896704 urn:li:share:7483084809037266944 urn:li:share:7483809423186972672 urn:li:share:7484909117715726336 urn:li:share:7485625769575026690"
+          URNS="${URNS_INPUT:-$KNOWN_URNS}"
+          for urn in $URNS; do
+            enc=$(printf '%s' "$urn" | sed 's/:/%3A/g')
+            echo "=== $urn ==="
+            code=$(curl -s -o /tmp/resp.json -w '%{http_code}' \
+              -H "Authorization: Bearer $LINKEDIN_ACCESS_TOKEN" \
+              -H "LinkedIn-Version: 202606" \
+              -H "X-Restli-Protocol-Version: 2.0.0" \
+              "https://api.linkedin.com/rest/socialActions/$enc/comments")
+            echo "HTTP $code"
+            jq . /tmp/resp.json 2>/dev/null || cat /tmp/resp.json
+            echo ""
+          done
