@@ -1614,5 +1614,104 @@
         { "type": "paragraph", "text": "At its core, what an index does is simple: it tells the database \"here's how to answer this question doing less work every time.\" When a query slows down, this is almost always the first place to look — without changing your architecture or upgrading your server, adding the right structure can turn a multi-second delay into milliseconds. If you want a second pair of eyes on a similar performance issue in your own project, reach out through /contact; if you're curious how I typically approach SaaS and automation projects, /services and /process-pricing have more detail." }
       ]
     }
+  },
+  {
+    "slug": "ai-product-photography-vs-studio-shoot-cost",
+    "publishedAt": "2026-07-24",
+    "readTime": "6 min",
+    "category": "Reklam",
+    "tags": ["Reklam", "Yapay Zeka", "E-ticaret", "LUVI"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI içerik stüdyosu: LUVI", "href": "https://www.luvicreator.com" },
+      { "label": "AI & SaaS geliştirme hizmetlerim", "href": "/services" },
+      { "label": "Kendi markan için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Ürün Fotoğrafında Stüdyo Çekimi Yerine Yapay Zeka: Gerçek Maliyet Karşılaştırması",
+      "excerpt": "Stüdyo çekimi SKU başı binlerce liraya mal olurken, yapay zeka ürün fotoğrafı aynı işi çok daha ucuza yapıyor — ama her yerde değil.",
+      "content": [
+        { "type": "paragraph", "text": "Yeni sezon koleksiyonun için 40 SKU'luk bir stüdyo çekimi planlıyorsun: fotoğrafçı, iki manken, saç-makyaj ekibi, stüdyo kirası, bir de retouch. Ajans teklifi geldiğinde toplam rakam altı haneye yaklaşıyor, çekim tarihi üç hafta sonrasına düşüyor — ve çekimden bir gün önce tedarikçiden gelen bir renk değişikliği yüzünden beş SKU'yu baştan çekmen gerekiyor. Küçük ve orta ölçekli bir marka için bu, her sezon aynı şekilde tekrarlanan, hem pahalı hem yavaş bir darboğaz; son iki yıldır “ürün fotoğrafı yapay zeka ile çekilebilir mi” sorusunun bu kadar çok aranmasının sebebi de tam olarak bu." },
+        { "type": "heading", "text": "Ürün Fotoğrafında Yapay Zeka Gerçekte Neyin Yerini Alıyor?" },
+        { "type": "paragraph", "text": "Burada konuşulan şey soyut bir “yapay zeka yardımcı olur” vaadi değil, somut bir iş akışı. Elinde ürünün tek bir düz (flat-lay) fotoğrafı ya da manken üstünde çekilmiş tek bir kare varsa, görsel üretim modelleri bu görseli referans alıp aynı ürünü onlarca farklı mankende, farklı pozda, farklı arka planda ve farklı ışıkta yeniden üretebiliyor. Stüdyoda bir günde çekebileceğin 8-10 look'u, yapay zeka ile aynı sürede 40-50 varyasyona çıkarmak mümkün — çünkü ortadan kalkan şey stüdyo kirası, manken ajansı, saç-makyaj koordinasyonu ve çekim günü lojistiği. Ürün hâlâ gerçek; sadece etrafındaki üretim zinciri dijitalleşiyor." },
+        { "type": "heading", "text": "Maliyet Karşılaştırması: Stüdyo Çekimi mi, Yapay Zeka mı?" },
+        { "type": "paragraph", "text": "Rakamlar markaya, sektöre ve çekimin karmaşıklığına göre değişir ama genel tablo oldukça net:" },
+        { "type": "stats", "items": [
+          { "label": "Klasik ürün stüdyo çekimi (SKU başı)", "value": "300–800 TL" },
+          { "label": "Mankenli kampanya çekimi (look başı)", "value": "1.500–5.000 TL" },
+          { "label": "Yapay zeka ile üretilen görsel (kredi bazlı)", "value": "birkaç TL – birkaç on TL" },
+          { "label": "Klasik tanıtım videosu prodüksiyonu", "value": "15.000–80.000 TL" }
+        ] },
+        { "type": "paragraph", "text": "Bu fark yalnızca “ucuz” meselesi değil — hız da değişiyor. Klasik çekimde tarih ayarlamak, mekan/ekip koordinasyonu ve teslim süresi genelde 1-3 hafta sürer; yapay zeka ile aynı SKU seti için görseller aynı gün, hatta aynı saatler içinde hazır olabilir. Özellikle hızlı dönen koleksiyonlarda veya kampanya takvimine sıkışan markalar için bu, maliyetten bile daha büyük bir avantaj." },
+        { "type": "paragraph", "text": "Görünmeyen maliyetler de tabloyu değiştiriyor. Klasik çekimde manken hastalanabilir, hava koşulları dış mekan çekimini erteleyebilir, retouch turu beklenenden uzun sürebilir — her gecikme günlük stüdyo/ekip maliyetini tekrar tekrar tetikler. Yapay zekada risk farklı: bir varyasyon istediğin gibi çıkmazsa maliyeti birkaç kredi, tekrarı birkaç dakika. Bu da bütçe planlamasını daha öngörülebilir hale getiriyor — sürpriz fatura riski neredeyse sıfıra iniyor." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Bir Hazır Giyim Markası" },
+        { "type": "paragraph", "text": "Diyelim ki “Modeva” adında, ayda 60-80 yeni SKU çıkaran orta ölçekli bir hazır giyim markası var. Eskiden her koleksiyon için harici bir stüdyoyla anlaşıyor, çekim tarihini bekliyor, üç haftalık gecikmeyle görselleri e-ticaret sitesine ve sosyal medyaya yüklüyorlardı. Yeni düzende tasarım ekibi her SKU'nun tek bir düz fotoğrafını çekip LUVI'ye yüklüyor. LuviBot — doğru modeli seçip uygun prompt'u otomatik yazan asistan — “kadın manken, stüdyo ışığı, beyaz fon, üç açı” gibi bir talimatı birkaç saniyede üretiyor ve görsel üretim modeli SKU başına 6-8 varyasyon çıkarıyor. Pazarlama ekibi en iyi görselleri seçip aynı gün içinde e-ticaret sitesine, Instagram'a ve reklam kampanyasına yüklüyor. Sonuç: koleksiyon lansmanı üç hafta yerine iki-üç gün içinde tamamlanıyor, stüdyo bütçesinin büyük kısmı ise reklam harcamasına kayıyor. Sayısal olarak bakarsak: ayda 70 SKU × SKU başına 6-8 varyasyon, yaklaşık 500 görsel demek. Klasik düzende bu hacmi karşılamak birden fazla çekim günü ve ek stüdyo bütçesi gerektirirken, kredi bazlı modelde toplam maliyet çoğu zaman tek bir kampanya çekiminin bütçesinin altında kalıyor." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "paragraph", "text": "Bunu kurmak karmaşık bir mühendislik projesi değil; asıl iş doğru aracı seçip ekibin iş akışına oturtmak. Bu noktada önerdiğim araç LUVI (luvicreator.com) — görsel, video, ses ve 3D içerik üretimi için 180'den fazla yapay zeka modelini tek platformda toplayan, Türkçe arayüzlü bir içerik stüdyosu. Ayrı ayrı Midjourney, Runway, ElevenLabs gibi abonelikler açıp jonglörlük yapmak yerine tek yerden, kullandıkça öde (pay-as-you-go) kredi modeliyle çalışıyorsun. LuviBot doğru modeli ve prompt'u senin yerine seçiyor, TEAMS özelliği ise ajans gibi çalışan ekiplerin birden fazla marka/müşteri projesini ayrı ayrı yönetmesine izin veriyor." },
+        { "type": "list", "items": [
+          "Ürünün tek bir referans fotoğrafını (düz ya da manken üstü) yükle.",
+          "LuviBot'a hedefi söyle: “e-ticaret için beyaz fon, kadın manken, üç açı” gibi — model ve prompt seçimini o yapıyor.",
+          "SKU başına birden çok varyasyon üret, en iyi 2-3'ünü seç.",
+          "Ajans/ekip yapısı varsa TEAMS ile her müşteri/markayı ayrı proje olarak yönet.",
+          "Kredi bazlı ödeme sayesinde sabit abonelik yerine gerçek kullanıma göre öde."
+        ] },
+        { "type": "paragraph", "text": "Aynı iş akışı ürün fotoğrafıyla sınırlı kalmıyor. Sezon lansmanında kısa bir tanıtım videosu da gerekiyorsa, aynı platform üzerinden 15-80 bin TL'lik klasik prodüksiyona başvurmadan birkaç dakikalık bir sosyal medya videosu üretmek mümkün — tabii burada da beklenti gerçekçi olmalı: uzun, senaryolu bir reklam filmi yerine, ürün görselini hareketlendiren kısa format içerikler konuşuyoruz. Bir markanın hem görsel hem video ihtiyacını tek platformda, tek fatura altında toplaması, ayrı ayrı üç-dört farklı araca abone olup her birinin öğrenme eğrisiyle uğraşmaktan daha az zaman alıyor." },
+        { "type": "heading", "text": "Yapay Zeka Nerede Hâlâ Yetersiz Kalıyor?" },
+        { "type": "paragraph", "text": "Dürüst olmak gerekirse bu her SKU için yüzde yüz çözüm değil. Kumaşın tam dokusu, kesimin vücutta nasıl durduğu, dikiş detayı gibi “hissedilen” özellikler; iade oranı yüksek kategorilerde (dış giyim, ayakkabı gibi) hâlâ gerçek bir çekimle daha güvenilir aktarılıyor. Pratikte en iyi sonucu veren yaklaşım genelde hibrit: sosyal medya, kampanya ve varyasyon görselleri için yapay zeka, iade riski yüksek “hero” ürünler için birkaç gerçek fotoğrafı elde tutmak. Bu ayrımı yapmadan her şeyi yapay zekaya bırakmak, bazı kategorilerde iade oranını artırabilir. Örneğin bir ayakkabı markası tamamen yapay zeka görsellerine geçtiğinde, müşterilerin “gelen ürün fotoğraftaki gibi durmuyor” şikayetleri kısa sürede arttı; çözüm görselleri tamamen terk etmek değil, kritik ürünlerde gerçek fotoğrafı görsel setine geri eklemek oldu." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Yapay zeka ile üretilen ürün fotoğrafları e-ticaret sitesinde yasal olarak kullanılabilir mi?" },
+        { "type": "paragraph", "text": "Evet, kullanımın kendisi yasal bir engel değil; asıl dikkat edilmesi gereken tüketiciyi yanıltmamak — ürünün gerçek rengini, boyutunu ve dokusunu doğru yansıtmak. Bazı pazaryerleri, özellikle moda kategorisinde, görselin yapay zeka ile üretildiğini etiketlemeni isteyebiliyor; bu kuralları platform bazında kontrol etmek gerekiyor." },
+        { "type": "subheading", "text": "AI ile üretilen görsellerin kullanım hakları kime ait oluyor?" },
+        { "type": "paragraph", "text": "Genel olarak, kendi ürün fotoğrafını referans olarak yükleyip ürettiğin görsellerin ticari kullanım hakkı sana ait olur — ama bu platformdan platforma değişir, kullandığın aracın hizmet şartlarını mutlaka okumalısın." },
+        { "type": "subheading", "text": "Küçük bir markanın aylık içerik maliyeti gerçekte ne kadar düşer?" },
+        { "type": "paragraph", "text": "Kesin bir yüzde vermek yanıltıcı olur çünkü marka büyüklüğüne ve önceki çekim sıklığına göre değişir; ama ayda birkaç kez dış stüdyo kiralayan bir markanın, kredi bazlı bir modele geçtiğinde aylık içerik bütçesinin önemli bir kısmını kampanya/reklam harcamasına kaydırdığını görürsün." },
+        { "type": "subheading", "text": "Sosyal medyada kullanılan yapay zeka ürün görselleri performans açısından gerçek fotoğraflardan geride mi kalıyor?" },
+        { "type": "paragraph", "text": "Genel bir kural yok; bazı kategorilerde (aksesuar, kozmetik, basit giyim) yapay zeka görselleri gerçek çekimle neredeyse aynı tıklama ve dönüşüm oranını yakalıyor. Detayın kritik olduğu kategorilerde (örneğin teknik giyim, ayakkabı) fark daha görünür olabiliyor. Doğru yaklaşım, yeni bir görsel setini küçük bir bütçeyle test edip gerçek çekimle karşılaştırmak — varsayımla değil, veriyle karar vermek." },
+        { "type": "paragraph", "text": "Ürün görsellerinde bunu denemek istersen LUVI'nin kendisi bunun için iyi bir başlangıç noktası. Bunu kendi e-ticaret altyapına, ürün yönetim sistemine ya da ajans iş akışına entegre etmek — yani tek tek görsel üretmek yerine otomatik bir hat kurmak — istiyorsan, /contact üzerinden birkaç soruyla başlayabiliriz." }
+      ]
+    },
+    "en": {
+      "title": "AI Product Photography vs. Studio Shoots: What It Actually Costs to Switch",
+      "excerpt": "A studio product shoot costs thousands per SKU — AI product photography does the same job for a fraction of that, but not everywhere yet.",
+      "content": [
+        { "type": "paragraph", "text": "You're planning a studio shoot for 40 SKUs in the new season line: a photographer, two models, hair and makeup, studio rental, and a retouching team. When the agency quote lands, the total is pushing six figures, the shoot date is three weeks out — and the day before the shoot, a supplier color change means five SKUs need to be reshot from scratch. For a small or mid-size brand, this is the same expensive, slow bottleneck every single season — which is exactly why “can AI shoot my product photos” has become such a common search over the last two years." },
+        { "type": "heading", "text": "What AI Product Photography Actually Replaces" },
+        { "type": "paragraph", "text": "This isn't an abstract “AI can help” pitch — it's a concrete workflow. If you have a single flat-lay photo of a product, or one on-model shot, image generation models can take that as a reference and re-render the same product on dozens of different models, poses, backgrounds, and lighting setups. The 8-10 looks you could shoot in a studio day become 40-50 variations in the same amount of time with AI — because what disappears is the studio rental, the model agency, the hair-and-makeup coordination, and the logistics of a shoot day. The product is still real; it's the production chain around it that goes digital." },
+        { "type": "heading", "text": "Cost Comparison: Studio Shoot vs. AI Product Photography" },
+        { "type": "paragraph", "text": "The exact numbers depend on your brand, sector, and shoot complexity, but the overall picture is fairly consistent:" },
+        { "type": "stats", "items": [
+          { "label": "Classic product studio shoot (per SKU)", "value": "300–800 TL" },
+          { "label": "On-model campaign shoot (per look)", "value": "1,500–5,000 TL" },
+          { "label": "AI-generated image (credit-based)", "value": "a few TL – a few tens of TL" },
+          { "label": "Classic promo video production", "value": "15,000–80,000 TL" }
+        ] },
+        { "type": "paragraph", "text": "The gap isn't just about being “cheap” — speed changes too. A classic shoot needs date coordination, venue/crew logistics, and a delivery window that usually runs 1-3 weeks; with AI, images for the same SKU set can be ready the same day, sometimes within hours. For fast-turnover collections or brands squeezed by a campaign calendar, that's arguably a bigger advantage than the cost itself." },
+        { "type": "paragraph", "text": "Hidden costs shift the picture too. In a classic shoot, a model can get sick, weather can push back an outdoor session, or the retouch pass can run longer than planned — every delay re-triggers the day's studio and crew cost. With AI, the risk is different: if a variation doesn't come out right, redoing it costs a handful of credits and a few minutes, not another booking. That makes budgeting far more predictable — the risk of a surprise invoice drops close to zero." },
+        { "type": "heading", "text": "A Real Scenario: A Ready-to-Wear Brand" },
+        { "type": "paragraph", "text": "Say there's a mid-size ready-to-wear brand — call it “Modeva” — that launches 60-80 new SKUs a month. They used to book an external studio for every collection, wait for the shoot date, and upload images to their store and social channels with a three-week lag. In the new setup, the design team shoots a single flat photo of each SKU and uploads it to LUVI. LuviBot — the assistant that picks the right model and writes the prompt for you — turns an instruction like “female model, studio lighting, white background, three angles” into a working prompt in seconds, and the image model produces 6-8 variations per SKU. The marketing team picks the best shots and has them live on the store, Instagram, and the ad campaign the same day. The result: a collection launch that used to take three weeks now wraps in two or three days, and most of what used to be the studio budget shifts into ad spend instead. In numbers: 70 SKUs a month at 6-8 variations each works out to roughly 500 images. Covering that volume the classic way would need multiple shoot days and an expanded studio budget; on a credit-based model, the total cost usually comes in under the budget of a single campaign shoot." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "paragraph", "text": "Setting this up isn't a complex engineering project — the real work is picking the right tool and fitting it into the team's routine. The tool I'd recommend here is LUVI (luvicreator.com) — a Turkish-first content studio that puts 180+ AI models for image, video, voice, and 3D on one platform. Instead of juggling separate subscriptions for Midjourney, Runway, and ElevenLabs, you work from one place on a pay-as-you-go credit model. LuviBot picks the right model and prompt for you, and TEAMS lets agency-style teams manage multiple brand/client projects separately." },
+        { "type": "list", "items": [
+          "Upload a single reference photo of the product (flat-lay or on-model).",
+          "Tell LuviBot the goal — “white background, female model, three angles for e-commerce” — and let it pick the model and prompt.",
+          "Generate several variations per SKU, then pick the best 2-3.",
+          "If you run an agency or team, use TEAMS to manage each client/brand as a separate project.",
+          "Pay per credit used instead of a flat subscription, so cost tracks actual usage."
+        ] },
+        { "type": "paragraph", "text": "The same workflow isn't limited to product photos either. If a season launch also needs a short promo video, the same platform can produce a few minutes of social-ready video without reaching for classic production that runs 15,000-80,000 TL — though the expectation has to stay realistic: this is short-format content that animates the product image, not a scripted, long-form ad film. Covering both image and video needs on one platform under one bill takes less time than subscribing to three or four separate tools and climbing each one's learning curve." },
+        { "type": "heading", "text": "Where AI Still Falls Short" },
+        { "type": "paragraph", "text": "Honestly, this isn't a 100% solution for every SKU. Things you can only really feel — exact fabric texture, how a cut drapes on a body, stitch-level detail — are still conveyed more reliably by a real shoot, especially in categories with high return rates like outerwear or footwear. In practice, the approach that works best is usually hybrid: AI for social, campaign, and variation images, and a handful of real photos kept for high-return-risk “hero” products. Handing everything to AI without that distinction can actually push up return rates in some categories. One footwear brand that switched entirely to AI images, for example, saw a quick uptick in complaints along the lines of “the product doesn't look like the photo” — the fix wasn't abandoning AI images altogether, but adding real photos back into the set for the products where fit and material matter most." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "Can AI-generated product photos legally be used on an e-commerce site?" },
+        { "type": "paragraph", "text": "Yes, using them isn't a legal issue by itself; what actually matters is not misleading the consumer — the real color, size, and texture of the product still need to come through accurately. Some marketplaces, particularly in fashion, may require you to label an image as AI-generated, so it's worth checking each platform's own rules." },
+        { "type": "subheading", "text": "Who owns the rights to AI-generated product images?" },
+        { "type": "paragraph", "text": "Generally, if you upload your own product photo as the reference, you retain commercial usage rights over the images generated from it — but this varies by platform, so it's worth reading the terms of service of whatever tool you use." },
+        { "type": "subheading", "text": "How much does this actually cut a small brand's monthly content cost?" },
+        { "type": "paragraph", "text": "Giving a precise percentage would be misleading since it depends on brand size and how often you used to shoot — but a brand that used to book an external studio a few times a month typically sees a meaningful share of that content budget shift into campaign/ad spend once it moves to a credit-based model." },
+        { "type": "subheading", "text": "Do AI product images underperform real photos on social media ads?" },
+        { "type": "paragraph", "text": "There's no universal rule. In some categories — accessories, cosmetics, simple apparel — AI images capture close to the same click-through and conversion rate as a real shoot. In categories where detail matters more (technical apparel, footwear), the gap can be more visible. The right move is testing a new image set on a small budget against a real shoot and deciding from the data, not an assumption." },
+        { "type": "paragraph", "text": "If you want to try this for your own product images, LUVI itself is a solid place to start. If you want to integrate it into your e-commerce backend, product management system, or agency workflow — building an automated pipeline instead of generating images one by one — reach out through /contact and we can start with a few questions." }
+      ]
+    }
   }
 ]
