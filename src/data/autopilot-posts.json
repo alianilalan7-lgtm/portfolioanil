@@ -1875,5 +1875,98 @@
         { "type": "paragraph", "text": "Sorting this out before a project starts is always cheaper than rebuilding the architecture after launch. If you're curious how LLMs actually work at the token and context-window level, there's a related post for that; if you want to talk through how to set this layer up for your own project, I'm here." }
       ]
     }
+  },
+  {
+    "slug": "restaurant-delivery-order-aggregation-system",
+    "publishedAt": "2026-07-31",
+    "readTime": "6 min",
+    "category": "Restoran",
+    "tags": ["Restoran", "Kurye", "Sipariş Yönetimi", "Otomasyon"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Restoranlar için özel yazılım & otomasyon", "href": "/services" },
+      { "label": "Restoranda porsiyon maliyeti sistemi (ilgili yazı)", "href": "/blog/restaurant-food-cost-calculation-system" },
+      { "label": "İşletmen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Restoranlarda Kurye Sipariş Platformlarını Tek Ekranda Toplayan Sistem Nasıl Çalışır?",
+      "excerpt": "Kurye platformlarını (Yemeksepeti, Getir, Trendyol) tek ekranda toplayan bir sistem, kaçan siparişleri ve ay sonu mutabakat kaosunu nasıl bitiriyor?",
+      "content": [
+        { "type": "paragraph", "text": "Cuma akşamı yoğun saatte kasanın yanındaki üç tablet aynı anda ötüyor: biri Yemeksepeti'nden, biri Getir Yemek'ten, biri Trendyol Yemek'ten sipariş bildiriyor, dördüncü sipariş de kendi web sitenizden kağıda düşüyor. Mutfak hangi siparişin önce hazırlanması gerektiğini bilmiyor, bir tablet kalabalıkta gözden kaçıyor, sipariş 10-12 dakika onaylanmadan bekliyor ve platform siparişi otomatik iptal ediyor — hem tutar hem de platform puanı o anda kayboluyor. Bu, aslında kurye sipariş platformlarını tek ekranda toplayan bir sistemin çözebileceği tam da bu tür bir kayıp." },
+        { "type": "paragraph", "text": "Üstelik bu sadece o akşamki kayıp değil. Platformun 'geç yanıt' veya 'iptal oranı' istatistiği kötüleşiyor, bu da önümüzdeki haftalarda o restoranın uygulama içi sıralamada daha geride görünmesi demek. Küçük, günlük bir operasyon aksaklığı, zamanla görünürlük ve gelir kaybına dönüşüyor — üstelik bunun farkına genelde ay sonu raporunda, iş işten geçtikten sonra varılıyor." },
+        { "type": "heading", "text": "Kurye Sipariş Platformlarını Tek Ekranda Toplamak Restoranlar İçin Ne Anlama Geliyor?" },
+        { "type": "paragraph", "text": "Son birkaç yılda kurye/paket platformu sayısı arttı; artık çoğu restoran ve kafe aynı anda üç dört farklı platformdan sipariş alıyor. Sorun platformların olmaması değil — her biri kendi tabletiyle, kendi bildirim sesiyle, birbirinden habersiz çalışıyor olması. Oysa her platform, restoranların sipariş kabul etmesi için bir API veya webhook sunuyor. Özel bir orta katman (middleware) yazılımı bu API'lerin her birine bağlanır, gelen siparişleri tek bir kuyrukta toplar ve mutfağa tek bir formatta, tek bir yazıcıdan basar. Kasiyer ya da şef artık dört ekran arasında geçiş yapmaz; hangi siparişin hangi platformdan geldiği, teslimat süresi ne kadar kaldığı ve hangisinin önce hazırlanması gerektiği tek panelde görülür." },
+        { "type": "paragraph", "text": "Sistem aynı zamanda POS'a bağlanarak stok düşümünü otomatik yapar — kurye platformundan gelen bir sipariş de kasadan girilen bir sipariş kadar doğru şekilde stoktan düşer. Onay süresi geciken bir sipariş olduğunda personele anında bildirim gider, böylece otomatik iptal riski büyük ölçüde azalır. Gün ya da ay sonunda da her platformun kestiği komisyonu ve ödediği tutarı gerçek sipariş listesiyle otomatik karşılaştıran bir mutabakat ekranı devreye girer — elle Excel'e geçirmeye gerek kalmaz." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Cafe Roka" },
+        { "type": "paragraph", "text": "Cafe Roka, aynı şehirde üç şubesi olan kurgusal ama gerçekçi bir kafe zinciri olsun. Her şubede kendi kasası, üç farklı kurye platformunun ayrı tableti ve bir de kendi web sitesinden gelen siparişler var. Sistem kurulmadan önce, yoğun saatte bir şube ortalama haftada 4-6 sipariş kaçırıyor; ya tablet fark edilmiyor ya da mutfak öncelik sırasını şaşırıp müşteri şikayeti alıyor. Ay sonunda muhasebeci üç platformun ayrı ayrı kestiği komisyon faturalarını, kasadaki gerçek sipariş kayıtlarıyla tek tek karşılaştırmak zorunda kalıyor; bu da her ay birkaç saatlik manuel iş demek." },
+        { "type": "paragraph", "text": "Sistem kurulduktan sonra iş akışı şöyle işliyor: bir müşteri Getir Yemek üzerinden sipariş verdiğinde, sipariş aynı anda hem Getir'in kendi sistemine hem de Cafe Roka'nın orta katmanına düşüyor. Mutfaktaki tek yazıcı, hangi platformdan geldiğini ve tahmini teslim süresini gösteren tek formatlı bir fiş basıyor. Şef, üç ayrı tablete bakmak yerine tek ekrandan sıradaki tüm siparişleri, öncelik sırasına göre görüyor. Şube müdürü de günlük panelden hangi platformun en çok sipariş getirdiğini, hangi saatlerde gecikme yaşandığını ve hangi siparişin onay süresi aştığı için risk altında olduğunu anlık izliyor. Ay sonunda muhasebeci artık üç ayrı Excel yerine tek bir mutabakat ekranına bakıyor; sistem hangi siparişin ödemesinin eksik geldiğini otomatik işaretliyor." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "paragraph", "text": "Teknik tarafı fazla karmaşıklaştırmadan özetlemek gerekirse, sistem şu parçalardan oluşuyor:" },
+        { "type": "list", "items": [
+          "Her kurye platformunun sipariş API'sine veya webhook'una bağlanan bir orta katman servisi",
+          "Tüm platformlardan gelen siparişleri tek bir kuyrukta birleştiren basit bir sipariş paneli",
+          "Mutfak yazıcısına tek formatta, otomatik fiş basımı",
+          "Onay süresi geciken siparişler için anlık personel uyarısı",
+          "POS ile stok düşümünü senkronize eden entegrasyon",
+          "Gün/ay sonunda platform komisyon ve ödemelerini gerçek siparişlerle otomatik karşılaştıran mutabakat ekranı"
+        ] },
+        { "type": "paragraph", "text": "Şunu da dürüstçe söylemek lazım: her platform aynı seviyede erişim sunmuyor. Bazılarında tam webhook entegrasyonu mümkünken, bazılarında sipariş bildirimini resmi bir iş ortaklığı/entegratör kanalından almak gerekiyor — bu da kurulum süresini biraz uzatabiliyor. Bu, birkaç saatte kurulup biten bir iş değil; asıl değeri, aynı anda iki veya daha fazla platformdan haftada onlarca-yüzlerce sipariş işleyen işletmelerde ortaya çıkıyor." },
+        { "type": "stats", "items": [
+          { "label": "Kaçırılan sipariş", "value": "haftada birkaç siparişten neredeyse sıfıra" },
+          { "label": "Ay sonu mutabakat işi", "value": "birkaç saatten dakikalara" },
+          { "label": "Kurulum süresi", "value": "3-5 hafta" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Kurye platformlarının API'leri bu tür bir entegrasyona gerçekten izin veriyor mu?" },
+        { "type": "paragraph", "text": "Evet — Türkiye'deki büyük kurye/paket platformlarının çoğu, restoranların sipariş yönetimi için bir API veya webhook sunuyor; bazıları bunu doğrudan belgeliyor, bazılarında iş ortaklığı/entegratör anlaşması gerekiyor. Dokümantasyon kalitesi ve erişim süreci platformdan platforma değişiyor, bu yüzden ilk adım her zaman hangi platformların hangi erişim seviyesini verdiğini netleştirmek." },
+        { "type": "subheading", "text": "Bu sistem mevcut POS'umun yerine mi geçiyor?" },
+        { "type": "paragraph", "text": "Hayır. Sistem POS'un yerine geçmez, yanında çalışır — siparişleri toplar, mutfağa iletir ve POS'a stok düşümü için veri gönderir. Kasa ve muhasebe süreciniz aynı kalır, sadece kurye siparişlerinin dağınıklığı ortadan kalkar." },
+        { "type": "subheading", "text": "Tek şubeli küçük bir kafe için de mantıklı mı, yoksa sadece çok şubeliler için mi?" },
+        { "type": "paragraph", "text": "Şube sayısından çok, aynı anda kaç farklı platformdan sipariş aldığınıza bağlı. Tek platformdan, günde birkaç siparişle çalışan küçük bir yer için bu yatırım büyük olasılıkla erken; ama iki veya daha fazla platformdan yoğun saatte eş zamanlı sipariş alan tek bir şube bile kaçan siparişlerden ve iptal cezalarından bunu kolayca karşılar." },
+        { "type": "subheading", "text": "Kurulum ve aylık maliyeti nasıl bir aralıkta?" },
+        { "type": "paragraph", "text": "İlk kurulum, entegre edilecek platform sayısına ve şube sayısına göre genellikle birkaç bin ile onbin TL arasında değişir; aylık bakım maliyeti ise çoğunlukla düşük, sabit bir tutar olur. Kesin rakam kaç platform ve kaç şube olduğuna bağlı, bu yüzden gerçekçi bir teklif için önce mevcut kurulumun görülmesi gerekir." },
+        { "type": "paragraph", "text": "Kendi restoran ya da kafe operasyonun için kurye platformlarını ve kendi sipariş kanallarını tek ekranda toplayan benzer bir sistemi konuşmak istersen, birkaç soruyla başlayabiliriz." }
+      ]
+    },
+    "en": {
+      "title": "How Restaurants Can Aggregate Delivery Order Platforms Into One Screen",
+      "excerpt": "A system that aggregates delivery platforms (Yemeksepeti, Getir, Trendyol) into one screen — how it stops missed orders and month-end reconciliation chaos.",
+      "content": [
+        { "type": "paragraph", "text": "On a busy Friday night, three tablets next to the register go off at once: one from Yemeksepeti, one from Getir Yemek, one from Trendyol Yemek, and a fourth order comes in on paper from your own website. The kitchen doesn't know which order to prepare first, one tablet gets missed in the rush, an order sits unconfirmed for 10-12 minutes, and the platform auto-cancels it — both the revenue and the platform score disappear in that moment. This is exactly the kind of loss a system that aggregates delivery order platforms into one screen is built to solve." },
+        { "type": "paragraph", "text": "And it's not just that one night's loss. The platform's 'late response' or 'cancellation rate' metric gets worse, which means the restaurant shows up lower in the app's ranking in the following weeks. A small, daily operational hiccup slowly turns into lost visibility and lost revenue — and it's usually only noticed in the month-end report, after the damage is done." },
+        { "type": "heading", "text": "What Does Aggregating Delivery Order Platforms Into One Screen Actually Mean for Restaurants?" },
+        { "type": "paragraph", "text": "The number of delivery platforms has grown over the past few years; most restaurants and cafés now take orders from three or four platforms at once. The problem isn't that the platforms exist — it's that each one runs on its own tablet, with its own notification sound, unaware of the others. Yet every platform offers an API or webhook for restaurants to receive orders. A custom middleware service connects to each of these APIs, pulls incoming orders into a single queue, and prints them to the kitchen in one format, from one printer. The cashier or the chef no longer switches between four screens; which platform an order came from, how much delivery time is left, and which order should be prepared first are all visible on one panel." },
+        { "type": "paragraph", "text": "The system also connects to the POS to automatically deduct stock — an order from a delivery platform gets deducted from inventory just as accurately as one entered at the register. When an order's confirmation is running late, staff get an instant alert, which sharply reduces the risk of an automatic cancellation. At day's or month's end, a reconciliation screen automatically matches each platform's commission and payout against the real order list — no more manually copying numbers into a spreadsheet." },
+        { "type": "heading", "text": "A Real Scenario: Cafe Roka" },
+        { "type": "paragraph", "text": "Say Cafe Roka is a fictional but realistic three-branch café chain in the same city. Each branch has its own register, a separate tablet for three different delivery platforms, plus orders coming in from its own website. Before the system, a branch misses an average of 4-6 orders a week during rush hours — either a tablet goes unnoticed or the kitchen mixes up the priority order and gets a customer complaint. At month-end, the accountant has to manually match three platforms' separately-issued commission invoices against the actual order records at the register — a few hours of manual work every month." },
+        { "type": "paragraph", "text": "After the system is in place, the workflow looks like this: when a customer orders through Getir Yemek, the order lands simultaneously in Getir's own system and in Cafe Roka's middleware. The single kitchen printer prints one ticket, in one format, showing which platform it came from and the estimated delivery time. Instead of watching three separate tablets, the chef sees every upcoming order on one screen, sorted by priority. The branch manager also monitors, in real time, which platform brings the most orders, at which hours delays happen, and which orders are at risk because their confirmation window is running out. At month-end, the accountant now looks at a single reconciliation screen instead of three spreadsheets; the system automatically flags any order whose payout came in short." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "paragraph", "text": "Without over-engineering the technical explanation, the system is made up of a few pieces:" },
+        { "type": "list", "items": [
+          "A middleware service that connects to each delivery platform's order API or webhook",
+          "A simple order panel that merges incoming orders from every platform into one queue",
+          "Automatic ticket printing to the kitchen printer in a single format",
+          "Instant staff alerts for orders whose confirmation is running late",
+          "Integration that syncs stock deduction with the POS",
+          "A reconciliation screen that automatically matches each platform's commission and payout against real orders at day's or month's end"
+        ] },
+        { "type": "paragraph", "text": "It's worth being honest here: not every platform offers the same level of access. Some support full webhook integration, while others require getting order notifications through an official partnership or integrator channel — which can stretch out setup time. This isn't a project you set up in a few hours and forget; the real value shows up for businesses handling dozens to hundreds of orders a week across two or more platforms at once." },
+        { "type": "stats", "items": [
+          { "label": "Missed orders", "value": "from several a week to near zero" },
+          { "label": "Month-end reconciliation work", "value": "from hours to minutes" },
+          { "label": "Setup time", "value": "3-5 weeks" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Do delivery platforms' APIs actually allow this kind of integration?" },
+        { "type": "paragraph", "text": "Yes — most major delivery platforms in Turkey offer an API or webhook for restaurant order management; some document it openly, while others require a partnership or integrator agreement. Documentation quality and the access process vary by platform, so the first step is always to figure out exactly what access level each platform actually gives you." },
+        { "type": "subheading", "text": "Does this system replace my existing POS?" },
+        { "type": "paragraph", "text": "No. The system doesn't replace your POS — it works alongside it, collecting orders, routing them to the kitchen, and feeding stock-deduction data to the POS. Your register and accounting process stay the same; only the chaos of managing delivery orders disappears." },
+        { "type": "subheading", "text": "Does this make sense for a small, single-branch café, or only for multi-branch chains?" },
+        { "type": "paragraph", "text": "It depends less on the number of branches and more on how many platforms you take orders from at once. For a small place on a single platform doing a handful of orders a day, this investment is likely premature; but even a single branch taking simultaneous orders from two or more platforms during rush hours can easily justify it through the missed orders and cancellation penalties it prevents." },
+        { "type": "subheading", "text": "What's the setup and monthly cost range?" },
+        { "type": "paragraph", "text": "Initial setup typically ranges from a few thousand to around ten thousand TL, depending on how many platforms and branches are involved; ongoing monthly maintenance is usually low and fixed. The exact number depends on how many platforms and branches you have, so a realistic quote requires looking at the current setup first." },
+        { "type": "paragraph", "text": "If you want to talk about a similar system that brings delivery platforms and your own order channels together on one screen for your own restaurant or café, we can start with a few questions." }
+      ]
+    }
   }
 ]
