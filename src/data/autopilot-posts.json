@@ -2158,5 +2158,123 @@
         { "type": "paragraph", "text": "If you want to talk through a similar revision tracking flow for your own office, we can start with a few questions: how many active projects you run, which channels requests come in on, and how many hours your last revision dispute cost you." }
       ]
     }
+  },
+  {
+    "slug": "zapier-make-vs-custom-software-when-each-makes-sense",
+    "publishedAt": "2026-08-10",
+    "readTime": "8 min",
+    "category": "Otomasyon",
+    "tags": ["Otomasyon", "SaaS", "Entegrasyon", "Zapier"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "No-code mu özel kod mu, hangisi ne zaman ucuza gelir", "href": "/blog/no-code-vs-custom-code-when-each-is-cheaper" },
+      { "label": "Özel yazılım & otomasyon hizmetlerim", "href": "/services" },
+      { "label": "İşin için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Zapier ve Make Ne Zaman Yetmez? Otomasyon Araçlarıyla Özel Yazılım Arasındaki Sınır",
+      "excerpt": "Zapier ve Make nerede yeter, ne zaman özel entegrasyon şart olur? Gerçek sınırlar, maliyet dengesi ve bir geçiş senaryosu.",
+      "content": [
+        { "type": "paragraph", "text": "Bir e-ticaret girişimcisi geçenlerde bana şunu sordu: 'Zapier'de kurduğum sipariş-bildirim otomasyonu, sipariş hacmini üç ayda ikiye katlayınca tuhaf davranmaya başladı — bazı siparişler Slack'e düşmüyor, bazı fatura e-postaları iki kez gidiyor.' Bu soru aslında herkesin er ya da geç karşılaştığı bir eşiği işaret ediyor: Zapier ve Make gibi otomasyon araçları nerede gerçekten yeter, ne zaman özel yazılım şart olur? Cevap net bir sayı değil ama tanıyabileceğin somut sinyaller var, ve bu yazıda onları gerçek bir geçiş hikâyesiyle birlikte anlatacağım." },
+        { "type": "paragraph", "text": "Bu soruyu sık duyuyorum çünkü çoğu küçük işletme ve erken aşama girişim, doğru şekilde, işine önce bir otomasyon aracıyla başlıyor — ve bu doğru bir refleks. Sorun, o araçla başlamak değil; büyüme geldiğinde hangi anın 'artık bu kısmı özel koda taşımalıyım' anı olduğunu fark edememek. Bu gecikme genelde ya sessiz bir veri kaybı ya da beklenmedik bir fatura sıçramasıyla fark ediliyor — ikisi de önlenebilir." },
+        { "type": "heading", "text": "Zapier ve Make aslında nasıl çalışır?" },
+        { "type": "paragraph", "text": "İkisi de aynı temel fikri farklı arayüzlerle sunuyor: bir 'tetikleyici' (trigger) — yeni bir Shopify siparişi, bir Google Sheets satırı, bir form gönderimi — ve onu takip eden bir dizi 'eylem' (action) — bir Slack mesajı, bir e-posta, bir CRM kaydı. Zapier buna 'Zap', Make buna 'senaryo' diyor. Arka planda çoğu bağlantı iki şekilde çalışır: ya ilgili servis bir webhook gönderir (anlık, olay tabanlı), ya da araç o servisi birkaç dakikada bir 'polling' yaparak kontrol eder (Gmail, Google Sheets gibi webhook desteklemeyen servislerde sık görülür — bu da görünürde 'anlık' olsa bile 1-15 dakikalık bir gecikme demektir). Her bağlantı (connector), o servisin API'sini senin yerine çağıran hazır bir kod parçası; sen kod yazmadan bu parçaları sürükleyip bırakarak birbirine bağlıyorsun. Fiyatlandırma da aynı mantıkla çalışıyor: her çalışan adım (her tetikleme + her eylem) bir 'görev' (task) sayılır ve plan, aylık kaç görev çalıştırabileceğine göre fiyatlanır. Bu model, düşük hacimli ve nispeten basit iş akışları için gerçekten iyi çalışıyor — kod yazmadan, günler değil saatler içinde bir otomasyonu ayağa kaldırabiliyorsun." },
+        { "type": "heading", "text": "Bu araçların gerçek sınırları nerede başlıyor?" },
+        { "type": "paragraph", "text": "Sorun otomasyon araçlarının 'kötü' olması değil — belirli bir karmaşıklık ve hacim eşiğinden sonra, tasarlandıkları model seni hızlandırmak yerine yavaşlatmaya başlıyor. Pratikte tekrar tekrar karşılaştığım sınırlar şöyle:" },
+        { "type": "list", "items": [
+          "Task tabanlı fiyatlandırma doğrusal değil: hacim büyüdükçe maliyet, aynı işi yapan özel bir entegrasyonun sunucu maliyetinin kolayca üstüne çıkabiliyor.",
+          "İç içe koşullar ve döngüler: 3-4 katmanlı 'eğer şu olursa şunu yap' mantığı, görsel arayüzde okunması ve hatasız bakımı gittikçe zorlaşan bir yumağa dönüşüyor.",
+          "Hata yönetimi sığ kalıyor: bir adım sessizce başarısız olduğunda (örneğin API geçici olarak 500 döndürdüğünde) çoğu senaryo bunu fark etmeden akışa devam ediyor ya da sessizce duruyor — sen fark etmeden.",
+          "Polling gecikmesi: webhook desteklemeyen bir servisle çalışıyorsan, 'anlık' dediğin otomasyon aslında birkaç dakika geriden geliyor olabilir.",
+          "Toplu ve yüksek hacimli veri işlemede performans: binlerce satırı tek seferde işlemek istediğinde zaman aşımına uğrayan veya kuyruğa giren senaryolarla karşılaşıyorsun.",
+          "Veri güvenliği ve KVKK: veri, kendi altyapından çıkıp üçüncü parti bir sunucudan geçiyor; sağlık, finans gibi hassas verilerde bu başlı başına bir uyum sorunu olabiliyor.",
+          "Versiyon kontrolü ve test ortamı yok: bir değişikliği canlıya code review yapmadan, test ortamından geçirmeden, gerçek bir geri alma (rollback) mekanizması olmadan alıyorsun."
+        ] },
+        { "type": "heading", "text": "Gerçek bir senaryo: Zapier'den özel entegrasyona geçiş" },
+        { "type": "paragraph", "text": "Bunu somutlaştırmak için anonimleştirdiğim gerçek bir örneği anlatayım. Abonelik bazlı bir kozmetik markası, Shopify'daki her yeni siparişi Airtable'a kaydeden, depo ekibine Slack bildirimi atan ve müşteriye kargo takip e-postası gönderen 4 adımlık bir Zap ile başladı — kurulumu bir öğleden sonra sürdü. Altı ay sonra hacim üç katına çıktı, senaryo 14 adıma büyüdü (indirim kodu kontrolü, stok senkronizasyonu, VIP müşteri etiketleme, iade akışı eklendi) ve iki şey art arda kırıldı: stok senkronizasyon adımı bir hafta boyunca sessizce başarısız oldu ve 40'tan fazla sipariş yanlış stok bilgisiyle işlendi; aynı dönemde aylık görev limitini aştıkları için plan otomatik yükseltildi ve fatura ciddi bir sıçrama yaptı. Bunun üzerine ekip, en kritik ve en sık kırılan parçayı — sipariş-stok senkronizasyonu ve iade akışını — özel bir servise taşıdı: Shopify webhook'unu dinleyen, hataları bir kuyrukta (queue) tutup otomatik yeniden deneyen, başarısızlıkları Slack'e gerçek zamanlı raporlayan küçük bir Node.js servisi. Airtable kaydı, basit bildirimler ve pazarlama entegrasyonları gibi düşük riskli, düşük hacimli adımlar Make'te kalmaya devam etti. Sonuç hibrit bir mimari oldu: kritik ve hacimli olan kısım kendi kodunda, düşük riskli ve nadiren değişen kısım hâlâ görsel araçta. Sahibinin gördüğü şey değişmedi — hâlâ Slack'te bildirim alıyor — ama artık bir sipariş kaybolduğunda bunu dakikalar içinde, sessiz bir hata olarak değil, açık bir uyarı olarak öğreniyor." },
+        { "type": "heading", "text": "Ne zaman özel yazılım gerçekten şart olur?" },
+        { "type": "paragraph", "text": "Aşağıdaki sinyallerden birkaçı aynı anda ortaya çıktıysa, muhtemelen otomasyon aracının sunduğu modelin sınırına yaklaşmışsındır:" },
+        { "type": "list", "items": [
+          "Aylık görev sayısı binleri geçtiğinde ve fatura, aynı işi yapan bir sunucu maliyetinin belirgin şekilde üstüne çıktığında.",
+          "Bir adımın sessiz başarısızlığı gerçek para veya müşteri kaybına yol açıyorsa (kaçırılan sipariş, yanlış stok, gecikmiş fatura).",
+          "İş mantığı, görsel arayüzde okunması zorlaşan çok katmanlı koşullara ve döngülere ihtiyaç duyuyorsa.",
+          "Müşterinin veya ekibin göreceği özel bir arayüz/ekran gerekiyorsa — otomasyon araçları arka plan işi için iyi, ön yüz için değil.",
+          "Sektörün veri güvenliği/uyum gereksinimi, verinin üçüncü parti bir sunucudan geçmesini sorun hâline getiriyorsa.",
+          "Saniyeler içinde tepki vermesi gereken, polling gecikmesinin kabul edilemez olduğu bir akış varsa."
+        ] },
+        { "type": "heading", "text": "Otomasyon araçlarının hâlâ en iyi seçim olduğu durumlar" },
+        { "type": "paragraph", "text": "Burada tek taraflı bir hikâye anlatmak istemiyorum — birçok durumda cevap 'her şeyi özel yazılıma taşı' değil. Erken aşamadaki bir girişim, henüz iş akışının doğru şeklini bile bilmiyorken Zapier veya Make ile başlamalı: bir günde kurulup ihtiyaç değiştikçe yeniden düzenlenebilen bir senaryo, henüz oturmamış bir süreç için özel kod yazıp o kodu üç kez baştan yazmaktan çok daha ucuz. Aynı şekilde, ayda birkaç yüz görevi geçmeyen, tek yönlü ve kritik olmayan akışlar (örneğin yeni bir form gönderimini CRM'e kaydetmek) için özel bir servis kurmanın bakım yükü, kazandırdığı faydayı fazlasıyla geçebilir. Kural şu: otomasyon aracı hâlâ ucuzken ve iş akışı hâlâ değişkenken oradan başla, hacim ve kritiklik arttıkça sadece gerçekten acıyan parçayı taşı." },
+        { "type": "paragraph", "text": "Sayılara dökünce fark daha net görünüyor: ayda birkaç yüz görev çalıştıran basit bir senaryo için otomasyon aracının aylık planı, aynı işi yapan bir sunucunun barındırma maliyetinden genelde daha ucuzdur — üstüne geliştirme süresi neredeyse sıfırdır. Ama aynı senaryo ayda yirmi bin göreve çıktığında tablo tersine dönüyor: plan bir üst kademeye sıçrıyor, aylık maliyet birkaç kat artabiliyor, oysa aynı mantığı çalıştıran küçük bir sunucu süreci genelde sabit ve çok daha öngörülebilir bir aylık maliyetle devam ediyor. Kırılma noktası işten işe değişir, ama pratikte gördüğüm eşik genelde aylık birkaç bin görev civarında beliriyor." },
+        { "type": "stats", "items": [
+          { "label": "Basit, az adımlı bir senaryonun Zapier/Make'te kurulum süresi", "value": "birkaç saat" },
+          { "label": "Orta karmaşıklıkta bir akışın özel servise taşınma süresi", "value": "1-3 hafta" },
+          { "label": "Hibrit geçişte otomasyon aracında kalan adım oranı", "value": "akışın yaklaşık yarısı" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Zapier veya Make kullanmak küçük bir işletme için riskli mi?" },
+        { "type": "paragraph", "text": "Hayır — düşük hacimli, tek yönlü ve kritik olmayan akışlar için (bildirim, basit kayıt, pazarlama entegrasyonu) bu araçlar gerçekten doğru seçim. Riskli olan, kritik iş mantığını (ödeme, stok, fatura) sessiz hata toleransı düşük bir alanda bu araçların üstüne kurup büyütmeye devam etmek." },
+        { "type": "subheading", "text": "Otomasyon aracından özel yazılıma geçişin maliyeti nedir?" },
+        { "type": "paragraph", "text": "Değişen parçanın karmaşıklığına bağlı, ama tipik olarak tüm sistemi değil sadece en kritik ve en hacimli 1-3 adımı taşıyorsun — bu da toplam projeyi haftalar mertebesinde tutuyor, aylar değil. Geri kalan düşük riskli adımlar otomasyon aracında kalmaya devam edebilir, bu da geçişi hem ucuzlatıyor hem hızlandırıyor." },
+        { "type": "subheading", "text": "Zapier/Make ile özel yazılımı aynı anda kullanabilir miyim?" },
+        { "type": "paragraph", "text": "Evet, ve pratikte en yaygın kurulum bu — hibrit mimari. Kritik, yüksek hacimli veya güvenlik gerektiren mantık özel kodda, düşük riskli bildirim/kayıt işleri görsel araçta kalıyor. İkisi arasında köprü genelde bir webhook veya basit bir API çağrısı." },
+        { "type": "subheading", "text": "Hangi otomasyon aracını seçmeliyim, Zapier mi Make mi?" },
+        { "type": "paragraph", "text": "İkisi de aynı ihtiyacı karşılıyor; Make genelde daha karmaşık dallanma/döngü senaryolarını görsel olarak daha esnek yönetiyor ve task başına maliyeti çoğu senaryoda daha düşük çıkıyor, Zapier ise bağlantı (connector) kütüphanesinin genişliği ve kullanım kolaylığıyla öne çıkıyor. İkisi de aynı temel sınırları paylaşıyor, bu yazıdaki eşikler her ikisi için de geçerli." },
+        { "type": "subheading", "text": "Otomasyon aracı seçerken nelere dikkat etmeliyim?" },
+        { "type": "paragraph", "text": "En kritik üç şeye bak: bağlanacağın servislerin webhook desteği olup olmadığı (yoksa polling gecikmesini baştan kabul et), aylık görev limitinin senin gerçek hacminle ne zaman kesişeceği (fiyatlandırma sayfasındaki giriş planına değil, hacminin altı ay sonraki haline göre karar ver) ve hata bildirimi/loglama seçeneklerinin ne kadar detaylı olduğu — çünkü sessiz bir hatayı erken fark etmek, çoğu zaman hatayı tamamen önlemekten daha gerçekçi bir hedef." },
+        { "type": "paragraph", "text": "Otomasyon araçlarıyla başlamak neredeyse her zaman doğru ilk adım — hızlı, ucuz, kod yazmadan. Asıl beceri, hangi parçanın ne zaman özel koda taşınması gerektiğini erken fark etmek. Bunu kendi akışın için konuşmak istersen /contact üzerinden yazabilirsin; no-code ile özel kod arasındaki genel maliyet dengesine de yazımızdan bakabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "When Zapier and Make Aren't Enough: Where Automation Tools Stop and Custom Software Begins",
+      "excerpt": "Where do Zapier and Make actually stop working, and when does custom software pay off? Real limits, cost tipping points, and a migration story.",
+      "content": [
+        { "type": "paragraph", "text": "An e-commerce founder asked me recently: 'The order-notification automation I built in Zapier started acting up right when I doubled order volume in three months — some orders never hit Slack, some invoice emails go out twice.' That question points at a threshold almost everyone eventually hits: where do Zapier and Make actually stop being enough, and when does custom software become necessary? There's no single number that answers it, but there are concrete signals you can recognize — and I'll walk through them here with a real migration story." },
+        { "type": "heading", "text": "How Zapier and Make actually work" },
+        { "type": "paragraph", "text": "Both tools sell the same core idea through different interfaces: a 'trigger' — a new Shopify order, a new Google Sheets row, a form submission — followed by a chain of 'actions' — a Slack message, an email, a CRM record. Zapier calls this a 'Zap', Make calls it a 'scenario'. Under the hood, most connections work one of two ways: either the source service pushes a webhook (instant, event-driven), or the tool polls that service every few minutes (common for services like Gmail or Google Sheets that don't support webhooks — which means a 1-15 minute lag even when it looks 'instant'). Each connector is a pre-built piece of code that calls that service's API on your behalf; you wire these pieces together by dragging and dropping, no code required. Pricing follows the same logic: every step that runs (every trigger and every action) counts as one 'task', and your plan is priced by how many tasks you can run per month. This model genuinely works well for low-volume, relatively simple workflows — you can stand up an automation in hours instead of days, without writing a line of code." },
+        { "type": "heading", "text": "Where do these tools' real limits actually start?" },
+        { "type": "paragraph", "text": "The problem isn't that automation tools are 'bad' — past a certain complexity and volume threshold, the model they're built on starts slowing you down instead of speeding you up. In practice, the limits I keep running into are:" },
+        { "type": "list", "items": [
+          "Task-based pricing isn't linear: as volume grows, the cost can easily outpace what a custom integration would cost to run on your own server for the same work.",
+          "Nested conditions and loops: 3-4 layers of 'if this then that' logic turns into a visual tangle that's increasingly hard to read and maintain without breaking something.",
+          "Error handling stays shallow: when a step silently fails (say, an API returns a temporary 500), most scenarios either keep going without noticing or just stop quietly — and you don't find out until later.",
+          "Polling lag: if you're connected to a service that doesn't support webhooks, the automation you think is 'instant' may actually be running several minutes behind.",
+          "Performance on bulk, high-volume data: try to process thousands of rows in one run and you'll hit timeouts or get queued behind other jobs.",
+          "Data security and compliance: your data leaves your own infrastructure and passes through a third-party server — for health, finance, or other regulated data, that's a compliance question on its own.",
+          "No version control or staging environment: you push a change live without code review, without a test environment, without a real rollback mechanism."
+        ] },
+        { "type": "heading", "text": "A real scenario: moving from Zapier to a custom integration" },
+        { "type": "paragraph", "text": "To make this concrete, here's a real (anonymized) example. A subscription-based cosmetics brand started with a 4-step Zap: log every new Shopify order into Airtable, notify the warehouse team on Slack, and send the customer a tracking email — the whole thing took one afternoon to set up. Six months later, volume had tripled, the scenario had grown to 14 steps (discount code checks, stock sync, VIP customer tagging, a return flow), and two things broke back to back: the stock-sync step failed silently for a week, and more than 40 orders were processed with wrong stock data; around the same time, they blew past their monthly task limit, the plan auto-upgraded, and the bill jumped noticeably. In response, the team moved the most critical, most failure-prone piece — order-to-stock sync and the return flow — into a small custom service: it listens to a Shopify webhook, holds failures in a queue and retries them automatically, and reports failures to Slack in real time. Low-risk, low-volume steps like the Airtable record and simple notifications stayed in Make. The result was a hybrid architecture: the critical, high-volume part lives in custom code, the low-risk, rarely-changing part still lives in the visual tool. What the owner sees didn't change — they still get a Slack notification — but now, when an order goes missing, they find out within minutes as a clear alert, not a silent failure." },
+        { "type": "heading", "text": "When does custom software actually become necessary?" },
+        { "type": "paragraph", "text": "If several of the following signals show up at once, you're probably at the edge of what the automation-tool model was built to handle:" },
+        { "type": "list", "items": [
+          "Monthly task count runs into the thousands, and the bill clearly exceeds what running the same logic on your own server would cost.",
+          "A silent failure in one step causes real money or customer loss (a missed order, wrong stock count, a delayed invoice).",
+          "The business logic needs multiple layers of conditions and loops that get hard to read in a visual builder.",
+          "You need a real interface — a screen your customer or team actually looks at — automation tools are built for background work, not front-ends.",
+          "Your industry's data security or compliance requirements make it a problem for data to pass through a third-party server.",
+          "You need a response measured in seconds, where polling lag simply isn't acceptable."
+        ] },
+        { "type": "heading", "text": "Where automation tools are still the right call" },
+        { "type": "paragraph", "text": "I don't want to tell a one-sided story here — in plenty of cases the answer isn't 'move everything to custom software.' An early-stage business that doesn't yet know the right shape of its own workflow should start with Zapier or Make: a scenario you can build in a day and rearrange as needs change is far cheaper than writing custom code for a process that isn't settled yet and rewriting that code two or three times. Likewise, for flows that stay under a few hundred tasks a month, are one-directional, and aren't critical (logging a new form submission into a CRM, say), the maintenance burden of standing up a custom service can easily outweigh what it buys you. The rule: start on the automation tool while it's still cheap and the workflow is still changing, and only move the piece that's genuinely hurting once volume and criticality grow." },
+        { "type": "paragraph", "text": "The numbers make the difference clearer: for a simple scenario running a few hundred tasks a month, the automation tool's monthly plan is usually cheaper than hosting a server that does the same job — and on top of that, development time is close to zero. But once that same scenario grows to twenty thousand tasks a month, the picture flips: the plan jumps a tier, the monthly bill can multiply several times over, while a small server process running the same logic usually keeps running at a flat, far more predictable monthly cost. The exact tipping point varies by workflow, but in practice I keep seeing it land somewhere around a few thousand tasks a month." },
+        { "type": "stats", "items": [
+          { "label": "Setup time for a simple, few-step scenario in Zapier/Make", "value": "a few hours" },
+          { "label": "Time to move a mid-complexity flow into a custom service", "value": "1-3 weeks" },
+          { "label": "Share of steps typically kept in the automation tool after a hybrid migration", "value": "roughly half the flow" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Is using Zapier or Make risky for a small business?" },
+        { "type": "paragraph", "text": "No — for low-volume, one-directional, non-critical flows (notifications, simple logging, marketing integrations) these tools are genuinely the right choice. What's risky is building critical business logic — payments, stock, invoicing — on top of them in an area with low tolerance for silent failure, and just letting it keep growing there." },
+        { "type": "subheading", "text": "What does it cost to move from an automation tool to custom software?" },
+        { "type": "paragraph", "text": "It depends on how complex the piece you're moving is, but typically you're not replacing the whole system — just the 1-3 most critical, highest-volume steps. That keeps the project measured in weeks, not months. Everything else, the low-risk steps, can keep running in the automation tool, which makes the migration both cheaper and faster." },
+        { "type": "subheading", "text": "Can I use Zapier/Make and custom software at the same time?" },
+        { "type": "paragraph", "text": "Yes — in practice that's the most common setup: a hybrid architecture. Critical, high-volume, or security-sensitive logic lives in custom code; low-risk notification and logging work stays in the visual tool. The bridge between them is usually just a webhook or a simple API call." },
+        { "type": "subheading", "text": "Which should I pick, Zapier or Make?" },
+        { "type": "paragraph", "text": "They solve the same need. Make tends to handle complex branching and loops more flexibly in its visual builder and usually costs less per task; Zapier stands out for the sheer breadth of its connector library and ease of use. Both share the same underlying limits, and the thresholds in this piece apply to either one." },
+        { "type": "subheading", "text": "What should I look for when choosing an automation tool?" },
+        { "type": "paragraph", "text": "Check three things above all: whether the services you're connecting support webhooks (if not, accept the polling lag going in), when your plan's monthly task limit will actually intersect with your real volume (decide based on where your volume will be in six months, not the entry-level plan on the pricing page), and how detailed the error reporting and logging options are — because catching a silent failure early is usually a more realistic goal than preventing it outright." },
+        { "type": "paragraph", "text": "Starting with an automation tool is almost always the right first move — fast, cheap, no code required. The real skill is noticing early which piece needs to move into custom code, and when. If you want to talk through your own flow, reach out via /contact; for the broader cost trade-off between no-code and custom code, see our related piece." }
+      ]
+    }
   }
 ]
