@@ -2391,5 +2391,94 @@
         { "type": "paragraph", "text": "If you want to talk through whether a repetitive workflow on your own team is a good fit for an agent, we can start with a few questions via /contact; if you're curious about the broader line between automation tools and custom software, our related post covers that." }
       ]
     }
+  },
+  {
+    "slug": "retail-return-fraud-detection-system",
+    "publishedAt": "2026-08-14",
+    "readTime": "6 min",
+    "category": "Perakende",
+    "tags": ["Perakende", "İade", "Yapay Zeka", "Kayıp Önleme"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Perakende için özel yazılım & otomasyon", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi operasyonun için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Perakendede İade Suistimalini Yakalayan Sistem — Çoğu Mağaza Neden Farkında Bile Olmuyor?",
+      "excerpt": "Aynı müşteri aynı ürünü üç kez iade ediyor, her seferinde farklı bahaneyle. Özel bir sistem iade suistimalini nasıl erkenden yakalıyor?",
+      "content": [
+        { "type": "paragraph", "text": "Aynı müşteri, aynı montu üç ay içinde üç kez iade ediyor — bir seferinde 'beden uymadı', bir seferinde 'renk fotoğraftaki gibi değil', bir seferinde hiç sebep söylemeden. Her seferinde farklı bir kasiyer işlemi yapıyor, her seferinde iade onaylanıyor, çünkü elinde fiş var ve ürün 'kullanılmamış' görünüyor. Kimse bu üç işlemi yan yana koyup bakmıyor, çünkü iade kaydı şube bazında tutuluyor ve hiçbir sistem bir müşterinin geçmişini sorgulamıyor. Yıl sonunda muhasebe iade oranındaki artışı fark ediyor ama artık kaynağı bulmak neredeyse imkansız hale geliyor." },
+        { "type": "heading", "text": "İade Suistimali Perakende İçin Ne Anlama Geliyor?" },
+        { "type": "paragraph", "text": "İade süreci bilinçli olarak müşteri dostu ve hızlı tasarlanır — bu doğru bir tercih, çünkü sürtünmeli bir iade süreci sadık müşteriyi de kaybettirir. Ama tam bu yüzden, suistimali yakalayacak bir katman genelde hiç kurulmaz. 'İade suistimali' tek bir şey değil, birkaç farklı paternin toplamı: 'wardrobing' (ürünü bir kez kullanıp etiketiyle birlikte iade etmek), fiş sahtekarlığı (başkasının fişiyle ya da indirimli alınan ürünü tam fiyattan iade etmek), ürün değişimi (kutuda iade edilen ürünün aslında daha ucuz ya da kullanılmış bir muadili olması), iade süresi dışında ama ısrarla kabul ettirilen işlemler ve aynı müşterinin kısa sürede birden fazla şubeden iade yapması. Tek bir şubenin kasiyeri bunların hiçbirini fark edemez, çünkü onun gördüğü tek bir işlem — bir fiş, bir ürün, bir onay." },
+        { "type": "paragraph", "text": "Özel bir sistem burada devreye giriyor: POS'taki iade işlemlerini şube bazında değil, zincir genelinde tek bir müşteri kimliğine (telefon numarası veya sadakat kart numarası — fiş numarası tek başına yeterli değil) bağlayarak topluyor. Ardından birkaç basit ama etkili risk sinyali izliyor: belirli bir süre içindeki iade sıklığı, iade edilen tutarın toplam alışverişe oranı, iadelerin belirli bir kasiyerde yoğunlaşması, iade süresinin son gününe denk gelen işlemler ve kısa aralıklarla farklı şubelerden yapılan iadeler. Bu sinyallerin hiçbiri tek başına 'suç' anlamına gelmiyor — asıl değer, birden fazla sinyalin aynı müşteride veya aynı kasiyerde üst üste binmesini yakalayabilmesinde. Pratikte her sinyale bir ağırlık veriliyor ve toplam bir risk skoruna dönüşüyor; örneğin tek başına yüksek iade sıklığı düşük bir skor üretirken, buna kasiyer yoğunlaşması da eklendiğinde skor eşiği aşıyor ve dashboard'da görünür hale geliyor. Bu, tek bir kuralın yanlış alarm üretmesini engelleyen basit ama etkili bir yaklaşım." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: ModaLine Giyim Zinciri" },
+        { "type": "paragraph", "text": "ModaLine, İstanbul ve çevresinde 11 şubesi olan orta ölçekli bir giyim zinciri. Operasyon müdürü Elif Hanım'ın elinde her ay Excel'e dökülen bir iade raporu vardı ama bu rapor sadece şube bazlı toplam rakamları gösteriyordu — 'bu ay X şubesinde iade oranı yükseldi' diyordu, ama neden yükseldiğini, hangi müşteri ya da hangi kasiyerin bu artışta payı olduğunu göstermiyordu. Suistimal şüphesi olan vakalar ancak bir kasiyerin 'bu müşteriyi tanıyorum, sürekli geliyor' demesiyle fark ediliyordu — yani sistemli değil, tesadüfiydi." },
+        { "type": "paragraph", "text": "Kurulan sistemde artık her iade işlemi, müşterinin telefon numarasıyla (kasada zaten sadakat programı için isteniyordu) merkezi bir kayda düşüyor. Sistem geçmiş 90 günü tarıyor ve bir müşterinin 3'ten fazla iadesi ya da toplam alışverişinin %60'ından fazlasını iade etmesi durumunda dashboard'da kırmızı bir 'risk skoru' oluşturuyor. Elif Hanım'ın ilk ayda gördüğü somut vaka: aynı telefon numarasıyla kayıtlı bir müşteri, üç farklı şubeden toplam 4.200 TL'lik ürünü altı hafta içinde iade etmişti — her seferinde farklı şube, farklı kasiyer, farklı 'sebep'. Tek bir şube bu paterni asla göremezdi." },
+        { "type": "paragraph", "text": "Haftalık rutinde değişen şey şu: kayıp önleme ekibi artık ayda bir kez toplu Excel'e bakmak yerine, haftalık bir dashboard'da en riskli 5-10 vakayı görüyor — hangi müşteri, hangi şubeler, hangi ürünler, ne kadar tutar. Belirlenen eşiğin üzerindeki iadelerde artık kasiyer tek başına onay vermiyor, sistem otomatik olarak şube müdürünün onayını istiyor. Bu, dürüst çoğunluğu hiç etkilemiyor çünkü eşik yeterince yüksek tutuluyor; sadece gerçekten sıra dışı paternler müdür masasına düşüyor." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "list", "items": [
+          "İade verisini merkezileştirme: POS'taki iade işlemlerini şube bazlı değil, zincir genelinde tek bir veri havuzunda toplamak.",
+          "Müşteri eşleme: fiş numarası yerine telefon numarası veya sadakat kart numarasıyla eşleme — bu olmadan aynı müşterinin farklı şubelerdeki iadeleri hiç bağlanamaz.",
+          "Risk skorlama kuralları: iade sıklığı, iade/alışveriş tutar oranı, kasiyer yoğunlaşması ve zaman paterni gibi birkaç basit sinyalin ağırlıklandırılmış toplamı — karmaşık bir makine öğrenmesi modeli olmadan başlanabilir.",
+          "Eşik üstü işlemler için onay adımı: belirlenen riskin üzerindeki iadelerde kasiyer değil, şube müdürü onaylıyor.",
+          "KVKK uyumlu veri saklama: müşteri verisi yalnızca bu amaç için, sınırlı erişimle ve tanımlı bir saklama süresiyle tutulmalı."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "İzlenen temel risk sinyali", "value": "5-6 patern" },
+          { "label": "Tipik başlangıç eşiği", "value": "90 günde 3+ iade / aynı müşteri" },
+          { "label": "Manuel inceleme yükü", "value": "ayda saatlerden haftalık dakikalara" }
+        ] },
+        { "type": "paragraph", "text": "Bu sistem iade suistimalini sıfıra indirmiyor — hiçbir sistem bunu vaat edemez, çünkü çoğu sinyal olasılıksal, kesin değil. Ama zincir genelinde görünmeyen paternleri görünür kılıp, gerçekten sıra dışı olan vakaları haftalık bir listeye düşürmek, hem kayıp önleme ekibinin zamanını hem de gözden kaçan tutarı azaltıyor. İlk birkaç hafta eşikler biraz kaba kalabilir — örneğin çok sık alışveriş yapan ama nadiren iade eden sadık bir müşteri yanlışlıkla dikkat çekebilir; eşikler mağazanın gerçek iade davranışına göre kalibre edildikçe bu netleşiyor. Ayrıca bu sistemin amacı müşteriyi cezalandırmak değil, ekibe doğru yerde bakma imkanı vermek — sonuçta iadeyi onaylayıp onaylamama kararı hâlâ şube müdüründe, sistem sadece hangi vakaya bakması gerektiğini gösteriyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "İade suistimalini yakalamak için müşteri kimliğini kaydetmek zorunda mıyım?" },
+        { "type": "paragraph", "text": "Evet, bir düzeyde gerekiyor — telefon numarası veya sadakat kart numarası gibi bir kimlik olmadan farklı şubelerdeki iadeleri birbirine bağlayamazsınız. Ama bu veri yalnızca bu amaç için, sınırlı erişimle ve KVKK'ya uygun bir saklama politikasıyla tutulmalı; çoğu zincir zaten sadakat programı için bu veriyi topluyor, sistem bunu yeni bir amaç için kullanıyor." },
+        { "type": "subheading", "text": "Bu sadece çok şubeli büyük zincirler için mi mantıklı?" },
+        { "type": "paragraph", "text": "Çapraz şube paterni tabii ki çok şubeli zincirlerde daha güçlü bir sinyal, ama tek şubeli bir mağaza da aynı mantığı kasiyer yoğunlaşması ve iade/alışveriş oranı üzerinden kurabilir — kapsam küçülür, mantık aynı kalır." },
+        { "type": "subheading", "text": "Personel veya kasiyer kaynaklı suistimali de yakalar mı?" },
+        { "type": "paragraph", "text": "Evet, bu sistemin en değerli tarafı genelde budur. İadelerin belirli bir kasiyerde orantısız yoğunlaşması — örneğin bir kasiyerin işlediği iadelerin ortalamanın çok üzerinde bir kısmının onaysız veya sınır değerlere yakın olması — kendi başına bir risk sinyali olarak izleniyor." },
+        { "type": "subheading", "text": "Sadık, sık alışveriş yapan müşterileri yanlışlıkla rahatsız eder mi?" },
+        { "type": "paragraph", "text": "Doğru kurulmazsa evet, bu gerçek bir risk. Bu yüzden sistem müşteriyi engellemiyor veya kasada uyarı göstermiyor — sadece belirlenen eşiğin üzerindeki işlemleri arka planda şube müdürünün haftalık listesine düşürüyor. Eşikler mağazanın gerçek davranış verisine göre kalibre edildikçe yanlış pozitif oranı belirgin şekilde düşüyor." },
+        { "type": "paragraph", "text": "Bu sistemi standart bir kutu ürün olarak değil, zincirinin mevcut POS ve sadakat altyapısına özel bir entegrasyon olarak kuruyorum. Kendi mağazan veya şubelerin için benzer bir sistemi konuşmak istersen, birkaç soruyla kapsamı netleştirebiliriz." }
+      ]
+    },
+    "en": {
+      "title": "The System That Catches Return Fraud in Retail — and Why Most Stores Never Even Notice It",
+      "excerpt": "The same customer returns the same coat three times, a different excuse each time. Here's how a custom system catches return abuse early.",
+      "content": [
+        { "type": "paragraph", "text": "The same customer returns the same coat three times over three months — 'wrong size' the first time, 'color wasn't as pictured' the second, no reason given at all the third. A different cashier handles it each time, and each return gets approved, because there's a receipt and the item looks 'unworn'. Nobody ever lines up those three transactions side by side, because return records are kept per branch and no system ever looks up a customer's history. By year-end, accounting notices the return rate has crept up, but by then tracing the source is nearly impossible." },
+        { "type": "heading", "text": "What Does Return Fraud Actually Mean for Retail?" },
+        { "type": "paragraph", "text": "Return policies are deliberately designed to be customer-friendly and fast — and that's the right call, because a high-friction return process loses loyal customers too. But that's exactly why a layer that catches abuse rarely gets built at all. 'Return fraud' isn't one thing — it's the sum of several distinct patterns: wardrobing (wearing an item once and returning it with the tags still attached), receipt fraud (returning an item bought on discount at full price, or using someone else's receipt), product substitution (what's returned in the box is actually a cheaper or already-used equivalent), returns pushed through past the deadline through sheer persistence, and the same customer returning items across multiple branches within a short window. A single branch's cashier can't catch any of this, because all they ever see is one transaction — one receipt, one item, one approval." },
+        { "type": "paragraph", "text": "A custom system steps in here: it pulls return transactions from the POS not per branch but chain-wide, tied to a single customer identity — a phone number or loyalty card number, since a receipt number alone isn't enough to link anything. It then tracks a handful of simple but effective risk signals: return frequency within a given window, the ratio of returned value to total purchases, returns concentrated on a specific cashier, transactions timed right at the edge of the return-window deadline, and returns spread across different branches in a short span. None of these signals means 'fraud' on its own — the real value is in catching when several of them stack up on the same customer or the same cashier." },
+        { "type": "heading", "text": "A Real Scenario: The ModaLine Clothing Chain" },
+        { "type": "paragraph", "text": "ModaLine is a mid-sized clothing chain with 11 branches around Istanbul. Operations manager Elif had a monthly Excel report of returns, but it only showed per-branch totals — 'return rate went up at branch X this month' — without showing why, or which customer or cashier was behind the jump. Suspected fraud cases only ever surfaced when a cashier happened to say 'I recognize this customer, they're always here' — pure chance, not a system." },
+        { "type": "paragraph", "text": "With the new system, every return now lands in a central record tied to the customer's phone number, already collected at checkout for the loyalty program. The system scans the trailing 90 days and flags a red risk score on the dashboard whenever a customer has more than 3 returns, or has returned more than 60% of their total purchase value. What Elif saw in the first month: a customer registered under one phone number had returned a combined 4,200 TL of merchandise across three different branches within six weeks — each time a different branch, a different cashier, a different 'reason'. No single branch could ever have seen that pattern." },
+        { "type": "paragraph", "text": "What changes in the weekly routine: instead of glancing at a bulk Excel report once a month, the loss-prevention team now sees a weekly dashboard listing the top 5-10 riskiest cases — which customer, which branches, which products, how much value. Returns above the defined threshold no longer get approved by the cashier alone; the system automatically routes them to the branch manager for sign-off. This doesn't touch the honest majority at all, because the threshold is kept high enough that only genuinely unusual patterns ever reach the manager's desk." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "list", "items": [
+          "Centralize return data: pull return transactions from the POS into one chain-wide pool instead of leaving them siloed per branch.",
+          "Customer matching: match on phone number or loyalty card number instead of receipt number — without this, returns from the same customer at different branches can never be linked.",
+          "Risk scoring rules: a weighted combination of a few simple signals — return frequency, return-to-purchase ratio, cashier concentration, timing pattern — no complex machine learning model needed to start.",
+          "An approval step for above-threshold transactions: routed to the branch manager, not approved by the cashier alone.",
+          "KVKK-compliant data handling: customer data held only for this purpose, with restricted access and a defined retention period."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Core risk signals tracked", "value": "5-6 patterns" },
+          { "label": "Typical starting threshold", "value": "3+ returns in 90 days / same customer" },
+          { "label": "Manual review workload", "value": "from hours a month to minutes a week" }
+        ] },
+        { "type": "paragraph", "text": "This doesn't bring return fraud to zero — no system can promise that, because most of these signals are probabilistic, not certain. But making chain-wide patterns visible for the first time, and reducing the genuinely unusual cases to a short weekly list, cuts both the loss-prevention team's time and the amount that slips through unnoticed. Expect the thresholds to feel a bit blunt in the first few weeks — a loyal customer who shops often but rarely returns anything might get flagged by mistake — but that clears up once thresholds are calibrated to the store's actual return behavior." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "Do I have to record customer identity to catch return fraud?" },
+        { "type": "paragraph", "text": "Yes, to some degree — without an identifier like a phone number or loyalty card number, you can't link returns from the same customer across branches. But this data should be held only for this purpose, with restricted access and a KVKK-compliant retention policy; most chains already collect it for the loyalty program, and this just puts it to a second use." },
+        { "type": "subheading", "text": "Does this only make sense for large, multi-branch chains?" },
+        { "type": "paragraph", "text": "The cross-branch pattern is naturally a stronger signal for multi-branch chains, but a single-location store can build the same logic around cashier concentration and return-to-purchase ratio — the scope shrinks, the logic stays the same." },
+        { "type": "subheading", "text": "Does it also catch employee or cashier-driven fraud?" },
+        { "type": "paragraph", "text": "Yes, and this is often the most valuable part of the system. A disproportionate share of returns concentrated on one cashier — say, an unusually high rate of unapproved or near-threshold returns processed by a single person — is tracked as its own risk signal." },
+        { "type": "subheading", "text": "Will it mistakenly flag loyal, frequent shoppers?" },
+        { "type": "paragraph", "text": "It can, if it's not set up carefully — that's a real risk. That's why the system doesn't block the customer or throw a warning at the register; it only routes above-threshold transactions to the branch manager's weekly list, quietly, in the background. As thresholds get calibrated to the store's actual behavior data, the false-positive rate drops noticeably." },
+        { "type": "paragraph", "text": "I build this as a custom integration tailored to your chain's existing POS and loyalty infrastructure, not as an off-the-shelf box product. If you want to talk through a similar system for your own store or branches, a few questions is enough to scope it." }
+      ]
+    }
   }
 ]
