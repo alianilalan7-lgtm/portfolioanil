@@ -2480,5 +2480,134 @@
         { "type": "paragraph", "text": "I build this as a custom integration tailored to your chain's existing POS and loyalty infrastructure, not as an off-the-shelf box product. If you want to talk through a similar system for your own store or branches, a few questions is enough to scope it." }
       ]
     }
+  },
+  {
+    "slug": "why-adding-a-new-feature-costs-more-than-rewriting",
+    "publishedAt": "2026-08-17",
+    "readTime": "9 min",
+    "category": "Yazılım Geliştirme",
+    "tags": ["Yazılım Geliştirme", "Teknik Borç", "SaaS", "Fiyatlandırma"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Yazılım geliştirme & danışmanlık", "href": "/services" },
+      { "label": "Projeni konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Mevcut Yazılıma Yeni Özellik Eklemek Neden Bazen Sıfırdan Yazmaktan Daha Pahalıya Mal Olur?",
+      "excerpt": "Basit görünen bir özellik teklifi, sıfırdan yazmaktan daha pahalı çıkabilir — bağımlılık, test ve veri geçişi maliyeti nereye gizleniyor?",
+      "content": [
+        { "type": "paragraph", "text": "Bir kurucu geçenlerde bana geldi: mevcut CRM'e 'basit' bir özellik eklemek istiyordu — müşteri kartına bir 'sadakat puanı' alanı ve buna göre otomatik indirim kuralı. Teklif istedi, üç farklı yazılım ekibinden fiyat aldı. Üçü de, sıfırdan benzer büyüklükte küçük bir modül yazmaktan daha yüksek bir rakam verdi. Kurucunun tepkisi tanıdıktı: 'Bu kadar küçük bir şey nasıl bu kadar pahalı olur?' Bu, yazılım geliştirmede en çok yanlış anlaşılan konulardan biri: yeni özellik eklemek neden bazen sıfırdan yazmaktan daha pahalıya mal olur, ve bunun nedeni tembellik ya da fahiş fiyatlandırma değil, oldukça mantıklı bir mühendislik gerçeği." },
+        { "type": "heading", "text": "Yeni özellik eklemek neden bu kadar sezgiye aykırı geliyor?" },
+        { "type": "paragraph", "text": "Sıfırdan yazarken hiçbir şeyi bozma riskin yok. Boş bir sayfadasın, istediğin veri modelini kurarsın, istediğin kütüphaneyi seçersin, test etmen gereken tek şey yeni yazdığın kod. Mevcut bir sisteme özellik eklerken durum tam tersi: her satır, üzerine yazılı olmayan ama koda gömülü yüzlerce varsayımla etkileşime giriyor. 'Sadakat puanı' alanı eklemek basit bir migration gibi görünür ama o alanı okuyan raporlama ekranı, o alanı güncelleyen üç farklı entegrasyon (POS, e-ticaret, muhasebe) ve o alanın null olma ihtimalini hiç düşünmemiş eski bir fatura hesaplama fonksiyonu varsa, 'basit alan ekleme' işi bir haftalık regresyon testine dönüşür. Sıfırdan yazan geliştirici bu varsayımlarla hiç uğraşmaz; mevcut sisteme dokunan geliştirici önce o varsayımları bulmak, sonra onlarla güvenle çalışmak zorunda." },
+        { "type": "heading", "text": "Asıl maliyeti belirleyen şey: bağımlılıklar ve görünmeyen iş" },
+        { "type": "paragraph", "text": "Bir özelliğin gerçek maliyeti, yazılacak kod satırı sayısıyla değil, o kod satırlarının sisteme kaç yerden bağlı olduğuyla ölçülür. Bu bağlılık miktarına genelde 'coupling' denir ve yıllar içinde birikir — her kısayol, her 'şimdilik böyle çözelim' kararı, her test yazılmadan geçen deploy, gelecekte bir özelliğin maliyetine ekstra bir kat daha ekler. Görünmeyen iş genelde şu başlıklarda saklanır:" },
+        { "type": "list", "items": [
+          "Veri geçişi: yeni alanın eski kayıtlarda ne olacağına karar vermek (varsayılan değer mi, backfill mi, manuel düzeltme mi)",
+          "Test kapsamı: mevcut testler yeterince kapsamlı değilse, her değişiklik 'kırdım mı, kırmadım mı' belirsizliğiyle geliyor",
+          "Entegrasyon etkisi: özelliğin dokunduğu her dış sistemin (ödeme, muhasebe, e-ticaret) davranışını yeniden doğrulamak",
+          "Performans: yeni sorgu veya alan, zaten yüklü bir tabloyu daha da yavaşlatabilir",
+          "Ekip hafızası: kodu yazan kişi ayrılmışsa, mevcut mantığı anlamak başlı başına bir araştırma projesi",
+          "Geriye dönük uyumluluk: özelliği kullanmayan mevcut müşterilerin akışını bozmamak"
+        ] },
+        { "type": "heading", "text": "Gerçek bir senaryo: bir rezervasyon SaaS'ına 'basit' bir özellik eklemek" },
+        { "type": "paragraph", "text": "Diyelim ki bir randevu/rezervasyon SaaS'ı işletiyorsun, 40 kadar küçük işletme müşterin var, ürün üç yıldır ayakta. Bir müşteri 'çoklu personel seçimi' istiyor — randevu alırken hangi çalışanla görüşüleceğini seçebilme. Kulağa küçük geliyor: bir dropdown, bir foreign key. Ama koda bakınca şunu görüyorsun: randevu tablosu üç yıl önce 'her randevu bir işletmeye aittir, personel kavramı yok' varsayımıyla kurulmuş. Müsaitlik hesaplama fonksiyonu işletme bazında çalışıyor, personel bazında değil. Bildirim sistemi 'işletmeye randevu geldi' e-postası atıyor, 'şu personele' değil. Raporlama ekranı ciroyu işletme başına gösteriyor, personel kırılımı yok. Takvim entegrasyonu (Google Calendar senkronu) tek bir işletme takvimine yazıyor." },
+        { "type": "paragraph", "text": "Bu noktada geliştirme ekibi iki seçenekle karşılaşır. Birincisi: personel kavramını gerçek bir veri modeli olarak sisteme sokmak — randevu, müsaitlik, bildirim, raporlama ve takvim entegrasyonunun beşinde de değişiklik, artı geriye dönük veri geçişi (mevcut 40 müşterinin randevularına 'varsayılan personel' atamak) artı her akışın regresyon testi. Bu kolayca üç-dört haftalık bir iş olur. İkincisi: özelliği yüzeysel şekilde eklemek — sadece dropdown'ı göstermek, arkada gerçek mantığı bağlamamak. Bu bir hafta sürer ama altı ay sonra 'personel bazlı raporlama neden yanlış' diye başka bir talep olarak geri gelir, o zaman maliyet ikiye katlanmış olur. Kurucunun gördüğü teklif farkı işte bu: 'basit özellik' fiyatı, aslında üç-dört haftalık gizli mühendislik işinin karşılığı." },
+        { "type": "stats", "items": [
+          { "label": "Tipik 'basit özellik' teklifi ile gerçek iş arasındaki fark", "value": "2–5 kat" },
+          { "label": "Görünmeyen işin payı (migration + test + entegrasyon)", "value": "toplam sürenin %50-70'i" },
+          { "label": "Yüzeysel eklenen özelliğin geri dönüş süresi", "value": "genelde 3-9 ay içinde" }
+        ] },
+        { "type": "heading", "text": "Maliyeti öngörülebilir kılmanın yolları" },
+        { "type": "paragraph", "text": "Bu maliyeti sıfıra indiremezsin ama görünür ve öngörülebilir hale getirebilirsin. Deneyimli bir ekip, teklif vermeden önce şu adımları atlamaz:" },
+        { "type": "list", "items": [
+          "Özelliğin dokunduğu her tabloyu ve fonksiyonu haritalamak (kod tabanında arama, bağımlılık grafiği)",
+          "Mevcut testlerin o alanı kapsayıp kapsamadığını kontrol etmek — kapsamıyorsa önce test yazmanın maliyetini teklife eklemek",
+          "Veri geçişi senaryosunu somutlaştırmak: eski kayıtlara ne olacak, kim onaylayacak",
+          "Entegrasyon sahiplerine (ödeme, muhasebe sağlayıcısı vb.) değişikliğin onlara etkisini sormak",
+          "Yüzeysel çözüm ile kalıcı çözüm arasındaki farkı ve gelecekteki faturasını müşteriye açıkça yazmak"
+        ] },
+        { "type": "paragraph", "text": "Bu adımları atlayan teklifler genelde ya çok düşük fiyatlanır (ve proje yarıda sürünceye döner) ya da müşteri şaşkınlıkla 'neden bu kadar pahalı' diye sorar. İkisi de güven kaybettirir. Şeffaf bir maliyet dökümü — 'bu kısmı 3 gün, bu kısmı 5 gün, çünkü şu üç sistemi de güncellememiz gerekiyor' — çoğu zaman fiyatın kendisinden daha ikna edicidir." },
+        { "type": "paragraph", "text": "Somut bir örnek vermek gerekirse: yukarıdaki randevu SaaS'ı senaryosunda ekip teklifi kalemlere ayırdığında şöyle bir tablo çıkar ortaya — veri modeli değişikliği ve migration için 5 gün, müsaitlik hesaplama mantığının personel bazlı çalışması için 6 gün, bildirim ve raporlama ekranlarının güncellenmesi için 4 gün, takvim entegrasyonunun personel bazlı senkrona geçmesi için 3 gün, tüm akışların regresyon testi için 3 gün. Toplam 21 iş günü, yani dört haftaya yakın bir süre. Müşteri bunu görünce 'basit özellik' beklentisiyle geldiği fiyatın nereden geldiğini anlıyor — ve genelde itiraz etmiyor, çünkü rakam havadan gelmiyor, gerçek bir dökümden geliyor." },
+        { "type": "heading", "text": "Ne zaman gerçekten sıfırdan yazmak daha ucuza gelir?" },
+        { "type": "paragraph", "text": "Yukarıdaki mantık, 'her zaman ekle, asla yeniden yazma' anlamına gelmiyor. Bazı noktalarda birikmiş bağımlılık o kadar ağırlaşır ki, üzerine inşa etmek yeniden yazmaktan gerçekten daha pahalıya gelir. Bunun sinyalleri genelde şunlardır: her küçük değişiklik birden fazla ekibin onayını gerektiriyor; aynı büyüklükteki özellikler zamanla giderek daha uzun sürüyor (bu, teknik borcun arttığının en net göstergesi); orijinal mimari kararı (örneğin 'her müşteri tek bir işletmeye ait' varsayımı) artık işin gerçek şeklini karşılamıyor; ve kodu anlayan kimse kalmamış, her değişiklik arkeolojiye dönüşüyor. Bu durumda 'küçük özellik' teklifleri gerçekten de sürekli şişmeye başlar — ve bu, yeniden yazmayı düşünme zamanı geldiğinin işaretidir, tek seferde değil, genelde parça parça (bir modülü izole edip yeniden yazarak) yapılan bir süreç." },
+        { "type": "paragraph", "text": "Bunu somutlaştıran bir başka örnek: üç yıl önce 'tek şube' varsayımıyla yazılmış bir stok sistemi düşün. İlk yıl yeni bir rapor eklemek 2 gün sürüyordu. İkinci yıl şube sayısı artınca aynı büyüklükteki bir rapor 5 güne çıktı, çünkü her sorgunun şube filtresiyle yeniden yazılması gerekiyordu. Üçüncü yılda bu 9 güne çıktı, çünkü raporlama, stok senkronizasyonu ve fatura mantığı birbirine o kadar dolanmıştı ki tek bir değişiklik üç modülü aynı anda etkiliyordu. İşte bu eğri — aynı boyuttaki işin sürekli uzaması — bir ekibin 'artık üzerine eklemek değil, çekirdek modülü yeniden yazmak daha ucuz' kararını vermesi gereken noktayı gösterir." },
+        { "type": "list", "items": [
+          "Aynı boyuttaki özellikler geçen yıla göre 2 kattan fazla sürüyorsa",
+          "Yeni geliştirici koda 'giriş yapmak' için haftalar harcıyorsa",
+          "Temel veri modeli artık işin gerçek şeklini temsil etmiyorsa (ör. tek şubeden çok şubeye geçiş)",
+          "Test yazmak, kodun kendisinden daha zor hale gelmişse",
+          "Her deploy'da 'bir yerde bir şey kırılır mı' korkusu ekip kültürüne yerleşmişse"
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Bir özellik teklifinin gerçekçi olup olmadığını nasıl anlarım?" },
+        { "type": "paragraph", "text": "İyi bir teklif, işi parçalara ayırır ve her parçanın neden o kadar sürdüğünü açıklar (kaç sistemin dokunulduğu, veri geçişi var mı, test kapsamı ne durumda). Tek satırlık 'X gün' teklifleri genelde ya yüzeysel çözüm öneriyordur ya da sürpriz fatura riski taşır." },
+        { "type": "subheading", "text": "Küçük bir bütçeyle başlayan bir proje bu tuzağa nasıl düşmez?" },
+        { "type": "paragraph", "text": "En etkili yöntem, en başından itibaren test yazmak ve veri modelini gereksiz yere daraltmamak — örneğin 'şimdilik tek şube var' diye kodu tek-şube varsayımıyla sıkı sıkıya kilitlememek. Bu, başta biraz daha yavaş ilerlemek anlamına gelir ama iki yıl sonra 'basit' bir özelliğin maliyetini büyük ölçüde düşürür." },
+        { "type": "subheading", "text": "Mevcut bir yazılıma özellik eklemek yerine ne zaman ayrı bir modül/mikroservis yazmak mantıklı olur?" },
+        { "type": "paragraph", "text": "Özellik, mevcut sistemin veri modeliyle temelden çelişiyorsa (ör. gerçek zamanlı bir stok senkronizasyonu, toplu iş yapan bir sisteme eklenmeye çalışılıyorsa) ayrı bir servis olarak yazıp mevcut sistemle API üzerinden konuşturmak, hem daha hızlı hem daha güvenli olabilir. Ama bu kendi karmaşıklığını (iki sistemi senkron tutmak) getirir, o yüzden varsayılan değil, istisna olarak düşünülmeli." },
+        { "type": "subheading", "text": "Bu tür bir teklif alırken hangi soruları sormalıyım?" },
+        { "type": "paragraph", "text": "Şunları sorabilirsin: bu özellik hangi tabloları/servisleri etkiliyor, mevcut testler bu alanı kapsıyor mu (kapsamıyorsa test yazmak teklife dahil mi), eski verilerde bu alan için ne yapılacak, bu değişiklik başka bir entegrasyonu (ödeme, muhasebe, e-ticaret) etkiler mi. Yanıtlar net ve somutsa, teklif muhtemelen gerçekçi. Yanıtlar 'sorun olmaz, hallederiz' gibi genel geçiyorsa, sürpriz fatura riski yüksektir." },
+        { "type": "paragraph", "text": "Bir özellik teklifi aldığında fiyattan çok, o fiyatın nereden geldiğine bakmakta fayda var — hangi sistemlere dokunuyor, veri geçişi var mı, test kapsamı ne durumda. Böyle bir teklifi birlikte gözden geçirmek istersen, iletişim sayfasından yazabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "Why Adding a New Feature to Existing Software Sometimes Costs More Than Rewriting It",
+      "excerpt": "A simple-looking feature request can price out higher than a rewrite — here's where the hidden cost of dependencies, tests, and data migration hides.",
+      "content": [
+        { "type": "paragraph", "text": "A founder came to me recently wanting to add a 'simple' feature to their existing CRM — a loyalty-points field on the customer record, with an automatic discount rule tied to it. They got quotes from three different dev teams. All three came in higher than what it would cost to write a small module of similar size from scratch. The founder's reaction was familiar: 'How can something this small cost this much?' This is one of the most misunderstood things in software development: why adding a new feature sometimes costs more than rewriting from scratch — and the reason isn't laziness or overpricing, it's a pretty logical piece of engineering reality." },
+        { "type": "heading", "text": "Why does adding a feature feel so counterintuitive?" },
+        { "type": "paragraph", "text": "When you write something from scratch, you're not at risk of breaking anything. You start on a blank page, pick whatever data model you want, choose whatever library you want, and the only thing you need to test is the code you just wrote. Adding a feature to an existing system is the opposite: every line interacts with hundreds of assumptions baked into the code that were never written down anywhere. Adding a 'loyalty points' field looks like a simple migration — until you realize the reporting screen reads that field, three different integrations (POS, e-commerce, accounting) write to it, and an old invoice-calculation function never considered that the field could be null. Suddenly 'add one field' turns into a week of regression testing. The developer writing from scratch never deals with these assumptions; the developer touching an existing system has to find them first, then work around them safely." },
+        { "type": "heading", "text": "What actually drives the cost: dependencies and invisible work" },
+        { "type": "paragraph", "text": "The real cost of a feature isn't measured by how many lines of code you write — it's measured by how many places those lines connect to. That connectedness is usually called coupling, and it accumulates over years: every shortcut, every 'let's solve this properly later' decision, every deploy that shipped without a test adds one more layer to the cost of some future feature. The invisible work usually hides under these headings:" },
+        { "type": "list", "items": [
+          "Data migration: deciding what happens to the new field on old records — a default value, a backfill, or manual correction",
+          "Test coverage: if existing tests don't cover the area, every change ships with 'did I break something?' uncertainty",
+          "Integration impact: re-verifying the behavior of every external system (payments, accounting, e-commerce) the feature touches",
+          "Performance: a new query or field can slow down a table that's already under load",
+          "Team memory: if the person who wrote the original logic has left, understanding it becomes a research project on its own",
+          "Backward compatibility: not breaking the flow for existing customers who don't use the new feature"
+        ] },
+        { "type": "heading", "text": "A real scenario: adding a 'simple' feature to a booking SaaS" },
+        { "type": "paragraph", "text": "Say you run an appointment/booking SaaS with about 40 small-business customers, and the product has been live for three years. One customer asks for 'staff selection' — letting the client pick which staff member they want when booking. Sounds small: a dropdown, a foreign key. But once you look at the code, the booking table was built three years ago on the assumption 'every booking belongs to a business, there's no concept of staff.' The availability calculation runs per business, not per staff member. The notification system emails 'a booking came in for the business,' not 'for this staff member.' The reporting screen shows revenue per business with no staff breakdown. The calendar integration (Google Calendar sync) writes to a single business calendar." },
+        { "type": "paragraph", "text": "At this point the dev team faces two options. First: bring staff into the system as a real data model — changes to booking, availability, notifications, reporting, and calendar sync, plus a backward data migration (assigning a 'default staff member' to the existing 40 customers' bookings), plus regression testing every one of those flows. That's easily three to four weeks of work. Second: bolt the feature on superficially — just show the dropdown without wiring up the real logic underneath. That takes a week, but six months later it comes back as a separate request — 'why is staff-level reporting wrong' — and by then the cost has effectively doubled. That's exactly the gap the founder saw in the quotes: the 'simple feature' price was really the price of three to four weeks of hidden engineering work." },
+        { "type": "stats", "items": [
+          { "label": "Typical gap between a 'simple feature' quote and the real work", "value": "2–5x" },
+          { "label": "Share of invisible work (migration + tests + integrations)", "value": "50–70% of total time" },
+          { "label": "How soon a superficially bolted-on feature comes back", "value": "usually within 3-9 months" }
+        ] },
+        { "type": "heading", "text": "How to make the cost predictable" },
+        { "type": "paragraph", "text": "You can't drive this cost to zero, but you can make it visible and predictable. An experienced team doesn't skip these steps before quoting:" },
+        { "type": "list", "items": [
+          "Map every table and function the feature touches (codebase search, dependency graph)",
+          "Check whether existing tests cover that area — if not, add the cost of writing tests first to the quote",
+          "Make the data migration scenario concrete: what happens to old records, and who signs off on it",
+          "Ask the owners of each integration (payment provider, accounting system, etc.) what the change means for them",
+          "Write out, explicitly, the difference between the superficial fix and the durable one — and its future bill"
+        ] },
+        { "type": "paragraph", "text": "Quotes that skip these steps usually end up either priced too low (and the project drags on half-finished) or the customer is blindsided asking 'why is this so expensive.' Both cost trust. A transparent cost breakdown — 'this part takes 3 days, this part takes 5, because we also have to update these three systems' — is usually more convincing than the price tag itself." },
+        { "type": "paragraph", "text": "To make this concrete: in the booking SaaS scenario above, once the team broke the quote into line items, it looked something like this — 5 days for the data model change and migration, 6 days to make availability calculation staff-aware, 4 days to update notifications and reporting screens, 3 days to move calendar sync to per-staff, and 3 days of regression testing across every flow. Twenty-one working days total — close to four weeks. When the customer sees that breakdown, they understand where the price came from instead of just seeing a number next to a 'simple feature' request — and they usually don't push back, because the figure isn't pulled out of thin air, it comes from a real line-item breakdown." },
+        { "type": "heading", "text": "When does rewriting from scratch genuinely cost less?" },
+        { "type": "paragraph", "text": "None of the above means 'always add, never rewrite.' At some point, accumulated coupling gets heavy enough that building on top of it really does cost more than starting over. The usual signals: every small change needs sign-off from multiple teams; features of the same size keep taking longer over time (the clearest sign technical debt is growing); the original architectural assumption (say, 'every customer belongs to exactly one business') no longer matches how the business actually works; and nobody left on the team really understands the code, so every change turns into archaeology. At that point, 'small feature' quotes really do start ballooning — and that's the signal it's time to consider a rewrite, usually not all at once but piece by piece, isolating and rewriting one module at a time." },
+        { "type": "paragraph", "text": "A more concrete version of this: picture an inventory system built three years ago on a 'single location' assumption. In year one, adding a new report took 2 days. In year two, once the business added more locations, a report of the same size started taking 5 days, because every query had to be rewritten with a location filter. By year three it was up to 9 days, because reporting, inventory sync, and invoicing logic had become so tangled that a single change touched three modules at once. That curve — the same-sized work steadily taking longer — is exactly the signal that tells a team it's cheaper to rewrite the core module than to keep building on top of it." },
+        { "type": "list", "items": [
+          "Features of the same size take more than 2x as long as they did a year ago",
+          "A new developer needs weeks just to get their bearings in the code",
+          "The core data model no longer reflects how the business actually works (e.g. single-location to multi-location)",
+          "Writing tests has become harder than writing the code itself",
+          "Every deploy carries a team-wide fear of 'did this break something somewhere'"
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "How do I tell if a feature quote is realistic?" },
+        { "type": "paragraph", "text": "A good quote breaks the work into pieces and explains why each piece takes as long as it does — how many systems it touches, whether there's a data migration, what the test coverage looks like. A one-line 'X days' quote usually either means a superficial fix or a hidden risk of a surprise bill later." },
+        { "type": "subheading", "text": "How does a project on a small budget avoid falling into this trap later?" },
+        { "type": "paragraph", "text": "The most effective approach is writing tests from day one and not locking the data model into unnecessarily narrow assumptions — for example, not hardcoding 'single location for now' so tightly that it's baked into every query. That means moving a bit slower at the start, but it substantially lowers the cost of a 'simple' feature two years down the line." },
+        { "type": "subheading", "text": "When does it make more sense to build a separate module/microservice instead of adding to the existing software?" },
+        { "type": "paragraph", "text": "If the feature fundamentally conflicts with the existing system's data model — say, a real-time inventory sync being bolted onto a system built for batch jobs — writing it as a separate service that talks to the existing system over an API can be both faster and safer. But that brings its own complexity (keeping two systems in sync), so it should be the exception, not the default." },
+        { "type": "subheading", "text": "What questions should I ask when I get a quote like this?" },
+        { "type": "paragraph", "text": "Worth asking: which tables/services does this feature touch, do existing tests cover that area (and if not, is writing them included in the quote), what happens to old records for this field, and does this change affect any other integration (payments, accounting, e-commerce). If the answers are specific and concrete, the quote is probably realistic. If the answers are vague reassurances like 'don't worry, we'll handle it,' the risk of a surprise bill later is high." },
+        { "type": "paragraph", "text": "When you get a feature quote, it's worth looking past the price itself to where it comes from — which systems it touches, whether there's a data migration, what the test coverage looks like. If you'd like to walk through a quote like that together, feel free to reach out." }
+      ]
+    }
   }
 ]
