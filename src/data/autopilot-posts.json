@@ -2609,5 +2609,132 @@
         { "type": "paragraph", "text": "When you get a feature quote, it's worth looking past the price itself to where it comes from — which systems it touches, whether there's a data migration, what the test coverage looks like. If you'd like to walk through a quote like that together, feel free to reach out." }
       ]
     }
+  },
+  {
+    "slug": "ai-api-cost-token-economics-explained",
+    "publishedAt": "2026-08-19",
+    "readTime": "8 min",
+    "category": "AI",
+    "tags": ["Yapay Zeka", "API", "Maliyet", "LLM"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "LLM'ler perde arkasında nasıl çalışıyor", "href": "/blog/how-llms-actually-work-tokens-context-hallucinations" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "İşletmen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Yapay Zeka API'sinin Maliyeti Gerçekte Neye Göre Hesaplanır? Token Ekonomisini Basitçe Anlamak",
+      "excerpt": "Yapay zeka API faturası neden bu kadar değişken? Token, bağlam uzunluğu ve model seçimi maliyeti nasıl belirliyor — gerçek bir hesaplamayla.",
+      "content": [
+        { "type": "paragraph", "text": "Geçen ay bir kurucu bana geldi: “Ürüne yapay zeka özelliği ekledik, ilk haftanın sonunda faturayı görünce panik yaptık.” Kullanıcı sayısı değişmemişti, kod aynıydı — ama fatura üç kattan fazla büyümüştü. Sorun kötü yazılmış bir kod değildi; kimse “token ekonomisi” dediğimiz şeyi baştan hesaba katmamıştı. Bir yapay zeka API'sinin faturası, çoğu insanın sandığından çok daha fazla değişkene bağlı — ve bu değişkenleri bilmeden bir ürünü canlıya almak, ay sonunda sürpriz demek." },
+        { "type": "heading", "text": "Fatura Neden 'Token' Üzerinden Kesiliyor?" },
+        { "type": "paragraph", "text": "Bir LLM API'si kelime başına değil, token başına ücretlendirir. Token bir kelimenin parçası olabilir; 'kahvaltı' kelimesi tek bir token olabileceği gibi iki parçaya da bölünebilir — bu, modele ve dile göre değişir. Türkçe gibi eklemeli dillerde aynı anlamı ifade etmek İngilizceye göre genelde yüzde 20-40 daha fazla token tutar, çünkü modeller çoğunlukla İngilizce ağırlıklı verilerle eğitilmiştir ve Türkçe kelime kökleri kadar verimli parçalanmaz. Bu tek başına bile Türkçe bir ürünün faturasının İngilizce eşdeğerinden daha yüksek çıkmasına yeter." },
+        { "type": "paragraph", "text": "Sağlayıcılar fiyatı milyon token başına belirler ve neredeyse her zaman girdi ile çıktı token'larını ayrı fiyatlandırır — çıktı, girdinin genelde 3-5 katı fiyata gelir. Bunun nedeni, modelin bir girdiyi okurken yaptığı işin, her çıktı token'ını sırayla üretirkenkinden çok daha ucuz olması: girdi tek seferde işlenir, çıktı ise token token, her birinde modelin tüm ağırlıkları yeniden çalıştırılarak üretilir." },
+        { "type": "paragraph", "text": "Context window de bu tabloya dahil: bir modelin aynı anda görebildiği maksimum token sayısı. Bu sınır aşıldığında ya en eski mesajlar otomatik atılır ya da sistem hata verir — bu yüzden uzun süren sohbetlerde periyodik özetleme yapılır ya da geçmiş belli bir pencereye sıkıştırılır. Buradaki püf nokta şu: geniş bir context window'a sahip olmak (örneğin 200.000 token) onu kullanman gerektiği anlamına gelmez; her ekstra token, kullanılsa da kullanılmasa da parasal bir karşılığı olan bir seçimdir." },
+        { "type": "heading", "text": "Maliyeti Asıl Belirleyen Üç Şey" },
+        { "type": "paragraph", "text": "Aynı ürün, aynı kullanıcı sayısıyla bile çok farklı faturalar üretebilir. Bunu belirleyen üç ana değişken var:" },
+        { "type": "list", "items": [
+          "Model seçimi: En yetenekli ve en büyük modeller, aynı işi yapan küçük bir modelden 10-20 kat daha pahalı olabilir. Basit sınıflandırma veya özetleme için büyük bir model kullanmak çoğu zaman gereksiz bir lüks.",
+          "Bağlam uzunluğu: Sistem promptu, konuşma geçmişi ve RAG'dan gelen belgeler her istekle birlikte tekrar tekrar gönderilir. 10 mesajlık bir sohbette, 10. mesajın maliyeti önceki 9 mesajın tamamını da taşır.",
+          "Çıktı uzunluğu ve çağrı sayısı: Modelin ne kadar konuştuğu, kaç kez çağrıldığı faturayı sessizce şişirir — özellikle kullanıcı bunu hiç görmese bile."
+        ] },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Bir Destek Chatbotunun Aylık Faturasını Hesaplamak" },
+        { "type": "paragraph", "text": "Somutlaştıralım. Diyelim ki bir SaaS ürünü, müşteri destek sorularını yanıtlayan bir chatbot çalıştırıyor: ayda 10.000 konuşma, her konuşma ortalama 6-8 mesaj alışverişi. Sistem promptu ve ürün dokümantasyonundan gelen RAG bağlamı yaklaşık 1.200 token, kullanıcı mesajları ve model yanıtları toplamda konuşma başına 600-800 token ekliyor. Yani konuşma başına ortalama 1.800-2.000 girdi token'ı, 300-500 çıktı token'ı işleniyor." },
+        { "type": "paragraph", "text": "Orta seviye bir modelin fiyatı milyon girdi token'ı için yaklaşık 2-3 dolar, milyon çıktı token'ı için yaklaşık 8-10 dolar civarında olsun. Gerçek fiyatlar sağlayıcıya ve modele göre değişir, bu sadece hesaplamayı somutlaştırmak için bir varsayım. Bu durumda konuşma başına maliyet kabaca binde birkaç dolar eder. 10.000 konuşma için bu, ayda seksen dolar civarı demek — makul görünüyor." },
+        { "type": "paragraph", "text": "Ama şimdi gerçekçi bir değişiklik ekleyelim: ürün ekibi daha akıllı cevaplar için modeli bir üst segmente yükseltiyor (fiyat 4-5 kat artıyor) ve RAG bağlamına daha fazla doküman ekleniyor (girdi token'ları 1.900'den 4.500'e çıkıyor). Aynı 10.000 konuşma artık beş yüz-altı yüz dolar civarına geliyor — sadece iki 'küçük' karar yüzünden fatura 6-7 kat büyüdü. Panik yapan kurucuların gerçekte yaşadığı şey tam olarak bu: kod değişmedi, ama bağlam ve model seçimi sessizce büyüdü." },
+        { "type": "stats", "items": [
+          { "label": "Girdi/çıktı fiyat farkı", "value": "çoğu modelde çıktı, girdinin 3-5 katı" },
+          { "label": "Türkçe'nin token maliyeti", "value": "İngilizce'ye göre ~%20-40 daha fazla" },
+          { "label": "Prompt caching ile tasarruf", "value": "tekrar eden bağlamlarda %30-70" }
+        ] },
+        { "type": "heading", "text": "Gözden Kaçan Maliyet: Ajan Zincirlerinde Token Nasıl Katlanır" },
+        { "type": "paragraph", "text": "Basit bir soru-cevap chatbotu ile 'ajan' tarzı bir sistem (bir görevi tamamlamak için art arda birden çok adım atan, araç çağıran bir yapı) arasındaki fark, faturada devasa bir uçurum yaratabilir. Her adımda model, o ana kadarki tüm geçmişi — önceki adımlar, araç sonuçları, ara adımlar — yeniden okur ve yeni bir token üretir. 5 adımlık bir ajan zinciri, tek seferlik bir soru-cevaba göre 5-15 kat daha fazla token tüketebilir, çünkü her adım öncekilerin tamamını bağlam olarak taşır. Bu, ajan tabanlı özellikler (otomatik araştırma, çok adımlı iş akışları) tasarlarken en çok gözden kaçan maliyet kalemidir; demoda birkaç istekle test edilir, üretimde binlerce kullanıcıyla çarpıldığında fatura kimseyi hazırlıksız yakalamamalı." },
+        { "type": "heading", "text": "Kim Ne Kadar Harcıyor? Müşteri ve Özellik Bazında Maliyeti İzlemek" },
+        { "type": "paragraph", "text": "Toplam aylık faturayı bilmek yeterli değil — hangi müşterinin, hangi özelliğin bu faturayı şişirdiğini bilmek asıl değerli olan. Her API isteğine hangi kullanıcıya, hangi özelliğe ait olduğunu gösteren bir etiket (metadata) eklemek, ay sonunda 'en pahalı yüzde 5 kullanıcı faturanın yüzde 40'ını oluşturuyor' gibi bir tabloyu ortaya çıkarır. Bu bilgi olmadan fiyatlandırma kararı vermek kör uçmaktır: bazı müşteriler zarar ettiriyor olabilir, bazı özellikler ise beklenenin çok üstünde token tüketiyor olabilir ama kimse fark etmiyor, çünkü fatura tek bir toplam rakam olarak görünüyor." },
+        { "type": "paragraph", "text": "Pratikte bu, karmaşık bir sistem gerektirmiyor: çoğu sağlayıcının API'sinde her isteğe özel bir 'metadata' veya 'user' alanı eklenebiliyor, bu da sağlayıcının kendi kullanım panelinde filtrelenebiliyor. Daha ileri gitmek isteyenler, her isteğin token sayısını ve maliyetini kendi veritabanlarına loglayıp haftalık bir maliyet raporu çıkarabilir. Aylık bütçe aşıldığında uyarı veren basit bir eşik alarmı bile, sürpriz faturaların çoğunu önler." },
+        { "type": "heading", "text": "Maliyeti Düşürmenin Gerçek Yolları" },
+        { "type": "paragraph", "text": "Fatura büyüdüğünde ilk refleks 'daha ucuz bir sağlayıcıya geçelim' olur, ama asıl kazanç genelde mimaride saklı:" },
+        { "type": "list", "items": [
+          "Bağlamı küçült: RAG'da belgenin tamamını değil, gerçekten ilgili parçaları gönder; konuşma geçmişinde eski mesajları özetleyerek taşı, ham haliyle değil.",
+          "İşe göre model seç: Basit sınıflandırma, yönlendirme veya kısa özetler için küçük ve ucuz bir model yeterli; büyük modeli sadece gerçekten zor adımlara sakla — bu bir 'model router' ile otomatikleştirilebilir.",
+          "Prompt caching kullan: Sistem promptu ve statik talimatlar gibi her istekte aynı kalan kısımları önbelleğe alan sağlayıcı özelliklerinden yararlan; bazı durumlarda aynı bağlamı tekrar göndermenin maliyetini yüzde 70'e kadar düşürebilir.",
+          "Çıktıyı sınırla: max_tokens gibi limitler koy, modele kısa ve öz cevap ver talimatı ekle; gereksiz açıklama ve tekrarlar doğrudan faturaya yansır.",
+          "Gerçek zamanlı olmayan işler için batch API kullan: Anlık yanıt gerekmeyen toplu işlemler çoğu sağlayıcıda yüzde 50 civarında indirimli batch uç noktalarından geçirilebilir."
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Çıktı token'ları neden girdi token'larından daha pahalı?" },
+        { "type": "paragraph", "text": "Çünkü işlem şekilleri farklı. Model bir girdiyi tek seferde, paralel olarak okur. Çıktıyı ise sırayla üretir; her yeni token için modelin milyarlarca parametresi yeniden çalıştırılır ve bir önceki token'ın sonucuna bağlıdır. Bu sıralı hesaplama donanımda çok daha fazla zaman ve enerji tüketir; fiyat farkı da bunu yansıtır." },
+        { "type": "subheading", "text": "Ücretsiz veya düşük katman gerçek bir üründe yeterli mi?" },
+        { "type": "paragraph", "text": "Prototip aşamasında evet, genelde fazlasıyla yeterli. Ama üretime geçtiğinizde asıl sorun genelde maliyet değil, hız sınırları (rate limit) ve SLA eksikliği oluyor: ücretsiz katmanlar dakikada belirli sayıda istekle sınırlıdır ve kesinti garantisi vermez. Gerçek kullanıcı trafiği geldiğinde önce bu sınırlara takılırsınız, faturaya değil." },
+        { "type": "subheading", "text": "Kendi sunucumda açık kaynak bir model çalıştırmak (self-host) daha mı ucuz?" },
+        { "type": "paragraph", "text": "Duruma göre değişir. Düşük ve değişken hacimde, API çağrı başına ödemek neredeyse her zaman daha ucuzdur, çünkü GPU altyapısının sabit bir maliyeti var — kullanmasanız bile o maliyet devam eder. Yüksek ve öngörülebilir hacimde self-host başa baş noktasına gelebilir, hatta daha ucuza çıkabilir, ama bu sefer bakım, ölçekleme ve uptime sorumluluğu size geçer. Çoğu küçük-orta ölçekli ürün için bu takas buna değmez." },
+        { "type": "subheading", "text": "Streaming yanıt (kelime kelime akan cevap) maliyeti azaltır mı?" },
+        { "type": "paragraph", "text": "Hayır — streaming sadece kullanıcı deneyimini iyileştirir, cevap üretilirken parça parça gösterir. Ödediğiniz token sayısı aynıdır; tek fark kullanıcının cevabın tamamını beklemek yerine yazılırken görmesidir. Maliyeti düşüren şey token sayısını azaltmaktır, streaming değil." },
+        { "type": "subheading", "text": "Fiyatlandırmayı kullanıcıya nasıl yansıtmalıyım?" },
+        { "type": "paragraph", "text": "İki yaygın yol var: kullanım bazlı (kullanıcı ne kadar token/istek harcarsa o kadar öder) veya sabit paket (aylık ücrete belirli bir kullanım hakkı dahil, üzeri kesilir veya ek ücretlendirilir). Kullanım bazlı modeller adil ama öngörülemez hissettirebilir; sabit paketler basittir ama ağır kullanıcılarda sizi zarara sokabilir. Çoğu SaaS, ikisinin karmasını kullanır: makul bir dahil kullanım artı üzeri için kullanım bazlı ek ücret." },
+        { "type": "subheading", "text": "Aylık yapay zeka maliyetimi nasıl bütçeleyip izlerim?" },
+        { "type": "paragraph", "text": "En basit yöntem, sağlayıcının panelinde aylık harcama limiti ve e-posta uyarısı kurmak — çoğu sağlayıcı bunu destekler. Daha ürün odaklı bir yaklaşım için, her isteği hangi müşteriye veya özelliğe ait olduğunu etiketleyip kendi tarafınızda loglamak, hem bütçe aşımını erken görmenizi hem de fiyatlandırmanızı gerçek maliyete göre ayarlamanızı sağlar. Büyüyen bir üründe bu izleme genellikle bir 'olsa iyi olur' değil, ay sonunda zarar etmemek için gereklidir." },
+        { "type": "subheading", "text": "Model fiyatları hızla düşüyor, şimdiden optimize etmek gerekli mi?" },
+        { "type": "paragraph", "text": "Evet. Fiyatlar geçtiğimiz birkaç yılda gerçekten hızla düştü ve düşmeye devam edebilir, ama bu optimizasyonu ertelemek için bir sebep değil — çünkü kullanım hacmi genelde fiyat düşüşünden çok daha hızlı büyüyor. Bir özellik popülerleştiğinde konuşma sayısı bir ayda 10 kata çıkabilir, fiyat ise aynı sürede yüzde 30-40 civarı düşer; net etki yine de faturanın büyümesidir. Ayrıca kötü tasarlanmış bir bağlam yönetimi, en ucuz modelde bile pahalıya mal olabilir — asıl kazanç modelin fiyatından değil, gereksiz token göndermemekten gelir." },
+        { "type": "paragraph", "text": "Token'ların ve context window'un temelde ne olduğuna bakmak istersen, LLM'lerin nasıl çalıştığı üzerine yazdığım yazıya göz atabilirsin; kendi ürününün maliyet hesabını birlikte çıkarmak istersen de her zaman yazabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "How Is AI API Cost Actually Calculated? Understanding Token Economics",
+      "excerpt": "Why does an AI API bill swing wildly? How tokens, context length, and model choice drive cost — walked through with a real calculation.",
+      "content": [
+        { "type": "paragraph", "text": "A founder came to me last month: “We added an AI feature to the product, and by the end of the first week the bill made us panic.” The user count hadn't changed, the code hadn't changed — but the bill had more than tripled. The problem wasn't bad code; nobody had accounted for what we call “token economics” up front. An AI API's bill depends on far more variables than most people assume — and shipping a product without understanding them means a surprise at the end of the month." },
+        { "type": "heading", "text": "Why Is the Bill Based on 'Tokens'?" },
+        { "type": "paragraph", "text": "An LLM API doesn't charge per word, it charges per token. A token can be a fragment of a word; the word 'breakfast' might be a single token, or it might split into two pieces — it depends on the model and the language. In agglutinative languages like Turkish, expressing the same meaning generally takes 20-40% more tokens than English, because models are trained mostly on English-heavy data and don't split Turkish word roots as efficiently. That alone is enough to make a Turkish product's bill higher than its English equivalent." },
+        { "type": "paragraph", "text": "Providers price per million tokens, and almost always price input and output tokens separately — output typically costs 3-5x more than input. That's because the work a model does 'reading' an input is far cheaper than generating each output token in sequence: input is processed all at once, while output is produced token by token, with the model's full set of weights re-run for each one." },
+        { "type": "paragraph", "text": "The context window belongs in this picture too: the maximum number of tokens a model can 'see' at once. Once that limit is hit, either the oldest messages get dropped automatically or the system errors out — which is why long-running conversations get periodically summarized or squeezed into a fixed window. Here's the catch: having a large context window (say, 200,000 tokens) doesn't mean you should use all of it; every extra token, used or not, is a choice with a price tag attached." },
+        { "type": "heading", "text": "The Three Things That Actually Drive Cost" },
+        { "type": "paragraph", "text": "The same product, with the same number of users, can produce wildly different bills. Three variables mainly decide that:" },
+        { "type": "list", "items": [
+          "Model choice: the most capable, largest models can cost 10-20x more per token than a smaller model doing the same job. Using a large model for simple classification or summarization is usually an unnecessary luxury.",
+          "Context length: the system prompt, conversation history, and any documents pulled in via RAG get resent with every request. In a 10-message conversation, message 10 also carries the full cost of the previous 9.",
+          "Output length and call count: how much the model 'talks,' and how many times it gets called (retries, agent chains, background verification steps) quietly inflates the bill — even when the user never sees it."
+        ] },
+        { "type": "heading", "text": "A Real Scenario: Calculating a Support Chatbot's Monthly Bill" },
+        { "type": "paragraph", "text": "Let's make this concrete. Say a SaaS product runs a chatbot that answers customer support questions: 10,000 conversations a month, averaging 6-8 message exchanges each. The system prompt plus RAG context pulled from product docs runs about 1,200 tokens; user messages and model replies add another 600-800 tokens per conversation combined. So each conversation processes roughly 1,800-2,000 input tokens and 300-500 output tokens." },
+        { "type": "paragraph", "text": "Say a mid-tier model prices at roughly $2-3 per million input tokens and $8-10 per million output tokens. Real prices vary by provider and model — this is just an assumption to make the math concrete. That puts the cost per conversation at a few thousandths of a dollar. For 10,000 conversations, that's roughly $80 a month — reasonable enough." },
+        { "type": "paragraph", "text": "Now let's add a realistic change: the product team bumps the model up a tier for 'smarter' answers (price jumps 4-5x), and more documents get added to the RAG context (input tokens climb from 1,900 to 4,500). The same 10,000 conversations now cost roughly $500-600 — the bill grew 6-7x from two 'small' decisions. This is exactly what panicked founders are actually experiencing: the code didn't change, but the context and model choice quietly did." },
+        { "type": "stats", "items": [
+          { "label": "Input/output price gap", "value": "output typically 3-5x input, across most models" },
+          { "label": "Turkish's token cost", "value": "~20-40% more than English" },
+          { "label": "Prompt caching savings", "value": "30-70% on repeated context" }
+        ] },
+        { "type": "heading", "text": "The Hidden Cost: How Tokens Compound in Agent Chains" },
+        { "type": "paragraph", "text": "The gap between a simple Q&A chatbot and an 'agent' style system — one that takes multiple sequential steps, calling tools, to complete a task — can create a massive jump in the bill. At every step, the model re-reads its entire history so far — previous steps, tool results, intermediate reasoning — and generates a new token on top of it. A 5-step agent chain can consume 5-15x more tokens than a single Q&A exchange, because each step carries everything before it as context. This is the most overlooked cost line when designing agent-based features; it gets tested with a handful of requests in a demo, and nobody should be caught off guard when that gets multiplied by thousands of users in production." },
+        { "type": "heading", "text": "Who's Actually Spending? Tracking Cost by Customer and Feature" },
+        { "type": "paragraph", "text": "Knowing the total monthly bill isn't enough — what's actually valuable is knowing which customer, which feature, is inflating it. Tagging every API request with metadata showing which user and which feature it belongs to surfaces a table like 'the priciest 5% of users account for 40% of the bill' by the end of the month. Making pricing decisions without that data is flying blind: some customers might be costing you money, some features might be burning far more tokens than expected, and nobody notices because the bill only ever shows up as one total number." },
+        { "type": "paragraph", "text": "In practice this doesn't require a complex system: most providers' APIs let you attach a 'metadata' or 'user' field to every request, which can then be filtered in the provider's own usage dashboard. Anyone who wants to go further can log each request's token count and cost to their own database and pull a weekly cost report from it. Even a simple threshold alert that fires when a monthly budget is exceeded prevents most bill surprises." },
+        { "type": "heading", "text": "Real Ways to Bring the Cost Down" },
+        { "type": "paragraph", "text": "When the bill grows, the first instinct is 'let's switch to a cheaper provider,' but the real savings are usually hiding in the architecture:" },
+        { "type": "list", "items": [
+          "Shrink the context: in RAG, send only the genuinely relevant chunks, not the whole document; carry old messages forward as a summary in conversation history, not verbatim.",
+          "Match the model to the task: a small, cheap model is enough for simple classification, routing, or short summaries; save the large model for the genuinely hard steps — this can be automated with a 'model router.'",
+          "Use prompt caching: take advantage of provider features that cache the parts of a request that stay the same every time, like the system prompt and static instructions — in some cases this cuts the cost of resending the same context by up to 70%.",
+          "Cap the output: set limits like max_tokens, instruct the model to answer concisely; unnecessary explanation and repetition go straight to the bill.",
+          "Use batch APIs for anything that isn't real-time: bulk jobs that don't need an instant response (like overnight reporting) can often run through batch endpoints at around a 50% discount."
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Why are output tokens more expensive than input tokens?" },
+        { "type": "paragraph", "text": "Because the processing is fundamentally different. The model reads an input all at once, in parallel. It generates output sequentially — every new token re-runs the model's billions of parameters and depends on the token before it. That sequential computation eats up far more time and energy on the hardware; the price gap reflects that." },
+        { "type": "subheading", "text": "Is a free or low tier actually enough for a real product?" },
+        { "type": "paragraph", "text": "During the prototype stage, yes — usually more than enough. But once you go to production, the real problem is usually not cost but rate limits and the lack of an SLA: free tiers cap you at a set number of requests per minute and offer no uptime guarantee. When real user traffic shows up, you hit those limits before you hit the bill." },
+        { "type": "subheading", "text": "Is self-hosting an open-source model cheaper?" },
+        { "type": "paragraph", "text": "It depends. At low, variable volume, paying per API call is almost always cheaper, because GPU infrastructure has a fixed cost that keeps running whether you use it or not. At high, predictable volume, self-hosting can reach break-even or even come out cheaper — but then maintenance, scaling, and uptime become your responsibility. For most small-to-mid-size products, that trade-off isn't worth it." },
+        { "type": "subheading", "text": "Does streaming the response reduce cost?" },
+        { "type": "paragraph", "text": "No — streaming only improves the user experience, showing the answer as it's generated. The number of tokens you pay for is identical; the only difference is the user sees it appear piece by piece instead of waiting for the whole thing. What actually reduces cost is reducing token count, not streaming." },
+        { "type": "subheading", "text": "How should I pass this pricing on to my users?" },
+        { "type": "paragraph", "text": "There are two common approaches: usage-based (users pay for whatever they use) or a flat package (a monthly fee includes a set usage allowance, with overage cut off or billed extra). Usage-based feels fair but unpredictable; flat packages are simple but can lose you money on heavy users. Most SaaS products blend the two: a reasonable included allowance plus usage-based overage." },
+        { "type": "subheading", "text": "How do I budget for and track my monthly AI cost?" },
+        { "type": "paragraph", "text": "The simplest approach is setting a monthly spending cap and email alert in the provider's dashboard — most providers support this. For a more product-oriented approach, tagging every request with which customer or feature it belongs to and logging it yourself lets you catch budget overruns early and adjust your pricing to match real cost. In a growing product, this kind of tracking is usually not a 'nice to have' — it's what keeps you from losing money by month's end." },
+        { "type": "subheading", "text": "Model prices keep dropping — is it worth optimizing for cost now?" },
+        { "type": "paragraph", "text": "Yes. Prices have genuinely fallen fast over the past few years and may keep falling, but that's not a reason to postpone optimization — usage volume tends to grow much faster than prices drop. Once a feature catches on, conversation volume can jump 10x in a month while price only drops around 30-40% in the same stretch; the net effect is still a bigger bill. On top of that, poorly designed context management can make even the cheapest model expensive — the real savings come from not sending unnecessary tokens, not from the model's sticker price." },
+        { "type": "paragraph", "text": "If you want to go back to basics on what tokens and context windows actually are, I wrote a post on how LLMs actually work that covers it; if you'd like to work through the cost math for your own product together, feel free to reach out anytime." }
+      ]
+    }
   }
 ]
