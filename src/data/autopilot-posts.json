@@ -2823,5 +2823,132 @@
         { "type": "paragraph", "text": "If you want to talk through how to set up a content production flow like this for your own brand or studio, we can start with a few questions." }
       ]
     }
+  },
+  {
+    "slug": "ai-invoice-document-ocr-llm-workflow",
+    "publishedAt": "2026-08-24",
+    "readTime": "8 min",
+    "category": "Otomasyon",
+    "tags": ["Otomasyon", "Yapay Zeka", "OCR", "Doküman İşleme"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Yapay zeka destekli otomasyon çözümleri", "href": "/services" },
+      { "label": "Yapay zeka projelerinde veri gizliliği ve KVKK", "href": "/blog/ai-data-privacy-kvkk-compliance-guide" },
+      { "label": "Kendi iş akışın için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Yapay Zeka ile Fatura ve Döküman Okuma: OCR + LLM İş Akışına Nasıl Oturur?",
+      "excerpt": "Klasik OCR sadece pikselleri metne çevirir; yapay zeka fatura/döküman okumada anlamı da çıkarır. Sistem gerçekte nasıl kurulur, nerede hâlâ insan gözü gerekir?",
+      "content": [
+        { "type": "paragraph", "text": "Her ayın başında aynı sahne tekrarlanıyor: muhasebeci ya da ofis asistanı kutu dolusu faturayı tek tek açıyor, tutar, tarih, KDV ve tedarikçi bilgisini elle muhasebe programına giriyor. Yüz elli fatura, günde birkaç saat, ve bir yerde mutlaka bir rakam yanlış yazılıyor. Yapay zeka ile fatura ve döküman okuma tam olarak bu işi bir insanın hızından çıkarıp saniyelere indiren teknoloji — ama nasıl çalıştığını ve nerede hâlâ insan gözüne ihtiyaç duyduğunu bilmek işin can alıcı kısmı." },
+        { "type": "heading", "text": "OCR nedir, yapay zekanın (LLM) işe eklediği fark ne?" },
+        { "type": "paragraph", "text": "OCR (optik karakter tanıma), bir görüntüdeki pikselleri harflere ve rakamlara çeviren, onlarca yıldır var olan bir teknoloji. Taranmış bir faturaya OCR uygularsan çıktı olarak düz bir metin yığını alırsın: 'ABC Ticaret Ltd. Şti. Fatura No: 2026-4471 Tarih: 12.08.2026 Ara Toplam: 12.450,00 KDV %20: 2.490,00 Genel Toplam: 14.940,00'. OCR bu metni doğru çıkarabilir ama hangi rakamın 'ara toplam', hangisinin 'genel toplam' olduğunu anlamaz — sadece karakterleri tanır, yapıyı değil." },
+        { "type": "paragraph", "text": "İşte LLM tam burada devreye giriyor. OCR çıktısını (ya da görüntüyü doğrudan görebilen modern çok-modlu modellerde ham görseli) bir dil modeline verip 'bu bir fatura, şu alanları JSON olarak çıkar' dediğinde model, insan gibi bağlamdan anlam çıkarır: hangi tutarın toplam olduğunu, tedarikçi adının nerede geçtiğini, satır kalemlerinin nasıl gruplandığını çözer — üstelik her tedarikçinin fatura şablonu farklı olsa bile. Klasik OCR + kural tabanlı ayrıştırma her yeni fatura formatı için ayrı bir şablon ister; LLM tabanlı okuma format değişse de genelleşir. Fark, tam olarak burada: biri karakter tanıyor, diğeri anlam çıkarıyor." },
+        { "type": "heading", "text": "Sistem gerçekte nasıl çalışıyor: adım adım" },
+        { "type": "list", "items": [
+          "Fatura e-posta, WhatsApp, tarayıcı ya da mobil fotoğraf olarak sisteme girer",
+          "Görüntü ön işlemeden geçer (eğim düzeltme, kontrast, gereksiz kenarların kırpılması)",
+          "OCR katmanı ham metni çıkarır (ya da çok-modlu model görseli doğrudan işler)",
+          "LLM, önceden tanımlı bir şemaya göre alanları yapılandırır: tedarikçi, tarih, fatura no, ara toplam, KDV oranı ve tutarı, genel toplam, satır kalemleri",
+          "Doğrulama kuralları çalışır: ara toplam + KDV = genel toplam mı, aynı fatura no daha önce işlenmiş mi (mükerrer kayıt kontrolü), tutar makul bir aralıkta mı",
+          "Güven skoru düşük çıkan kayıtlar bir 'gözden geçir' kuyruğuna düşer, yüksek güvenli kayıtlar doğrudan muhasebe yazılımına (Logo, Paraşüt, Mikro, Netsis vb.) API veya CSV üzerinden aktarılır"
+        ]},
+        { "type": "paragraph", "text": "Bu son adım, sistemin gerçekten güvenilir olup olmadığını belirleyen kısım. İyi kurulmuş bir sistem her faturayı '%100 doğru' diye kabul etmez; her alan için bir güven skoru üretir ve düşük skorlu olanları insana havale eder. Amaç insanı tamamen devre dışı bırakmak değil, insanın zamanını yüzlerce rutin faturadan alıp gerçekten dikkat gerektiren birkaç istisnaya yönlendirmek." },
+        { "type": "heading", "text": "Gerçek bir senaryo: elektronik parça toptancısı" },
+        { "type": "paragraph", "text": "Otuz tedarikçiden ayda ortalama dört yüz fatura alan bir elektronik parça toptancısını düşünelim. Faturaların bir kısmı e-posta ile PDF olarak, bir kısmı kargo ile birlikte gelen kağıt fatura olarak, bir kısmı da tedarikçinin kendi portalından indirilen farklı formatlarda geliyor. Muhasebe ekibi ayın ilk haftasını neredeyse tamamen bu faturaları sisteme girmeye ayırıyor." },
+        { "type": "paragraph", "text": "Kurulan sistemde faturalar tek bir e-posta adresine ('faturalar@...') veya paylaşımlı bir tarama klasörüne düşüyor. Arka planda OCR + LLM hattı her belgeyi birkaç saniyede işleyip yapılandırılmış bir kayda çeviriyor. Muhasebeci artık tek tek fatura açmıyor; her sabah bir ekranda o günkü işlenmiş faturaların listesini, düşük güvenli olanların üstte vurgulandığı bir tabloyu görüyor. Yüksek güvenli kayıtları toplu onaylayıp muhasebe programına tek tuşla aktarıyor, sadece işaretlenmiş birkaç faturayı elle kontrol ediyor." },
+        { "type": "paragraph", "text": "Haftalık rutinde değişen şey şu: ayın ilk haftasına yayılan altı-yedi saatlik veri girişi, günde on-on beş dakikalık bir kontrol işine dönüşüyor. Mükerrer fatura girişi neredeyse sıfıra iniyor çünkü sistem aynı fatura numarasını ikinci kez gördüğünde otomatik uyarı veriyor — elle girişte gözden kolayca kaçan bir hata türü." },
+        { "type": "heading", "text": "Nerede iyi çalışır, nerede zorlanır" },
+        { "type": "paragraph", "text": "Bu teknolojiyi olduğundan daha yetenekli göstermek kolay ama dürüst olmak gerekirse her koşulda aynı doğrulukta çalışmıyor. Temiz taranmış PDF faturalarda doğruluk oranı çok yüksek; telefonla eğik açıdan, kötü ışıkta çekilmiş fotoğraflarda ya da elle yazılmış notlar içeren faturalarda hata oranı belirgin şekilde artıyor." },
+        { "type": "list", "items": [
+          "El yazısı notlar veya damga/imza üstüne yazılmış rakamlar — düşük doğruluk, mutlaka insan kontrolü gerekir",
+          "Çok satırlı, iç içe indirim/iskonto hesaplı karmaşık faturalar — ekstra doğrulama kuralı yazmak gerekir",
+          "Birden fazla para birimi ve döviz kuru içeren faturalar — kur bilgisi ayrıca doğrulanmalı",
+          "Düşük çözünürlüklü telefon fotoğrafları — ön işleme adımı iyileştirilse bile bazen elle girişten farksız kalır",
+          "Yepyeni bir tedarikçi formatı — ilk birkaç faturada güven skoru düşük çıkabilir, sistem o formata 'alışana' kadar"
+        ]},
+        { "type": "paragraph", "text": "Bu yüzden 'kur ve unut' bir sistem değil; ilk iki-üç hafta gerçek faturalarla kalibrasyon ister. Güven skoru eşiğini çok gevşek tutarsan hatalı kayıtlar muhasebeye sızar, çok sıkı tutarsan neredeyse her fatura insana düşer ve otomasyonun anlamı kalmaz. Doğru eşiği bulmak, ilk birkaç yüz faturayı gözlemleyip ayarlamakla oluyor." },
+        { "type": "paragraph", "text": "Aynı hat, tasarımı biraz genişletildiğinde faturayla sınırlı kalmıyor. İrsaliye, makbuz, banka ekstresi ya da tedarikçi sözleşmesi gibi belgeler de benzer bir OCR + LLM adımından geçebilir — tek fark her belge türü için ayrı bir şema tanımlamak (irsaliyede 'teslim tarihi' ve 'sipariş no' önemliyken faturada 'KDV' ve 'ödeme vadesi' öne çıkar). Bu yüzden ilk kurulumda sadece faturayı değil, muhasebe ve operasyon ekibinin elle işlediği tüm tekrarlayan belge türlerini listelemek, aynı altyapıyı ikinci kez kurmadan genişletmeyi kolaylaştırıyor." },
+        { "type": "stats", "items": [
+          { "label": "Elle veri girişinde fatura başına süre", "value": "2–5 dakika" },
+          { "label": "OCR + LLM ile işlem süresi", "value": "5–15 saniye" },
+          { "label": "İnsan kontrolüne düşen oran (düşük güven skoru)", "value": "%5–15" }
+        ]},
+        { "type": "heading", "text": "Kurulum ne kadar sürer, maliyeti nasıl hesaplanır?" },
+        { "type": "paragraph", "text": "Hazır bir OCR API'si (Google Cloud Vision, AWS Textract gibi) ve bir LLM çağrısını birleştiren, tek bir muhasebe programına bağlanan çalışır bir ilk sürüm genelde üç-altı haftalık bir geliştirme işi. Bu süreye görüntü ön işleme, şema tasarımı, doğrulama kuralları ve muhasebe yazılımı entegrasyonu dahil. Birden fazla tedarikçi formatını sağlam biçimde kapsamak ve gözden geçirme ekranını kullanışlı hale getirmek işin asıl zamanını alan kısım — 'faturayı okumak' kısmı aslında en kolay parça." },
+        { "type": "paragraph", "text": "Çalışma zamanı maliyeti ise çoğunlukla API kullanımına göre değişiyor: OCR + LLM çağrısı başına genelde birkaç kuruştan bir-iki liraya kadar bir maliyet çıkıyor, kullanılan modele ve fatura karmaşıklığına göre değişir. Ayda dört yüz fatura işleyen bir işletme için bu, aylık işletme maliyetini genelde birkaç yüz liranın altında tutuyor — elle veri girişine harcanan onlarca saatin maliyetiyle karşılaştırıldığında fark hızla kapanıyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Hazır bir SaaS aracı mı kullanmalıyım, yoksa özel mi yaptırmalıyım?" },
+        { "type": "paragraph", "text": "Fatura hacmin düşükse ve standart bir formatta çalışıyorsan hazır bir fatura okuma aracı (birçoğu aylık abonelik modeliyle satılıyor) genelde daha ucuza gelir. Farklı tedarikçi formatları, kendi muhasebe yazılımına özel entegrasyon ihtiyacı ya da fatura dışında sözleşme/irsaliye gibi başka doküman türlerini de aynı hatta işleme isteği varsa, özel bir çözüm zamanla daha esnek ve genelde daha ucuz çıkıyor çünkü abonelik başına ödeme yerine sadece kullandığın API çağrısı kadar ödüyorsun." },
+        { "type": "subheading", "text": "Bu sistem KDV hesaplama hatalarını da yakalar mı?" },
+        { "type": "paragraph", "text": "Doğrudan bir vergi denetimi yapmaz ama basit aritmetik tutarlılık kontrolleri ekleyebilirsin: ara toplam ve KDV tutarının toplamı genel toplamla eşleşiyor mu, KDV oranı beklenen aralıkta mı gibi. Bu, elle girişte gözden kaçan tutarsızlıkları erken yakalayan ucuz bir güvenlik ağı — ama resmi bir vergi danışmanlığının yerini tutmuyor." },
+        { "type": "subheading", "text": "Elle taranmış veya fotoğraflı faturalarla çalışır mı?" },
+        { "type": "paragraph", "text": "Evet ama doğruluk görüntü kalitesine doğrudan bağlı. Düz bir yüzeyde, iyi ışıkta, kırpılmadan çekilmiş bir fotoğraf OCR için genelde yeterli. Eğik açı, gölge veya bulanıklık doğruluğu belirgin şekilde düşürüyor — bu yüzden pratikte kağıt faturaları doğrudan tarayıcıdan geçirmek, telefonla fotoğraflamaktan daha güvenilir sonuç veriyor." },
+        { "type": "subheading", "text": "Muhasebe programıma (Logo, Paraşüt, Mikro) nasıl bağlanır?" },
+        { "type": "paragraph", "text": "Çoğu popüler muhasebe yazılımının bir API'si ya da en azından toplu içe aktarım için kabul ettiği bir CSV/XML formatı var. Sistem yapılandırdığı fatura verisini bu formata çevirip doğrudan API üzerinden gönderir ya da düzenli aralıklarla bir içe aktarım dosyası üretir. API desteği yoksa bile CSV üzerinden yarı otomatik bir köprü kurmak, elle girişten hâlâ çok daha hızlı." },
+        { "type": "subheading", "text": "Bu sistem muhasebecinin işine son mu veriyor?" },
+        { "type": "paragraph", "text": "Hayır, ama işin niteliğini değiştiriyor. Rutin veri girişi ortadan kalkıyor; muhasebecinin zamanı istisnaları kontrol etmeye, nakit akışını yorumlamaya ve vergi/beyanname tarafındaki asıl uzmanlık gerektiren işlere kayıyor. Küçük bir işletmede bu genelde kadro azaltmaktan çok, aynı kişinin ay sonunda faturaya boğulmadan daha stratejik işlere vakit ayırabilmesi anlamına geliyor." },
+        { "type": "subheading", "text": "Yapay zeka modeli kendinden emin ama yanlış bir rakam çıkarabilir mi?" },
+        { "type": "paragraph", "text": "Evet, ve bu OCR + LLM hattının en çok göz ardı edilen riski. Model bazen düşük kaliteli bir görüntüde okuyamadığı bir rakamı 'tahmin ederek' doldurabilir, üstelik bunu yüksek güvenle yapabilir. Bunun tek gerçek çözümü, modelin kendi güven skoruna körü körüne güvenmemek: toplamların tutarlılığını ayrıca aritmetik olarak doğrulamak, aykırı değerleri (örneğin her zamankinden on kat büyük bir tutarı) otomatik işaretlemek ve ilk birkaç ay rastgele seçilmiş bir örneklemi elle çapraz kontrol etmek. Bu ekstra katman, sistemin 'kendinden emin ama yanlış' senaryosuna karşı asıl güvenceyi sağlıyor." },
+        { "type": "paragraph", "text": "Bu tür doküman okuma sistemlerinin bir de veri gizliliği tarafı var — özellikle müşteri veya tedarikçi bilgisi içeren belgeleri bir yapay zeka servisine gönderirken nelere dikkat etmen gerektiğini KVKK yazımızda ele aldık. Kendi iş akışın için bir fizibilite konuşmak istersen, birkaç soruyla başlayabiliriz." }
+      ]
+    },
+    "en": {
+      "title": "AI Invoice and Document Reading: How OCR + LLM Actually Fits Into a Workflow",
+      "excerpt": "Classic OCR only turns pixels into text; AI-based invoice reading extracts meaning too. Here's how the system is actually built, and where it still needs a human eye.",
+      "content": [
+        { "type": "paragraph", "text": "The same scene repeats at the start of every month: a bookkeeper or office assistant opens invoices one by one, typing the amount, date, tax, and vendor into accounting software by hand. A hundred and fifty invoices, a few hours a day, and somewhere in there a number always gets typed wrong. AI invoice and document reading is exactly the technology that takes this task out of human speed and down to seconds — but knowing how it actually works, and where it still needs a human eye, is the part that matters." },
+        { "type": "heading", "text": "What is OCR, and what does AI (an LLM) actually add?" },
+        { "type": "paragraph", "text": "OCR (optical character recognition) is a decades-old technology that turns the pixels in an image into letters and numbers. Run OCR on a scanned invoice and you get a flat blob of text back: 'ABC Trading Ltd. Invoice No: 2026-4471 Date: 08/12/2026 Subtotal: 12,450.00 VAT 20%: 2,490.00 Total: 14,940.00'. OCR can extract this text accurately, but it has no idea which number is the 'subtotal' and which is the 'total' — it recognizes characters, not structure." },
+        { "type": "paragraph", "text": "This is exactly where an LLM comes in. Feed the OCR output (or, with modern multimodal models, the raw image itself) to a language model and ask it to 'extract these fields as JSON from this invoice,' and the model reasons from context the way a person would: which amount is the total, where the vendor name sits, how the line items are grouped — even when every vendor's invoice template looks different. Classic OCR plus rule-based parsing needs a new template for every new invoice format; LLM-based reading generalizes across formats. That's the actual difference: one recognizes characters, the other extracts meaning." },
+        { "type": "heading", "text": "How the system actually works, step by step" },
+        { "type": "list", "items": [
+          "An invoice arrives as an email attachment, a WhatsApp photo, a scan, or a mobile-phone picture",
+          "The image goes through preprocessing (deskewing, contrast adjustment, cropping out irrelevant edges)",
+          "The OCR layer extracts raw text (or a multimodal model processes the image directly)",
+          "The LLM structures the fields against a predefined schema: vendor, date, invoice number, subtotal, tax rate and amount, total, line items",
+          "Validation rules run: does subtotal plus tax equal the total, has this invoice number already been processed (duplicate check), is the amount within a plausible range",
+          "Low-confidence records drop into a 'needs review' queue; high-confidence records get pushed straight into the accounting software via API or CSV export"
+        ]},
+        { "type": "paragraph", "text": "That last step is what determines whether the system is actually trustworthy. A well-built system doesn't treat every invoice as '100% correct' — it produces a confidence score per field and routes low-confidence ones to a human. The goal isn't to remove the human entirely; it's to take their time off hundreds of routine invoices and point it at the handful of exceptions that genuinely need attention." },
+        { "type": "heading", "text": "A real scenario: an electronics parts distributor" },
+        { "type": "paragraph", "text": "Picture an electronics parts distributor receiving roughly four hundred invoices a month from thirty vendors. Some arrive as PDF email attachments, some as paper invoices shipped with the goods, some downloaded in different formats from each vendor's own portal. The accounting team spends nearly the entire first week of the month just entering these invoices." },
+        { "type": "paragraph", "text": "In the system they set up, invoices land in a single email address ('invoices@...') or a shared scan folder. In the background, the OCR + LLM pipeline turns each document into a structured record within seconds. The bookkeeper no longer opens invoices one at a time; every morning they see a screen listing that day's processed invoices, with low-confidence ones flagged at the top. They bulk-approve the high-confidence records and push them into the accounting software with one click, manually checking only the few that got flagged." },
+        { "type": "paragraph", "text": "What changes in the weekly routine: the six-to-seven hours of data entry spread across the first week of the month turns into ten to fifteen minutes of review a day. Duplicate invoice entries drop close to zero because the system flags a repeated invoice number automatically — a type of error that's easy to miss during manual entry." },
+        { "type": "heading", "text": "Where it works well, and where it struggles" },
+        { "type": "paragraph", "text": "It's tempting to oversell this technology, but honestly, it doesn't perform at the same accuracy in every condition. Cleanly scanned PDF invoices get very high accuracy; invoices photographed at an angle, in poor lighting, or with handwritten notes see accuracy drop noticeably." },
+        { "type": "list", "items": [
+          "Handwritten notes or numbers written over stamps/signatures — low accuracy, human review is a must",
+          "Multi-line invoices with nested discounts/rebates — needs extra validation rules written specifically for them",
+          "Invoices spanning multiple currencies and exchange rates — the exchange rate needs separate verification",
+          "Low-resolution phone photos — even with better preprocessing, sometimes barely better than manual entry",
+          "A brand-new vendor format — confidence scores can run low for the first few invoices until the system 'learns' that layout"
+        ]},
+        { "type": "paragraph", "text": "That's why this isn't a 'set it and forget it' system — it needs two to three weeks of calibration against real invoices. Set the confidence threshold too loose and bad data leaks into accounting; set it too tight and nearly every invoice gets kicked to a human, defeating the point of automating anything. Finding the right threshold comes from watching the first few hundred invoices and adjusting." },
+        { "type": "paragraph", "text": "With a little more schema work, the same pipeline stops being invoice-specific. Delivery notes, receipts, bank statements, or vendor contracts can go through a similar OCR + LLM step — the only difference is defining a separate schema per document type (a delivery note cares about 'delivery date' and 'order number', while an invoice cares about 'VAT' and 'payment due date'). That's why it's worth listing every recurring document type your accounting and operations team handles by hand at the outset, not just invoices — extending the same infrastructure later is far cheaper than building it twice." },
+        { "type": "stats", "items": [
+          { "label": "Manual data entry time per invoice", "value": "2–5 minutes" },
+          { "label": "OCR + LLM processing time", "value": "5–15 seconds" },
+          { "label": "Share routed to human review (low confidence)", "value": "5–15%" }
+        ]},
+        { "type": "heading", "text": "How long does setup take, and what does it actually cost?" },
+        { "type": "paragraph", "text": "A working first version that combines an off-the-shelf OCR API (Google Cloud Vision, AWS Textract) with an LLM call and connects to a single accounting package is typically a three-to-six-week build. That timeline includes image preprocessing, schema design, validation rules, and the accounting-software integration. Robustly covering multiple vendor formats and making the review screen genuinely usable is what actually eats the time — 'reading the invoice' is the easy part." },
+        { "type": "paragraph", "text": "Ongoing running cost mostly tracks API usage: an OCR + LLM call typically costs anywhere from a few cents to a couple of dollars, depending on the model used and how complex the invoice is. For a business processing four hundred invoices a month, that usually keeps the monthly running cost well under what a single hour of manual data entry costs — and the gap closes fast once you compare it against the dozens of hours manual entry actually eats." },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Should I use an off-the-shelf SaaS tool or get a custom build?" },
+        { "type": "paragraph", "text": "If your invoice volume is low and formats are fairly standard, an off-the-shelf invoice-reading tool (usually sold as a monthly subscription) is often cheaper. If you're dealing with many different vendor formats, need a custom integration with your specific accounting software, or want the same pipeline to also handle other document types like contracts or delivery notes, a custom build tends to be more flexible and often cheaper over time — you pay only for the API calls you actually use instead of a flat subscription." },
+        { "type": "subheading", "text": "Does this system catch VAT calculation errors too?" },
+        { "type": "paragraph", "text": "It doesn't perform a tax audit, but you can add simple arithmetic consistency checks: does the subtotal plus tax amount match the total, is the tax rate within the expected range. That's a cheap safety net that catches inconsistencies manual entry tends to miss — but it doesn't replace proper tax advice." },
+        { "type": "subheading", "text": "Does it work with handwritten or photographed invoices?" },
+        { "type": "paragraph", "text": "Yes, but accuracy is directly tied to image quality. A photo taken flat, in good light, without cropping issues is usually fine for OCR. Angle, shadow, or blur noticeably drop accuracy — in practice, running paper invoices through a proper scanner gives more reliable results than photographing them with a phone." },
+        { "type": "subheading", "text": "How does it connect to my accounting software (QuickBooks, Xero, etc.)?" },
+        { "type": "paragraph", "text": "Most popular accounting packages either expose an API or at least accept a CSV/XML format for bulk import. The system converts its structured invoice data into that format and either pushes it via API directly or generates an import file on a regular schedule. Even without API support, a semi-automated CSV bridge is still far faster than manual entry." },
+        { "type": "subheading", "text": "Does this replace the bookkeeper's job?" },
+        { "type": "paragraph", "text": "No, but it changes the nature of the work. Routine data entry disappears; the bookkeeper's time shifts toward checking exceptions, interpreting cash flow, and the tax/filing work that actually needs their expertise. For a small business, this usually doesn't mean cutting headcount — it means the same person stops drowning in invoices at month-end and has time for more strategic work instead." },
+        { "type": "subheading", "text": "Can the AI model confidently extract a wrong number?" },
+        { "type": "paragraph", "text": "Yes, and that's the most overlooked risk in an OCR + LLM pipeline. On a low-quality image, the model can sometimes 'guess' a digit it couldn't actually read — and do so with high confidence. The only real fix is not blindly trusting the model's own confidence score: separately verify arithmetic consistency of totals, automatically flag outliers (like an amount ten times larger than usual for that vendor), and manually cross-check a random sample for the first couple of months. That extra layer is what actually guards against the 'confident but wrong' scenario." },
+        { "type": "paragraph", "text": "There's also a data-privacy side to systems like this — especially once you're sending documents containing vendor or customer information to an AI service, which is something we cover in our KVKK/data-privacy guide. If you want to think through a feasibility check for your own workflow, a few questions is enough to start." }
+      ]
+    }
   }
 ]
