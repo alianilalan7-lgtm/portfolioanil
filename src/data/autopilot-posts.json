@@ -3075,5 +3075,100 @@
         { "type": "paragraph", "text": "A maintenance retainer functions a lot like insurance: you pay a small, predictable amount every month so you're not caught off guard by a large, unpredictable one. If you want to think through pricing models in more depth, the pricing guide is a good next read — or we can just start with a few questions about your own project." }
       ]
     }
+  },
+  {
+    "slug": "restaurant-reservation-no-show-prediction-system",
+    "publishedAt": "2026-08-28",
+    "readTime": "6 min",
+    "category": "Restoran",
+    "tags": ["Restoran", "Rezervasyon", "Yapay Zeka", "Otomasyon"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Restoranlar için özel yazılım & otomasyon", "href": "/services" },
+      { "label": "Restoranda porsiyon maliyeti sistemi (ilgili yazı)", "href": "/blog/restaurant-food-cost-calculation-system" },
+      { "label": "İşletmen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Restoranlarda Masa Doluluğunu ve No-Show'u Önceden Tahmin Eden Sistem Nasıl Çalışır?",
+      "excerpt": "Rezervasyon ve POS verisi, masa doluluğunu ve no-show riskini önceden tahmin edip personel ile masa planını buna göre kurmaya yeter mi?",
+      "content": [
+        { "type": "paragraph", "text": "Cuma akşamı saat 20.30, kapıda sıra var, salon tıklım tıklım — ama POS ekranında hâlâ üç masa 'rezerve' yazıyor ve kimse gelmedi; üstelik o üç masa boşuna bekletildiği için kapıdaki sıradan en az bir grup çekip gitti. Aynı haftanın salı akşamı ise tam tersi: salon yarı boş, mutfakta bir kişi fazladan duruyor, çünkü geçen yıl salı hep sakin geçmiş diye tahmin edilmiş. Restoran ve kafe işletmeciliğinde en pahalı hatalardan biri tam da bu: masa doluluğu ve no-show tahmini hâlâ deneyim ve içgüdüyle yapılıyor, oysa elde zaten aylarca, hatta yıllarca birikmiş rezervasyon ve satış verisi duruyor." },
+        { "type": "heading", "text": "Masa Doluluğu ve No-Show Tahmini Restoranlar İçin Ne Anlama Geliyor?" },
+        { "type": "paragraph", "text": "Elindeki rezervasyon ve POS verisini — tarih, saat, kişi sayısı, geçmişte kaç kez rezervasyon yapıp gelmediği, ne kadar önceden rezervasyon yapıldığı, hatta hava durumu ve yakın çevredeki konser/maç gibi etkinlikler — tek yerde toplayıp basit bir tahmin modeliyle işleyen bir sistem kurulabilir. Bu sistem her gün, her vardiya için bir doluluk tahmini ve her rezervasyon için bir no-show olasılığı üretir. Riski yüksek görünen rezervasyonlar (örneğin bir hafta önceden alınmış, daha önce hiç gelmemiş bir müşteriden gelen 8 kişilik masa) otomatik olarak işaretlenir; sisteme bağlı bir SMS/WhatsApp hattı o rezervasyonu gün öncesinden nazikçe teyit eder ve teyit gelmeyen masalar için kapıdaki bekleme listesine ya da fazla rezervasyon (overbooking) stratejisine yer açar. Aynı risk skoru, belirli bir eşiğin üzerindeki büyük grup rezervasyonlarında küçük bir depozito istemek gibi basit kurallar için de kullanılabilir — havayı okumak yerine geçmiş veriye dayanan bir eşik koymuş olursunuz." },
+        { "type": "paragraph", "text": "Bunun için büyük bir zincir olmaya gerek yok. Tek şubeli bir restoranın rezervasyon defteri veya kullandığı QR/rezervasyon uygulaması zaten bu verinin çoğunu tutuyor; eksik olan, bu veriyi bir araya getirip anlamlı bir tahmine çeviren küçük bir katman. Yatırım, sıfırdan yazılım kurmaktan çok, mevcut sistemlere takılan orta ölçekli bir otomasyon projesi büyüklüğünde kalıyor. Dürüst olmak gerekirse bu bir kehanet değil, olasılık aracı: yeni açılan bir şubede ya da bayram gibi emsali olmayan bir günde tahmin daha zayıf kalır, o yüzden sistem her zaman son kararı yöneticiye bırakan bir öneri katmanı olarak kurulmalı, otomatik pilot olarak değil." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Sahil Kafe" },
+        { "type": "paragraph", "text": "Sahil Kafe, sahil şeridinde 40 masalık, tek şubeli, kurgusal ama gerçekçi bir işletme olsun. Şu ana kadar personel planlaması müdürün hafızasına ve 'geçen yıl bu hafta nasıldı' sorusuna dayanıyor; bazı akşamlar salon dolup taşarken bir garson eksik kalıyor, bazı akşamlar da salon yarı boşken tam kadro çalışıyor. No-show'lar da ayrı bir dert: özellikle hafta içi akşamları alınan büyük grup rezervasyonlarının önemli bir kısmı hiç gelmiyor, o masalar da kapıdan dönen müşterilere kapalı kalıyor." },
+        { "type": "paragraph", "text": "Kurulan sistemde rezervasyon uygulaması, POS ve basit bir hava durumu API'si her gece verilerini ortak bir tabloya aktarıyor; bir tahmin modeli her sabah saat 07.00'de o günün öğle ve akşam vardiyası için beklenen doluluğu ve risk taşıyan rezervasyonların listesini üretiyor. Müdür sabah bu listeye bakıyor: 'Bugün akşam yüksek doluluk bekleniyor, üç rezervasyonun teyit edilmesi öneriliyor.' Riskli üç rezervasyona otomatik teyit mesajı gidiyor; ikisi onaylıyor, biri iptal ediyor ve o masaya kapıdan gelen bir gruba yer açılıyor. Haftalık personel çizelgesi de artık geçen haftanın kopyası değil, o haftanın tahminine göre bir gün önce hazırlanıyor — sakin geçmesi beklenen bir akşama bir kişi eksik, yoğun beklenen bir hafta sonuna bir garson fazladan planlanıyor." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "paragraph", "text": "Teknik tarafı abartmaya gerek yok; sistemin omurgası şu birkaç parçadan oluşuyor:" },
+        { "type": "list", "items": [
+          "Rezervasyon uygulaması, POS ve varsa hava durumu/etkinlik verisini tek bir veri tabanında birleştirmek",
+          "Geçmiş 6-12 aylık veriyle günlük/vardiyalık doluluk ve no-show olasılığını hesaplayan basit bir istatistiksel model (baştan büyük bir yapay zeka modeli şart değil)",
+          "Riskli rezervasyonlar için otomatik SMS/WhatsApp teyit hatırlatması",
+          "Yöneticiye sabah özeti gösteren, tek sayfalık bir panel: bugünkü tahmini doluluk, riskli rezervasyonlar, önerilen personel sayısı",
+          "Teyit gelmeyen riskli rezervasyonlar için basit bir fazla rezervasyon (overbooking) kuralı",
+          "Gerçekleşen sonuçlarla modelin ay ay kalibre edilmesi, böylece tahminler zamanla iyileşir"
+        ]},
+        { "type": "paragraph", "text": "Bunu da eklemek gerekir: her rezervasyon/POS sistemi aynı seviyede veri erişimi sunmuyor, bazılarında API varken bazılarında sadece dışa aktarılabilir bir rapor bulunuyor, bu da entegrasyon süresini biraz uzatabiliyor. Ayrıca ilk birkaç ay model henüz yeterince veriyle beslenmediği için tahminler kaba kalabilir; bu bir kurulup unutulan sistem değil, gerçek sonuçlarla haftalık kendini düzelten bir araç. Overbooking kuralı da temkinli başlamalı: örneğin sadece no-show olasılığı %50'nin üzerindeki rezervasyonlarda ve toplamda vardiya kapasitesinin en fazla %10'u kadar fazladan masa açmak gibi dar bir sınırla başlayıp, gerçek sonuçlar biriktikçe bu sınırı gevşetmek ya da sıkmak makul bir yaklaşım." },
+        { "type": "stats", "items": [
+          { "label": "No-show oranında azalma", "value": "%20-40 arası" },
+          { "label": "Haftalık personel planlama süresi", "value": "birkaç dakikaya iner" },
+          { "label": "Kurulum süresi", "value": "3-6 hafta" }
+        ]},
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Bu sistem tek şubeli küçük bir restoran için de mantıklı mı?" },
+        { "type": "paragraph", "text": "Evet, hatta asıl fark küçük işletmelerde daha çok hissediliyor çünkü tampon kapasitesi yok — bir no-show ya da yanlış personel planı doğrudan o günün cirosunu ve moralini etkiliyor. Sistem zincir değil veri geçmişi ister; 6 ayı geçmiş rezervasyon kaydı olan hemen her yer başlayabilir." },
+        { "type": "subheading", "text": "Tahmin için ne kadar geçmiş veri gerekir?" },
+        { "type": "paragraph", "text": "Anlamlı bir başlangıç için 6-12 aylık rezervasyon ve satış verisi yeterli. Daha kısa geçmişle de kurulabilir ama ilk birkaç ay tahminler kaba kalır; sistem her hafta gerçekleşen sonuçla kendini düzeltir, yani zamanla iyileşen bir araçtan bahsediyoruz, ilk günden kusursuz bir kristal küreden değil." },
+        { "type": "subheading", "text": "Hava durumu veya yerel etkinlikler gerçekten fark yaratıyor mu?" },
+        { "type": "paragraph", "text": "Sahil ve bahçe alanı olan yerlerde evet, belirgin şekilde — yağmurlu bir akşam rezervasyonların önemli bir kısmı hiç gelmeyebiliyor. Kapalı mekan ve merkezi lokasyonlarda etkisi daha küçük ama yine de sıfır değil, özellikle maç günleri ve konser gibi büyük yerel etkinliklerde." },
+        { "type": "subheading", "text": "Mevcut rezervasyon veya POS sistemimle entegre olur mu?" },
+        { "type": "paragraph", "text": "Çoğu yaygın rezervasyon ve POS sistemi bir API veya en azından dışa aktarılabilir rapor sunuyor; entegrasyon genelde bu veriyi düzenli çekip ortak tabloya yazan orta ölçekli bir otomasyon işi. Sıfırdan bir rezervasyon sistemi yazmaya gerek kalmıyor, mevcut araçların üzerine ince bir katman ekleniyor." },
+        { "type": "subheading", "text": "Sistem fiyatlandırma veya depozito kararlarında da kullanılabilir mi?" },
+        { "type": "paragraph", "text": "Evet, ama temkinli bir ek olarak. Aynı risk skoru, belirli bir eşiğin üzerindeki büyük grup rezervasyonlarında küçük bir depozito talep etmek ya da yoğun beklenen akşamlarda erken/geç saat rezervasyonlarını teşvik edecek küçük bir fiyat farkı sunmak için de kullanılabilir. Ama bunu sistemin ana amacı değil, doluluk tahmini oturduktan sonra eklenecek ikinci bir katman olarak düşünmek gerekir; ikisini aynı anda kurmaya çalışmak ilk aşamada işi gereksiz karmaşıklaştırır." },
+        { "type": "paragraph", "text": "Kendi restoran ya da kafen için doluluk ve no-show tahminini nasıl kurabileceğimizi konuşmak istersen, birkaç soruyla başlayabiliriz — hangi verinin elinde olduğuna bakıp ondan yola çıkarız." }
+      ]
+    },
+    "en": {
+      "title": "The System That Predicts Table Occupancy and No-Shows in Restaurants — Before They Happen",
+      "excerpt": "Reservation and POS data can predict table occupancy and no-show risk ahead of time — enough to plan staffing and tables around it?",
+      "content": [
+        { "type": "paragraph", "text": "It's 8:30pm on a Friday, there's a line at the door, the dining room looks packed — yet the POS still shows three tables marked 'reserved,' and nobody showed up; because those three tables sat empty just in case, at least one group in line gave up and left. Come Tuesday, the opposite happens: the room is half empty and there's one extra staff member in the kitchen, because 'Tuesdays are always slow' based on last year's gut feeling. This is one of the most expensive mistakes in restaurant and café operations: table occupancy and no-show prediction is still done by instinct, even though months or years of reservation and sales data are already sitting there unused." },
+        { "type": "heading", "text": "What Does Predicting Table Occupancy and No-Shows Actually Mean for Restaurants?" },
+        { "type": "paragraph", "text": "You can build a system that pulls together your reservation and POS data — date, time, party size, how often a given guest has booked and not shown up before, how far in advance the booking was made, even weather and nearby events like concerts or matches — into one place, run through a simple prediction model. Every day, for every shift, it produces an occupancy forecast and a no-show probability for each booking. Reservations that look risky — say, an 8-top booked a week out from a guest with no prior visit history — get flagged automatically, and a connected SMS/WhatsApp message politely confirms the booking the day before, freeing up unconfirmed tables for the walk-in line or a small overbooking strategy. The same risk score can also drive simple rules, like asking for a small deposit on large group bookings above a certain threshold — a data-backed cutoff instead of a gut call." },
+        { "type": "paragraph", "text": "You don't need to be a chain for this to make sense. A single-location restaurant's reservation book or QR reservation app already holds most of this data; what's missing is a thin layer that pulls it together into a usable forecast. This is closer in size to a mid-sized automation project bolted onto tools you already use than to building new software from scratch. To be honest, this isn't fortune-telling — it's a probability tool: forecasts stay weaker for a newly opened branch or a day with no historical precedent, like a public holiday, which is why the system should always stay a recommendation layer that leaves the final call to the manager, not an autopilot." },
+        { "type": "heading", "text": "A Real Scenario: Sahil Café" },
+        { "type": "paragraph", "text": "Say Sahil Café is a fictional but realistic single-location, 40-table spot on the waterfront. Until now, staffing has been planned from the manager's memory and 'how was this week last year' — some nights the room is packed and a server short, other nights it's half empty and fully staffed. No-shows are a separate headache: a meaningful share of the large group bookings made on weekday evenings simply never show up, and those tables stay closed to walk-ins in the meantime." },
+        { "type": "paragraph", "text": "In the new setup, the reservation app, the POS, and a simple weather API each push their data into a shared table every night; a prediction model runs every morning at 7am and produces the expected occupancy for that day's lunch and dinner shifts, plus a list of at-risk reservations. The manager checks that list each morning: 'Tonight's expecting high occupancy, three reservations are flagged for confirmation.' Automatic confirmation messages go out to those three; two confirm, one cancels, freeing that table for a walk-in group at the door. The weekly staff schedule stops being a copy of last week's and instead gets built the day before, based on that week's forecast — one fewer person on a quiet night, one extra server added for a busy weekend." },
+        { "type": "heading", "text": "How It's Built (Briefly)" },
+        { "type": "paragraph", "text": "There's no need to overcomplicate the technical side; the backbone comes down to a few pieces:" },
+        { "type": "list", "items": [
+          "Combine the reservation app, POS, and any weather/event data into a single database",
+          "A simple statistical model trained on 6-12 months of history to estimate daily/shift occupancy and no-show probability (no need for a large AI model from day one)",
+          "Automatic SMS/WhatsApp confirmation reminders for high-risk reservations",
+          "A one-page dashboard for the manager: today's expected occupancy, at-risk reservations, suggested staffing",
+          "A simple overbooking rule for risky reservations that never get confirmed",
+          "Monthly recalibration of the model against actual outcomes, so forecasts improve over time"
+        ]},
+        { "type": "paragraph", "text": "Worth adding: not every reservation or POS system offers the same level of data access — some have an API, others only an exportable report, which can stretch out integration time a bit. Also, in the first few months the model hasn't seen enough data yet, so forecasts can stay rough; this isn't a system you set up and forget, it's a tool that corrects itself weekly against real outcomes. The overbooking rule should also start conservative — for example, only opening extra tables for reservations with a no-show probability above 50%, capped at 10% of shift capacity overall, then loosening or tightening that cap as real outcomes accumulate." },
+        { "type": "stats", "items": [
+          { "label": "Reduction in no-show rate", "value": "roughly 20-40%" },
+          { "label": "Weekly staff-planning time", "value": "drops to a few minutes" },
+          { "label": "Setup time", "value": "3-6 weeks" }
+        ]},
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Does this make sense for a small, single-location restaurant?" },
+        { "type": "paragraph", "text": "Yes — arguably the impact is bigger for small places, since there's no buffer capacity. A single no-show or a wrong staffing call hits that day's revenue and morale directly. The system needs data history, not chain scale; almost any place with 6+ months of reservation records can start." },
+        { "type": "subheading", "text": "How much historical data does the prediction actually need?" },
+        { "type": "paragraph", "text": "6-12 months of reservation and sales data is enough for a meaningful start. It can be built with less, but early forecasts will be rougher; the model corrects itself against real outcomes every week, so this is a tool that improves over time, not a flawless crystal ball on day one." },
+        { "type": "subheading", "text": "Do weather and local events really make a difference?" },
+        { "type": "paragraph", "text": "For waterfront or garden-seating spots, yes, noticeably — a rainy evening can mean a meaningful share of reservations never show. For indoor, central locations the effect is smaller but still not zero, especially around big local events like matches or concerts." },
+        { "type": "subheading", "text": "Will it integrate with our existing reservation or POS system?" },
+        { "type": "paragraph", "text": "Most common reservation and POS systems offer an API or at least exportable reports; integration is usually a mid-sized automation job that pulls this data regularly into a shared table. There's no need to write a new reservation system from scratch — it's a thin layer added on top of what you already use." },
+        { "type": "subheading", "text": "Can this feed into pricing or deposit decisions too?" },
+        { "type": "paragraph", "text": "Yes, but as a cautious add-on. The same risk score can be used to ask for a small deposit on large group bookings above a certain threshold, or to nudge pricing slightly for early/late slots on nights expecting high demand. It's better treated as a second layer added once occupancy prediction is already working well, not something to build at the same time — trying to do both at once just adds unnecessary complexity to the first phase." },
+        { "type": "paragraph", "text": "If you want to talk about setting up occupancy and no-show prediction for your own restaurant or café, we can start with a few questions about what data you already have and go from there." }
+      ]
+    }
   }
 ]
