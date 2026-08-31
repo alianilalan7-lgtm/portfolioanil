@@ -3170,5 +3170,142 @@
         { "type": "paragraph", "text": "If you want to talk about setting up occupancy and no-show prediction for your own restaurant or café, we can start with a few questions about what data you already have and go from there." }
       ]
     }
+  },
+  {
+    "slug": "what-is-a-webhook-how-systems-trigger-instantly",
+    "publishedAt": "2026-08-31",
+    "readTime": "7 min",
+    "category": "Backend",
+    "tags": ["Webhook", "API", "Backend", "Entegrasyon"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI & SaaS geliştirme hizmetlerim", "href": "/services" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Projen için yazalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Webhook Nedir? İki Sistemin Birbirini Anında Nasıl Tetiklediğini Gerçek Bir Örnekle Anlatıyorum",
+      "excerpt": "Webhook nedir, polling'den farkı ne ve bir Stripe ödemesi saniyeler içinde nasıl bir siparişe dönüşüyor — gerçek bir örnekle anlatıyorum.",
+      "content": [
+        { "type": "paragraph", "text": "Bir e-ticaret sitesi işlettiğini düşün. Müşteri kart bilgilerini giriyor, Stripe ödemeyi onaylıyor — ama bu senin sunucunun hiç haberi olmadan, Stripe'ın kendi altyapısında oluyor. Sistemin bunu nasıl 'öğrenecek'? İki yol var: ya sistemin Stripe'a her birkaç saniyede bir 'ödeme geldi mi, geldi mi, geldi mi?' diye soruyor (buna polling denir) ya da Stripe, ödeme anında sana kendisi haber veriyor. İkinci yöntemin adı webhook — ve bugün internetteki neredeyse her 'anında' entegrasyonun altında bu var: bir WhatsApp mesajının saniyeler içinde CRM'ine düşmesi, GitHub'a kod push'ladığında CI/CD'nin otomatik tetiklenmesi, bir form doldurulduğunda Slack kanalına bildirim gitmesi. Hepsi aynı fikrin farklı kılıklardaki uygulamaları." },
+        { "type": "heading", "text": "Webhook Nedir, Basitçe?" },
+        { "type": "paragraph", "text": "Webhook, bir sistemde bir şey olduğunda — bir ödeme, bir form gönderimi, bir kod push'u — o sistemin, önceden verdiğin bir adrese (URL) otomatik olarak bir HTTP isteği (genellikle POST) atmasıdır. Yani 'bu olay gerçekleştiğinde beni ara, adresim bu' demenin teknik karşılığı. Apartmanda kapıcı örneğine benzetebilirsin: kapıcıya kargon geldi mi diye her saat inip sormak yerine, ona telefon numaranı bırakıyorsun; kargo geldiğinde o seni arıyor. Sen sürekli soru sormak zorunda kalmıyorsun, o olay olduğunda haber veriyor. Bu basit fikir, modern yazılımın büyük kısmının birbirine gerçek zamanlı bağlanmasını sağlıyor — Stripe, GitHub, Shopify, Twilio, WhatsApp Business API, Typeform gibi hemen hemen her ciddi SaaS ürünü webhook destekliyor ve webhook nedir sorusunun cevabı aslında bu kadar basit: olay tabanlı, karşı tarafın başlattığı bir bildirim mekanizması." },
+        { "type": "heading", "text": "Webhook ile Sürekli API Sorgusu (Polling) Arasındaki Fark" },
+        { "type": "paragraph", "text": "Webhook'u anlamanın en kolay yolu alternatifiyle karşılaştırmak. Polling'de senin sistemin belirli aralıklarla karşı tarafa 'yeni bir şey var mı?' diye soruyor; çoğu zaman cevap 'hayır' oluyor ve bu binlerce boşuna istek anlamına geliyor. Webhook'ta ise karşı taraf gerçekten bir şey olduğunda seni arıyor, boşuna soru yok. Fark küçük bir detay gibi görünse de, ölçek büyüdükçe hem sunucu maliyetini hem de olayın fark edilme hızını doğrudan etkiliyor." },
+        { "type": "list", "items": [
+          "Gecikme: Polling'de olay ile fark edilmesi arasında saniyeler-dakikalar geçebilir; webhook'ta genelde saniyenin altında haber alırsın.",
+          "Sunucu yükü: Polling binlerce gereksiz istek üretir, çoğu 'değişiklik yok' cevabıyla sonuçlanır; webhook sadece gerçek olaylarda çalışır.",
+          "Kurulum karmaşıklığı: Polling'i kurmak kolaydır (zamanlanmış bir görev yeter); webhook bir endpoint yazmanı ve güvenliğini düşünmeni ister.",
+          "Ne zaman polling daha mantıklı: karşı sistem webhook desteklemiyorsa, ya da olay sıklığı zaten çok düşükse (günde bir senkronizasyon gibi)."
+        ] },
+        { "type": "heading", "text": "Yaygın Webhook Kullanım Alanları" },
+        { "type": "paragraph", "text": "Webhook'u soyut bir kavram olarak değil, günlük kullandığın araçların arkasında sessizce çalışan bir mekanizma olarak görmek daha kolay anlaşılıyor. Bugün kullandığın birçok entegrasyon aslında bir webhook'un üstüne kurulu:" },
+        { "type": "list", "items": [
+          "Stripe/iyzico: ödeme başarılı veya başarısız olduğunda siparişi güncellemek",
+          "GitHub/GitLab: koda push yapıldığında CI/CD pipeline'ını otomatik tetiklemek",
+          "Shopify/WooCommerce: yeni bir sipariş geldiğinde depo veya muhasebe sistemine haber vermek",
+          "Twilio/WhatsApp Business API: gelen bir mesajı anında CRM'e veya destek ekranına düşürmek",
+          "Typeform/Google Forms: bir form dolduğunda otomatik olarak bir lead kaydı oluşturmak",
+          "Slack/Discord: bir sistemde hata veya önemli bir olay olduğunda kanala bildirim atmak",
+          "Calendly: bir randevu alındığında takvime ve hatırlatma sistemine otomatik eklemek"
+        ] },
+        { "type": "heading", "text": "Bir Webhook Aslında Nasıl Çalışır? (Teknik Perde Arkası)" },
+        { "type": "paragraph", "text": "Perde arkasında üç parça var: bir olay kaynağı (Stripe gibi), senin yazdığın bir 'endpoint' (genelde /webhooks/stripe gibi bir URL) ve aradaki HTTP isteği. Olay gerçekleştiğinde kaynak sistem o URL'ye bir POST isteği atar; gövdesinde (body) genelde JSON formatında olayın detayları vardır — hangi ödeme, ne kadar tutar, hangi müşteri, hangi zaman damgası. Senin endpoint'in bu isteği alır, doğrular ve kendi iş mantığını çalıştırır: veritabanına yazar, bir kuyruğa görev ekler, başka bir servise haber verir. Teknik olarak webhook, normal bir API çağrısından farklı bir protokol değildir — aynı HTTP, aynı JSON. Fark, isteği kimin başlattığıdır: normal API çağrısında sen istersin, webhook'ta karşı taraf sana gönderir." },
+        { "type": "subheading", "text": "İmza doğrulama neden şart?" },
+        { "type": "paragraph", "text": "Endpoint URL'in herkese açık olduğu için, teorik olarak biri sana sahte bir 'ödeme başarılı' isteği gönderip bedava ürün alabilir. Bunu engellemek için ciddi servisler her isteğe bir imza (signature) ekler — sen bu imzayı kendi gizli anahtarınla doğrulayıp isteğin gerçekten o servisten geldiğini teyit edersin. Stripe'ın stripe-signature header'ı, GitHub'ın X-Hub-Signature'ı bunun somut örnekleri. İmza doğrulamadan gelen her isteği işleyen bir webhook endpoint'i, ciddi bir güvenlik açığıdır — bu, bir API anahtarını herkese açık bırakmakla aynı kategoride bir hata." },
+        { "type": "heading", "text": "Webhook mu, WebSocket mü? Karıştırılan İki Kavram" },
+        { "type": "paragraph", "text": "İkisi de 'gerçek zamanlı' kelimesiyle anılınca kolayca karışıyor ama çok farklı işler görüyorlar. Webhook, tek seferlik bir olay bildirimidir — bir şey olur, bir istek gönderilir, bağlantı kapanır. WebSocket ise sürekli açık kalan iki yönlü bir bağlantıdır; bir sohbet uygulamasında mesajların anlık akması, bir borsa ekranında fiyatların sürekli güncellenmesi WebSocket'in işi. Basit bir kural: olay seyrek ve tek yönlüyse (ödeme onayı, form gönderimi) webhook yeterli ve daha basit; sürekli, yoğun, iki yönlü bir veri akışı gerekiyorsa (canlı sohbet, canlı fiyat, ortak düzenleme ekranı) WebSocket'e ihtiyacın var. Çoğu SaaS entegrasyonu aslında webhook'un yettiği türden — bu yüzden WebSocket'e göre çok daha yaygın karşına çıkıyor." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Ödeme Webhook'tan Siparişe Nasıl Dönüşüyor" },
+        { "type": "paragraph", "text": "Küçük bir e-ticaret sitesi işlettiğini düşün. Müşteri kart bilgilerini giriyor, Stripe ödemeyi işliyor — bu senin sunucunun hiç haberi olmadan, Stripe'ın kendi altyapısında gerçekleşiyor. Ödeme onaylandığı an Stripe, senin önceden tanımladığın https://siten.com/webhooks/stripe adresine bir POST isteği atıyor; içinde payment_intent.succeeded olayı ve ödemenin detayları var. Senin endpoint'in şunları yapıyor: önce imzayı doğruluyor; sonra veritabanında ilgili siparişi 'ödendi' olarak işaretliyor; kargo sistemine 'bu siparişi hazırla' diye bir görev düşürüyor; müşteriye otomatik bir teşekkür e-postası tetikliyor. Bütün bunlar, müşteri ekranda 'ödeme başarılı' yazısını görmeden önce, bir-iki saniye içinde oluyor. Peki ağ arızası yüzünden aynı webhook isteği iki kez gelirse ne olur? İyi kurulmuş bir sistem bunu öngörür — her istekle gelen benzersiz olay kimliğini (event id) kontrol eder, aynı kimliği daha önce işlediyse ikinci isteği sessizce yok sayar. Buna idempotency denir ve gerçek dünyada webhook'ların neredeyse hiçbiri bu kontrol olmadan güvenle çalışmaz. Sen hiçbir zaman Stripe'a 'ödeme geldi mi?' diye sormadın — Stripe sana geldi, sen de yalnızca doğru şekilde dinlemeyi kurdun." },
+        { "type": "heading", "text": "Webhook Kurarken Nelere Dikkat Etmeli" },
+        { "type": "paragraph", "text": "Webhook kurmak beş dakikalık bir iş gibi görünür ama sağlam bir kurulumun gözden kaçırılan birkaç önemli detayı var:" },
+        { "type": "list", "items": [
+          "İmza doğrulama: her gelen isteğin gerçekten beklediğin kaynaktan geldiğini teyit et, imzasız isteği reddet.",
+          "İdempotency: aynı olay ağ hatası yüzünden iki kez gelebilir — sistemin aynı ödemeyi iki kez işlememesi lazım.",
+          "Hızlı yanıt ver: endpoint'in isteği alır almaz 200 OK dönmeli, asıl işi arka planda bir kuyrukla yap; yoksa kaynak sistem 'başarısız' sanıp gereksiz yere tekrar dener.",
+          "Retry ve loglama: çoğu servis başarısız webhook'u birkaç kez tekrar dener ama sonsuza kadar değil — başarısız istekleri loglayıp manuel kontrol edebilmelisin.",
+          "Yerel test: Stripe CLI, ngrok gibi araçlarla webhook'u canlıya çıkmadan önce kendi bilgisayarında test edebilirsin."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Tipik webhook gecikmesi", "value": "1 saniyenin altı" },
+          { "label": "Tipik polling gecikmesi (10-60 sn aralıklı sorgu)", "value": "birkaç saniye - birkaç dakika" },
+          { "label": "Güvenli bir webhook endpoint'i kurulum süresi", "value": "yarım gün - birkaç gün (imza doğrulama + test dahil)" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Webhook ile normal bir API çağrısı arasındaki fark tam olarak ne?" },
+        { "type": "paragraph", "text": "Normal bir API çağrısında sen karşı tarafa 'bana şu veriyi ver' diye istekte bulunursun — inisiyatif sende. Webhook'ta inisiyatif karşı taraftadır: bir şey olduğunda o sana bir istek gönderir. Teknik olarak ikisi de aynı protokolü (HTTP) ve genelde aynı formatı (JSON) kullanır; fark isteği kimin, ne zaman başlattığıdır." },
+        { "type": "subheading", "text": "Webhook'lar güvenli mi, biri sahte istek gönderebilir mi?" },
+        { "type": "paragraph", "text": "Doğru kurulmazsa hayır, güvenli değildir — endpoint URL'in herkese açık olduğu için teorik olarak herkes istek atabilir. Bu yüzden imza doğrulama (signature verification) zorunlu kabul edilmeli; imzasız veya yanlış imzalı isteği reddetmeyen bir webhook endpoint'i ciddi bir güvenlik açığıdır. Ayrıca endpoint'ini yalnızca beklenen kaynağın IP aralıklarından gelen isteklere açmak (varsa) ek bir güvenlik katmanı sağlar." },
+        { "type": "subheading", "text": "Webhook endpoint'im geçici olarak çökerse veri kaybolur mu?" },
+        { "type": "paragraph", "text": "Genelde hayır. Stripe, GitHub gibi ciddi servisler başarısız (200 dönmeyen) webhook isteklerini artan aralıklarla saatler, hatta günler boyunca tekrar dener. Ama bu bir garanti değil — bazı servisler belirli bir süre sonra denemeyi bırakır. Kritik iş akışları için endpoint'inin loglarını izlemen ve gerekirse kaynak sistemin kendi panelinden (Stripe Dashboard'daki 'Events' sekmesi gibi) manuel senkronizasyon yapabilmen gerekir." },
+        { "type": "subheading", "text": "Küçük bir işletme veya tek kişilik bir proje webhook'a ne zaman ihtiyaç duyar?" },
+        { "type": "paragraph", "text": "Bir üçüncü parti servisin (ödeme, mesajlaşma, form, CRM) bir olayına anında tepki vermen gerektiği her an. Ödeme onayında sipariş oluşturmak, bir form doldurulduğunda CRM'e lead düşürmek, bir mesaj geldiğinde otomatik yanıt tetiklemek — bunların hepsi webhook'la çözülür. Sadece günde bir kez bir raporu senkronize ediyorsan, zamanlanmış bir görev (cron) muhtemelen webhook'tan daha basit ve yeterlidir." },
+        { "type": "subheading", "text": "Webhook için ayrı bir sunucuya mı ihtiyacım var?" },
+        { "type": "paragraph", "text": "Hayır, çoğu zaman gerekmez. Webhook, mevcut backend'ine eklediğin bir route/endpoint'ten ibarettir — ayrı bir servis kurmana gerek yok. Trafiğin çok büyüdüğü veya birden fazla kaynaktan yüzlerce webhook aynı anda geldiği noktada, bu isteği anında bir kuyruğa (queue) atıp ana uygulamadan ayrı, ölçeklenebilir bir işçi (worker) ile işlemek mantıklı hale gelir; ama küçük-orta ölçekli bir proje için mevcut backend'ine bir endpoint eklemek fazlasıyla yeterlidir." },
+        { "type": "paragraph", "text": "Webhook, iki sistemi birbirine bağlamanın küçük ama kritik bir parçası — API entegrasyonlarının nasıl çalıştığını merak ediyorsan ilgili yazılarıma göz atabilir ya da kendi projendeki bir entegrasyon için /contact üzerinden yazabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "What Is a Webhook? How Two Systems Trigger Each Other Instantly, Explained With a Real Example",
+      "excerpt": "What is a webhook, how is it different from polling an API, and how does a Stripe payment turn into an order in seconds? A real walkthrough.",
+      "content": [
+        { "type": "paragraph", "text": "Say you run an e-commerce site. A customer enters their card details, Stripe approves the payment — and this happens entirely inside Stripe's infrastructure, with your server having no idea it occurred. How does your system find out? There are two ways: either your system keeps asking Stripe 'did a payment come in, did it, did it?' every few seconds (this is called polling), or Stripe tells you itself the instant it happens. The second approach is called a webhook — and it sits under almost every 'instant' integration on the internet today: a WhatsApp message landing in your CRM within seconds, a code push to GitHub automatically triggering CI/CD, a form submission pinging a Slack channel. They're all the same idea wearing different clothes." },
+        { "type": "heading", "text": "What Is a Webhook, Really?" },
+        { "type": "paragraph", "text": "A webhook is a system automatically sending an HTTP request (usually a POST) to a URL you've provided, the moment something happens on its side — a payment, a form submission, a code push. It's the technical version of saying 'call me when this happens, here's my number.' Think of it like leaving your phone number with the building doorman instead of walking down every hour to ask if a package arrived — the doorman calls you the moment it shows up. You stop asking; they start telling. This simple idea is what lets most of modern software connect to each other in real time — Stripe, GitHub, Shopify, Twilio, the WhatsApp Business API, Typeform, and basically every serious SaaS product supports webhooks. That's the honest answer to what is a webhook: an event-driven notification mechanism initiated by the other side." },
+        { "type": "heading", "text": "Webhook vs. Polling an API — What's the Actual Difference" },
+        { "type": "paragraph", "text": "The easiest way to understand a webhook is to compare it to the alternative. With polling, your system asks the other side 'anything new?' at fixed intervals — most of the time the answer is 'no,' which means thousands of wasted requests. With a webhook, the other side calls you only when something actually happened — no wasted questions. It sounds like a small detail, but at scale it directly affects both server cost and how fast you notice an event." },
+        { "type": "list", "items": [
+          "Latency: with polling, the gap between an event and you noticing it can be seconds to minutes; with a webhook it's usually under a second.",
+          "Server load: polling generates thousands of requests that mostly return 'nothing changed'; a webhook only fires on real events.",
+          "Setup complexity: polling is easy to set up (a scheduled job is enough); a webhook means writing an endpoint and thinking about its security.",
+          "When polling still makes sense: when the other system doesn't support webhooks, or the event is already low-frequency, like a once-a-day sync."
+        ] },
+        { "type": "heading", "text": "Common Places Webhooks Show Up" },
+        { "type": "paragraph", "text": "It's easier to grasp webhooks as the mechanism running quietly behind tools you already use, rather than as an abstract concept. A lot of the integrations you rely on daily are built on top of one:" },
+        { "type": "list", "items": [
+          "Stripe/iyzico: updating an order the moment a payment succeeds or fails",
+          "GitHub/GitLab: triggering a CI/CD pipeline automatically on a code push",
+          "Shopify/WooCommerce: notifying a warehouse or accounting system the instant a new order comes in",
+          "Twilio/WhatsApp Business API: dropping an incoming message straight into a CRM or support inbox",
+          "Typeform/Google Forms: creating a lead record automatically when a form is submitted",
+          "Slack/Discord: posting a channel alert when a system hits an error or a key event",
+          "Calendly: adding a booked meeting to a calendar and reminder system automatically"
+        ] },
+        { "type": "heading", "text": "How a Webhook Actually Works Under the Hood" },
+        { "type": "paragraph", "text": "Behind the scenes there are three pieces: an event source (Stripe, say), an 'endpoint' you write (typically a URL like /webhooks/stripe), and the HTTP request connecting them. When the event happens, the source system sends a POST request to that URL; the body usually carries the event details as JSON — which payment, how much, which customer, what timestamp. Your endpoint receives the request, verifies it, and runs its own business logic: writes to a database, queues a job, notifies another service. Technically, a webhook isn't a different protocol from a normal API call — same HTTP, same JSON. The difference is who initiates it: in a normal API call, you ask; in a webhook, the other side sends." },
+        { "type": "subheading", "text": "Why signature verification matters" },
+        { "type": "paragraph", "text": "Because the endpoint URL is public, in theory anyone could send you a fake 'payment succeeded' request and walk away with a free product. To prevent this, serious services attach a signature to every request — you verify it with your own secret key to confirm the request genuinely came from that service. Stripe's stripe-signature header and GitHub's X-Hub-Signature are concrete examples. A webhook endpoint that processes any request without verifying its signature is a real security hole — the same category of mistake as leaving an API key exposed publicly." },
+        { "type": "heading", "text": "Webhook or WebSocket? Two Concepts People Mix Up" },
+        { "type": "paragraph", "text": "Both get lumped under 'real-time,' but they do very different jobs. A webhook is a one-off event notification — something happens, a request goes out, the connection closes. A WebSocket is a persistent, two-way connection that stays open; it's what powers messages streaming instantly in a chat app or prices updating continuously on a trading screen. A simple rule of thumb: if the event is infrequent and one-directional, like a payment confirmation or a form submission, a webhook is enough and simpler; if you need continuous, high-frequency, two-way data flow, like live chat, live pricing, or a shared editing screen, you need a WebSocket. Most SaaS integrations actually fall into the webhook camp — which is why you run into webhooks far more often than WebSockets." },
+        { "type": "heading", "text": "A Real Scenario: How a Payment Webhook Turns Into an Order" },
+        { "type": "paragraph", "text": "Picture running a small e-commerce store. A customer enters their card, Stripe processes the payment — entirely inside Stripe's own infrastructure, with your server none the wiser. The instant the payment is confirmed, Stripe sends a POST request to the URL you registered, say https://yoursite.com/webhooks/stripe, carrying a payment_intent.succeeded event with the payment details. Your endpoint does three things: verifies the signature; marks the matching order as 'paid' in your database; queues a 'prepare this order' task for fulfillment and fires an automatic thank-you email. All of this happens in a second or two — before the customer even sees the 'payment successful' screen. Now, what if a network glitch causes that same webhook request to arrive twice? A well-built system anticipates this — it checks the unique event ID attached to every request, and if it's already processed that ID, it silently ignores the duplicate. This is called idempotency, and in practice almost no webhook integration is safe to run without it. You never once asked Stripe 'did the payment come in?' — Stripe told you, and all you had to build was listening for it correctly." },
+        { "type": "heading", "text": "What to Watch Out for When Setting Up a Webhook" },
+        { "type": "paragraph", "text": "Setting up a webhook looks like a five-minute job, but a solid setup has a few details that are easy to miss:" },
+        { "type": "list", "items": [
+          "Signature verification: confirm every incoming request genuinely comes from the source you expect, and reject anything unsigned.",
+          "Idempotency: the same event can arrive twice because of a network retry — your system shouldn't process the same payment twice.",
+          "Respond fast: your endpoint should return 200 OK the instant it receives the request, and do the real work in a background queue — otherwise the source system assumes failure and keeps retrying.",
+          "Retries and logging: most services retry a failed webhook a few times, but not forever — you need to log failures somewhere you can check manually.",
+          "Test locally: tools like the Stripe CLI or ngrok let you test a webhook on your own machine before it ever goes live."
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Typical webhook latency", "value": "under 1 second" },
+          { "label": "Typical polling latency (10-60s interval)", "value": "a few seconds to a few minutes" },
+          { "label": "Time to set up a secure webhook endpoint", "value": "half a day to a few days, signature verification and testing included" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "What's the actual difference between a webhook and a normal API call?" },
+        { "type": "paragraph", "text": "In a normal API call, you ask the other side for data — you hold the initiative. With a webhook, the other side holds it: when something happens, they send you a request. Technically both use the same protocol (HTTP) and usually the same format (JSON); the difference is who initiates the request, and when." },
+        { "type": "subheading", "text": "Are webhooks secure — can someone send a fake request?" },
+        { "type": "paragraph", "text": "Not if it's set up carelessly — since the endpoint URL is public, in theory anyone can send a request to it. That's why signature verification should be treated as mandatory; a webhook endpoint that accepts unsigned or incorrectly signed requests is a real security hole. Restricting the endpoint to the source's published IP ranges, where available, adds another layer." },
+        { "type": "subheading", "text": "If my webhook endpoint goes down temporarily, is data lost?" },
+        { "type": "paragraph", "text": "Usually not. Services like Stripe and GitHub retry a failed webhook — anything that doesn't return 200 — at increasing intervals over hours or even days. But that's not a guarantee — some services eventually give up. For anything critical, you should monitor your endpoint's logs and be able to manually reconcile from the source system's own dashboard, like Stripe's 'Events' tab." },
+        { "type": "subheading", "text": "When does a small business or a solo project actually need a webhook?" },
+        { "type": "paragraph", "text": "Whenever you need to react instantly to an event from a third-party service — payments, messaging, forms, a CRM. Creating an order on payment confirmation, dropping a lead into a CRM when a form is submitted, triggering an automatic reply when a message arrives — all of these are webhook problems. If you're only syncing a report once a day, a scheduled job (cron) is probably simpler and enough." },
+        { "type": "subheading", "text": "Do I need a separate server for a webhook, or can I add it to my existing backend?" },
+        { "type": "paragraph", "text": "No, usually not. A webhook is just a route or endpoint you add to your existing backend — you don't need a separate service for it. Once traffic grows large, or hundreds of webhooks arrive at once from multiple sources, it starts to make sense to drop the request straight into a queue and process it with a separate, scalable worker; but for a small-to-medium project, adding one endpoint to your existing backend is more than enough." },
+        { "type": "paragraph", "text": "A webhook is a small but critical piece of how two systems connect to each other — if you're curious how API integrations actually work, feel free to look through related posts, or reach out via /contact about an integration for your own project." }
+      ]
+    }
   }
 ]
