@@ -3418,5 +3418,98 @@
         { "type": "paragraph", "text": "Used in the right place, cache can meaningfully change both an app's speed and its server bill — but set up wrong, it quietly serves stale data instead. Rather than adding cache before understanding what's actually slow and how often the underlying data changes, it's always healthier to measure the real bottleneck first. If you want to talk through a similar performance problem, feel free to reach out via /contact." }
       ]
     }
+  },
+  {
+    "slug": "construction-subcontractor-timesheet-cost-tracking-system",
+    "publishedAt": "2026-09-04",
+    "readTime": "6 min",
+    "category": "İnşaat",
+    "tags": ["İnşaat", "Şantiye Yönetimi", "Otomasyon", "Maliyet Takibi"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "İnşaat ve şantiye için özel yazılım", "href": "/services" },
+      { "label": "Hakediş raporlamasını otomatikleştirmek", "href": "/blog/construction-progress-payment-reporting-automation" },
+      { "label": "Şantiyen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Şantiyede Taşeron Puantajı Neden Hâlâ WhatsApp'ta Tutuluyor — ve Hakediş Kavgasını Bitiren Puantaj Takip Sistemi Nasıl Kurulur?",
+      "excerpt": "Taşeron puantajı kağıtta ve WhatsApp'ta tutulunca hakediş masasında kavga çıkıyor. Şantiyeler için puantaj takip sistemi nasıl kurulur, anlatıyoruz.",
+      "content": [
+        { "type": "paragraph", "text": "Ay sonu, hakediş masası. Bir yanda ustabaşının kağıda karalanmış puantaj listesi, diğer yanda taşeronun kendi tuttuğu Excel. İkisi birbirini tutmuyor — bir haftada dört günlük fark var, karşılığı da altı-yedi bin lira. Kimin haklı olduğunu kimse tam bilmiyor, çünkü o gün şantiyede kaç kişinin kaç saat çalıştığını gerçek zamanlı kaydeden hiçbir sistem yok. Bu, orta ölçekli şantiyelerde ayda en az bir kez yaşanan ve kimsenin fark etmeden kâr marjını yiyen bir sorun." },
+        { "type": "heading", "text": "Puantaj takip sistemi inşaat ve şantiye yönetimi için ne anlama geliyor?" },
+        { "type": "paragraph", "text": "Burada eksik olan şey karmaşık bir yazılım değil, tek bir doğru kayıt kaynağı. Özel bir saha puantaj ve maliyet takip sistemi tam olarak bunu sağlıyor: her sabah ve akşam ustabaşı ya da taşeron temsilcisi, iki dakikada telefonundan basit bir formu dolduruyor — kim geldi, hangi işte çalıştı, kaç saat. Sistem bu veriyi, o taşeronla önceden tanımlanmış sözleşme koşullarına (günlük yevmiye, iş kalemi bazlı birim fiyat, fazla mesai kuralı) göre otomatik olarak maliyete çeviriyor. Birden fazla şantiye çalıştıran bir ofis için bütün siteler tek panelde görünüyor: hangi şantiyede hangi taşeronun o an kaç işçisi var ve bugüne kadar ne kadar hakediş birikmiş. Hakediş toplantısına kağıtla değil, o ana kadarki gerçek rakamla oturuyorsun." },
+        { "type": "heading", "text": "Neden Excel ve WhatsApp yetmiyor?" },
+        { "type": "paragraph", "text": "Çoğu şantiye zaten bir şeyler kaydediyor — sorun kayıt tutmamak değil, tek bir doğru kaynağın olmaması. WhatsApp'a atılan bir fotoğraf zaman damgalı ama aranabilir değil; ustabaşının deftere yazdığı liste taşeronun kendi Excel'iyle asla otomatik karşılaştırılmıyor; hafta sonunda biri oturup elle toplama yapıyor ve hatalar da tam o noktada giriyor. Daha kötüsü, anlaşmazlık çıktığında elde nötr bir kayıt yok — sadece iki taraflı iki farklı sayı var ve kim haklı belli değil. Genel amaçlı bir ERP de bu boşluğu doldurmuyor; ERP'ler faturalama ve genel muhasebe için tasarlanmış, sahadaki günlük operasyonel gerçeği yakalamak için değil." },
+        { "type": "heading", "text": "Gerçek bir senaryo: Meridyen İnşaat'ın üç şantiyesi" },
+        { "type": "paragraph", "text": "Meridyen İnşaat, aynı anda üç farklı projede çalışan orta ölçekli bir yüklenici — kaba inşaat, elektrik, sıhhi tesisat ve boya için toplam altı taşeronla anlaşmalı. Eskiden her şantiye şefi kendi tarzında puantaj tutuyordu: biri deftere, biri WhatsApp grubuna, biri de haftalık bir Excel'e. Ay sonunda muhasebe bu üç farklı formatı elle birleştirmeye çalışıyor, hakediş toplantıları üç dört saat sürüyor ve neredeyse her seferinde en az bir taşeronla 'biz daha fazla adam getirdik' tartışması yaşanıyordu. Şirketin asıl kaybı sadece zaman değildi — anlaşmazlıkları kapatmak için genelde taşeronun lehine yuvarlanan tutarlardı." },
+        { "type": "paragraph", "text": "Sistem kurulduktan sonra değişen şey basit: her sabah şantiye şefi, o gün sahada olan herkesi iki dakikalık bir formla giriyor; akşam da varsa fazla mesaiyi ekliyor. Ofis, üç şantiyeyi ve altı taşeronu tek panelden anlık görüyor. Sistem her hafta, hakediş toplantısından önce otomatik bir özet çıkarıyor: taşeron bazında kaç işçi-gün, hangi iş kalemi, ne kadar tutar. Taşeronun kendi bildirdiği sayı ile şantiye şefinin kaydı arasında belirlenen eşiğin (örneğin bir günde iki kişiden fazla) üzerinde fark varsa, sistem bunu toplantıdan önce işaretliyor — böylece tartışma masada değil, veriyle önceden çözülüyor. Meridyen'de artık hakediş toplantıları kısa sürüyor, çünkü tartışılacak asıl fark sayısı zaten belli." },
+        { "type": "heading", "text": "Nasıl kurulur (kısaca)" },
+        { "type": "list", "items": [
+          "Basit mobil/web form: şantiye şefi her gün işçi listesini ve saatini 1-2 dakikada girer; bağlantı yoksa bile offline çalışır, sinyal gelince senkronize olur.",
+          "Taşeron sözleşme koşulları (günlük yevmiye, iş kalemi bazlı birim fiyat, fazla mesai kuralı) sisteme bir kere tanımlanır; maliyet otomatik hesaplanır.",
+          "Şantiye bazlı canlı panel: hangi taşeronun kaç işçisi sahada, o ana kadar ne kadar hakediş birikmiş.",
+          "Haftalık otomatik özet ve anomali uyarısı: taşeronun bildirdiği sayı ile saha kaydı arasındaki fark eşiği aşarsa işaretlenir.",
+          "İsteğe bağlı: şantiye fotoğraflarından basit bir görsel sayımla çapraz kontrol.",
+          "Mevcut muhasebe/ERP'ye haftalık veya aylık dışa aktarım (Excel veya API üzerinden)."
+        ] },
+        { "type": "paragraph", "text": "Bunun sihirli bir çözüm olmadığını da söylemek gerek. Sistem, şantiye şefinin her gün disiplinli şekilde veri girmesine bağlı — o girmezse veri boşluğu oluşur ve sistem yine kağıda döner. Aynı şekilde, taşeron sözleşme koşulları net tanımlanmamışsa (yevmiye mi, iş kalemi bazlı mı, kimin fazla mesaisi hangi oranda) maliyet hesabı da yanlış çıkar. Bu yüzden kurulumun ilk haftası genelde sözleşme şartlarını netleştirmeye gidiyor — teknik kısımdan çok, süreci netleştirme işi." },
+        { "type": "stats", "items": [
+          { "label": "Hakediş toplantısı süresi", "value": "3-4 saatten 30-45 dakikaya" },
+          { "label": "Aylık puantaj anlaşmazlığı", "value": "ayda 2-3 kezden neredeyse sıfıra" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Taşeronlar bu sistemi kullanmayı reddetmez mi?" },
+        { "type": "paragraph", "text": "İlk günlerde biraz direnç oluyor, çünkü yeni bir alışkanlık. Ama sistem sadece işvereni değil taşeronu da koruyor — kendi hakedişini kanıtlayan resmi, zaman damgalı bir kayıt oluyor elinde. İyi kurulmuş sistemlerde taşeron da kendi ekibinin girişini görüyor; şeffaflık her iki tarafı da rahatlatıyor, çünkü artık kimse hafızasına ya da tek taraflı deftere güvenmek zorunda kalmıyor." },
+        { "type": "subheading", "text": "Bu, mevcut muhasebe/ERP yazılımımızın yerine mi geçiyor?" },
+        { "type": "paragraph", "text": "Hayır. ERP genelde faturalama, genel muhasebe ve resmi kayıtları yönetir; bu sistem sahadaki günlük operasyonel veriyi yakalayıp ERP'ye temiz ve doğrulanmış bir veri olarak aktarır. İkisi rakip değil, biri diğerinin girdisini düzeltiyor." },
+        { "type": "subheading", "text": "Küçük bir şantiyede buna gerçekten ihtiyaç var mı?" },
+        { "type": "paragraph", "text": "Tek şantiyesi ve bir-iki taşeronu olan küçük bir yüklenici için basit bir Excel şablonu bile yeterli olabilir. Sistemin asıl değeri, iki ya da daha fazla eşzamanlı şantiye ve üçten fazla taşeronla çalışırken ortaya çıkıyor — o noktada manuel takip gerçekten kırılmaya başlıyor ve hata payı büyüyor." },
+        { "type": "subheading", "text": "Kurulum ne kadar sürer?" },
+        { "type": "paragraph", "text": "Şantiye şefleri için mobil form tarafı genelde yarım günlük bir eğitimle öğreniliyor. Taşeron sözleşme koşullarının sisteme tanımlanması ve panelin kurulması birkaç haftalık, odaklı bir iş — büyük bir yazılım projesi değil." },
+        { "type": "subheading", "text": "Sistemdeki kayıtlar, taşeronla çıkan bir hukuki anlaşmazlıkta kanıt olarak kullanılabilir mi?" },
+        { "type": "paragraph", "text": "Destekleyici kanıt olarak faydalı olabilir — zaman damgalı, kim tarafından girildiği belli bir kayıt, sözlü iddiadan çok daha güçlü bir dayanak sunar. Ama sözleşmenin kendisinin yerine geçmez; sistem operasyonel takip için tasarlanmıştır, resmi bir hukuki belge değildir. Bu yüzden taşeronla yapılan sözleşmede puantaj sürecinin bu şekilde tutulacağının ve tarafların bunu kabul ettiğinin açıkça yazması, kaydın olası bir uyuşmazlıkta ağırlığını artırır." },
+        { "type": "paragraph", "text": "Kendi şantiyen ya da birden fazla proje yürüten ofisin için benzer bir puantaj ve maliyet takip sistemini konuşmak istersen, birkaç soruyla başlayabiliriz." }
+      ]
+    },
+    "en": {
+      "title": "Why Construction Subcontractor Timesheets Are Still Tracked on WhatsApp — and How a Real Timesheet Tracking System Ends the Progress-Payment Fights",
+      "excerpt": "When subcontractor timesheets live on paper and WhatsApp, progress-payment meetings turn into fights. Here's how a real timesheet tracking system fixes it.",
+      "content": [
+        { "type": "paragraph", "text": "End of the month, sitting down for the progress-payment meeting. On one side, the foreman's timesheet scribbled on paper; on the other, the subcontractor's own spreadsheet. They don't match — four days' difference in a single week, worth six or seven thousand lira. Nobody really knows who's right, because no system captured, in real time, how many people worked how many hours on site that day. This happens at least once a month on most mid-sized construction sites, and it quietly eats into the margin without anyone noticing." },
+        { "type": "heading", "text": "What a subcontractor timesheet tracking system means for construction management" },
+        { "type": "paragraph", "text": "What's missing here isn't complicated software — it's a single source of truth. A dedicated site timesheet and cost tracking system does exactly that: every morning and evening, the foreman or the subcontractor's representative fills out a simple form on their phone in two minutes — who showed up, what they worked on, how many hours. The system automatically converts that into cost based on the contract terms already defined for that subcontractor (daily wage, unit price per work item, overtime rules). For an office running multiple sites, every project shows up on one panel: which subcontractor has how many workers on which site right now, and how much has accrued toward their payment so far. You walk into the progress-payment meeting with real numbers instead of paper." },
+        { "type": "heading", "text": "Why Excel and WhatsApp aren't enough" },
+        { "type": "paragraph", "text": "Most sites already record something — the problem isn't the absence of records, it's the absence of one authoritative source. A photo dropped into WhatsApp is timestamped but not searchable; the list the foreman writes in a notebook is never automatically checked against the subcontractor's own spreadsheet; someone sits down at week's end and reconciles by hand, and that's exactly where errors creep in. Worse, when a dispute happens there's no neutral record — just two different numbers from two sides, and no way to tell who's right. A general-purpose ERP doesn't fill this gap either; ERPs are built for invoicing and general accounting, not for capturing the daily operational reality on site." },
+        { "type": "heading", "text": "A real scenario: Meridyen İnşaat's three sites" },
+        { "type": "paragraph", "text": "Meridyen İnşaat is a mid-sized contractor running three projects at once, under contract with six subcontractors across structural work, electrical, plumbing, and painting. Each site supervisor used to keep timesheets their own way — one in a notebook, one in a WhatsApp group, one in a weekly spreadsheet. At month's end, accounting tried to manually merge three different formats, progress-payment meetings ran three to four hours, and almost every time there was an argument with at least one subcontractor over 'we brought more people than that.' The real loss wasn't just time — it was the amounts that usually got rounded in the subcontractor's favor just to close the argument." },
+        { "type": "paragraph", "text": "After the system went in, what changed was simple: every morning the site supervisor logs everyone on site that day through a two-minute form; in the evening, they add any overtime. The office sees all three sites and six subcontractors live, on one panel. Each week, before the progress-payment meeting, the system generates an automatic summary: worker-days per subcontractor, per work item, with the amount owed. If the subcontractor's own reported headcount differs from the supervisor's log by more than a set threshold (say, more than two people in a day), the system flags it before the meeting — so the dispute gets resolved with data beforehand, not argued over at the table. At Meridyen, progress-payment meetings are now short, because the actual point of disagreement is already known going in." },
+        { "type": "heading", "text": "How it's built (briefly)" },
+        { "type": "list", "items": [
+          "A simple mobile/web form: the site supervisor logs the worker list and hours in 1-2 minutes a day; it works offline too, syncing once there's signal.",
+          "Subcontractor contract terms (daily wage, unit price per work item, overtime rules) are defined once in the system; cost is calculated automatically.",
+          "A live per-site panel: how many of which subcontractor's workers are on site, and how much has accrued so far.",
+          "Weekly automatic summary and anomaly alerts: flags when the subcontractor's reported count and the site log diverge past a threshold.",
+          "Optional: a simple visual headcount from site photos as a cross-check.",
+          "Weekly or monthly export to your existing accounting/ERP system (via Excel or API)."
+        ] },
+        { "type": "paragraph", "text": "It's worth saying this isn't magic. The system depends on the site supervisor entering data disciplined every day — if they don't, you get a data gap and end up back on paper. Likewise, if the subcontractor's contract terms aren't clearly defined (daily wage or per-item, whose overtime at what rate) the cost calculation comes out wrong too. That's why the first week of setup is usually spent clarifying contract terms — more a matter of nailing down the process than the technical build." },
+        { "type": "stats", "items": [
+          { "label": "Progress-payment meeting length", "value": "from 3-4 hours to 30-45 minutes" },
+          { "label": "Monthly timesheet disputes", "value": "from 2-3 a month to nearly zero" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Won't subcontractors refuse to use this?" },
+        { "type": "paragraph", "text": "There's some resistance in the first few days, because it's a new habit. But the system protects the subcontractor too, not just the contractor — they end up with an official, timestamped record proving their own payment claim. In well-set-up systems, the subcontractor can see their own team's entries too; the transparency puts both sides at ease, because nobody has to rely on memory or a one-sided notebook anymore." },
+        { "type": "subheading", "text": "Does this replace our existing accounting/ERP software?" },
+        { "type": "paragraph", "text": "No. ERP generally handles invoicing, general accounting, and official records; this system captures the daily operational data on site and feeds it into the ERP as clean, verified data. They're not competing — one corrects the other's input." },
+        { "type": "subheading", "text": "Does a small site really need this?" },
+        { "type": "paragraph", "text": "For a small contractor with one site and one or two subcontractors, a simple spreadsheet template can be enough. The system's real value shows up once you're running two or more concurrent sites with more than three subcontractors — that's the point where manual tracking genuinely starts to break down and the margin for error grows." },
+        { "type": "subheading", "text": "How long does setup take?" },
+        { "type": "paragraph", "text": "Site supervisors usually learn the mobile form side with half a day of training. Defining subcontractor contract terms in the system and setting up the panel is a focused job that takes a few weeks — not a big software project." },
+        { "type": "subheading", "text": "Can the records be used as evidence if a legal dispute with a subcontractor comes up?" },
+        { "type": "paragraph", "text": "They can be useful as supporting evidence — a timestamped record with a clear author is a much stronger basis than a verbal claim. But it doesn't replace the contract itself; the system is built for operational tracking, not as a formal legal document. That's why it helps to state explicitly in the subcontractor agreement that timesheets will be kept this way and that both parties accept it — that clause is what gives the record real weight in a dispute." },
+        { "type": "paragraph", "text": "If you want to talk through a similar timesheet and cost tracking system for your own site or an office running multiple projects, we can start with a few questions." }
+      ]
+    }
   }
 ]
