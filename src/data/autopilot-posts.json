@@ -3511,5 +3511,148 @@
         { "type": "paragraph", "text": "If you want to talk through a similar timesheet and cost tracking system for your own site or an office running multiple projects, we can start with a few questions." }
       ]
     }
+  },
+  {
+    "slug": "ai-model-selection-small-fast-vs-large-smart",
+    "publishedAt": "2026-09-07",
+    "readTime": "8 min",
+    "category": "AI",
+    "tags": ["AI", "LLM", "Model Seçimi", "Yazılım Geliştirme"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Yapay zeka API maliyeti nasıl hesaplanır", "href": "/blog/ai-api-cost-token-economics-explained" },
+      { "label": "LLM aslında nasıl çalışır", "href": "/blog/how-llms-actually-work-tokens-context-hallucinations" },
+      { "label": "Projen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Hangi Yapay Zeka Modelini Seçmelisin? Küçük-Hızlı mı Büyük-Akıllı mı, Hangi İş İçin Hangisi",
+      "excerpt": "GPT-5 mi GPT-5-mini mi, Claude Sonnet mi Haiku mu? Hangi yapay zeka modelini seçmen gerektiğini iş türüne göre, gerçek maliyet ve hız farklarıyla anlatıyorum.",
+      "content": [
+        { "type": "paragraph", "text": "Bir özelliğe yapay zeka eklemeye karar verdin, API dokümanını açtın ve karşına bir liste çıktı: GPT-5, GPT-5-mini, Claude Sonnet, Claude Haiku, Gemini Pro, Gemini Flash... Hangi yapay zeka modelini seçmelisin? Çoğu geliştirici bu soruyu yanlış soruyor. 'En iyi model hangisi' diye sormak yerine 'bu iş için hangisi yeterli' diye sormak lazım, çünkü doğru cevap neredeyse hiçbir zaman tek bir model değil — işe göre değişen bir seçim." },
+        { "type": "heading", "text": "Hangi Yapay Zeka Modelini Seçmelisin? Küçük-Hızlı ile Büyük-Akıllı Arasındaki Fark Aslında Ne?" },
+        { "type": "paragraph", "text": "Model ailelerinin çoğu artık aynı 'akıl' seviyesinden birkaç boy satıyor: bir 'mini' veya 'flash' sürüm, bir orta seviye, bir de en üst düzey 'akıllı' sürüm. Aradaki fark ham parametre sayısından çok, modelin ne kadar 'düşünmeye' zorlandığı ve ne kadar geniş bir örnekle eğitildiği. Küçük modeller, dar ve tekrarlayan görevlerde büyük modellere şaşırtıcı derecede yakın sonuç verecek şekilde damıtılmış (distilled) modellerdir; hız ve maliyet için tasarlanmışlardır. Büyük modeller ise çok adımlı akıl yürütme, belirsizliği tolere etme ve az örnekle genelleme yapma konusunda daha güçlüdür — ama bu gücün bir bedeli var." },
+        { "type": "paragraph", "text": "Üç eksende fark ediyorlar: maliyet, hız ve yetenek. Deneyimlerime göre küçük-hızlı modeller genelde 1 milyon girdi tokenı için 0,15–0,40 dolar aralığında fiyatlanıyor ve 200-600 milisaniyede yanıt dönüyor; büyük-akıllı modeller ise aynı token miktarı için 2–15 dolar arasına çıkabiliyor ve karmaşık görevlerde yanıt süresi 1-4 saniyeye kadar uzayabiliyor. Bu, on kat maliyet farkı ve genelde üç-beş kat gecikme farkı demek — küçük ölçekte önemsiz görünse de, ayda milyonlarca istek işleyen bir sistemde bu fark aylık faturayı doğrudan belirliyor." },
+        { "type": "paragraph", "text": "'Madem büyük model daha akıllı, neden her zaman onu kullanmıyoruz?' sorusu haklı bir itiraz. Cevap sadece maliyet değil. Büyük modellerin rate limit'leri (dakikada işlenebilecek istek sayısı) genelde küçük modellerden daha kısıtlı olduğu için, yüksek trafikli bir uygulamada darboğaz yaratabiliyorlar. Ayrıca bazı küçük modeller açık kaynak olarak sunuluyor ve kendi sunucunda çalıştırabiliyorsun — bu da hassas veriyi hiç dışarı çıkarmadan işlemek isteyen sağlık, hukuk veya finans uygulamaları için önemli bir avantaj. Kısacası büyük model her zaman 'daha iyi' değil, sadece belli eksenlerde daha güçlü; küçük model de bir 'ucuz alternatif' değil, kendi başına doğru araç olabiliyor." },
+        { "type": "heading", "text": "Küçük-Hızlı Model Ne Zaman Yeterli?" },
+        { "type": "paragraph", "text": "Görev ne kadar dar tanımlı ve tekrarlıysa, küçük model o kadar iyi çalışıyor. Pratikte şu işlerde küçük-hızlı modeller büyük modelle neredeyse aynı kaliteyi, çok daha ucuza ve hızlı veriyor:" },
+        { "type": "list", "items": [
+          "Sınıflandırma / etiketleme — bir metnin hangi kategoriye, hangi duyguya, hangi önceliğe ait olduğunu belirlemek",
+          "Basit veri çıkarma (extraction) — bir e-postadan tarih, tutar, sipariş numarası gibi sabit alanları çekmek",
+          "Kısa özetleme — bir yorumu veya kısa bir metni 1-2 cümleye indirmek",
+          "Yönlendirme (routing) katmanı — kullanıcı mesajını hangi akışa, hangi ekibe, hangi büyük modele gönderileceğine karar vermek",
+          "İçerik moderasyonu ve filtreleme — spam, uygunsuz içerik veya basit kural ihlallerini yakalamak",
+          "Sabit bir bilgi tabanından basit soru-cevap — SSS tarzı, tek adımlı sorular"
+        ]},
+        { "type": "paragraph", "text": "Bu görevlerin ortak noktası: girdi ve beklenen çıktı formatı belli, karar tek adımda veriliyor, 'yaratıcılık' veya çok adımlı planlama gerekmiyor. Böyle bir işte büyük modeli kullanmak, bir zarfı taşımak için kamyon kiralamak gibi — çalışır ama gereksiz yere pahalı ve yavaştır." },
+        { "type": "heading", "text": "Büyük-Akıllı Model Ne Zaman Şart?" },
+        { "type": "paragraph", "text": "Bazı işler küçük modelde sessizce bozuluyor — hata vermiyor, sadece yanlış veya sığ cevap veriyor, ve bunu fark etmek zor oluyor. Büyük modelin gerçekten fark yarattığı durumlar şunlar:" },
+        { "type": "list", "items": [
+          "Çok adımlı planlama ve 'agent' akışları — bir hedefe ulaşmak için ara adımları kendi kurgulaması gereken görevler",
+          "Belirsiz veya eksik tanımlı talimatlar — kullanıcının tam ne istediğini metinden çıkarmak gereken durumlar",
+          "Kod üretme ve hata ayıklama — özellikle birden fazla dosya/bağlamı aynı anda tutması gereken işler",
+          "Hukuki, finansal veya tıbbi metin analizi — nüansın ve bağlamın önemli olduğu, hata payının düşük olduğu alanlar",
+          "Uzun ve dağınık bağlamı sentezleme — RAG ile gelen birden fazla kaynağı tutarlı, çelişkisiz bir cevaba dönüştürmek",
+          "Yaratıcı yazım ve marka sesini koruyan içerik — kalıp cümlelerin hemen fark edildiği işler"
+        ]},
+        { "type": "paragraph", "text": "Buradaki ortak nokta, görevin doğru cevabının önceden net olmaması ve modelin kendi başına akıl yürütmesi gerekmesi. Bu tür işlerde küçük modeli kullanmak kısa vadede ucuz görünür ama üretilen hatalı çıktıları düzeltmek için harcanan insan zamanı, kazanılan model maliyetinden fazlasını götürür." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Bir Destek Bileti Sistemini Model Karışımıyla Kurmak" },
+        { "type": "paragraph", "text": "Orta ölçekli bir SaaS şirketi düşünelim: ayda yaklaşık 10.000 destek bileti alıyorlar. Eskiden her bilet doğrudan büyük bir modele gidiyordu — çalışıyordu ama fatura hızla büyüyordu. Kurdukları sistem şöyle işliyor: bilet geldiği anda küçük-hızlı bir model, konuyu (faturalama, teknik sorun, iptal talebi, genel soru) ve aciliyeti sınıflandırıyor; bu adım 300 milisaniyeden kısa sürüyor ve pratikte tokene göre neredeyse bedava sayılabilecek bir maliyette." },
+        { "type": "paragraph", "text": "Sınıflandırılan biletlerin yaklaşık yüzde 70-80'i, doğrudan sabit bir bilgi tabanından cevaplanabilecek tekrarlayan sorular (şifre sıfırlama, fatura nerede, plan nasıl değiştirilir). Bunlar da yine küçük modelle, bilgi tabanından çekilen pasajlarla yanıtlanıyor ve müşteri temsilcisine hiç düşmüyor. Geriye kalan yüzde 20-30'luk dilim — öfkeli müşteri, birden fazla sistemi ilgilendiren teknik arıza, iade/iptal gibi karar gerektiren durumlar — otomatik olarak büyük-akıllı modele veya doğrudan insana yönlendiriliyor. Büyük model burada hem bağlamı (müşterinin geçmiş biletleri, plan bilgisi) hem de duygusal tonu dikkate alarak taslak bir cevap hazırlıyor, temsilci onaylayıp gönderiyor." },
+        { "type": "paragraph", "text": "Sonuç: toplam model maliyetinin büyük kısmı ucuz küçük model tarafında kalıyor, pahalı büyük model sadece gerçekten ona ihtiyaç duyan yüzde 20-30'luk dilimde çalışıyor. Şirket, tüm biletleri tek bir büyük modelden geçirmeye kıyasla model faturasını kabaca yarıya indirdiğini, üstelik ortalama yanıt süresinin de kısaldığını gördü — çünkü basit biletler artık kuyrukta büyük modelin yavaş yanıtını beklemiyor." },
+        { "type": "heading", "text": "Model Karışımı (Routing) Nasıl Kurulur, Kısaca" },
+        { "type": "paragraph", "text": "Tek model ile başlamak her zaman yanlış değil — küçük bir ürün için gayet mantıklı. Ama trafik büyüdükçe tek modelli yaklaşım iki şekilde çatlıyor: ya fatura orantısız büyüyor (her basit istek de en pahalı modelden geçiyor), ya da kullanıcı deneyimi bozuluyor (basit bir soru bile büyük modelin yavaş yanıt süresini bekliyor). Routing kurmak, bu ikisini aynı anda çözmenin yolu." },
+        { "type": "list", "items": [
+          "İşini alt görevlere ayır — 'destek bileti cevaplama' tek bir iş değil; sınıflandırma, bilgi çekme ve cevap üretme ayrı adımlardır",
+          "Her adım için en ucuz modelle başla ve kaliteyi ölç — gerçekten büyük modele mi ihtiyacın var, yoksa varsayım mı bu",
+          "Küçük modelin çıktısına bir güven eşiği (confidence threshold) koy — model 'emin değilim' sinyali veriyorsa büyük modele veya insana devret",
+          "Devretme (escalation) mantığını net kurallara bağla — belirsizlik, düşük güven skoru, belirli anahtar kelimeler (iptal, iade, hukuki) otomatik yükseltme tetiklesin",
+          "Her iki katmanı da logla — hangi bilet hangi modele gitti, sonuç doğru muydu, bu veriyi haftalık gözden geçir",
+          "Maliyet/performans dengesini periyodik kontrol et — model fiyatları ve yetenekleri sık değişiyor, altı ayda bir yeniden değerlendir"
+        ]},
+        { "type": "stats", "items": [
+          { "label": "Küçük-hızlı model maliyeti", "value": "~0,15–0,40 $ / 1M girdi tokenı" },
+          { "label": "Büyük-akıllı model maliyeti", "value": "~2–15 $ / 1M girdi tokenı" },
+          { "label": "Küçük model yanıt süresi", "value": "~200–600 ms" },
+          { "label": "Büyük model yanıt süresi (karmaşık görev)", "value": "~1–4 sn" }
+        ]},
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "En ucuz ve en hızlı model her zaman yeterli mi?" },
+        { "type": "paragraph", "text": "Hayır. Dar tanımlı, tekrarlayan işlerde evet, ama belirsizlik veya çok adımlı akıl yürütme içeren işlerde küçük model sessizce yanlış cevap üretir — hata fırlatmaz, sadece yüzeysel veya hatalı bir sonuç döner. Bu yüzden 'yeterli mi' sorusunu görev bazında, gerçek örneklerle test ederek cevaplamak gerekir, varsayımla değil." },
+        { "type": "subheading", "text": "Küçük model yanlış cevap verirse ne olur, bunu nasıl yakalarsın?" },
+        { "type": "paragraph", "text": "Üretimde bunu yakalamanın iki yolu var: modelin kendi güven sinyalini (ya da yapılandırılmış çıktıdaki tutarsızlığı) izlemek, ve örneklem bazlı insan denetimi yapmak — biletlerin küçük bir yüzdesini rastgele seçip gerçekten doğru mu cevaplanmış diye kontrol etmek. İyi kurulmuş bir sistemde düşük güvenli veya riskli görülen vakalar zaten otomatik olarak büyük modele veya insana yönlendirilir; buradaki amaç modelin 'bilmiyorum' demesini sağlamak, tahmin yürütmesini değil." },
+        { "type": "subheading", "text": "Fine-tuning, küçük modeli büyük model kadar iyi yapar mı?" },
+        { "type": "paragraph", "text": "Dar bir alanda evet, genel akıl yürütmede hayır. Fine-tuning, küçük bir modeli senin spesifik veri formatına, jargonuna ve karar mantığına alıştırarak o dar görevde büyük modele çok yaklaştırabilir — hatta bazı durumlarda geçebilir. Ama modelin karşılaşmadığı, eğitim verisinde olmayan bir senaryoyla karşılaştığında büyük modelin genel akıl yürütme avantajı geri döner. Fine-tuning, 'bu işi daha iyi yap' demektir; modele yeni bir zeka eklemez." },
+        { "type": "subheading", "text": "Küçük bir ürün için model karışımı kurmaya değer mi, yoksa gereksiz karmaşıklık mı?" },
+        { "type": "paragraph", "text": "Ayda birkaç bin istekten az bir hacimde, tek model ile başlamak (genelde orta seviye bir model) daha az mühendislik yükü getirir ve maliyet farkı önemsizdir — önce basit başla. Hacim büyüdükçe veya aynı işin belirgin şekilde 'kolay' ve 'zor' alt kümelere ayrıldığını fark ettiğinde (destek biletleri örneğindeki gibi), routing kurmanın getirisi mühendislik maliyetini hızla aşar. Kural olarak: aylık model faturan dört haneli rakamlara yaklaşıyorsa, routing'i ciddi ciddi değerlendirmenin vakti gelmiştir." },
+        { "type": "subheading", "text": "Açık kaynak küçük modeller (Llama, Mistral gibi) bu işi görür mü?" },
+        { "type": "paragraph", "text": "Dar tanımlı görevlerde çoğu zaman evet, hatta bazı senaryolarda tercih edilir. Açık kaynak küçük modelleri kendi sunucunda çalıştırmak, veriyi hiç dışarı göndermeden işlemek isteyen (KVKK'ya tabi, hassas müşteri verisi işleyen) uygulamalar için ciddi bir avantaj. Dezavantajı, model kalitesini ve altyapıyı kendi başına yönetmen gerekmesi — API sağlayıcının otomatik güncellediği bir modeli değil, kendi barındırdığın bir sistemi bakımlı tutuyorsun. Çok yüksek hacimli, dar tanımlı bir görev ve veri gizliliği önceliğiyse, açık kaynak küçük model gerçek bir seçenek; genel amaçlı, düşük hacimli bir kullanım içinse yönetilen bir API genelde daha az baş ağrısı." },
+        { "type": "paragraph", "text": "Model maliyetlerinin token bazında nasıl hesaplandığını ve bir API faturasının aslında neye göre şekillendiğini merak ediyorsan, token ekonomisini anlattığım yazıya göz atabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "Which AI Model Should You Use? Small & Fast vs. Large & Smart, Task by Task",
+      "excerpt": "GPT-5 or GPT-5-mini, Claude Sonnet or Haiku? Which AI model to pick depends on the task — here's how cost and speed actually differ.",
+      "content": [
+        { "type": "paragraph", "text": "You've decided to add AI to a feature, opened the API docs, and hit a wall of choices: GPT-5, GPT-5-mini, Claude Sonnet, Claude Haiku, Gemini Pro, Gemini Flash. Which AI model should you actually use? Most developers ask the wrong question. Instead of 'which model is best,' the real question is 'which model is enough for this job' — because the right answer is almost never a single model, it's a choice that changes with the task." },
+        { "type": "heading", "text": "Which AI Model Should You Use? The Real Difference Between Small-Fast and Large-Smart" },
+        { "type": "paragraph", "text": "Most model families now ship several sizes of the same 'intelligence' lineage: a 'mini' or 'flash' tier, a mid tier, and a top-end 'smart' tier. The difference isn't just raw parameter count — it's how hard the model is pushed to reason and how broadly it was trained. Small models are distilled to get surprisingly close to large-model quality on narrow, repetitive tasks; they're built for speed and cost. Large models are stronger at multi-step reasoning, tolerating ambiguity, and generalizing from little context — but that strength comes at a price." },
+        { "type": "paragraph", "text": "They differ along three axes: cost, speed, and capability. In my experience small-fast models are typically priced around $0.15–0.40 per 1M input tokens and respond in 200–600 milliseconds; large-smart models run $2–15 per 1M tokens and can take 1–4 seconds on complex tasks. That's roughly a 10x cost gap and a 3–5x latency gap — trivial at small scale, but at millions of monthly requests it directly shapes the bill." },
+        { "type": "paragraph", "text": "A fair objection: 'if the large model is smarter, why not always use it?' The answer isn't only cost. Large models generally have tighter rate limits (requests processed per minute) than small ones, which can become a real bottleneck in a high-traffic app. Several small models are also released open-source and can run on your own infrastructure — a real advantage for healthcare, legal, or finance apps that never want sensitive data leaving their servers. In short, the large model isn't always 'better,' just stronger along certain axes; the small model isn't a 'cheap fallback' either — it can genuinely be the right tool on its own." },
+        { "type": "heading", "text": "When Is a Small, Fast Model Actually Enough?" },
+        { "type": "paragraph", "text": "The narrower and more repetitive the task, the better a small model performs. In practice, small-fast models match large-model quality — at a fraction of the cost and latency — on tasks like:" },
+        { "type": "list", "items": [
+          "Classification / tagging — deciding a text's category, sentiment, or priority",
+          "Simple extraction — pulling a date, amount, or order number out of an email",
+          "Short summarization — condensing a review or short text into 1-2 sentences",
+          "Routing layer — deciding which flow, team, or larger model a message should go to",
+          "Content moderation and filtering — catching spam, inappropriate content, or simple rule violations",
+          "Simple Q&A from a fixed knowledge base — FAQ-style, single-step questions"
+        ]},
+        { "type": "paragraph", "text": "What these tasks share: the input and expected output format are known, the decision happens in a single step, and there's no need for 'creativity' or multi-step planning. Using a large model for these is like renting a truck to carry an envelope — it works, but it's needlessly slow and expensive." },
+        { "type": "heading", "text": "When Is a Large, Smart Model Actually Necessary?" },
+        { "type": "paragraph", "text": "Some tasks fail quietly on a small model — no error is thrown, the answer is just wrong or shallow, and that's hard to catch. Here's where a large model genuinely earns its cost:" },
+        { "type": "list", "items": [
+          "Multi-step planning and agent flows — tasks where the model must invent intermediate steps toward a goal",
+          "Ambiguous or underspecified instructions — where what the user actually wants has to be inferred from text",
+          "Code generation and debugging — especially when multiple files or contexts must be held at once",
+          "Legal, financial, or medical text analysis — domains where nuance and context matter and the error tolerance is low",
+          "Synthesizing long, scattered context — turning multiple RAG sources into one coherent, non-contradictory answer",
+          "Creative writing and brand-voice content — where formulaic phrasing is immediately noticeable"
+        ]},
+        { "type": "paragraph", "text": "The common thread: the correct answer isn't knowable in advance, and the model has to reason its way there. Using a small model for these tasks looks cheap in the short run, but the human time spent fixing the resulting errors usually outweighs the savings on model cost." },
+        { "type": "heading", "text": "A Real Scenario: Building a Support Ticket System With a Model Mix" },
+        { "type": "paragraph", "text": "Picture a mid-sized SaaS company handling roughly 10,000 support tickets a month. They used to send every ticket straight to a large model — it worked, but the bill grew fast. The system they built now works differently: the moment a ticket arrives, a small-fast model classifies the topic (billing, technical issue, cancellation request, general question) and urgency; this step takes under 300ms and costs next to nothing per token." },
+        { "type": "paragraph", "text": "Around 70-80% of classified tickets turn out to be repetitive questions answerable straight from a fixed knowledge base (password reset, where's my invoice, how do I change plans). These are also answered by the small model, pulling passages from the knowledge base, and never reach a human agent. The remaining 20-30% — an angry customer, a technical issue touching multiple systems, a refund/cancellation decision — is automatically escalated to the large-smart model or to a person. There, the large model drafts a reply accounting for both context (the customer's ticket history, plan details) and emotional tone, and an agent reviews it before sending." },
+        { "type": "paragraph", "text": "Result: most of the total model cost stays on the cheap small-model side, and the expensive large model only runs on the 20-30% of tickets that genuinely need it. Compared to routing every ticket through a single large model, the company roughly halved its model bill — and average response time actually dropped, because simple tickets no longer sit in a queue waiting on the large model's slower response." },
+        { "type": "heading", "text": "How to Set Up Model Routing, Briefly" },
+        { "type": "paragraph", "text": "Starting with one model isn't always wrong — for a small product it's perfectly reasonable. But as traffic grows, a single-model approach cracks in one of two ways: either the bill grows out of proportion (every simple request still runs through the most expensive model), or the user experience degrades (even a simple question waits on the large model's slower response). Setting up routing is how you fix both at once." },
+        { "type": "list", "items": [
+          "Break the job into subtasks — 'answering a support ticket' isn't one job; classification, retrieval, and reply generation are separate steps",
+          "Start every step with the cheapest model and measure quality — is a large model actually needed, or is that just an assumption",
+          "Set a confidence threshold on the small model's output — if it signals uncertainty, hand off to the large model or a human",
+          "Bind escalation to clear rules — low confidence, specific keywords (cancellation, refund, legal), or ambiguity should trigger automatic escalation",
+          "Log both tiers — which ticket went to which model, was the outcome correct, review this weekly",
+          "Re-check the cost/performance balance periodically — model pricing and capability shift often, revisit every six months"
+        ]},
+        { "type": "stats", "items": [
+          { "label": "Small-fast model cost", "value": "~$0.15–0.40 / 1M input tokens" },
+          { "label": "Large-smart model cost", "value": "~$2–15 / 1M input tokens" },
+          { "label": "Small model response time", "value": "~200–600 ms" },
+          { "label": "Large model response time (complex task)", "value": "~1–4 sec" }
+        ]},
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Is the cheapest, fastest model always enough?" },
+        { "type": "paragraph", "text": "No. For narrow, repetitive tasks, yes — but for tasks involving ambiguity or multi-step reasoning, a small model fails quietly: it doesn't throw an error, it just returns a shallow or wrong answer. So 'is it enough' has to be answered task by task, tested against real examples, not assumed." },
+        { "type": "subheading", "text": "What happens if the small model gets it wrong, and how do you catch that?" },
+        { "type": "paragraph", "text": "In production there are two ways to catch it: monitor the model's own confidence signal (or inconsistencies in structured output), and do sample-based human review — randomly pull a small percentage of tickets and check whether they were actually answered correctly. In a well-built system, low-confidence or risky cases are already auto-escalated to the large model or a human; the goal is getting the model to say 'I don't know' instead of guessing." },
+        { "type": "subheading", "text": "Does fine-tuning make a small model as good as a large one?" },
+        { "type": "paragraph", "text": "Within a narrow domain, yes; for general reasoning, no. Fine-tuning trains a small model on your specific data format, jargon, and decision logic, and can bring it very close to — sometimes past — large-model quality on that narrow task. But when the model hits a scenario outside its training data, the large model's general reasoning advantage returns. Fine-tuning means 'get better at this specific job'; it doesn't add new intelligence to the model." },
+        { "type": "subheading", "text": "Is model routing worth setting up for a small product, or is it overengineering?" },
+        { "type": "paragraph", "text": "At a volume of a few thousand requests a month or less, starting with one model (usually a mid-tier one) means less engineering overhead, and the cost difference is negligible — start simple. As volume grows, or once you notice the same job clearly splits into 'easy' and 'hard' subsets (like the support ticket example), routing's payoff quickly outweighs the engineering cost. Rule of thumb: once your monthly model bill approaches four figures, it's worth seriously evaluating routing." },
+        { "type": "subheading", "text": "Can open-source small models (like Llama or Mistral) handle this?" },
+        { "type": "paragraph", "text": "For narrowly defined tasks, often yes — and in some scenarios they're actually preferable. Running an open-source small model on your own infrastructure means the data never leaves your servers, which is a real advantage for apps handling sensitive customer data under privacy regulation. The trade-off is that you're managing model quality and infrastructure yourself, instead of relying on a provider that patches and updates the model for you. For very high-volume, narrowly defined tasks where data privacy is a priority, an open-source small model is a genuine option; for general-purpose, lower-volume use, a managed API is usually less of a headache." },
+        { "type": "paragraph", "text": "If you're curious how model costs are actually calculated per token, and what really shapes an API bill, the token economics piece goes deeper into that." }
+      ]
+    }
   }
 ]
