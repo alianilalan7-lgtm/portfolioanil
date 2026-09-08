@@ -30,6 +30,9 @@ import { Buffer } from "node:buffer";
 import { readFileSync, writeFileSync } from "node:fs";
 
 const POSTS_PATH = "src/data/autopilot-posts.json";
+// One-off posts that jump ahead of the blog queue — a standalone product post
+// with its own image and no article link. Emptying the file disables them.
+const QUEUE_PATH = ".github/autopilot/linkedin-queue.json";
 const LEDGER_PATH = ".github/autopilot/shared-linkedin.json";
 
 const SITE = (process.env.SITE_URL || "https://alianil.com").replace(/\/+$/, "");
@@ -193,6 +196,10 @@ const posts = readJson(POSTS_PATH, []);
 
 // The ledger used to be a flat array of slugs (profile only). Migrate it to a
 // per-channel map on first write; old entries belong to the profile.
+const queue = readJson(QUEUE_PATH, []);
+const nextQueued = (key, done) =>
+  queue.find((q) => (q.channels ?? ["personal"]).includes(key) && !done.includes(q.id));
+
 const rawLedger = readJson(LEDGER_PATH, {});
 const ledger = Array.isArray(rawLedger) ? { personal: rawLedger } : rawLedger;
 for (const c of CHANNELS) if (!Array.isArray(ledger[c.key])) ledger[c.key] = [];
@@ -248,12 +255,8 @@ const buildCommentary = (post, sentCount) => {
 // Without an explicit thumbnail an article card built via the Posts API renders
 // with no image (LinkedIn does not auto-scrape og:image here). Best-effort: any
 // failure falls back to a thumbnail-less card rather than skipping the post.
-async function uploadThumbnail(thumbnailUrl, owner, headers) {
+async function uploadImage(bytes, owner, headers, contentType = "image/png") {
   try {
-    const imgRes = await fetch(thumbnailUrl);
-    if (!imgRes.ok) throw new Error(`OG image fetch HTTP ${imgRes.status}`);
-    const bytes = Buffer.from(await imgRes.arrayBuffer());
-
     const initRes = await fetch("https://api.linkedin.com/rest/images?action=initializeUpload", {
       method: "POST",
       headers,
@@ -267,24 +270,37 @@ async function uploadThumbnail(thumbnailUrl, owner, headers) {
 
     const putRes = await fetch(value.uploadUrl, {
       method: "PUT",
-      headers: { Authorization: `Bearer ${TOKEN}`, "Content-Type": "image/png" },
+      headers: { Authorization: `Bearer ${TOKEN}`, "Content-Type": contentType },
       body: bytes,
     });
     if (!putRes.ok) throw new Error(`upload PUT HTTP ${putRes.status}`);
 
-    console.log(`  ✓ thumbnail uploaded (${bytes.length} bytes)`);
+    console.log(`  ✓ image uploaded (${bytes.length} bytes)`);
     return value.image;
   } catch (err) {
-    console.warn(`  ⚠ thumbnail skipped (${err.message}) — posting without image.`);
+    console.warn(`  ⚠ image skipped (${err.message})`);
     return null;
   }
 }
 
+const fetchBytes = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`OG image fetch HTTP ${res.status}`);
+  return Buffer.from(await res.arrayBuffer());
+};
+
 if (DRY) {
   for (const c of CHANNELS) {
+    console.log(`\n─── DRY RUN — ${c.key} (${c.label}) ───\n`);
+    const q = nextQueued(c.key, ledger[c.key]);
+    if (q) {
+      console.log(`[sırada: tek seferlik gönderi ${q.id}]\n`);
+      console.log(q.commentary);
+      console.log(`\n[görsel] ${q.image}`);
+      continue;
+    }
     // Preview ignores the ledger so there is always something to look at.
     const post = allPublished.find((p) => c.accepts(typeOf(p)));
-    console.log(`\n─── DRY RUN — ${c.key} (${c.label}) ───\n`);
     if (!post) {
       console.log("(bu kanala uygun yayımlanmış yazı yok)");
       continue;
@@ -313,20 +329,57 @@ let posted = 0;
 let failed = 0;
 
 for (const c of CHANNELS) {
-  const post = allPublished.find(
-    (p) => c.accepts(typeOf(p)) && !ledger[c.key].includes(p.slug)
-  );
-  if (!post) {
+  const queued = nextQueued(c.key, ledger[c.key]);
+  const post = queued
+    ? null
+    : allPublished.find((p) => c.accepts(typeOf(p)) && !ledger[c.key].includes(p.slug));
+  if (!queued && !post) {
     console.log(`${c.key}: nothing new to share.`);
     continue;
   }
 
   try {
     const { urn: author, who } = await c.author();
+
+    // A queued one-off is an IMAGE post: its own picture, no article card,
+    // because it points at a product rather than at a blog article.
+    if (queued) {
+      console.log(`${c.key} → ${who}: one-off "${queued.id}"`);
+      const image = await uploadImage(
+        readFileSync(queued.image),
+        author,
+        headers,
+        queued.image.endsWith(".png") ? "image/png" : "image/jpeg"
+      );
+      if (!image) throw new Error("image upload failed — refusing to post it bare");
+      const res = await fetch("https://api.linkedin.com/rest/posts", {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          author,
+          commentary: queued.commentary,
+          visibility: "PUBLIC",
+          distribution: {
+            feedDistribution: "MAIN_FEED",
+            targetEntities: [],
+            thirdPartyDistributionChannels: [],
+          },
+          content: { media: { id: image, altText: queued.alt ?? "" } },
+          lifecycleState: "PUBLISHED",
+          isReshareDisabledByAuthor: false,
+        }),
+      });
+      if (!res.ok) throw new Error(`post failed (HTTP ${res.status}): ${await res.text()}`);
+      console.log(`  ✓ shared one-off  [${res.headers.get("x-restli-id") || "id n/a"}]`);
+      ledger[c.key].push(queued.id);
+      posted++;
+      continue;
+    }
+
     const { commentary, url, tr, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
     console.log(`${c.key} → ${who}: "${tr.title}"`);
 
-    const thumbnail = await uploadThumbnail(thumbnailUrl, author, headers);
+    const thumbnail = await uploadImage(await fetchBytes(thumbnailUrl), author, headers);
 
     const res = await fetch("https://api.linkedin.com/rest/posts", {
       method: "POST",
