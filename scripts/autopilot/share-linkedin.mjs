@@ -95,6 +95,7 @@ const PROMOS = {
   agency: {
     tag: "LuviAgency",
     url: "https://luvi.agency",
+    cta: { tr: "Brief'inizi konuşalım", en: "Let's talk" },
     variants: [
       {
         tr: "Luvi Agency'den haberiniz var mı? Ajanslar ve markalar için içerik üretimi: AI hattı, geleneksel prodüksiyon ve yazılım tek çatı altında.",
@@ -105,26 +106,33 @@ const PROMOS = {
         en: "Who produces your campaign content? At Luvi Agency the AI work, the real shoot and the software come from one team — so the job doesn't stall where AI stops.",
       },
       {
-        tr: "Luvi Agency: sanat, teknoloji ve veriyi bir araya getiren içerik prodüksiyonu. Brief'inizi konuşalım.",
-        en: "Luvi Agency: content production that puts art, technology and data together. Bring us your brief.",
+        tr: "Luvi Agency: sanat, teknoloji ve veriyi bir araya getiren içerik prodüksiyonu — kampanya görselinden filme, tek ekip.",
+        en: "Luvi Agency: content production that brings art, technology and data together — from campaign stills to film, one team.",
       },
     ],
   },
   creator: {
     tag: "LuviCreator",
     url: "https://www.luvicreator.com",
+    // One variant per headline capability, so three shares cover TEAMS,
+    // Workflows and MCP rather than repeating the model count every time.
+    cta: { tr: "Hadi, siz de deneyin", en: "Give it a try" },
     variants: [
+      {
+        tr: "LUVI Creator'dan haberiniz var mı? Ekipçe çalışın: roller, davetler, müşteri bazlı projeler ve ortak kütüphane — herkesin işi tek yerde toplansın.",
+        en: "Heard of LUVI Creator? Work as a team: roles, invites, per-client projects and a shared library — everyone's work in one place.",
+      },
+      {
+        tr: "LUVI Creator'ın Workflow'unu denediniz mi? Bir görselden videoya uzanan zinciri tek akışta kurun, toplu üretin — her adımı elle tekrarlamaya son.",
+        en: "Tried LUVI Creator's Workflows? Chain an image into a video in a single pass and generate in batches — no repeating every step by hand.",
+      },
+      {
+        tr: "Yapay zekadan hiç anlamasanız da olur: LUVI Creator'ı MCP ile Claude'a ya da ChatGPT'ye bağlayın, ne istediğinizi gündelik dille söyleyin — üretim sohbetten çıkmadan olsun.",
+        en: "You don't need to know a thing about AI: connect LUVI Creator to Claude or ChatGPT over MCP and just say what you want — it generates without leaving the chat.",
+      },
       {
         tr: "LUVI Creator'dan haberiniz var mı? Görsel, video, ses ve 3D için 180+ yapay zeka modeli tek hesapta — ayrı ayrı aboneliklere gerek yok.",
         en: "Heard of LUVI Creator? 180+ AI models for image, video, voice and 3D in a single account — no juggling separate subscriptions.",
-      },
-      {
-        tr: "LUVI Creator'ı denediniz mi? Hangi modeli seçeceğinizi ve prompt'u LuviBot sizin yerinize yazıyor.",
-        en: "Tried LUVI Creator yet? LuviBot picks the right model and writes the prompt for you.",
-      },
-      {
-        tr: "LUVI Creator'dan haberiniz var mı? 180+ AI modeli, tek kredi cüzdanı, Türkçe — ekipler için roller ve müşteri bazlı projeler de var.",
-        en: "Heard of LUVI Creator? 180+ AI models, one credit wallet, Turkish-first — plus roles and per-client projects for teams.",
       },
     ],
   },
@@ -180,7 +188,7 @@ const commentary = [
   "",
   promoLine.en,
   "",
-  `👉 ${promo.url}`,
+  `${promo.cta.tr} / ${promo.cta.en} 👉 ${promo.url}`,
   "",
   hashtags.map((h) => `#${h}`).join(" "),
 ].join("\n");
