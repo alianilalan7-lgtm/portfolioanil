@@ -171,12 +171,14 @@ if (posts !== undefined) {
       }
       if (p.relatedLinks !== undefined) {
         // Internal paths ("/...") are always allowed. The only permitted external
-        // domain is luvicreator.com (the owner's own company — referenced in
-        // AI-creative/studio sector posts). No other external links.
+        // domains are the owner's own businesses: luvi.agency (Type A — agency
+        // service posts) and luvicreator.com (Type C — self-serve platform posts).
+        // No other external links, and at most one external link per post so a
+        // post can't turn into a link farm.
+        const EXTERNAL_OK =
+          /^https:\/\/(www\.)?(luvicreator\.com|luvi\.agency)(\/|$)/;
         const okHref = (h) =>
-          typeof h === "string" &&
-          (h.startsWith("/") ||
-            /^https:\/\/(www\.)?luvicreator\.com(\/|$)/.test(h));
+          typeof h === "string" && (h.startsWith("/") || EXTERNAL_OK.test(h));
         if (
           !Array.isArray(p.relatedLinks) ||
           p.relatedLinks.some(
@@ -184,7 +186,14 @@ if (posts !== undefined) {
           )
         )
           fail(
-            `${where}: relatedLinks must be {label, href}[] with internal paths ("/...") — only external allowed is https://www.luvicreator.com`
+            `${where}: relatedLinks must be {label, href}[] with internal paths ("/...") — only external allowed are https://luvi.agency and https://www.luvicreator.com`
+          );
+        if (
+          Array.isArray(p.relatedLinks) &&
+          p.relatedLinks.filter((l) => l && !String(l.href).startsWith("/")).length > 1
+        )
+          fail(
+            `${where}: at most ONE external relatedLink per post (agency posts → luvi.agency, creator posts → luvicreator.com — never both)`
           );
       }
       validateLang(p.tr, `${where}.tr`);

@@ -1,8 +1,20 @@
 # Blog Autopilot
 
-Auto-generates one bilingual (TR + EN) blog post about a recent AI/tech
-development, written from a founder's perspective, **3× per week** — billed
+Auto-generates one bilingual (TR + EN) blog post **3× per week** — billed
 against a **Claude Max subscription** (no API key, no per-token cost).
+
+**Topic mix — 2 LUVI : 1 informative per week,** fixed to the publish weekday:
+
+| Day | Type | Audience | Primary CTA |
+| --- | --- | --- | --- |
+| **Mon** | **A — LUVI Agency** | ad agencies, creative teams, corporate marketing | `https://luvi.agency` (bring a brief) |
+| **Wed** | **C — LUVI Creator** | small teams, freelancers, individual creators | `https://www.luvicreator.com` (open an account) |
+| **Fri** | **B — Informative** | anyone Googling an AI/SaaS/dev question | `/contact` (soft) — **no LUVI at all** |
+
+Friday's post is deliberately product-free: it is what keeps the blog credible
+and earns the broad search + AI-answer traffic the other two ride on. The full
+rules — including the honesty gate for both LUVI types — live in
+`INSTRUCTIONS.md`.
 
 ## How it works
 
@@ -42,12 +54,20 @@ untouched.
 ## Controls
 
 - **Pause:** `gh variable set AUTOPILOT_ENABLED --body false` (job is skipped).
-- **Queue your own topics:** add strings to `.github/autopilot/topics-queue.json`
-  (priority order, e.g. `["AI cost control for SaaS", "Supabase vs Firebase for an MVP"]`).
-  Each run uses the first queued topic and removes it; when the queue is empty it
-  falls back to `keywords.json`.
+- **Queue your own topics:** add entries to `.github/autopilot/topics-queue.json`
+  (priority order). An entry is a plain string, or an object that pins the type:
+  `{ "type": "luvi-agency" | "luvi-creator" | "genel", "topic": "..." }`.
+  Each run uses the first queued entry and removes it; when the queue is empty it
+  falls back to the matching pool in `keywords.json` (`luvi-agency`,
+  `luvi-creator`, `genel`).
 - **Change cadence:** edit the `cron` in the workflow.
 - **Tune voice / sources:** edit `INSTRUCTIONS.md` / `sources.json`.
+- **Change the topic mix:** edit the three pools in `keywords.json` and the
+  weekday→type table at the top of `INSTRUCTIONS.md`.
+- **LinkedIn:** `scripts/autopilot/share-linkedin.mjs` mirrors the newest post
+  (TR + EN + link). Hashtags are derived from that post's own `tags`, so they
+  follow the topic automatically. Preview without posting:
+  `DRY_RUN=1 node scripts/autopilot/share-linkedin.mjs`.
 - **Remove a bad post:** delete its object from `src/data/autopilot-posts.json`
   and commit.
 - **Token expires (~1 year):** re-run `claude setup-token` and update the secret.

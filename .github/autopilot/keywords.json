@@ -1,5 +1,51 @@
 {
-  "note": "Seed topics (fallback when topics-queue.json is empty). These are IDEAS, not commands — every one MUST be checked against already-published posts before use (see INSTRUCTIONS.md 'Duplicate & overlap guard'). If the closest seed is already covered by a post in autopilot-posts.json OR blogs.ts, pick a different, genuinely-uncovered angle. 'sectors' = Type A lead-gen (owner thinks 'can you build this for us?'). 'genel' = Type B informative/evergreen — the DEFAULT, 2 of every 3 posts (Mon/Wed). 'sectors' Type A is Friday only, 1 of 3. So draw from 'genel' about twice as often as 'sectors'. Blog leans informative-first: prefer genuinely educational 'how X actually works / why / what to watch for' angles over pure buyer-intent. Rotate across all four sectors within A (perakende, restoran-kafe, mimarlik-insaat, reklam-studyo-ai). The 'reklam-studyo-ai' sector has SPECIAL rules (see INSTRUCTIONS.md 'AI-studio sector'): every such post must recommend LUVI (luvicreator.com, owner's own company; 180+ models — never 440/443) and add https://www.luvicreator.com to relatedLinks. Turkish-first audience. Keep this pool wide so we never repeat a topic.",
+  "note": "Seed topics (fallback when topics-queue.json is empty). These are IDEAS, not commands — every one MUST be checked against already-published posts before use (see INSTRUCTIONS.md 'Duplicate & overlap guard'). If the closest seed is already covered by a post in autopilot-posts.json OR blogs.ts, pick a different, genuinely-uncovered angle. THREE pools, tied to the publish weekday: 'luvi-agency' = Monday, Type A — corporate/agency audience, funnels to https://luvi.agency (agency SERVICE work: original content production + media effectiveness, across three houses — TVN = medya & geleneksel prodüksiyon, Orni/ornisoftware = yazılım stüdyosu, Luvi Creator = AI içerik platformu; the hybrid is the argument, see INSTRUCTIONS.md). 'luvi-creator' = Wednesday, Type C — teams & individual users, funnels to https://www.luvicreator.com (the self-serve platform: 180+ models, LuviBot, TEAMS, credits, workflows). 'genel' = Friday, Type B — pure informative/evergreen with NO LUVI push at all; this is the SEO/AI-citation backbone that keeps the blog credible, so never turn it into a product piece. Mix is therefore 2 LUVI : 1 informative per week. Turkish-first audience. Both LUVI pools must TEACH first and invite second — a post that only sells converts worse and ranks for nothing. Honesty gate applies to both (see INSTRUCTIONS.md 'LUVI posts'): 180+ models (never 440/443), never cite user/generation counts, never invent client names, campaign results or awards for luvi.agency. Keep these pools wide so we never repeat a topic.",
+  "luvi-agency": [
+    "Ajansta AI destekli içerik üretim hattı: brief'ten yayına gerçek iş akışı",
+    "AI mi geleneksel çekim mi: bir kampanyada hangi planın hangi yöntemle çekileceğine nasıl karar verilir",
+    "Hibrit set: aynı kampanyada gerçek çekimle AI üretimini birleştirmenin pratiği",
+    "AI'ın yetmediği yer: kumaş dokusu, kalıp, gerçek mekân ve oyuncu — bu işler nasıl kapanıyor",
+    "Reklam prodüksiyon bütçesi nereye gidiyor ve AI hangi kalemi gerçekten düşürüyor",
+    "Marka tutarlılığını AI görsellerinde korumak: referans, stil kilidi ve revizyon döngüsü",
+    "İçerik operasyonunu yazılımla bağlamak: üretim, onay ve yayın tek panelde",
+    "Marka kılavuzunu sisteme gömmek: kurallar dosyada değil iş akışında olursa ne değişir",
+    "Kurumsal markada AI içerik onay süreci: kim neyi hangi aşamada onaylar",
+    "Medya etkinliği nedir ve kreatif varyant sayısı reklam performansını nasıl değiştirir",
+    "A/B testi için 20 farklı reklam kreatifi üretmenin veri odaklı döngüsü",
+    "Performans reklamcılığında yaratıcı yorgunluğu (creative fatigue) ve üretim hızı",
+    "Katalog çekimi 500 ürün: klasik prodüksiyon takvimi ile hibrit hattın karşılaştırması",
+    "Moda ve tekstilde on-model çekim: AI'ın çözdüğü ve hâlâ stüdyo isteyen kısımlar",
+    "Kısa format video üretimini haftada 10 videoya çıkaran ajans kurgusu",
+    "Global kampanyayı altı pazara lokalize etmek: dil, kültür ve görsel uyarlama",
+    "Pitch aşamasında görsel dil kurmak: sunuma konsept ve mood üretmek",
+    "İçerik üretimini in-house yapmak mı ajansa vermek mi — AI çağında hesap nasıl değişti",
+    "Ajans içi AI kullanımında telif, kullanım hakkı ve müşteriye karşı sorumluluk",
+    "Ajansta AI iş akışı kurarken ilk 30 günde yapılan beş hata",
+    "Sanat yönetmeninin rolü AI ile çalışırken nasıl değişiyor",
+    "Sosyal medya için aylık 60 varyantı operasyonel olarak yönetmek"
+  ],
+  "luvi-creator": [
+    "Tek platformda 180+ AI modeli: ayrı aboneliklerle çalışmaktan farkı ne",
+    "Hangi AI modeli hangi iş için: görsel, video, ses ve 3D'de model seçme rehberi",
+    "Doğru modeli seçip prompt'u senin yerine yazan bir asistan nasıl çalışır (LuviBot)",
+    "Prompt yazmayı bilmeden iyi görsel üretmek mümkün mü",
+    "Beş kişilik ekipte AI üretimini rol, proje ve kütüphaneyle düzene sokmak (TEAMS)",
+    "Müşteri bazlı proje ve kütüphane kurmak: freelancer işini karıştırmadan nasıl büyütür",
+    "Kredi ekonomisi nasıl işler: bir görselin ve bir videonun gerçek maliyeti",
+    "Workflow node nedir: görselden videoya uzanan zinciri tek akışta kurmak",
+    "Batch üretim: 50 ürün görselini tek seferde çıkarmanın kurgusu",
+    "Inpainting: baştan üretmek yerine görselin sadece bir bölgesini değiştirmek",
+    "Referans görselle tutarlılık: aynı ürünü veya karakteri on karede korumak",
+    "Metinden sese üretim küçük bir ekibin hangi işini gerçekten hızlandırır",
+    "Türkçe prompt yazmak: dil seçimi çıktıyı nasıl etkiliyor",
+    "İlk hafta rehberi: sıfırdan başlayıp ilk işini çıkarmak",
+    "Sosyal medya içeriğini haftada iki saate indiren üretim rutini",
+    "Küçük işletme için ürün fotoğrafını stüdyo kalitesine taşımak",
+    "AI videoda beş-on saniyelik plan mantığı: neden uzun tek çekim değil",
+    "Görsel üretiminde en sık yapılan yedi hata ve düzeltmesi",
+    "Aynı işi birden fazla modelde üretip karşılaştırmak neden işe yarar",
+    "Emlak ve iç mekânda dijital home-staging: boş daireyi döşenmiş göstermek"
+  ],
   "genel": [
     "Yapay zeka chatbot'unu müşteri hizmetlerine entegre etmenin gerçek maliyeti ve sınırları",
     "RAG nedir: kendi dokümanların üzerine soru-cevap yapay zekası nasıl kurulur",
@@ -34,57 +80,5 @@
     "SaaS'ta 'multi-tenant' mimari nedir ve müşteri verileri nasıl ayrık tutulur",
     "MVP'den sonra ne olur: kullanıcı geri bildirimini ürüne çevirmenin döngüsü",
     "Yapay zeka bir işi ne zaman gerçekten çözer, ne zaman sadece 'havalı' durur"
-  ],
-  "sectors": {
-    "perakende": [
-      "Çok şubeli perakendede stok ve satışı tek panelde toplamak",
-      "Perakende günlük raporlamasını Excel'den kurtaran otomasyon",
-      "Mağaza içi kampanya etkisini anında ölçen sistem",
-      "Reyon/raf doluluğunu fotoğraftan yapay zekayla kontrol eden araç",
-      "İade ve değişim sürecini dijitalleştirip suistimali yakalayan sistem",
-      "Tedarikçi sipariş noktasını otomatik hesaplayan stok sistemi",
-      "E-ticaret ile mağaza stoğunu gerçek zamanlı senkronize eden köprü yazılım",
-      "Kasadaki fiyat/indirim hatalarını gün içinde yakalayan uyarı sistemi",
-      "Müşteri segment ve sadakat verisini karara çeviren perakende paneli",
-      "Sezon sonu indirim/stok eritme planını veriyle kuran araç"
-    ],
-    "restoran-kafe": [
-      "Kafe zincirinde günlük ciro ve maliyet takibini otomatikleştirmek",
-      "Sipariş ve sadakat verisini tek panelde toplayan mini yazılım",
-      "Menü ve fiyatlandırmayı veriyle yöneten restoran aracı",
-      "Reçete/porsiyon maliyetini otomatik hesaplayan sistem",
-      "Şube performansını karşılaştıran restoran yönetim paneli",
-      "QR menü siparişlerini mutfağa ve kasaya bağlayan sistem",
-      "Gün sonu Z raporunu stok düşümüyle otomatik eşleyen araç",
-      "Kurye/paket sipariş platformlarını tek ekranda toplama",
-      "Rezervasyon ve masa doluluğunu tahminleyen sistem",
-      "Fire/israf takibini kayıt altına alan mutfak paneli"
-    ],
-    "mimarlik-insaat": [
-      "Mimarlık ofisinde teklif ve maliyet hazırlamayı yarıya indiren yazılım",
-      "Proje dosyaları ve onay süreçlerini tek yerde toplayan özel araç",
-      "İnşaat şantiyesinde ilerleme ve hakediş raporlamasını otomatikleştirmek",
-      "Mimari sunum/render iş akışını hızlandıran otomasyon",
-      "Malzeme/metraj takibini dijitalleştiren şantiye sistemi",
-      "Müşteri revizyon taleplerini tek akışta yöneten mimari araç",
-      "Taşeron/ekip puantajını ve maliyetini takip eden saha sistemi",
-      "İmar/ruhsat evrak durumunu takip eden hatırlatma sistemi",
-      "Fotoğraf tabanlı şantiye ilerleme günlüğü ve raporu",
-      "Malzeme fiyat tekliflerini karşılaştıran satınalma aracı"
-    ],
-    "reklam-studyo-ai": [
-      "Ürün fotoğrafı için stüdyo çekimi yerine AI: gerçek maliyet karşılaştırması",
-      "Mankensiz (on-model) ürün görselini yapay zeka nasıl üretiyor — ve neye mal oluyor",
-      "30 saniyelik tanıtım videosu: prodüksiyon ekibi mi, yapay zeka mı",
-      "E-ticaret ürün görselini tek fotoğraftan onlarca varyasyona çevirmek",
-      "Reklam ajansına aylık retainer yerine kendi içeriğini yapay zekayla üretmek",
-      "Sosyal medya içerik üretimini yapay zekayla ölçeklemek (ajans maliyeti olmadan)",
-      "Emlak ilanında boş daireyi döşeli gösteren AI home-staging",
-      "Sanat yönetmeni / stüdyo işleri yapay zekaya nasıl kayıyor — ve hangi işler insanda kalıyor",
-      "Görsel, video, ses ve 3D içeriği tek platformda üretmenin mantığı (dağınık aboneliklere son)",
-      "Marka içeriğinde tutarlı karakter/stil: yapay zeka referans görselle nasıl koruyor",
-      "Küçük markanın kendi 'AI stüdyosunu' kurması: aylık maliyet ve iş akışı",
-      "Doğru AI modelini seçmek: 180+ model arasında hangisi hangi iş için"
-    ]
-  }
+  ]
 }

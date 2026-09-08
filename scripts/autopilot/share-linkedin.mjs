@@ -50,6 +50,33 @@ const tr = post.tr || post.en;
 const en = post.en || post.tr;
 const url = `${SITE}/blog/${post.slug}`;
 
+// Hashtags follow the post instead of being fixed: the blog covers agency
+// content production, the LUVI Creator platform and evergreen AI/dev topics,
+// so one hard-coded set would be wrong on two thirds of the posts. Derive them
+// from the post's own tags (Turkish diacritics folded to ASCII, PascalCase),
+// then top up with a small evergreen base.
+const BASE_TAGS = ["YapayZeka", "AI"];
+const TR_FOLD = { ı: "i", İ: "I", ğ: "g", Ğ: "G", ü: "u", Ü: "U", ş: "s", Ş: "S", ö: "o", Ö: "O", ç: "c", Ç: "C" };
+
+const toHashtag = (tag) =>
+  String(tag)
+    .replace(/[ıİğĞüÜşŞöÖçÇ]/g, (c) => TR_FOLD[c])
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .split(/[^A-Za-z0-9]+/)
+    .filter(Boolean)
+    .map((w) => w[0].toUpperCase() + w.slice(1))
+    .join("");
+
+const hashtags = [];
+for (const raw of [...(Array.isArray(post.tags) ? post.tags : []), ...BASE_TAGS]) {
+  const h = toHashtag(raw);
+  if (!h || /^[0-9]/.test(h)) continue; // LinkedIn tags can't start with a digit
+  if (hashtags.some((x) => x.toLowerCase() === h.toLowerCase())) continue;
+  hashtags.push(h);
+  if (hashtags.length === 6) break;
+}
+
 // Bilingual body: Turkish (primary audience) on top, English below, then link.
 const commentary = [
   tr.title,
@@ -64,7 +91,7 @@ const commentary = [
   "",
   `🔗 ${url}`,
   "",
-  "#SaaS #AI #MVP #Startups #Girişim #Yazılım #FreelanceDeveloper",
+  hashtags.map((h) => `#${h}`).join(" "),
 ].join("\n");
 
 // TR OG card matches the Turkish title/description shown on the link card.

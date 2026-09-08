@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write
+  issues: write # so a failed share can raise a visible alert (see last step)
 
 concurrency:
   group: linkedin-share
@@ -36,6 +37,48 @@ jobs:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           SITE_URL: https://alianil.com
         run: node scripts/autopilot/share-linkedin.mjs
+
+      # The share step is the one that silently rots: the LinkedIn member token
+      # lasts ~60 days, and when it expires every run fails with a 401 while the
+      # blog keeps publishing. That went unnoticed for 12 days once (2026-08-28 →
+      # 09-09), so a failure now files a GitHub issue — one open issue, commented
+      # on each further failure, closed automatically when sharing works again.
+      - name: Raise an alert if the share failed
+        if: failure()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh label create linkedin-share --color B60205 \
+            --description "LinkedIn auto-share health" 2>/dev/null || true
+          # printf keeps every line flush-left: YAML indentation leaking into the
+          # body would make GitHub render it as a code block.
+          body=$(printf '%s\n' \
+            "The scheduled LinkedIn share failed — new blog posts are NOT being shared." \
+            "" \
+            "Run: $RUN_URL" \
+            "" \
+            "Most likely cause: the LinkedIn member access token expired (they last ~60 days)." \
+            "Fix: mint a fresh token, then \`gh secret set LINKEDIN_ACCESS_TOKEN\`." \
+            "" \
+            "Nothing is lost meanwhile — unshared posts stay queued and go out once the token works.")
+          # '// empty' matters: on an empty list jq would otherwise print "null".
+          existing=$(gh issue list --state open --label linkedin-share --limit 1 --json number -q '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body "$body"
+          else
+            gh issue create --title "LinkedIn auto-share is failing" \
+              --label linkedin-share --body "$body"
+          fi
+
+      - name: Close the alert if sharing works again
+        if: success()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          for n in $(gh issue list --state open --label linkedin-share --json number -q '.[].number'); do
+            gh issue close "$n" --comment "Sharing succeeded again — closing automatically."
+          done
 
       - name: Commit ledger if changed
         env:
