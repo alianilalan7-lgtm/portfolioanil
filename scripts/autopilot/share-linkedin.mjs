@@ -1,16 +1,30 @@
 #!/usr/bin/env node
-// Shares the newest not-yet-shared published blog post to the owner's LinkedIn
-// profile (one per run). Bilingual: Turkish first, then English, then the link.
-// The post's OG card is uploaded to LinkedIn and attached as the article
-// thumbnail, so the share renders with a rich image instead of a bare text card.
-// No-ops cleanly if the LinkedIn token isn't configured. No dependencies.
+// Shares the newest not-yet-shared published blog post to LinkedIn — one post
+// per channel per run. Bilingual: Turkish first, then English, then the link,
+// then a short call-out for whichever LUVI product the post belongs to. The
+// post's OG card is uploaded and attached, so the share renders with a rich
+// image instead of a bare text card.
+//
+// Channels
+//   personal      the owner's own profile — takes every post
+//   luvi-creator  the LUVI Creator page — Type C (Wednesday) posts only
+//   luvi-agency   the Luvi Agency page  — Type A (Monday) posts only
+//
+// A page channel stays dormant until its organisation id is set, so with none
+// configured this behaves exactly like the single-channel version it replaces.
+// Posting AS a page also needs the token to carry w_organization_social, which
+// LinkedIn grants only through Community Management API review — until then the
+// page channels will fail their health check and should be left unset.
 //
 // Env:
-//   LINKEDIN_ACCESS_TOKEN  member token (w_member_social + openid + profile)
-//   SITE_URL               (default https://alianil.com)
-//   LINKEDIN_VERSION       (default 202606) LinkedIn-Version header (YYYYMM)
-//   DRY_RUN                if set, prints the post text for the newest article and exits (no token / no posting)
-//   HEALTH_CHECK           if set, verifies the token against /v2/userinfo and exits (no posting)
+//   LINKEDIN_ACCESS_TOKEN     member token (w_member_social + openid + profile;
+//                             plus w_organization_social for the page channels)
+//   LINKEDIN_ORG_ID_CREATOR   numeric org id of the LUVI Creator page (optional)
+//   LINKEDIN_ORG_ID_AGENCY    numeric org id of the Luvi Agency page (optional)
+//   SITE_URL                  (default https://alianil.com)
+//   LINKEDIN_VERSION          (default 202606) LinkedIn-Version header (YYYYMM)
+//   DRY_RUN                   print what each channel would post; no token, no posting
+//   HEALTH_CHECK              verify the token and any configured page; no posting
 
 import { Buffer } from "node:buffer";
 import { readFileSync, writeFileSync } from "node:fs";
@@ -21,6 +35,7 @@ const LEDGER_PATH = ".github/autopilot/shared-linkedin.json";
 const SITE = (process.env.SITE_URL || "https://alianil.com").replace(/\/+$/, "");
 const VERSION = process.env.LINKEDIN_VERSION || "202606";
 const DRY = !!process.env.DRY_RUN;
+const TOKEN = process.env.LINKEDIN_ACCESS_TOKEN;
 
 const readJson = (p, fallback) => {
   try {
@@ -30,66 +45,19 @@ const readJson = (p, fallback) => {
   }
 };
 
-// HEALTH_CHECK resolves the LinkedIn identity and exits, publishing nothing.
-// Why it exists: the member token expires every ~60 days, and a normal run whose
-// share queue is empty exits before it ever touches the API — so a freshly
-// rotated token would otherwise sit unverified until the next post happens to
-// publish, which is exactly how the 2026-08-28 expiry went unnoticed for 12 days.
-if (process.env.HEALTH_CHECK) {
-  const t = process.env.LINKEDIN_ACCESS_TOKEN;
-  if (!t) {
-    console.error("HEALTH CHECK FAILED: LINKEDIN_ACCESS_TOKEN is unset or empty.");
-    process.exit(1);
-  }
-  const probe = await fetch("https://api.linkedin.com/v2/userinfo", {
-    headers: { Authorization: `Bearer ${t}` },
-  });
-  const text = await probe.text();
-  if (!probe.ok) {
-    console.error(`HEALTH CHECK FAILED (HTTP ${probe.status}): ${text}`);
-    process.exit(1);
-  }
-  const me = JSON.parse(text);
-  console.log(`✓ Token valid — authenticated as ${me.name ?? "(name n/a)"}.`);
-  process.exit(0);
-}
-
-const posts = readJson(POSTS_PATH, []);
-const shared = readJson(LEDGER_PATH, []);
-
-const allPublished = posts
-  .filter((p) => (p.status ?? "published") === "published")
-  .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-
-// DRY_RUN previews the newest post regardless of the ledger; a real run only
-// considers posts not yet shared.
-const candidates = DRY ? allPublished : allPublished.filter((p) => !shared.includes(p.slug));
-
-if (!candidates.length) {
-  console.log(DRY ? "No published posts to preview." : "No new posts to share on LinkedIn.");
-  process.exit(0);
-}
-
-const post = candidates[0];
-const tr = post.tr || post.en;
-const en = post.en || post.tr;
-const url = `${SITE}/blog/${post.slug}`;
-
-// Which of the owner's products this share plugs. The validator guarantees at
-// most ONE external relatedLink per post, so that link is an unambiguous signal:
-// agency posts carry luvi.agency, creator posts carry luvicreator.com. The
-// product-free Friday posts carry neither — those still plug LUVI Creator here,
-// because the blog page is what stays clean for search credibility, while the
-// LinkedIn feed is where reach is the point.
-const externalHref =
-  (Array.isArray(post.relatedLinks) ? post.relatedLinks : [])
-    .map((l) => l && l.href)
-    .find((h) => typeof h === "string" && !h.startsWith("/")) || "";
-
-// Strict round-robin off the ledger length, so the plug never repeats twice in
-// a row. (Hashing the slug looked fine on average but happened to land the same
-// line on four consecutive posts.)
-const pickFor = (arr) => arr[shared.length % arr.length];
+// Which LUVI product a post belongs to. The validator allows at most ONE
+// external relatedLink, so that link classifies the post with no guessing:
+// luvi.agency => Type A, luvicreator.com => Type C, neither => the product-free
+// Friday post. Routing and the call-out both read from this.
+const typeOf = (post) => {
+  const href =
+    (Array.isArray(post.relatedLinks) ? post.relatedLinks : [])
+      .map((l) => l && l.href)
+      .find((h) => typeof h === "string" && !h.startsWith("/")) || "";
+  if (href.includes("luvi.agency")) return "agency";
+  if (href.includes("luvicreator.com")) return "creator";
+  return "informative";
+};
 
 const PROMOS = {
   agency: {
@@ -138,179 +106,268 @@ const PROMOS = {
   },
 };
 
-const promo = externalHref.includes("luvi.agency") ? PROMOS.agency : PROMOS.creator;
-const promoLine = pickFor(promo.variants);
+// The page channels only exist once their org id is configured. Each keeps its
+// own ledger, so a page that comes online later starts from the newest post it
+// accepts rather than replaying everything the profile already shared.
+const CHANNELS = [
+  {
+    key: "personal",
+    label: "kişisel profil",
+    author: async () => {
+      const res = await fetch("https://api.linkedin.com/v2/userinfo", {
+        headers: { Authorization: `Bearer ${TOKEN}` },
+      });
+      if (!res.ok)
+        throw new Error(
+          `identity lookup failed (HTTP ${res.status}) — token expired or missing openid/profile: ${await res.text()}`
+        );
+      const me = await res.json();
+      return { urn: `urn:li:person:${me.sub}`, who: me.name ?? "(name n/a)" };
+    },
+    accepts: () => true,
+  },
+  {
+    key: "luvi-creator",
+    label: "LUVI Creator sayfası",
+    orgId: process.env.LINKEDIN_ORG_ID_CREATOR,
+    accepts: (t) => t === "creator",
+  },
+  {
+    key: "luvi-agency",
+    label: "Luvi Agency sayfası",
+    orgId: process.env.LINKEDIN_ORG_ID_AGENCY,
+    accepts: (t) => t === "agency",
+  },
+].filter((c) => c.key === "personal" || c.orgId);
 
-// Hashtags follow the post instead of being fixed: the blog covers agency
-// content production, the LUVI Creator platform and evergreen AI/dev topics,
-// so one hard-coded set would be wrong on two thirds of the posts. Derive them
-// from the post's own tags (Turkish diacritics folded to ASCII, PascalCase),
-// then top up with a small evergreen base.
-const BASE_TAGS = [promo.tag, "YapayZeka", "AI"];
-const TR_FOLD = { ı: "i", İ: "I", ğ: "g", Ğ: "G", ü: "u", Ü: "U", ş: "s", Ş: "S", ö: "o", Ö: "O", ç: "c", Ç: "C" };
-
-const toHashtag = (tag) =>
-  String(tag)
-    .replace(/[ıİğĞüÜşŞöÖçÇ]/g, (c) => TR_FOLD[c])
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .split(/[^A-Za-z0-9]+/)
-    .filter(Boolean)
-    .map((w) => w[0].toUpperCase() + w.slice(1))
-    .join("");
-
-const hashtags = [];
-for (const raw of [...(Array.isArray(post.tags) ? post.tags : []), ...BASE_TAGS]) {
-  const h = toHashtag(raw);
-  if (!h || /^[0-9]/.test(h)) continue; // LinkedIn tags can't start with a digit
-  if (hashtags.some((x) => x.toLowerCase() === h.toLowerCase())) continue;
-  hashtags.push(h);
-  if (hashtags.length === 6) break;
+for (const c of CHANNELS) {
+  if (c.orgId)
+    c.author = async () => ({
+      urn: `urn:li:organization:${c.orgId}`,
+      who: `${c.label} (org ${c.orgId})`,
+    });
 }
 
-// Bilingual body: Turkish (primary audience) on top, English below, then link.
-const commentary = [
-  tr.title,
-  "",
-  tr.excerpt,
-  "",
-  "— — —",
-  "",
-  en.title,
-  "",
-  en.excerpt,
-  "",
-  `🔗 ${url}`,
-  "",
-  "— — —",
-  "",
-  promoLine.tr,
-  "",
-  promoLine.en,
-  "",
-  `${promo.cta.tr} / ${promo.cta.en} 👉 ${promo.url}`,
-  "",
-  hashtags.map((h) => `#${h}`).join(" "),
-].join("\n");
-
-// TR OG card matches the Turkish title/description shown on the link card.
-const thumbnailUrl = `${SITE}/tr/blog/${post.slug}/opengraph-image`;
-
-if (DRY) {
-  console.log("─── DRY RUN — LinkedIn post preview ───\n");
-  console.log(commentary);
-  console.log(`\n[link card] ${tr.title} — ${url}`);
-  console.log(`[thumbnail] ${thumbnailUrl}`);
-  process.exit(0);
+// HEALTH_CHECK resolves every configured channel and exits, publishing nothing.
+// Why it exists: the member token expires every ~60 days, and a normal run whose
+// share queue is empty exits before it ever touches the API — so a freshly
+// rotated token would otherwise sit unverified until the next post happens to
+// publish, which is exactly how the 2026-08-28 expiry went unnoticed for 12 days.
+if (process.env.HEALTH_CHECK) {
+  if (!TOKEN) {
+    console.error("HEALTH CHECK FAILED: LINKEDIN_ACCESS_TOKEN is unset or empty.");
+    process.exit(1);
+  }
+  let bad = 0;
+  for (const c of CHANNELS) {
+    try {
+      const { who } = await c.author();
+      if (c.orgId) {
+        // Resolving the URN proves nothing for a page — only an actual write
+        // permission check does. This read needs the same grant family.
+        const res = await fetch(
+          `https://api.linkedin.com/rest/organizationAcls?q=roleAssignee&role=ADMINISTRATOR&state=APPROVED`,
+          {
+            headers: {
+              Authorization: `Bearer ${TOKEN}`,
+              "LinkedIn-Version": VERSION,
+              "X-Restli-Protocol-Version": "2.0.0",
+            },
+          }
+        );
+        if (!res.ok)
+          throw new Error(
+            `page access denied (HTTP ${res.status}) — the app needs Community Management API approval and w_organization_social`
+          );
+      }
+      console.log(`✓ ${c.key}: ${who}`);
+    } catch (err) {
+      console.error(`✗ ${c.key}: ${err.message}`);
+      bad++;
+    }
+  }
+  process.exit(bad ? 1 : 0);
 }
 
-const token = process.env.LINKEDIN_ACCESS_TOKEN;
-if (!token) {
-  console.log("LINKEDIN_ACCESS_TOKEN not set — LinkedIn sharing disabled. Skipping.");
-  process.exit(0);
-}
+const posts = readJson(POSTS_PATH, []);
 
-const headers = {
-  Authorization: `Bearer ${token}`,
-  "Content-Type": "application/json",
-  "X-Restli-Protocol-Version": "2.0.0",
-  "LinkedIn-Version": VERSION,
+// The ledger used to be a flat array of slugs (profile only). Migrate it to a
+// per-channel map on first write; old entries belong to the profile.
+const rawLedger = readJson(LEDGER_PATH, {});
+const ledger = Array.isArray(rawLedger) ? { personal: rawLedger } : rawLedger;
+for (const c of CHANNELS) if (!Array.isArray(ledger[c.key])) ledger[c.key] = [];
+
+const allPublished = posts
+  .filter((p) => (p.status ?? "published") === "published")
+  .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+
+const buildCommentary = (post, sentCount) => {
+  const tr = post.tr || post.en;
+  const en = post.en || post.tr;
+  const url = `${SITE}/blog/${post.slug}`;
+  const promo = typeOf(post) === "agency" ? PROMOS.agency : PROMOS.creator;
+  // Strict round-robin off the channel's own ledger, so the call-out never
+  // repeats twice in a row and each channel rotates independently.
+  const line = promo.variants[sentCount % promo.variants.length];
+
+  const BASE_TAGS = [promo.tag, "YapayZeka", "AI"];
+  const TR_FOLD = { ı: "i", İ: "I", ğ: "g", Ğ: "G", ü: "u", Ü: "U", ş: "s", Ş: "S", ö: "o", Ö: "O", ç: "c", Ç: "C" };
+  const toHashtag = (tag) =>
+    String(tag)
+      .replace(/[ıİğĞüÜşŞöÖçÇ]/g, (c) => TR_FOLD[c])
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .split(/[^A-Za-z0-9]+/)
+      .filter(Boolean)
+      .map((w) => w[0].toUpperCase() + w.slice(1))
+      .join("");
+  const hashtags = [];
+  for (const raw of [...(Array.isArray(post.tags) ? post.tags : []), ...BASE_TAGS]) {
+    const h = toHashtag(raw);
+    if (!h || /^[0-9]/.test(h)) continue; // LinkedIn tags can't start with a digit
+    if (hashtags.some((x) => x.toLowerCase() === h.toLowerCase())) continue;
+    hashtags.push(h);
+    if (hashtags.length === 6) break;
+  }
+
+  const commentary = [
+    tr.title, "", tr.excerpt, "",
+    "— — —", "",
+    en.title, "", en.excerpt, "",
+    `🔗 ${url}`, "",
+    "— — —", "",
+    line.tr, "", line.en, "",
+    `${promo.cta.tr} / ${promo.cta.en} 👉 ${promo.url}`, "",
+    hashtags.map((h) => `#${h}`).join(" "),
+  ].join("\n");
+
+  // The TR OG card matches the Turkish title/description on the link card.
+  return { commentary, url, tr, thumbnailUrl: `${SITE}/tr/blog/${post.slug}/opengraph-image` };
 };
 
-// 1) Resolve the author URN from the token (OpenID userinfo → sub = person id).
-const uiRes = await fetch("https://api.linkedin.com/v2/userinfo", {
-  headers: { Authorization: `Bearer ${token}` },
-});
-if (!uiRes.ok) {
-  console.error(
-    `Failed to resolve LinkedIn identity (HTTP ${uiRes.status}). Token may be expired or missing openid/profile scope.`
-  );
-  console.error(await uiRes.text());
-  process.exit(1);
-}
-const ui = await uiRes.json();
-const author = `urn:li:person:${ui.sub}`;
-
-// 2) Upload the post's OG card to LinkedIn and get an image URN. Without an
-// explicit thumbnail, an article card built via the Posts API renders as a
-// bare text card (LinkedIn does not auto-scrape og:image here). Best-effort:
-// on any failure we fall back to a thumbnail-less card rather than skip posting.
-async function uploadThumbnail() {
+// Without an explicit thumbnail an article card built via the Posts API renders
+// with no image (LinkedIn does not auto-scrape og:image here). Best-effort: any
+// failure falls back to a thumbnail-less card rather than skipping the post.
+async function uploadThumbnail(thumbnailUrl, owner, headers) {
   try {
     const imgRes = await fetch(thumbnailUrl);
     if (!imgRes.ok) throw new Error(`OG image fetch HTTP ${imgRes.status}`);
     const bytes = Buffer.from(await imgRes.arrayBuffer());
 
-    const initRes = await fetch(
-      "https://api.linkedin.com/rest/images?action=initializeUpload",
-      {
-        method: "POST",
-        headers,
-        body: JSON.stringify({ initializeUploadRequest: { owner: author } }),
-      }
-    );
+    const initRes = await fetch("https://api.linkedin.com/rest/images?action=initializeUpload", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ initializeUploadRequest: { owner } }),
+    });
     if (!initRes.ok)
       throw new Error(`initializeUpload HTTP ${initRes.status}: ${await initRes.text()}`);
     const { value } = await initRes.json();
-    const uploadUrl = value?.uploadUrl;
-    const imageUrn = value?.image;
-    if (!uploadUrl || !imageUrn)
+    if (!value?.uploadUrl || !value?.image)
       throw new Error("initializeUpload response missing uploadUrl/image");
 
-    const putRes = await fetch(uploadUrl, {
+    const putRes = await fetch(value.uploadUrl, {
       method: "PUT",
-      headers: { Authorization: `Bearer ${token}`, "Content-Type": "image/png" },
+      headers: { Authorization: `Bearer ${TOKEN}`, "Content-Type": "image/png" },
       body: bytes,
     });
     if (!putRes.ok) throw new Error(`upload PUT HTTP ${putRes.status}`);
 
-    console.log(`✓ Uploaded OG thumbnail (${bytes.length} bytes) → ${imageUrn}`);
-    return imageUrn;
+    console.log(`  ✓ thumbnail uploaded (${bytes.length} bytes)`);
+    return value.image;
   } catch (err) {
-    console.warn(`⚠ Thumbnail upload skipped (${err.message}). Posting without image.`);
+    console.warn(`  ⚠ thumbnail skipped (${err.message}) — posting without image.`);
     return null;
   }
 }
 
-const thumbnail = await uploadThumbnail();
-
-// 3) Create the post with a rich article link card (card uses the Turkish title).
-const body = {
-  author,
-  commentary,
-  visibility: "PUBLIC",
-  distribution: {
-    feedDistribution: "MAIN_FEED",
-    targetEntities: [],
-    thirdPartyDistributionChannels: [],
-  },
-  content: {
-    article: {
-      source: url,
-      title: tr.title,
-      description: tr.excerpt,
-      ...(thumbnail ? { thumbnail } : {}),
-    },
-  },
-  lifecycleState: "PUBLISHED",
-  isReshareDisabledByAuthor: false,
-};
-
-const res = await fetch("https://api.linkedin.com/rest/posts", {
-  method: "POST",
-  headers,
-  body: JSON.stringify(body),
-});
-
-if (!res.ok) {
-  console.error(`LinkedIn post failed (HTTP ${res.status}):`);
-  console.error(await res.text());
-  process.exit(1);
+if (DRY) {
+  for (const c of CHANNELS) {
+    // Preview ignores the ledger so there is always something to look at.
+    const post = allPublished.find((p) => c.accepts(typeOf(p)));
+    console.log(`\n─── DRY RUN — ${c.key} (${c.label}) ───\n`);
+    if (!post) {
+      console.log("(bu kanala uygun yayımlanmış yazı yok)");
+      continue;
+    }
+    const { commentary, url, tr, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
+    console.log(commentary);
+    console.log(`\n[link card] ${tr.title} — ${url}`);
+    console.log(`[thumbnail] ${thumbnailUrl}`);
+  }
+  process.exit(0);
 }
 
-const postId = res.headers.get("x-restli-id") || "(id n/a)";
-console.log(`✓ Shared to LinkedIn (TR+EN): "${tr.title}" → ${url}  [${postId}]`);
+if (!TOKEN) {
+  console.log("LINKEDIN_ACCESS_TOKEN not set — LinkedIn sharing disabled. Skipping.");
+  process.exit(0);
+}
 
-shared.push(post.slug);
-writeFileSync(LEDGER_PATH, JSON.stringify(shared, null, 0) + "\n");
-console.log(`Ledger updated (${shared.length} shared).`);
+const headers = {
+  Authorization: `Bearer ${TOKEN}`,
+  "Content-Type": "application/json",
+  "X-Restli-Protocol-Version": "2.0.0",
+  "LinkedIn-Version": VERSION,
+};
+
+let posted = 0;
+let failed = 0;
+
+for (const c of CHANNELS) {
+  const post = allPublished.find(
+    (p) => c.accepts(typeOf(p)) && !ledger[c.key].includes(p.slug)
+  );
+  if (!post) {
+    console.log(`${c.key}: nothing new to share.`);
+    continue;
+  }
+
+  try {
+    const { urn: author, who } = await c.author();
+    const { commentary, url, tr, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
+    console.log(`${c.key} → ${who}: "${tr.title}"`);
+
+    const thumbnail = await uploadThumbnail(thumbnailUrl, author, headers);
+
+    const res = await fetch("https://api.linkedin.com/rest/posts", {
+      method: "POST",
+      headers,
+      body: JSON.stringify({
+        author,
+        commentary,
+        visibility: "PUBLIC",
+        distribution: {
+          feedDistribution: "MAIN_FEED",
+          targetEntities: [],
+          thirdPartyDistributionChannels: [],
+        },
+        content: {
+          article: {
+            source: url,
+            title: tr.title,
+            description: tr.excerpt,
+            ...(thumbnail ? { thumbnail } : {}),
+          },
+        },
+        lifecycleState: "PUBLISHED",
+        isReshareDisabledByAuthor: false,
+      }),
+    });
+
+    if (!res.ok) throw new Error(`post failed (HTTP ${res.status}): ${await res.text()}`);
+
+    console.log(`  ✓ shared → ${url}  [${res.headers.get("x-restli-id") || "id n/a"}]`);
+    ledger[c.key].push(post.slug);
+    posted++;
+  } catch (err) {
+    // One channel failing must not cost the others their share this run.
+    console.error(`  ✗ ${c.key}: ${err.message}`);
+    failed++;
+  }
+}
+
+writeFileSync(LEDGER_PATH, JSON.stringify(ledger, null, 0) + "\n");
+console.log(
+  `Done — ${posted} shared, ${failed} failed. Ledger: ` +
+    CHANNELS.map((c) => `${c.key}=${ledger[c.key].length}`).join(", ")
+);
+if (failed) process.exit(1);
