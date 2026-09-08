@@ -7,7 +7,12 @@ name: LinkedIn Auto-Share
 on:
   schedule:
     - cron: "0 7 * * 1,3,5" # Mon/Wed/Fri 07:00 UTC (~1h after the blog autopilot)
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      health_check:
+        description: "Only verify the LinkedIn token — publishes nothing"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -36,6 +41,8 @@ jobs:
         env:
           LINKEDIN_ACCESS_TOKEN: ${{ secrets.LINKEDIN_ACCESS_TOKEN }}
           SITE_URL: https://alianil.com
+          # Empty on scheduled runs (inputs is null there), so they share as usual.
+          HEALTH_CHECK: ${{ inputs.health_check && '1' || '' }}
         run: node scripts/autopilot/share-linkedin.mjs
 
       # The share step is the one that silently rots: the LinkedIn member token

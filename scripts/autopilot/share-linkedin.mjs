@@ -10,6 +10,7 @@
 //   SITE_URL               (default https://alianil.com)
 //   LINKEDIN_VERSION       (default 202606) LinkedIn-Version header (YYYYMM)
 //   DRY_RUN                if set, prints the post text for the newest article and exits (no token / no posting)
+//   HEALTH_CHECK           if set, verifies the token against /v2/userinfo and exits (no posting)
 
 import { Buffer } from "node:buffer";
 import { readFileSync, writeFileSync } from "node:fs";
@@ -28,6 +29,30 @@ const readJson = (p, fallback) => {
     return fallback;
   }
 };
+
+// HEALTH_CHECK resolves the LinkedIn identity and exits, publishing nothing.
+// Why it exists: the member token expires every ~60 days, and a normal run whose
+// share queue is empty exits before it ever touches the API — so a freshly
+// rotated token would otherwise sit unverified until the next post happens to
+// publish, which is exactly how the 2026-08-28 expiry went unnoticed for 12 days.
+if (process.env.HEALTH_CHECK) {
+  const t = process.env.LINKEDIN_ACCESS_TOKEN;
+  if (!t) {
+    console.error("HEALTH CHECK FAILED: LINKEDIN_ACCESS_TOKEN is unset or empty.");
+    process.exit(1);
+  }
+  const probe = await fetch("https://api.linkedin.com/v2/userinfo", {
+    headers: { Authorization: `Bearer ${t}` },
+  });
+  const text = await probe.text();
+  if (!probe.ok) {
+    console.error(`HEALTH CHECK FAILED (HTTP ${probe.status}): ${text}`);
+    process.exit(1);
+  }
+  const me = JSON.parse(text);
+  console.log(`✓ Token valid — authenticated as ${me.name ?? "(name n/a)"}.`);
+  process.exit(0);
+}
 
 const posts = readJson(POSTS_PATH, []);
 const shared = readJson(LEDGER_PATH, []);
