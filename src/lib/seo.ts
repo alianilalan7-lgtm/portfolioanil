@@ -4,7 +4,7 @@ import { routing } from "@/i18n/routing";
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://alianil.com";
 
-export const SITE_NAME = "Ali Anil Alan";
+export const SITE_NAME = "Ali Anıl Alan";
 export const PERSON_ID = `${SITE_URL}#person`;
 
 /** Locale -> OpenGraph locale tag. */

@@ -51,8 +51,8 @@ export async function generateMetadata({
       template: "%s",
     },
     description: t("description"),
-    authors: [{ name: "Ali Anil Alan", url: configuredSiteUrl }],
-    creator: "Ali Anil Alan",
+    authors: [{ name: "Ali Anıl Alan", url: configuredSiteUrl }],
+    creator: "Ali Anıl Alan",
     icons: {
       icon: [
         { url: "/favicon.ico", sizes: "32x32" },
@@ -61,7 +61,7 @@ export async function generateMetadata({
       apple: "/apple-icon.png",
     },
     openGraph: {
-      siteName: "Ali Anil Alan",
+      siteName: "Ali Anıl Alan",
       type: "website",
       locale: locale === "tr" ? "tr_TR" : "en_US",
       images: [
@@ -69,7 +69,7 @@ export async function generateMetadata({
           url: `${configuredSiteUrl}/opengraph-image`,
           width: 1200,
           height: 630,
-          alt: "Ali Anil Alan - Freelance AI & SaaS Developer",
+          alt: "Ali Anıl Alan - Freelance AI & SaaS Developer",
         },
       ],
     },
@@ -120,7 +120,10 @@ export default async function LocaleLayout({
       "@context": "https://schema.org",
       "@type": "Person",
       "@id": `${configuredSiteUrl}#person`,
-      name: "Ali Anil Alan",
+      name: "Ali Anıl Alan",
+      // ASCII variant used on GitHub etc. — tells Google both spellings are the
+      // same entity so name searches for either resolve to one person.
+      alternateName: "Ali Anil Alan",
       url: configuredSiteUrl,
       image: `${configuredSiteUrl}/images/profile.png`,
       jobTitle: "Freelance AI & SaaS Developer",
@@ -142,7 +145,7 @@ export default async function LocaleLayout({
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "@id": `${localizedBaseUrl}#service`,
-      name: "Ali Anil Alan",
+      name: "Ali Anıl Alan",
       url: localizedBaseUrl,
       inLanguage: languageCode,
       areaServed: "Worldwide",
@@ -162,7 +165,7 @@ export default async function LocaleLayout({
       "@type": "WebSite",
       "@id": `${localizedBaseUrl}#website`,
       url: localizedBaseUrl,
-      name: "Ali Anil Alan",
+      name: "Ali Anıl Alan",
       inLanguage: languageCode,
       description: tMeta("description"),
       potentialAction: {
@@ -176,6 +179,12 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} className="scroll-smooth">
       <head>
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="Ali Anıl Alan — Blog"
+          href={`${configuredSiteUrl}/rss.xml`}
+        />
         {schemaItems.map((item, index) => (
           <script
             key={`schema-${index}`}
