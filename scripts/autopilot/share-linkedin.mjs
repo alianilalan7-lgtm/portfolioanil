@@ -75,12 +75,70 @@ const tr = post.tr || post.en;
 const en = post.en || post.tr;
 const url = `${SITE}/blog/${post.slug}`;
 
+// Which of the owner's products this share plugs. The validator guarantees at
+// most ONE external relatedLink per post, so that link is an unambiguous signal:
+// agency posts carry luvi.agency, creator posts carry luvicreator.com. The
+// product-free Friday posts carry neither — those still plug LUVI Creator here,
+// because the blog page is what stays clean for search credibility, while the
+// LinkedIn feed is where reach is the point.
+const externalHref =
+  (Array.isArray(post.relatedLinks) ? post.relatedLinks : [])
+    .map((l) => l && l.href)
+    .find((h) => typeof h === "string" && !h.startsWith("/")) || "";
+
+// Strict round-robin off the ledger length, so the plug never repeats twice in
+// a row. (Hashing the slug looked fine on average but happened to land the same
+// line on four consecutive posts.)
+const pickFor = (arr) => arr[shared.length % arr.length];
+
+const PROMOS = {
+  agency: {
+    tag: "LuviAgency",
+    url: "https://luvi.agency",
+    variants: [
+      {
+        tr: "Luvi Agency'den haberiniz var mı? Ajanslar ve markalar için içerik üretimi: AI hattı, geleneksel prodüksiyon ve yazılım tek çatı altında.",
+        en: "Heard of Luvi Agency? Content production for agencies and brands — the AI line, traditional production and software under one roof.",
+      },
+      {
+        tr: "Kampanya içeriğini kim üretiyor? Luvi Agency'de AI üretimi, gerçek çekim ve yazılım aynı ekipten çıkıyor — AI'ın yetmediği yerde iş durmuyor.",
+        en: "Who produces your campaign content? At Luvi Agency the AI work, the real shoot and the software come from one team — so the job doesn't stall where AI stops.",
+      },
+      {
+        tr: "Luvi Agency: sanat, teknoloji ve veriyi bir araya getiren içerik prodüksiyonu. Brief'inizi konuşalım.",
+        en: "Luvi Agency: content production that puts art, technology and data together. Bring us your brief.",
+      },
+    ],
+  },
+  creator: {
+    tag: "LuviCreator",
+    url: "https://www.luvicreator.com",
+    variants: [
+      {
+        tr: "LUVI Creator'dan haberiniz var mı? Görsel, video, ses ve 3D için 180+ yapay zeka modeli tek hesapta — ayrı ayrı aboneliklere gerek yok.",
+        en: "Heard of LUVI Creator? 180+ AI models for image, video, voice and 3D in a single account — no juggling separate subscriptions.",
+      },
+      {
+        tr: "LUVI Creator'ı denediniz mi? Hangi modeli seçeceğinizi ve prompt'u LuviBot sizin yerinize yazıyor.",
+        en: "Tried LUVI Creator yet? LuviBot picks the right model and writes the prompt for you.",
+      },
+      {
+        tr: "LUVI Creator'dan haberiniz var mı? 180+ AI modeli, tek kredi cüzdanı, Türkçe — ekipler için roller ve müşteri bazlı projeler de var.",
+        en: "Heard of LUVI Creator? 180+ AI models, one credit wallet, Turkish-first — plus roles and per-client projects for teams.",
+      },
+    ],
+  },
+};
+
+const promo = externalHref.includes("luvi.agency") ? PROMOS.agency : PROMOS.creator;
+const promoLine = pickFor(promo.variants);
+
 // Hashtags follow the post instead of being fixed: the blog covers agency
 // content production, the LUVI Creator platform and evergreen AI/dev topics,
 // so one hard-coded set would be wrong on two thirds of the posts. Derive them
 // from the post's own tags (Turkish diacritics folded to ASCII, PascalCase),
 // then top up with a small evergreen base.
-const BASE_TAGS = ["YapayZeka", "AI"];
+const BASE_TAGS = [promo.tag, "YapayZeka", "AI"];
 const TR_FOLD = { ı: "i", İ: "I", ğ: "g", Ğ: "G", ü: "u", Ü: "U", ş: "s", Ş: "S", ö: "o", Ö: "O", ç: "c", Ç: "C" };
 
 const toHashtag = (tag) =>
@@ -115,6 +173,14 @@ const commentary = [
   en.excerpt,
   "",
   `🔗 ${url}`,
+  "",
+  "— — —",
+  "",
+  promoLine.tr,
+  "",
+  promoLine.en,
+  "",
+  `👉 ${promo.url}`,
   "",
   hashtags.map((h) => `#${h}`).join(" "),
 ].join("\n");
