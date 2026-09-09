@@ -40,7 +40,12 @@ jobs:
         run: echo "today=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
 
       - name: Generate post with Claude Code
-        uses: anthropics/claude-code-action@v1
+        # PINNED to v1.0.217. The moving @v1 tag rolled to v1.0.218/219 on
+        # 2026-09-08, which bundle Claude Code 2.1.265/2.1.266 — that build is
+        # broken on hosted runners and every run since fails in ~300ms with
+        # `result is_error:true`, no model call, no post. Upstream:
+        # anthropics/claude-code-action#1817. Drop the pin once it's fixed.
+        uses: anthropics/claude-code-action@9c5ddab2e6d17b83ea679153b31f1d5f023cf636
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           prompt: >-

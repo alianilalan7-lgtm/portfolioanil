@@ -3654,5 +3654,116 @@
         { "type": "paragraph", "text": "If you're curious how model costs are actually calculated per token, and what really shapes an API bill, the token economics piece goes deeper into that." }
       ]
     }
+  },
+  {
+    "slug": "ai-subscriptions-vs-one-account-which-model-for-which-job",
+    "publishedAt": "2026-09-09",
+    "readTime": "8 min",
+    "category": "AI İçerik Üretimi",
+    "tags": ["LUVI Creator", "Yapay Zeka", "İçerik Üretimi", "Model Seçimi"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI içerik stüdyosu: LUVI Creator", "href": "https://www.luvicreator.com" },
+      { "label": "Tanıtım videosu: prodüksiyon mu yapay zeka mı", "href": "/blog/promo-video-ai-vs-production-team-cost" },
+      { "label": "Projen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Beş Ayrı Yapay Zeka Aboneliği mi, Tek Hesapta 180+ Model mi? Hangi İş İçin Hangi Model",
+      "excerpt": "Görsel, video ve seslendirme için ayrı ayrı abonelik ödemeye gerek yok. Hangi iş için hangi modeli seçeceğini ve tek hesapta çalışmanın farkını anlatıyorum.",
+      "content": [
+        { "type": "paragraph", "text": "Bu hafta üç iş birden var: otuz ürünün görselini çıkaracaksın, ikisi için onar saniyelik dikey video gerekiyor, bir de tanıtımın Türkçe seslendirmesi lazım. Tarayıcıda dört sekme açık ve dördü de ayrı abonelik — biri görsel üretiyor, biri video, biri ses, birine de sırf çözünürlük büyütmek için para veriyorsun. Ay sonunda dördü ayrı ayrı kesiliyor, hiçbirini tam kullanmıyorsun ve asıl soru hâlâ cevapsız duruyor: hangi iş için hangi model?" },
+        { "type": "heading", "text": "Ayrı Ayrı Abonelik Nerede Sızdırıyor?" },
+        { "type": "paragraph", "text": "Sızıntının görünen kısmı para: dört ayrı araç, dört ayrı sabit ücret ve işin olmadığı ay da aynı tutar. Görünmeyen kısmı daha pahalı. Çoğu araçta krediler dönem sonunda yanar; yoğun bir ay için aldığın paketin artanı, sakin ayda cebinde kalmaz. Üstelik her aracın kendi arayüzü, kendi kütüphanesi ve kendi hesabı var; aynı müşterinin işi üç ayrı yerde birikir. Üç ay sonra 'şu görselin kaynağı nerede' diye sorulduğunda cevap vermek yarım gününü alır." },
+        { "type": "paragraph", "text": "İkinci sızıntı daha sinsi: aboneliğini aldığın aracın modeline mecbur kalırsın. O model insan yüzünde çok iyi ama ürün ambalajındaki yazıyı sürekli bozuyorsa ya sonucu kabul edersin ya da beşinci bir abonelik açarsın. Oysa üretken modellerin her biri farklı bir işte iyi. Kötü çıktı çoğu zaman 'yapay zeka beceremedi' değil, 'yanlış modele yanlış işi verdim' demektir — ve bunu ancak elinin altında birden fazla model varsa fark edersin." },
+        { "type": "heading", "text": "Hangi İş İçin Hangi Model? Kısa Bir Eşleme" },
+        { "type": "paragraph", "text": "Model isimlerini ezberlemene gerek yok; aile mantığını bilmen yeter. Üretken modeller yaptıkları işe göre birkaç aileye ayrılıyor ve bir işi doğru aileye verdiğinde kalite bir anda yerine oturuyor. Pratikte en çok karşına çıkacak eşleme şu:" },
+        { "type": "list", "items": [
+          "Metinden görsel: elinde referans yokken sıfırdan sahne, konsept ya da arka plan üretmek için.",
+          "Referanslı görsel (görselden görsel): ürünün, mekânın ya da yüzün aynı kalması gerektiğinde. Katalog işlerinin çoğu bu ailededir.",
+          "Görselden video: onaylanmış tek bir kareyi 5–10 saniyelik harekete çevirmek. Reklam ve sosyal medya işlerinde en güvenli yol, çünkü kareyi önce onaylatıyorsun.",
+          "Metinden video: elinde görsel yokken sahneyi doğrudan tarif ederek üretmek. Kontrolü daha az, sürprizi daha çok.",
+          "Seslendirme ve ses: dış ses, reklam anonsu, aynı metnin farklı dillerdeki versiyonları.",
+          "Düzeltme (inpainting): kadrajın tamamını yeniden üretmeden sadece bozuk yeri — etiketi, eli, gölgeyi — düzeltmek.",
+          "Büyütme (upscale): baskıya, vitrin ekranına veya büyük formata gidecek işi çözünürlük olarak yukarı taşımak."
+        ]},
+        { "type": "paragraph", "text": "Aile seçildikten sonra ikinci karar modelin ağırlığı: hızlı ve ucuz olan mı, yavaş ama referansa daha sadık olan mı. Otuz ürünün ilk taslağını çıkarırken hızlı modelle çalışmak mantıklı, zaten çoğunu eleyeceksin. Müşteriye gidecek son üç kareyi ise referansı daha sıkı takip eden ağır modelle üretirsin. Aynı işin içinde model değiştirmek kural dışı değil; işin normali bu." },
+        { "type": "paragraph", "text": "Bu eşlemeyi kafadan yapmak istemiyorsan LuviBot'a işi kendi cümlelerinle anlatman yeterli: hangi model tipiyle çalışılacağını seçiyor ve promptu senin yerine kuruyor. Yeni bir model çıktığında onu tanımak için ayrıca vakit ayırmak zorunda kalmıyorsun." },
+        { "type": "heading", "text": "Gerçek Bir İş: 30 Ürünlük Katalog ve Tek Bir Dikey Video" },
+        { "type": "paragraph", "text": "Küçük bir takı markasının sezon kataloğu olsun: 30 ürün, hepsi sade fon, iki üründe de modelli kare isteniyor. Elinde ürünlerin telefonla çekilmiş, düz ışıklı fotoğrafları var. İşe tek bir ürünle başlarsın: fotoğrafı referans olarak verir, istediğin ışığı ve zemini tarif eder, üç dört varyant çıkarır, birini beğenirsin. Beğendiğin o kare artık işin standardı — kalan 29 ürünü aynı ayarla toplu (batch) üretirsin. Buradaki asıl kazanç hız değil, tutarlılık: 30 karenin ışığı ve perspektifi birbirini tutuyor." },
+        { "type": "paragraph", "text": "İlk turda hepsi doğru gelmez, gelmesini beklemek de gerçekçi değil. Tipik olarak birkaç karede zincir kopuk çıkar, bir ikisinde ürünün üzerindeki yazı bozulur, modelli karelerde eller sorun çıkarır. Burada yapılacak şey kadrajı baştan üretmek değil, sadece bozuk bölgeyi seçip inpainting ile düzeltmek. Otuz karelik bir sette genelde dört beş kare bu rötuşu ister; bu da bir öğleden sonra değil, yirmi dakika demek." },
+        { "type": "paragraph", "text": "Video tarafında en güvenli yol, sıfırdan sahne üretmek yerine onaylanmış kareyi kullanmak. Beğenilen ürün görselini görselden video modeline verir, kamera hareketini tarif edersin: yavaş bir yakınlaşma, hafif bir dönüş. 6–10 saniyelik bir klip birkaç denemede oturuyor. Seslendirmeyi ayrı bir modelle üretip üzerine koyarsın. Hepsi aynı hesapta olduğu için referans görsel, klip ve ses aynı projede duruyor; müşteri iki ay sonra 'şunun bir varyantı olsun' dediğinde her şey yerinde." },
+        { "type": "heading", "text": "Krediyle Çalışmak: Maliyeti Nasıl Düşünmeli?" },
+        { "type": "paragraph", "text": "Abonelik mantığında ay başında sabit bir tutar ödersin ve o ay ne kadar iş yaptığın önemli değildir. Kredi mantığında ödeme işin kendisine bağlanır: ürettiğin kare, saniye ve karakter kadar harcarsın. Yoğun ay ile sakin ay arasındaki fark faturaya da yansır — ajans ve freelance işinin doğası zaten bu. LUVI Creator'daki kredi cüzdanının önemli tarafı, kredilerin süresinin dolmaması: sakin geçen ayın artanı bir sonraki işte duruyor. Piyasa rakamlarıyla kıyaslamak istersen referans noktaları şöyle:" },
+        { "type": "stats", "items": [
+          { "label": "Stüdyoda ürün çekimi (piyasa)", "value": "görsel başına birkaç yüz TL'den başlıyor" },
+          { "label": "30 sn tanıtım videosu prodüksiyonu (piyasa)", "value": "kabaca 15–80 bin TL bandı" },
+          { "label": "Ayrı ayrı AI aboneliği", "value": "araç başına aylık sabit ücret, kullanmasan da" },
+          { "label": "Kredi ile üretim", "value": "iş bazlı; sakin ayda harcama da düşüyor" }
+        ]},
+        { "type": "heading", "text": "Nerede Hâlâ İnsan Eli, Bazen de Gerçek Çekim Gerekiyor?" },
+        { "type": "paragraph", "text": "Yapay zeka bu işlerin hepsini yüzde yüz kapatmıyor ve kapatıyormuş gibi anlatmak kimseye fayda sağlamıyor. Kumaşın dokusu ve kalıbın birebir doğruluğu hâlâ zayıf nokta; ürünün üzerindeki okunabilir yazı, logo ve küçük tipografi sık bozuluyor; eller dikkat istiyor. Markanın kampanya açılışında kullanacağı ana görsel, gerçek mekân veya oyuncu gerektiren işler ve ürün sadakatinin birebir şart olduğu durumlar için gerçek çekim yerinde duruyor. Doğru kurulum genelde melez oluyor: hero kareyi çekersin, geri kalan yüzlerce varyantı üretirsin." },
+        { "type": "heading", "text": "Ekip Olarak Çalışıyorsan Ne Değişiyor?" },
+        { "type": "paragraph", "text": "Tek başına çalışırken dağınıklığın bedelini sadece sen ödersin. İki üç kişi olduğunuzda ise herkesin kendi hesabından üretmesi asıl sorunu doğuruyor: iş bulunamıyor, aynı görsel iki kez üretiliyor, müşteriye giden versiyonun hangisi olduğu tartışılıyor. TEAMS tarafı tam olarak bunun için: rolleri ve davetleri tanımlıyorsun, işler müşteri bazlı projelere ayrılıyor, üretilen her şey ortak kütüphanede birikiyor. Ekipten biri ayrıldığında iş de onunla birlikte gitmiyor." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Ben zaten iki araç kullanıyorum, tek hesapta 180+ model olmasının bana faydası ne?" },
+        { "type": "paragraph", "text": "Fayda model saymakta değil, iş değiştiğinde yeni abonelik açmak zorunda kalmamakta. Bugün ürün görseli üretiyorsun, üç ay sonra müşteri kısa video istiyor, altı ay sonra çok dilli seslendirme gerekiyor. Her yeni ihtiyaçta yeni bir hesap, yeni bir öğrenme eğrisi ve yeni bir sabit ücret yerine aynı yerde model değiştiriyorsun. Bir de şu var: modeller hızlı eskiyor. Bu ay en iyi sonucu veren model üç ay sonra ikinci sıraya düşebiliyor ve tek modele kilitlenmiş olmak o gün maliyete dönüşüyor." },
+        { "type": "subheading", "text": "Krediler yanıyor mu, aylık taahhüt var mı?" },
+        { "type": "paragraph", "text": "LUVI Creator'da kredi cüzdanı süresiz: aldığın kredi dönem sonunda sıfırlanmıyor, işin olmadığı ay boşa gitmiyor. Ajans ve freelance temposu dalgalı olduğu için sabit abonelikten en çok bu noktada ayrışıyor — üç yoğun ayın ardından gelen sakin ayda ödeme yapmaya devam etmiyorsun." },
+        { "type": "subheading", "text": "Hangi modelin iyi olduğunu nereden bileceğim, hepsini tek tek denemek zorunda mıyım?" },
+        { "type": "paragraph", "text": "Hayır, ama tek bir işi iki üç modelde denemek iyi bir alışkanlık. Yöntem basit: elinde kalitesini bildiğin küçük bir referans iş olsun — kendi ürününün bir fotoğrafı gibi. Yeni bir model geldiğinde aynı işi ona da verip sonucu kıyaslarsın; on dakikada gerçek bir fikir edinirsin. Seçimi hiç düşünmek istemiyorsan LuviBot zaten üstleniyor, ama müşteriye gidecek kritik işte iki modeli yan yana koyup gözünle karar vermek en sağlıklısı." },
+        { "type": "subheading", "text": "Ürün fotoğrafını yapay zekayla üretmek stüdyo çekiminden gerçekten ucuz mu?" },
+        { "type": "paragraph", "text": "Adet arttıkça evet, ve fark küçük değil. Stüdyoda görsel başına birkaç yüz TL'den başlayan bir maliyet ve günlere yayılan bir takvim varken, üretim tarafında aynı iş kredi bazında ve saatler içinde çıkıyor. Ama karşılaştırmayı dürüst kurmak lazım: stüdyo çekiminde ürünün birebir kendisi vardır, üretimde referansa sadakat modelin işidir ve her zaman yüzde yüz tutmaz. Yüzlerce varyantın gerektiği katalog ve sosyal medya işlerinde üretim açık ara ucuz; markanın ana kampanya görselinde karar bu kadar net değil." },
+        { "type": "paragraph", "text": "Bu akışı denemek için büyük bir işe başlamana gerek yok: elindeki bir ürünün telefonla çekilmiş fotoğrafını al, luvicreator.com'da hesap aç ve tek bir kareyi baştan sona çıkar — referansı ver, üç varyant üret, birini inpainting ile düzelt. Yarım saatlik bu deneme, hangi işin sana uyduğunu on sayfalık karşılaştırmadan daha net gösterir." }
+      ]
+    },
+    "en": {
+      "title": "Five Separate AI Subscriptions, or 180+ Models on One Account? Which Model for Which Job",
+      "excerpt": "You don't need a separate subscription for images, video and voice. Here's which AI model to use for which job, and what changes on a single account.",
+      "content": [
+        { "type": "paragraph", "text": "You have three jobs this week: 30 product images to produce, two ten-second vertical videos, and a Turkish voice-over for the promo. Four tabs are open in your browser and all four are separate subscriptions — one makes images, one makes video, one makes voice, and you pay a fourth just to upscale resolution. At the end of the month all four bill you separately, you fully use none of them, and the real question is still unanswered: which AI model for which job?" },
+        { "type": "heading", "text": "Where Separate Subscriptions Actually Leak" },
+        { "type": "paragraph", "text": "The visible part of the leak is money: four tools, four fixed monthly fees, and the same amount in a month with no work. The invisible part costs more. In most tools credits expire at the end of the period, so whatever is left from the package you bought for a busy month doesn't carry into a quiet one. On top of that each tool has its own interface, its own library and its own account, so one client's work piles up in three separate places. Three months later, answering 'where's the source file for that image' eats half a day." },
+        { "type": "paragraph", "text": "The second leak is sneakier: you're stuck with the model behind the subscription you bought. If that model is great at faces but keeps mangling the text on your product packaging, you either accept the result or open a fifth subscription. Generative models are each good at a different job. A bad output usually doesn't mean 'AI couldn't do it' — it means 'I gave the wrong job to the wrong model,' and you only notice that when more than one model is within reach." },
+        { "type": "heading", "text": "Which AI Model for Which Job? A Short Mapping" },
+        { "type": "paragraph", "text": "You don't need to memorise model names; knowing the families is enough. Generative models split into a few families by the work they do, and quality clicks into place the moment a job goes to the right family. In practice this is the mapping you'll meet most:" },
+        { "type": "list", "items": [
+          "Text to image: producing a scene, concept or background from scratch when you have no reference in hand.",
+          "Reference-based image (image to image): when the product, the space or the face has to stay the same. Most catalogue work lives here.",
+          "Image to video: turning one approved frame into 5–10 seconds of motion. The safest route for ads and social, because the frame gets approved first.",
+          "Text to video: describing a scene directly when you have no image. Less control, more surprises.",
+          "Voice and audio: voice-over, ad announcements, the same script in several languages.",
+          "Inpainting: fixing only the broken area — a label, a hand, a shadow — instead of regenerating the whole frame.",
+          "Upscaling: pushing resolution up for print, in-store screens or large formats."
+        ]},
+        { "type": "paragraph", "text": "Once the family is set, the second decision is the weight of the model: the fast and cheap one, or the slower one that follows your reference more closely. Drafting 30 products, the fast model makes sense — you'll discard most of them anyway. The final three frames that go to the client get produced with the heavier, more faithful model. Switching models inside one job isn't an exception; it's how the work normally goes." },
+        { "type": "paragraph", "text": "If you'd rather not do this mapping in your head, describe the job to LuviBot in your own words: it picks the model type and writes the prompt for you. When a new model lands, you don't have to set aside time to get to know it first." },
+        { "type": "heading", "text": "A Real Job: A 30-Product Catalogue and One Vertical Video" },
+        { "type": "paragraph", "text": "Say a small jewellery brand needs a season catalogue: 30 products, plain background, and two of them shot on a model. What you have are flat, phone-shot photos of the products. You start with a single product: give the photo as a reference, describe the light and the surface you want, produce three or four variants, pick one. That approved frame is now the standard for the job — the remaining 29 are produced in batch on the same settings. The real gain here isn't speed, it's consistency: the light and perspective match across all 30 frames." },
+        { "type": "paragraph", "text": "The first pass won't come back perfect, and expecting it to isn't realistic. Typically a few frames break a chain, one or two mangle the text printed on the product, and hands cause trouble in the on-model frames. The move here is not to regenerate the frame but to select the broken region and fix it with inpainting. In a set of 30, four or five frames usually need that retouch — twenty minutes, not an afternoon." },
+        { "type": "paragraph", "text": "On the video side, the safest route is using the approved frame rather than generating a scene from scratch. You feed the chosen product image to an image-to-video model and describe the camera move: a slow push-in, a gentle rotation. A 6–10 second clip settles after a few attempts. You produce the voice-over with a separate model and lay it on top. Because it all happens in one account, the reference image, the clip and the audio sit in the same project — so when the client asks for 'a variant of that one' two months later, everything is where you left it." },
+        { "type": "heading", "text": "Working on Credits: How to Think About Cost" },
+        { "type": "paragraph", "text": "On a subscription you pay a fixed amount at the start of the month and it doesn't matter how much work you did. On credits, payment is tied to the work itself: you spend as many frames, seconds and characters as you produce. The gap between a busy month and a quiet one shows up on the bill — which is the nature of agency and freelance work anyway. The part that matters about the LUVI Creator credit wallet is that credits don't expire: what's left from a quiet month is still there for the next job. If you want market numbers to compare against, here are the reference points:" },
+        { "type": "stats", "items": [
+          { "label": "Studio product shoot (market)", "value": "from a few hundred TL per image" },
+          { "label": "30s promo video production (market)", "value": "roughly the 15,000–80,000 TL band" },
+          { "label": "Separate AI subscriptions", "value": "a fixed monthly fee per tool, used or not" },
+          { "label": "Producing on credits", "value": "per job; spend drops in a quiet month" }
+        ]},
+        { "type": "heading", "text": "Where a Human Hand — and Sometimes a Real Shoot — Is Still Needed" },
+        { "type": "paragraph", "text": "AI doesn't cover 100% of this work, and pretending otherwise helps nobody. Fabric texture and exact fit are still weak spots; legible text, logos and small typography on a product break often; hands need watching. For the hero image a brand opens a campaign with, for work that needs a real location or a real actor, and for cases where exact product fidelity is non-negotiable, a real shoot still holds its place. The setup that works is usually hybrid: shoot the hero frame, generate the hundreds of variants around it." },
+        { "type": "heading", "text": "What Changes When You Work as a Team" },
+        { "type": "paragraph", "text": "Working alone, you're the only one paying for the mess. With two or three people, everyone generating from their own account is where the real problem starts: work can't be found, the same image gets produced twice, and nobody is sure which version went to the client. That's what the TEAMS side is for: you define roles and invites, work is split into per-client projects, and everything produced collects in a shared library. When someone leaves the team, the work doesn't leave with them." },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "I already use two tools — what do 180+ models on one account do for me?" },
+        { "type": "paragraph", "text": "The benefit isn't in counting models, it's in not having to open a new subscription every time the work changes. Today you're making product images; in three months a client wants short video; in six, multilingual voice-over. Instead of a new account, a new learning curve and a new fixed fee for each need, you switch models in the same place. There's also this: models age fast. The model giving the best result this month can drop to second place in three, and being locked to one model is exactly what costs you that day." },
+        { "type": "subheading", "text": "Do credits expire? Is there a monthly commitment?" },
+        { "type": "paragraph", "text": "In LUVI Creator the credit wallet doesn't expire: credits aren't zeroed at the end of a period, so a month without work isn't money lost. Because agency and freelance workloads swing, this is where it separates most clearly from a fixed subscription — after three busy months, you're not still paying through the quiet one." },
+        { "type": "subheading", "text": "How do I know which model is good? Do I have to try them all?" },
+        { "type": "paragraph", "text": "No, but running one job through two or three models is a good habit. The method is simple: keep a small reference job whose quality you know well — a photo of your own product, for instance. When a new model shows up, give it the same job and compare; ten minutes gets you a real opinion. If you'd rather not think about the choice at all, LuviBot handles it — but for critical client work, putting two models side by side and deciding with your own eyes is the healthiest approach." },
+        { "type": "subheading", "text": "Is generating product photography with AI really cheaper than a studio shoot?" },
+        { "type": "paragraph", "text": "As the count goes up, yes, and the gap isn't small. Against a studio cost that starts from a few hundred TL per image and a schedule spread over days, the same work comes out on credits and within hours. But the comparison has to be honest: in a studio shoot you have the product itself, while in generation fidelity to the reference is the model's job and it doesn't land 100% every time. For catalogue and social work that needs hundreds of variants, generating wins by a wide margin; for a brand's main campaign image, the decision isn't nearly that clear." },
+        { "type": "paragraph", "text": "You don't need a big job to try this flow: take a phone photo of one product you have, open an account at luvicreator.com, and take a single frame all the way — give the reference, generate three variants, fix one with inpainting. That half-hour test tells you more about what fits your work than ten pages of comparison." }
+      ]
+    }
   }
 ]

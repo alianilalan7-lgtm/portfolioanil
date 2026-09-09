@@ -5,6 +5,12 @@
 // post's OG card is uploaded and attached, so the share renders with a rich
 // image instead of a bare text card.
 //
+// Where the link card lands: on a LUVI post (Type A / Type C) it opens the
+// product — luvi.agency or luvicreator.com — because sending that reader to the
+// product is the whole point of the post; the article itself stays one tap away
+// through the 🔗 line in the commentary. A product-free post (Type B) keeps its
+// card on the article, which is the only place it has to send anyone.
+//
 // Channels
 //   personal      the owner's own profile — takes every post
 //   luvi-creator  the LUVI Creator page — Type C (Wednesday) posts only
@@ -31,7 +37,9 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const POSTS_PATH = "src/data/autopilot-posts.json";
 // One-off posts that jump ahead of the blog queue — a standalone product post
-// with its own image and no article link. Emptying the file disables them.
+// with its own image. With `link` (+ `title`, optional `description`) it goes
+// out as a link card that opens that URL; without it, as a plain image post.
+// Emptying the file disables them.
 const QUEUE_PATH = ".github/autopilot/linkedin-queue.json";
 const LEDGER_PATH = ".github/autopilot/shared-linkedin.json";
 
@@ -67,6 +75,14 @@ const PROMOS = {
     tag: "LuviAgency",
     url: "https://luvi.agency",
     cta: { tr: "Brief'inizi konuşalım", en: "Let's talk" },
+    // The link card on a LUVI post lands on the product, not on the article, so
+    // its title has to name the product — a card carrying the article's title
+    // while opening luvi.agency would read as bait. The article's own title and
+    // excerpt still lead the commentary, with the blog link inside it.
+    card: {
+      title: "Luvi Agency — reklam ve marka içeriği üretimi",
+      description: "AI üretim hattı, geleneksel prodüksiyon ve yazılım tek çatı altında.",
+    },
     variants: [
       {
         tr: "Luvi Agency'den haberiniz var mı? Ajanslar ve markalar için içerik üretimi: AI hattı, geleneksel prodüksiyon ve yazılım tek çatı altında.",
@@ -88,6 +104,10 @@ const PROMOS = {
     // One variant per headline capability, so three shares cover TEAMS,
     // Workflows and MCP rather than repeating the model count every time.
     cta: { tr: "Hadi, siz de deneyin", en: "Give it a try" },
+    card: {
+      title: "LUVI Creator — 180+ AI modeli tek hesapta",
+      description: "Görsel, video, ses ve 3D üretimi; LuviBot, TEAMS, workflow ve süresi dolmayan kredi.",
+    },
     variants: [
       {
         tr: "LUVI Creator'dan haberiniz var mı? Ekipçe çalışın: roller, davetler, müşteri bazlı projeler ve ortak kütüphane — herkesin işi tek yerde toplansın.",
@@ -212,7 +232,8 @@ const buildCommentary = (post, sentCount) => {
   const tr = post.tr || post.en;
   const en = post.en || post.tr;
   const url = `${SITE}/blog/${post.slug}`;
-  const promo = typeOf(post) === "agency" ? PROMOS.agency : PROMOS.creator;
+  const type = typeOf(post);
+  const promo = type === "agency" ? PROMOS.agency : PROMOS.creator;
   // Strict round-robin off the channel's own ledger, so the call-out never
   // repeats twice in a row and each channel rotates independently.
   const line = promo.variants[sentCount % promo.variants.length];
@@ -248,8 +269,17 @@ const buildCommentary = (post, sentCount) => {
     hashtags.map((h) => `#${h}`).join(" "),
   ].join("\n");
 
+  // Where the card lands. On a LUVI post (Type A / Type C) the tap goes to the
+  // product — that is the point of those posts — and the article stays reachable
+  // through the 🔗 line in the commentary above. A product-free post (Type B)
+  // has nowhere else to send anyone, so its card stays on the article.
+  const card =
+    type === "informative"
+      ? { source: url, title: tr.title, description: tr.excerpt }
+      : { source: promo.url, ...promo.card };
+
   // The TR OG card matches the Turkish title/description on the link card.
-  return { commentary, url, tr, thumbnailUrl: `${SITE}/tr/blog/${post.slug}/opengraph-image` };
+  return { commentary, url, tr, card, thumbnailUrl: `${SITE}/tr/blog/${post.slug}/opengraph-image` };
 };
 
 // Without an explicit thumbnail an article card built via the Posts API renders
@@ -296,7 +326,11 @@ if (DRY) {
     if (q) {
       console.log(`[sırada: tek seferlik gönderi ${q.id}]\n`);
       console.log(q.commentary);
-      console.log(`\n[görsel] ${q.image}`);
+      console.log(
+        q.link
+          ? `\n[link card] ${q.title} — ${q.link}\n[thumbnail] ${q.image}`
+          : `\n[görsel gönderi — sadece metindeki link tıklanır] ${q.image}`
+      );
       continue;
     }
     // Preview ignores the ledger so there is always something to look at.
@@ -305,9 +339,9 @@ if (DRY) {
       console.log("(bu kanala uygun yayımlanmış yazı yok)");
       continue;
     }
-    const { commentary, url, tr, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
+    const { commentary, tr, card, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
     console.log(commentary);
-    console.log(`\n[link card] ${tr.title} — ${url}`);
+    console.log(`\n[link card] ${card.title}\n[tıklayınca gider] ${card.source}`);
     console.log(`[thumbnail] ${thumbnailUrl}`);
   }
   process.exit(0);
@@ -341,10 +375,15 @@ for (const c of CHANNELS) {
   try {
     const { urn: author, who } = await c.author();
 
-    // A queued one-off is an IMAGE post: its own picture, no article card,
-    // because it points at a product rather than at a blog article.
+    // A queued one-off brings its own picture. With `link` set it goes out as a
+    // LINK CARD — the picture becomes the card thumbnail and tapping anywhere on
+    // it lands on that URL, which is what a product post wants. Without `link`
+    // it stays a plain image post, where tapping the picture only opens the
+    // picture and the URL inside the commentary is the sole clickable thing.
     if (queued) {
       console.log(`${c.key} → ${who}: one-off "${queued.id}"`);
+      if (queued.link && !queued.title)
+        throw new Error(`queue "${queued.id}": a link card needs a title`);
       const image = await uploadImage(
         readFileSync(queued.image),
         author,
@@ -364,7 +403,16 @@ for (const c of CHANNELS) {
             targetEntities: [],
             thirdPartyDistributionChannels: [],
           },
-          content: { media: { id: image, altText: queued.alt ?? "" } },
+          content: queued.link
+            ? {
+                article: {
+                  source: queued.link,
+                  title: queued.title,
+                  ...(queued.description ? { description: queued.description } : {}),
+                  thumbnail: image,
+                },
+              }
+            : { media: { id: image, altText: queued.alt ?? "" } },
           lifecycleState: "PUBLISHED",
           isReshareDisabledByAuthor: false,
         }),
@@ -376,7 +424,7 @@ for (const c of CHANNELS) {
       continue;
     }
 
-    const { commentary, url, tr, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
+    const { commentary, tr, card, thumbnailUrl } = buildCommentary(post, ledger[c.key].length);
     console.log(`${c.key} → ${who}: "${tr.title}"`);
 
     const thumbnail = await uploadImage(await fetchBytes(thumbnailUrl), author, headers);
@@ -395,9 +443,7 @@ for (const c of CHANNELS) {
         },
         content: {
           article: {
-            source: url,
-            title: tr.title,
-            description: tr.excerpt,
+            ...card,
             ...(thumbnail ? { thumbnail } : {}),
           },
         },
@@ -408,7 +454,7 @@ for (const c of CHANNELS) {
 
     if (!res.ok) throw new Error(`post failed (HTTP ${res.status}): ${await res.text()}`);
 
-    console.log(`  ✓ shared → ${url}  [${res.headers.get("x-restli-id") || "id n/a"}]`);
+    console.log(`  ✓ shared → ${card.source}  [${res.headers.get("x-restli-id") || "id n/a"}]`);
     ledger[c.key].push(post.slug);
     posted++;
   } catch (err) {
