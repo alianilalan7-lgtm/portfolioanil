@@ -4014,5 +4014,108 @@
         { "type": "paragraph", "text": "The right first step before building a chatbot is reviewing the last few months of support requests to see what's actually repetitive — that alone clarifies both the right type of bot and a realistic cost range. If you'd like to work through whether your own support volume fits, you can reach out through the contact page." }
       ]
     }
+  },
+  {
+    "slug": "ad-creative-fatigue-ai-production-speed",
+    "publishedAt": "2026-09-21",
+    "readTime": "7 min",
+    "category": "Reklam",
+    "tags": ["Performans Reklamcılığı", "Creative Fatigue", "Ajans", "Yapay Zeka"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "Ajanslar için içerik üretimi: Luvi Agency", "href": "https://luvi.agency" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi kampanyan için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Reklamda Yaratıcı Yorgunluk (Creative Fatigue) Neden Oluşur ve Üretim Hızı Bunu Nasıl Çözer?",
+      "excerpt": "CPA aniden tırmandığında suçlu genelde teklif değil, aynı görselin çok kez gösterilmesi. Yorgunluk sinyalini okumak ve varyantı hızlı yetiştirmek.",
+      "content": [
+        { "type": "paragraph", "text": "İki hafta önce yayına giren kampanya harikaydı: CPA hedefin altında, CTR yüksek, ekip rahat. Şimdi aynı reklam, aynı bütçe, aynı hedef kitle — ama CPA yüzde otuz kırk daha pahalı. Ürün değişmedi, teklif değişmedi, tek değişen şey izleyicinin aynı görseli çok kez görmüş olması. Performans pazarlamacısının masasındaki en sık ve en pahalı tıkanma tam olarak bu: yaratıcı yorgunluk (creative fatigue) — ve elde hazır yeni bir format yok. Yeni set kurmak, yeni çekim planlamak iki-üç hafta sürüyor; bu arada bütçe boşa yanıyor." },
+        { "type": "heading", "text": "Creative Fatigue Nedir ve Neden Bu Kadar Hızlı Oluşuyor?" },
+        { "type": "paragraph", "text": "Creative fatigue, aynı reklamın aynı kullanıcıya tekrar tekrar gösterilmesiyle ortaya çıkan performans düşüşüdür. Mantığı basit: bir kullanıcı bir görseli ilk gördüğünde durup bakar; üçüncü-dördüncü kez gördüğünde artık görmezden gelir, scroll eder. Platformun algoritması bunu fark eder — tıklama oranı (CTR) düşer, ilgi/kalite skoru geriler, sistem aynı sonucu almak için daha yüksek CPM ister. Sonuç: aynı bütçeyle daha az dönüşüm, ya da aynı dönüşüm için daha yüksek maliyet." },
+        { "type": "paragraph", "text": "Pencere platforma ve formata göre değişir. Kısa format, yüksek frekanslı yerlerde — Reels, TikTok, Stories — yorgunluk genelde 5-10 gün içinde başlar; günlük gösterim hacmi yüksek olduğu için aynı izleyici aynı görseli hızla birkaç kez görüyor. Daha statik yerleşimlerde — arama, display, bazı Feed reklamları — pencere 2-4 haftaya kadar uzayabilir. Ama yön hep aynı: taze görsel girmezse eğri aşağı iner. Bu bir 'olur mu olmaz mı' sorusu değil, ne zaman sorusu." },
+        { "type": "heading", "text": "AI Destekli Üretim Hattı Bu Tıkanıklığı Nasıl Açıyor?" },
+        { "type": "paragraph", "text": "Klasik yoldan yeni varyant çıkarmak demek yeniden çekim planlamak, oyuncu/mekân/ekip ayarlamak, en iyi ihtimalle bir-iki hafta ve on binlerce TL demek. AI destekli üretim hattında girdi, mevcut ürün görselleri, marka kılavuzu ve kazanan kreatifin hangi unsurunun işe yaradığına dair kısa bir brief. Çıktı ise tek bir görsel değil, bir set: aynı ürünün farklı arka plan, farklı renk paleti, farklı açı, farklı hook metniyle on-yirmi varyantı — dikey, kare ve yatay formatlarda, birkaç gün içinde hazır." },
+        { "type": "paragraph", "text": "Bu, üretimi 'daha ucuz' yapmaktan önce 'daha hızlı' yapıyor — ve performans reklamcılığında hız genelde ucuzluktan daha değerli, çünkü yorgunluk döngüsü zaten kısa. Yeni set beklerken kampanyayı durdurmak ya da yorgun kreatifle devam edip CPA'yı yakmak yerine, taze varyant zaten hazır oluyor." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "list", "items": [
+          "Kazanan kreatifin hangi unsuru çalıştı — hook, renk, CTA — kısaca analiz edilir.",
+          "Marka kılavuzu ve ürün görselleri üretim hattına brief olarak verilir.",
+          "10-20 varyant üretilir: farklı hook, farklı format, farklı görsel dil.",
+          "Sanat yönetmeni ilk elemeyi yapar — marka tutarlılığı ve metin okunabilirliği kontrol edilir.",
+          "5-8 varyantlık bir A/B test seti canlıya alınır.",
+          "3-5 gün sonra performans verisiyle kazanan belirlenir.",
+          "Kazananın türevleri, bir sonraki yorgunluk dalgası gelmeden üretime girer."
+        ] },
+        { "type": "heading", "text": "Nasıl Çalışıyor: Sanat Yönetimi, Model İşi, Onay" },
+        { "type": "paragraph", "text": "Bu hat bir 'düğmeye bas, reklam çıksın' makinesi değil. Sanat yönetmeni hangi hook'ların ve görsel yönlerin test edilmeye değer olduğuna karar veriyor — bu hâlâ insan kararı, çünkü marka sezgisi ve kategori bilgisi burada devreye giriyor. Model işi bu kararları on-yirmi varyanta ölçeklendiriyor: aynı sanat yönünü, farklı ürün açısı ve farklı metinle tekrar tekrar üretmek. Üretilen her varyant önce iç onaydan geçiyor — marka rengi doğru mu, logo yerinde mi, metin okunuyor mu — sonra müşteri onayına gidiyor. Bu döngü klasik prodüksiyonda günler sürerken, burada saatler içinde tamamlanıyor; revizyon istenen bir varyant yeniden çekilmek yerine yeniden üretiliyor." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Yorgunlaşan Bir Performans Kampanyası" },
+        { "type": "paragraph", "text": "Kurgusal ama tipik bir örnek: bir e-ticaret markasının Meta ve TikTok'ta yürüyen bir kampanyası var. İlk on günde CPA hedefin altında; on birinci günde frekans yükseliyor, CTR düşüyor, CPA yüzde otuz artıyor — klasik yorgunluk sinyali. Pazartesi günü marka ekibi kısa bir brief geçiyor: kazanan reklamın hangi ürün açısı ve hangi hook'u işe yaramıştı, ne test edilmek isteniyor. Salı günü sanat yönetimi beş farklı hook ve üç format (dikey, kare, yatay) belirliyor. Çarşamba'ya on beş varyant hazır — aynı ürün görselinden üretilmiş, farklı arka plan ve metin kombinasyonlarıyla. İç onaydan geçen sekiz varyant Perşembe günü canlıya alınıyor, düşük bütçeli bir test seti olarak. Pazartesiye kadar toplanan veriyle iki varyant net biçimde öne çıkıyor; bunların türevleri hemen üretime giriyor ve ana bütçe bu ikisine kayıyor. Production takviminde kalıcı değişen şey şu: artık 'yorgunluk fark edilince acil çekim planlanan' bir düzen değil, haftalık taze varyant üretiminin zaten rutin olduğu bir düzen var." },
+        { "type": "heading", "text": "Dürüst Sınırlar — ve Kim Kapatıyor" },
+        { "type": "paragraph", "text": "Bu hat hız ve varyant sayısı işini çözüyor ama her işi çözmüyor. Marka için kritik bir hero çekim — kampanyanın yüzü olacak, gerçek oyuncu ve gerçek mekân isteyen görsel — hâlâ klasik prodüksiyon istiyor. Ürünün dokusu, kumaşın gerçek kalıbı, bir mekânın gerçek atmosferi birebir doğrulukta gerekiyorsa, bugünün AI üretimi burada tam güvenilir değil. Bu, ajansın neden yalnızca bir AI hattı değil, üç ev bir arada tuttuğunun sebebi: gerçek çekim gerektiğinde TVN devreye giriyor — kendi prodüksiyon kapasitesiyle. Üretim, onay ve yayın akışını tek bir panelde toplamak, marka kılavuzunu bir dosya değil bir iş akışı hâline getirmek gibi operasyonel ihtiyaçlar ise Orni'nin işi. TVN'nin kanal danışmanlığı ve yönetimi tarafı, işi sadece 'içerik üretmek'ten çıkarıp 'doğru yerde, doğru sıklıkta yayınlamak' — yani medya etkinliği — tarafına da taşıyor. Çoğu AI içerik teklifinin bu konuda söyleyecek bir şeyi yok." },
+        { "type": "stats", "items": [
+          { "label": "Kısa format yorgunluk penceresi", "value": "5-10 gün" },
+          { "label": "Statik/arama yorgunluk penceresi", "value": "2-4 hafta" },
+          { "label": "Yeni varyant seti üretim süresi", "value": "birkaç gün" },
+          { "label": "Klasik yeniden çekim süresi", "value": "1-3 hafta" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Creative fatigue'i nasıl anlarım, ne zaman yeni varyant gerekir?" },
+        { "type": "paragraph", "text": "Frekans yükselirken CTR düşüyor ve CPM/CPA tırmanıyorsa bu klasik yorgunluk sinyalidir. Kesin bir eşik yok ama frekans 3-4'ü geçtiğinde ve CTR ilk haftaya göre belirgin düştüğünde — genelde yüzde yirmi-otuz aralığında — yeni varyant gündeme almanın zamanıdır. Beklemek yerine erken hazırlamak, kampanyayı durdurmadan geçiş yapmayı sağlar." },
+        { "type": "subheading", "text": "Kaç varyant üretmek yeterli?" },
+        { "type": "paragraph", "text": "Bütçeye ve platforma göre değişir ama sağlıklı bir test seti genelde sekiz ile yirmi arasında. Küçük bütçeli kampanyalarda beş-sekiz varyant yeterli olabilir; büyük bütçeli, çok segmentli kampanyalarda yirmiye kadar çıkmak anlamlı olur. Önemli olan sayı değil, her varyantın gerçekten farklı bir hipotezi (farklı hook, farklı açı) test etmesi — aynı fikrin on kopyası değil." },
+        { "type": "subheading", "text": "AI ile üretilen reklam görselleri platform onayından geçer mi?" },
+        { "type": "paragraph", "text": "Genelde geçiyor, çünkü platformların reklam politikaları üretim yöntemine değil içeriğe bakıyor — abartılı iddia, çok fazla metin, yanıltıcı önce/sonra gibi konular hâlâ aynı kurallara tabi. Yine de bir insan gözden geçirmesi gerekiyor: marka renkleri doğru mu, metin okunabilir mi, ürün gerçekte olduğu gibi mi görünüyor. Bu yüzden hat, onayı otomatik atlamıyor — hızlandırıyor." },
+        { "type": "subheading", "text": "Yorgunluk her kampanyada aynı şekilde mi ilerliyor?" },
+        { "type": "paragraph", "text": "Hayır. Marka bilinirliği yüksek, izleyici kitlesi dar ve tekrar eden bir hedef kitleye (retargeting) satış yapılan kampanyalarda yorgunluk daha hızlı gelir, çünkü aynı görsel aynı küçük havuza daha sık düşer. Geniş, soğuk kitleye giden üst huni kampanyalarında pencere biraz daha uzun olabilir çünkü izleyici havuzu sürekli yenileniyor. Bu yüzden 'her kampanyaya iki haftada bir yeni set' gibi tek bir kural yerine, kampanyanın kendi frekans ve CTR eğrisini izlemek daha doğru bir yaklaşım." },
+        { "type": "paragraph", "text": "Kampanyanız yorgunluk sinyali veriyorsa ya da yeni bir lansmana hazırlanıyorsanız, mevcut briefinizi bize getirin — Luvi Agency'de bu üretim hattını sizin markanız için nasıl kurduğumuzu birlikte konuşalım." }
+      ]
+    },
+    "en": {
+      "title": "What Is Ad Creative Fatigue — and How Production Speed Is the Real Fix",
+      "excerpt": "When CPA suddenly climbs, the culprit usually isn't the bid — it's the same creative shown too many times. Reading the fatigue signal and shipping variants fast.",
+      "content": [
+        { "type": "paragraph", "text": "The campaign that launched two weeks ago was crushing it: CPA under target, CTR high, the team relaxed. Now it's the same ad, same budget, same audience — but CPA is thirty to forty percent more expensive. The product didn't change, the offer didn't change; the only thing that changed is that the same audience has now seen the same creative too many times. This is the most common and most expensive bottleneck on a performance marketer's desk: creative fatigue — and no new format ready to go. Setting up a new shoot takes two to three weeks, and the budget burns while you wait." },
+        { "type": "heading", "text": "What Is Creative Fatigue, and Why Does It Hit So Fast?" },
+        { "type": "paragraph", "text": "Creative fatigue is the performance drop that happens when the same ad is shown to the same person too many times. The mechanism is simple: the first time someone sees a creative, they stop and look; by the third or fourth time, they scroll past without registering it. The platform's algorithm notices — click-through rate (CTR) drops, the relevance/quality score slips, and the system demands a higher CPM to deliver the same result. The outcome: fewer conversions for the same budget, or a higher cost for the same conversions." },
+        { "type": "paragraph", "text": "The window depends on the platform and format. In short-form, high-frequency placements — Reels, TikTok, Stories — fatigue usually sets in within 5-10 days, because daily impression volume is high enough that the same viewer sees the same creative several times quickly. In more static placements — search, display, some feed ads — the window can stretch to 2-4 weeks. But the direction is always the same: without fresh creative coming in, the curve bends down. It's not a question of if, it's a question of when." },
+        { "type": "heading", "text": "How an AI-Assisted Production Line Actually Opens This Up" },
+        { "type": "paragraph", "text": "The traditional way to get a new variant means scheduling a new shoot, booking talent, a location and a crew — best case, one to two weeks and tens of thousands of lira. In an AI-assisted production line, the input is the existing product images, the brand guide, and a short brief on what made the winning creative work. The output isn't a single image — it's a set: ten to twenty variants of the same product with different backgrounds, color palettes, angles and hook copy, in vertical, square and horizontal formats, ready within a few days." },
+        { "type": "paragraph", "text": "That makes production faster before it makes it cheaper — and in performance advertising, speed usually matters more than cost, because the fatigue cycle is already short. Instead of pausing the campaign while you wait for a new set, or riding a tired creative and watching CPA climb, the fresh variant is already there." },
+        { "type": "heading", "text": "How to Set It Up (Briefly)" },
+        { "type": "list", "items": [
+          "Briefly analyze what made the winning creative work — the hook, the color, the CTA.",
+          "Feed the production line the brand guide and existing product images as a brief.",
+          "Generate 10-20 variants: different hooks, different formats, different visual directions.",
+          "Have the art director do the first pass — check brand consistency and copy legibility.",
+          "Launch a test set of 5-8 variants.",
+          "Let performance data pick a winner after 3-5 days.",
+          "Push the winner's derivatives into production before the next fatigue wave hits."
+        ] },
+        { "type": "heading", "text": "How It Runs: Art Direction, Model Work, Approval" },
+        { "type": "paragraph", "text": "This line isn't a push-button ad machine. The art director decides which hooks and visual directions are worth testing — that's still a human call, because brand instinct and category knowledge live there. The model work scales those decisions into ten to twenty variants: the same art direction, produced again and again with a different product angle and different copy. Every variant goes through an internal check first — right brand colors, logo placement, legible copy — then client approval. What takes days in traditional production happens in hours here; a variant that needs a revision gets regenerated, not reshot." },
+        { "type": "heading", "text": "A Real Scenario: A Performance Campaign Going Stale" },
+        { "type": "paragraph", "text": "A fictional but typical example: an e-commerce brand running a campaign on Meta and TikTok. CPA stays under target for the first ten days; on day eleven, frequency climbs, CTR drops, CPA rises thirty percent — a textbook fatigue signal. On Monday, the brand team sends a short brief: which product angle and which hook made the winning ad work, and what they want tested. On Tuesday, art direction settles on five hooks and three formats (vertical, square, horizontal). By Wednesday, fifteen variants are ready — produced from the same product images, with different backgrounds and copy combinations. Eight variants that pass internal review go live Thursday as a low-budget test set. By the following Monday, the data clearly favors two variants; their derivatives go straight into production and the main budget shifts to those two. What permanently changes in the production calendar is this: it's no longer 'schedule an emergency shoot once fatigue is noticed' — it's a routine where fresh variants are produced weekly as a matter of course." },
+        { "type": "heading", "text": "Honest Limits — and Who Covers Them" },
+        { "type": "paragraph", "text": "This line solves speed and variant volume, but it doesn't solve everything. A brand-critical hero shot — the face of the campaign, needing a real actor and a real location — still needs traditional production. If the product's texture, the exact fit of a fabric, or the real atmosphere of a location has to be pixel-accurate, today's AI generation isn't fully reliable there. That's exactly why the agency keeps three houses instead of just an AI line: when a real shoot is needed, TVN steps in with its own production capacity. Pulling production, approval and publishing into one workflow, and turning the brand guide into something embedded in the process rather than a file nobody reads, is Orni's job. TVN's channel consulting and management side also pushes the work past just 'making content' into publishing it in the right place at the right frequency — media effectiveness — which most AI-content pitches have nothing to say about." },
+        { "type": "stats", "items": [
+          { "label": "Short-form fatigue window", "value": "5-10 days" },
+          { "label": "Static/search fatigue window", "value": "2-4 weeks" },
+          { "label": "New variant set turnaround", "value": "a few days" },
+          { "label": "Traditional reshoot turnaround", "value": "1-3 weeks" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "How do I know when creative fatigue is setting in and I need new variants?" },
+        { "type": "paragraph", "text": "If frequency is climbing while CTR drops and CPM/CPA is rising, that's the classic fatigue signal. There's no exact threshold, but once frequency passes roughly 3-4 and CTR has dropped noticeably from its first-week level — typically in the twenty-to-thirty percent range — it's time to get new variants moving. Preparing early, instead of waiting, means you can swap in fresh creative without pausing the campaign." },
+        { "type": "subheading", "text": "How many variants are actually enough?" },
+        { "type": "paragraph", "text": "It depends on budget and platform, but a healthy test set is usually eight to twenty. Smaller-budget campaigns can get by with five to eight variants; larger, multi-segment campaigns benefit from going up toward twenty. What matters isn't the count — it's that each variant actually tests a different hypothesis (a different hook, a different angle), not ten copies of the same idea." },
+        { "type": "subheading", "text": "Do AI-generated ad images pass platform review?" },
+        { "type": "paragraph", "text": "Generally yes, because platform ad policies look at the content, not the production method — rules against exaggerated claims, excessive text, or misleading before/after imagery still apply the same way. That said, a human still needs to check: are the brand colors right, is the copy legible, does the product look like the real thing. So the line doesn't skip review — it speeds it up." },
+        { "type": "subheading", "text": "Does fatigue set in the same way for every campaign?" },
+        { "type": "paragraph", "text": "No. Campaigns with high brand awareness, a narrow audience, or repeated exposure to the same retargeting pool tend to fatigue faster, because the same creative lands on the same small pool more often. Broad, cold-audience top-of-funnel campaigns can have a somewhat longer window because the viewer pool keeps refreshing. So instead of a blanket rule like 'a new set every two weeks for every campaign,' the more accurate approach is watching each campaign's own frequency and CTR curve." },
+        { "type": "paragraph", "text": "If your campaign is showing fatigue signals, or you're gearing up for a new launch, bring us the brief — let's talk through how we'd set up this production line for your brand at Luvi Agency." }
+      ]
+    }
   }
 ]
