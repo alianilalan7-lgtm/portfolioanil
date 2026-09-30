@@ -4261,5 +4261,88 @@
         { "type": "paragraph", "text": "If a campaign of yours is about to launch in more than one market at once and the localization calendar is already running longer than the production calendar, we can talk it through from a brief — reach out through luvi.agency and describe your target markets and current campaign." }
       ]
     }
+  },
+  {
+    "slug": "batch-ai-product-photography-50-products",
+    "publishedAt": "2026-09-30",
+    "readTime": "7 min",
+    "category": "AI İçerik Üretimi",
+    "tags": ["LUVI Creator", "Ürün Fotoğrafı", "Toplu Üretim", "E-ticaret"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI içerik stüdyosu: LUVI Creator", "href": "https://www.luvicreator.com" },
+      { "label": "Nasıl çalışıyorum & fiyatlandırma", "href": "/process-pricing" },
+      { "label": "Kendi projen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "50 Ürünün Fotoğrafını Bir Öğleden Sonrada Çıkarmak: Toplu Ürün Görseli Üretimi Nasıl Kurulur?",
+      "excerpt": "50 ürünün fotoğrafını bu hafta mı çıkarman gerekiyor? Toplu ürün görseli üretmenin gerçek iş akışını, bir referans kareden elli varyanta, anlatıyorum.",
+      "content": [
+        { "type": "paragraph", "text": "Elinde 50 ürün var ve bu hafta hepsinin e-ticaret görselini çıkarman gerekiyor. Stüdyo takvimi üç hafta sonrasına kadar dolu, fotoğrafçı ürün başına 150-400 TL istiyor — tam katalog için 7.500-20.000 TL ve en az bir haftalık bekleme demek. Sen de aklından şunu geçiriyorsun: bir ürünü doğru şekilde çekip referans olarak kullansam, geri kalan 49'unu aynı arka planda, aynı ışıkta, aynı açıda nasıl çıkarırım? Cevap tek tek üretmekte değil, toplu ürün görseli üretmekte (batch üretim). Bir kere doğru kurguyu kurduktan sonra, aynı kurguyu elli kez elle tekrarlamak yerine sisteme bir liste veriyorsun ve o senin yerine tekrar ediyor." },
+        { "type": "heading", "text": "Toplu ürün görseli üretmenin mantığı" },
+        { "type": "paragraph", "text": "Tek tek üretmenin iki ayrı sorunu var: yavaş olması ve tutarsız çıkması. Bir üründe arka plan saf beyaz çıkar, bir sonrakinde hafif griye kayar; bir üründe gölge yumuşak, ötekinde sert ve keskin. Alıcı bunu bilinçli fark etmese bile kataloğun 'amatör' hissettirmesinin sebebi genelde budur. Toplu üretim bu sorunu kökten çözer, çünkü mantığı tersten kurulur: önce sabit kalacak her şeyi — arka plan rengi, ışığın geliş yönü, kamera açısı, ürünün kadraj içindeki konumu — bir 'referans set' olarak belirlersin, sonra bu seti kilitleyip yalnızca değişen tek şeyi, yani ürünün kendisini, değiştirerek aynı kurguyu elli kez tekrarlarsın. LUVI Creator'da bunu iki parça birlikte yapar: LuviBot, elindeki referans görsele ve hedefine (ör. 'e-ticaret için beyaz arka planlı ürün fotoğrafı') bakıp hangi model tipinin işine yarayacağına karar verir ve prompt'u senin yerine yazar; batch node ise onaylanan bu prompt'u ve ayarları bir ürün listesinin tamamına otomatik olarak uygular. Sen kopyala-yapıştır yapmazsın, sistem listeyi sırayla işler." },
+        { "type": "heading", "text": "Adım adım: bir referanstan elli varyanta" },
+        { "type": "list", "items": [
+          "Bir ürünü düz bir zeminde, iyi ve düz ışıkta fotoğrafla — telefonla çekilmiş temiz bir kare yeterli, stüdyo kalitesinde olması gerekmiyor",
+          "LuviBot'a referans görseli ve hedefi tarif et (arka plan, ışık, açı, kullanım amacı); önerdiği model ve prompt'u tek bir üründe dene",
+          "Çıktıyı onayladıktan sonra aynı prompt'u batch node'a bağla ve ürünlerin ham görsellerini (veya isim listesini) yükle",
+          "İlk beş sonucu tek tek incele — renk, gölge, kırpma sapması varsa prompt'u düzelt, sonra kalanını çalıştır",
+          "Sorunlu çıkan tekil görselleri baştan üretme; inpainting ile yalnızca bozuk bölgeyi (yanlış gölge, bulanık logo, fazladan yansıma) yeniden üret"
+        ] },
+        { "type": "heading", "text": "Gerçek bir iş: bir ayakkabı markasının 50 ürünü, tek öğleden sonra" },
+        { "type": "paragraph", "text": "Diyelim ki küçük bir ayakkabı markasının e-ticaret kataloğunu yönetiyorsun. Tedarikçiden gelen 50 ürün görseli farklı zeminlerde, farklı telefonlarla, kimi flaşla kimi gün ışığında çekilmiş — hiçbiri kullanılabilir durumda değil. Markanın deposundan bir çift seçip düz beyaz bir zeminde, pencere ışığında yeniden çekiyorsun; bu tek kare artık senin referansın. LuviBot'a hedefini veriyorsun: 'beyaz arka plan, yumuşak stüdyo ışığı, 45 derece açı, e-ticaret ürün fotoğrafı.' Önerilen prompt'u tek bir ürün üzerinde deniyorsun — ilk çıktıda gölge fazla sert ve keskin kenarlı çıkıyor, marka kimliğine uymuyor. Prompt'a 'yumuşak, geniş yayılmış gölge' ekleyip tekrar deniyorsun, bu sefer sonuç doğru. Onayladığın bu prompt'u batch node'a bağlıyor, elli ürünün ham görsellerini yüklüyor ve sırayı başlatıyorsun. Yirmi dakika sonra elli görsel hazır. Gözden geçirirken üçünde sorun görüyorsun — parlak deri yüzeyde beklenmedik bir yansıma var. Elli tanesini yeniden üretmek yerine sadece o üçünü inpainting ile düzeltiyorsun, yansımanın olduğu bölgeyi işaretleyip yeniden üretiyorsun. Toplam süre, referans çekimi dahil, bir öğleden sonrayı geçmiyor. Aynı işi stüdyoya yaptırsaydın takvim en az bir hafta, maliyet muhtemelen 10.000 TL'nin üzerinde olurdu — üstelik yeni bir ürün eklendiğinde süreç yeniden baştan başlardı." },
+        { "type": "heading", "text": "Nereye kadar tek başına gider, nerede insan gözü gerekiyor" },
+        { "type": "paragraph", "text": "Bu hat her ürün için aynı kolaylıkla çalışmaz. Parlak, yansıtıcı yüzeyler — deri, cam, parlak metal — bazen ekstra bir düzeltme turu ister, çünkü yansımalar referans görsele göre değişkenlik gösterir. Dokunun kritik olduğu ürünlerde (kumaş deseni, dikiş detayı, nakış) referans görselin çözünürlüğü düşükse çıktı da bulanıklaşır; burada iyi çekilmiş bir referans kare, en iyi prompt'tan daha çok iş görür. Kampanya afişi ya da ana sayfa görseli gibi marka için kritik bir hero görsel varsa, toplu üretim sana hız kazandırır ama son onayı yine bir insan gözünden geçirmeni öneririm — bu, satış kataloğu görseli ile marka imajını temsil eden görsel arasındaki farktır. Maliyet konusunda kesin bir rakam vermek yanıltıcı olur çünkü model tipine, çözünürlüğe ve düzeltme sayısına göre değişir; ama kabaca bir fikir için elli ürünlük bir toplu üretim genelde birkaç yüz kredilik bir iştir — tek bir stüdyo seansının nakit karşılığının çok altında kalır." },
+        { "type": "stats", "items": [
+          { "label": "50 ürünlük stüdyo çekimi", "value": "7.500–20.000 TL, 1 hafta+" },
+          { "label": "Aynı iş, toplu AI üretimiyle", "value": "bir öğleden sonra, birkaç yüz kredi" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Toplu üretimde her ürün için ayrı ayrı prompt yazmam mı gerekiyor?" },
+        { "type": "paragraph", "text": "Hayır, bütün amaç bu zaten. Bir kere doğru prompt'u ve ayarları buluyorsun, batch node bunu listedeki her ürüne otomatik uyguluyor. Tek tek girmen gereken tek şey ürün görseli ve varsa kısa bir isim/açıklama; onu da toplu yükleyebilirsin. Elli ürün için elli farklı prompt yazmıyorsun, bir prompt'u elli kez çalıştırıyorsun." },
+        { "type": "subheading", "text": "İlk denemede çıktı yanlış gelirse elli görseli baştan mı üretmem gerekiyor?" },
+        { "type": "paragraph", "text": "Hayır. İki seçeneğin var: prompt'u düzeltip tüm seti yeniden çalıştırmak (yine de dakikalar sürer, saatler değil) ya da sadece sorunlu tekil görselleri inpainting ile düzeltmek. Elli görselin üçünde sorun varsa üçünü düzeltirsin, ellisini değil — bu, toplu üretimi tek tek Photoshop'ta düzeltmekten ayıran asıl fark." },
+        { "type": "subheading", "text": "Ürün fotoğrafı dışında toplu üretim başka nerede işe yarar?" },
+        { "type": "paragraph", "text": "Aynı mantık on-model çekimlerde (aynı modeli farklı kıyafetlerde göstermek), sosyal medya varyantlarında (aynı görselin beş farklı boyutu/formatı) ve ikon veya illüstrasyon setlerinde de çalışır. Ortak nokta şu: sabit kalan bir kurgu ve değişen tek bir değişken varsa, o iş toplu üretime uygundur." },
+        { "type": "subheading", "text": "Toplu üretim için TEAMS hesabı ya da birden fazla kullanıcı gerekiyor mu?" },
+        { "type": "paragraph", "text": "Hayır, tek kişilik hesapta da aynı şekilde çalışır. TEAMS, birden fazla kişi aynı ürün kütüphanesiyle ve marka kurallarıyla çalışırken iş bölümünü ve onayı düzenli tutmak içindir; toplu üretimin kendisi bundan bağımsız, tek kullanıcıda da tam kapasite çalışır." },
+        { "type": "paragraph", "text": "Elindeki ürün listesini önüne al, bir tanesini referans olarak düzgünce çek ve LUVI Creator'da dene: LuviBot doğru model tipini önersin, batch node kalan kırk dokuzunu tamamlasın. Hesap açmak birkaç dakika sürer, ilk elli görseli çıkarmak bir öğleden sonrayı geçmez — https://www.luvicreator.com" }
+      ]
+    },
+    "en": {
+      "title": "50 Product Photos in One Afternoon: How Batch AI Product Photography Actually Works",
+      "excerpt": "Need 50 product photos this week? Here's the real workflow for batch AI product photography — from one reference shot to fifty variants.",
+      "content": [
+        { "type": "paragraph", "text": "You've got 50 products and you need e-commerce photos for all of them this week. The studio calendar is booked three weeks out, and a photographer wants 150-400 TL per product — 7,500-20,000 TL for the full catalog, plus at least a week of waiting. So you start wondering: what if you shoot one product properly, use it as a reference, and generate the other 49 in the same background, same light, same angle? The answer isn't shooting each one individually — it's batch product photography. Once you set up the right configuration one time, you don't repeat it by hand fifty times; you hand the system a list and it repeats it for you." },
+        { "type": "heading", "text": "The logic behind batch product photography" },
+        { "type": "paragraph", "text": "Producing images one at a time creates two separate problems: it's slow, and it's inconsistent. One product ends up on a pure white background, the next drifts slightly grey; one has a soft shadow, the next a hard, sharp-edged one. Buyers may not consciously notice, but that's usually why a catalog feels 'amateur.' Batch generation solves this at the root because it flips the logic: first you fix everything that should stay constant — background color, the direction the light comes from, camera angle, where the product sits in the frame — as a 'reference set,' then you lock that set and repeat the same configuration fifty times, changing only the one thing that should change: the product itself. LUVI Creator does this with two pieces working together: LuviBot looks at your reference image and your goal (e.g. 'white-background product photo for e-commerce') and decides which model type fits, then writes the prompt for you; the batch node then applies that approved prompt and settings automatically to an entire product list. You're not copying and pasting — the system works through the list in order." },
+        { "type": "heading", "text": "Step by step: from one reference to fifty variants" },
+        { "type": "list", "items": [
+          "Photograph one product on a plain surface in good, even light — a clean phone shot is enough, it doesn't need to be studio quality",
+          "Describe the reference image and your goal to LuviBot (background, light, angle, intended use); try the suggested model and prompt on a single product first",
+          "Once you approve the output, connect the same prompt to the batch node and upload the raw images (or name list) for the rest of the products",
+          "Check the first five results individually — if color, shadow, or cropping drifts, fix the prompt, then run the rest",
+          "Don't regenerate a whole image that comes out wrong — use inpainting to redo just the broken area (wrong shadow, blurry logo, an unwanted reflection)"
+        ] },
+        { "type": "heading", "text": "A real job: a shoe brand's 50 products, one afternoon" },
+        { "type": "paragraph", "text": "Say you're running the e-commerce catalog for a small shoe brand. The 50 product images from the supplier were shot on different surfaces, with different phones, some with flash and some in daylight — none of them usable. You pick one pair from the brand's stock and reshoot it on a plain white surface in window light; that single frame is now your reference. You give LuviBot your goal: 'white background, soft studio light, 45-degree angle, e-commerce product photo.' You try the suggested prompt on one product — the first result has a shadow that's too hard and sharp-edged, off-brand. You add 'soft, wide, diffused shadow' to the prompt and try again; this time it's right. You connect this approved prompt to the batch node, upload the raw images for all 50 products, and start the queue. Twenty minutes later, 50 images are ready. Reviewing them, you spot a problem in three — an unexpected reflection on the glossy leather. Instead of regenerating all 50, you fix just those three with inpainting, marking the reflection area and regenerating only that patch. Total time, including the reference shoot, doesn't go past one afternoon. Doing the same job in a studio would have taken at least a week on the calendar and likely cost more than 10,000 TL — and adding one new product later would have meant starting the whole process over." },
+        { "type": "heading", "text": "Where this goes on its own, and where it still needs a human eye" },
+        { "type": "paragraph", "text": "This line doesn't work equally well for every product. Glossy, reflective surfaces — leather, glass, polished metal — sometimes need an extra correction pass, because reflections behave differently depending on the reference image. For products where texture matters (fabric weave, stitching detail, embroidery), a low-resolution reference produces a blurry result; a well-shot reference frame does more work here than the best prompt. If you have a brand-critical hero image — a campaign poster, a homepage shot — batch generation still saves you time, but I'd still put it through a human review before it ships; that's the difference between a sales-catalog image and an image that represents the brand. Giving an exact cost figure would be misleading since it depends on model type, resolution, and how many corrections you need, but roughly: a 50-product batch job typically runs a few hundred credits — well under the cash equivalent of a single studio session." },
+        { "type": "stats", "items": [
+          { "label": "Studio shoot for 50 products", "value": "7,500–20,000 TL, 1 week+" },
+          { "label": "Same job, batch AI generation", "value": "one afternoon, a few hundred credits" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "Do I need to write a separate prompt for every product in a batch job?" },
+        { "type": "paragraph", "text": "No — that's the entire point. You find the right prompt and settings once, and the batch node applies it automatically to every product on the list. The only thing you provide per item is the product image and, optionally, a short name or description, which you can also upload in bulk. You're not writing fifty different prompts for fifty products — you're running one prompt fifty times." },
+        { "type": "subheading", "text": "If the first attempt comes out wrong, do I have to regenerate all 50 images?" },
+        { "type": "paragraph", "text": "No. You have two options: fix the prompt and rerun the whole set (still minutes, not hours), or fix just the individual images that came out wrong using inpainting. If three out of fifty have a problem, you fix three, not fifty — that's the real difference between batch generation and fixing everything one by one in Photoshop." },
+        { "type": "subheading", "text": "Where else does batch generation help besides product photography?" },
+        { "type": "paragraph", "text": "The same logic works for on-model shoots (showing the same model in different outfits), social media variants (the same image resized into five different formats), and icon or illustration sets. The common thread: if there's a fixed configuration and one variable that changes, it's a good fit for batch generation." },
+        { "type": "subheading", "text": "Do I need a TEAMS account or multiple users to run a batch job?" },
+        { "type": "paragraph", "text": "No, it works exactly the same on a single-person account. TEAMS is for keeping work split and approvals organized when several people share the same product library and brand rules — batch generation itself is independent of that and runs at full capacity for a single user too." },
+        { "type": "paragraph", "text": "Pull up your product list, shoot one of them properly as a reference, and try it in LUVI Creator — let LuviBot suggest the right model type, and let the batch node finish the other forty-nine. Setting up an account takes a few minutes; getting your first fifty images out doesn't take more than an afternoon — https://www.luvicreator.com" }
+      ]
+    }
   }
 ]
