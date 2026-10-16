@@ -34,7 +34,7 @@ export const projects: Project[] = [
     title: "Hushu",
     descriptionKey: "Projects.hushu.description",
     longDescriptionKey: "Projects.hushu.longDescription",
-    image: "/images/hushu-icon.png",
+    image: "/images/hushu-logo.png",
     gallery: ["/images/hushu.jpg"],
     status: "completed",
     category: "Mobile",
