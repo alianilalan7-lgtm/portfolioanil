@@ -4975,5 +4975,90 @@
         { "type": "paragraph", "text": "If you've already got next season's on-model shot list, we can talk through which pieces can run through the AI line and which still need a real shoot — bring the brief, reach out at https://luvi.agency." }
       ]
     }
+  },
+  {
+    "slug": "ai-text-to-speech-small-team-voiceover-guide",
+    "publishedAt": "2026-10-21",
+    "readTime": "6 min",
+    "category": "AI İçerik Üretimi",
+    "tags": ["LUVI Creator", "Seslendirme", "Metinden Sese", "Yapay Zeka"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI içerik stüdyosu: LUVI Creator", "href": "https://www.luvicreator.com" },
+      { "label": "Workflow node: görselden videoya zincir", "href": "/blog/workflow-node-image-to-video-automation" },
+      { "label": "Kendi işin için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Metinden Sese Üretim: Bir Ekibin Hangi İşini Gerçekten Hızlandırıyor?",
+      "excerpt": "Her hafta stüdyo ayarlamak yerine metinden sese üretimle dakikalar içinde kullanılabilir seslendirme çıkarmanın gerçek yöntemi, kurulumu ve sınırları.",
+      "content": [
+        { "type": "paragraph", "text": "Haftalık sosyal medya içeriğin hazır: beş reels için metinler yazıldı, görseller kesildi, altyazılar bile tamamlandı — ama seslendirme kısmı hep en sona kalıyor. Stüdyo ayarlamak, uygun bir seslendirmen bulmak, kayıt saatini üç kişinin takvimine denk getirmek kolayca iki-üç günü yiyor; oysa videonun yayın tarihi yarın. Çoğu zaman iş ya kendi telefonunla kaydettiğin baskılı, yorgun bir sese düşüyor, ya da hiç seslendirme yapılmadan sadece altyazıyla yayınlanıyor. Metinden sese üretim bu noktada gerçek bir alternatif sunuyor: script hazır olduğu anda, dakikalar içinde kullanılabilir, kulağa doğal gelen bir seslendirme elinde oluyor — stüdyo takvimine, mikrofona ya da üçüncü bir kişiye hiç ihtiyaç kalmadan." },
+        { "type": "heading", "text": "Metinden Sese Üretim Aslında Ne Yapıyor?" },
+        { "type": "paragraph", "text": "İçeri giren şey basit: bir metin, bir konuşmacı profili (genç-enerjik, kurumsal-sakin, sıcak-samimi gibi), hedef dil ve istersen bir referans ton örneği. Çıkan şey ise kullanıma hazır bir ses dosyası — istediğin hızda, istediğin tonlamada, istediğin uzunlukta, WAV ya da MP3 olarak. Bir dakikalık bir seslendirme, doğru model ve net bir yönlendirmeyle genellikle on-yirmi dakika içinde elinde oluyor; stüdyo kaydının rezervasyon, kurulum, prova ve kayıttan geçip kolayca bir günü bulduğu yerde bu fark gerçek bir fark. Ama 'metni yapıştır, sesi al' kadar basit değil — çıktının kulağa gerçek ve doğal gelmesi, metnin nasıl yazıldığına, cümlelerin uzunluğuna ve modele verdiğin yönlendirmenin netliğine doğrudan bağlı." },
+        { "type": "heading", "text": "Doğru Sesi ve Modeli Seçmek: LuviBot Burada Ne Yapıyor?" },
+        { "type": "paragraph", "text": "180'den fazla modelin içinden hangisinin senin işine uygun olduğunu tek tek deneyerek bulmaya çalışmak zaman kaybı. LuviBot'a 'ürün tanıtım videosu için enerjik ve kısa cümleli bir seslendirme istiyorum' dediğinde, bu işe uygun ses modelini öneriyor ve yazdığın metni modelin daha iyi anlayacağı bir yönlendirmeye çeviriyor — vurgunun nereye geleceği, nerede nefes alınacağı, tempo ve ton gibi detaylar dahil. Son sözü hâlâ sen söylüyorsun: beğenmediğin bir tonlamayı değiştirmek, referans bir ses örneği vermek ya da 'bunu daha yavaş ve daha sıcak oku' demek tamamen senin elinde. LuviBot burada seçimi ve yazımı hızlandıran bir asistan, son kararı veren değil — o karar hep sana kalıyor." },
+        { "type": "heading", "text": "Gerçek Bir Senaryo: Üç Markanın Haftalık Reels Seslendirmesi" },
+        { "type": "paragraph", "text": "Üç küçük markanın sosyal medyasını tek başına yöneten bir freelancer düşün: her hafta beş reels, üçü Türkçe üçü İngilizce olmak üzere toplam on script teslim etmesi gerekiyor. Eskiden bu iş bir seslendirmen ajansına gidiyor, üç gün sürüyordu. Şimdi her marka için bir ses profili belirliyor — biri sıcak ve samimi, biri kurumsal ve net — ve LuviBot'a bu tonu tarif ediyor. İlk çıktıda bir markanın ismi yanlış okunuyor; bunu metinde markayı fonetik olarak yeniden yazıp ('Luvi' yerine 'Lu-vi') düzeltiyor. Ton onaylandıktan sonra aynı ses profiliyle kalan dokuz scripti batch halinde üretiyor, İngilizce versiyonları için sadece dil ayarını değiştirip tekrar çalıştırıyor. Workflow node ile ses çıktısını doğrudan video kesim adımına bağlıyor, böylece dosyaları ayrı ayrı indirip senkronlamak zorunda kalmıyor. Toplam on seslendirme, bir öğleden sonra içinde bitiyor." },
+        { "type": "heading", "text": "Nasıl Kurulur (Kısaca)" },
+        { "type": "list", "items": [
+          "Script'i yazı dilinden çok konuşma diline yakın, kısa cümlelerle yaz — TTS uzun ve virgüllü cümleleri doğal okumuyor",
+          "LuviBot'a işin tonunu, hedef kitleyi ve kullanım yerini tarif et, önerilen modeli dinleyip onayla ya da ayarla",
+          "Marka adı, ürün adı veya jargon varsa fonetik yazarak ya da referans bir ses örneğiyle düzelt",
+          "Bir script üzerinde tonlamayı onayladıktan sonra aynı ayarla kalan scriptleri ve dil varyantlarını batch üret",
+          "Videoya senkronize edeceksen workflow node ile ses çıktısını video adımına doğrudan bağla"
+        ] },
+        { "type": "stats", "items": [
+          { "label": "60 saniyelik seslendirme için stüdyo süresi", "value": "rezervasyon + kayıt: 1-2 gün" },
+          { "label": "Aynı iş metinden sese üretimle", "value": "10-20 dakika" },
+          { "label": "Ek dil varyantı başına süre", "value": "birkaç dakika" }
+        ] },
+        { "type": "heading", "text": "Dürüst Sınırlar ve Maliyet" },
+        { "type": "paragraph", "text": "Her şey mükemmel çıkmıyor. Yüksek duygu isteyen anlar — gerçek bir kahkaha, ağlamaklı bir ton, ince bir alaycılık — hâlâ gerçek bir seslendirmenin elinden çıkan kadar doğal değil; bu tür işler için stüdyo kaydı hâlâ daha güvenli bir seçim. On dakikayı aşan uzun anlatımlarda nefes alma ve tempo, bir insan kulağının geçtiği bir düzenleme turu gerektirebiliyor. Marka adları, kısaltmalar veya yabancı jargon bazen ilk denemede yanlış okunuyor ve fonetik düzeltme istiyor. Arka plan müziği ve mix hâlâ ayrı bir adım, otomatik gelmiyor. Maliyet tarafında net bir rakam vermek yanıltıcı olur ama kabaca: bir dakikalık bir seslendirme, orta boy bir görsel üretiminin kredi maliyetine yakın ya da daha düşük çıkıyor — ayrı bir stüdyo faturasıyla kıyaslanamayacak kadar ucuz." },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Metinden sese üretim hangi dillerde iyi çalışıyor?" },
+        { "type": "paragraph", "text": "Türkçe dahil çoğu yaygın dilde kullanılabilir sonuç alınıyor, ama her model her dilde aynı kalitede değil; yeni bir dil veya aksanla çalışırken kısa bir test parçasıyla başlamak ve tonlamayı o dilde ayrıca onaylamak en güvenlisi." },
+        { "type": "subheading", "text": "Üretilen sesi kendi marka sesim olarak kullanmak güvenli mi?" },
+        { "type": "paragraph", "text": "Platformdaki hazır ses modellerini kendi içeriğinde kullanmakta bir sorun yok; asıl dikkat etmen gereken nokta, gerçek bir kişinin sesini onun izni olmadan taklit etmeye çalışmaman — bu hem etik hem hukuki bir sınır ve marka sesini her zaman bu sınırın içinde kurman gerekiyor." },
+        { "type": "subheading", "text": "Bu, stüdyo seslendirmesine artık hiç ihtiyacım kalmayacağı anlamına mı geliyor?" },
+        { "type": "paragraph", "text": "Hayır — yüksek bütçeli bir reklam filmi, markanın imza sesi haline gelmiş bir seslendirmen ya da çok duygusal bir anlatım için gerçek kayıt hâlâ daha güçlü bir sonuç veriyor. Ama haftalık reels, ürün tanıtımı, eğitim videosu gibi hacimli ve tekrarlayan işlerin büyük kısmında metinden sese üretim stüdyo kaydını fazlasıyla karşılıyor." },
+        { "type": "paragraph", "text": "Bu hafta elinde bekleyen bir script varsa, en hızlı test bir hesap açıp o scripti metinden sese üretimle çalıştırmak: https://www.luvicreator.com üzerinden ilk seslendirmeni bugün çıkarabilirsin." }
+      ]
+    },
+    "en": {
+      "title": "Text-to-Speech for Small Teams: Which Jobs Does AI Voice Generation Actually Speed Up?",
+      "excerpt": "Instead of booking a studio every week, here's how text-to-speech actually gets you a usable voiceover in minutes — and where it still falls short.",
+      "content": [
+        { "type": "paragraph", "text": "Your weekly social content is ready: five reels, scripts written, footage cut, captions done — except the voiceover, which always ends up last. Booking a studio, finding a voice actor, and lining up a recording slot across three calendars easily eats two or three days, and the video is supposed to go live tomorrow. Most of the time the job either turns into a tired recording on your own phone, or ships with captions and no voice at all. Text-to-speech is a real alternative here: the moment the script is done, you have a usable, natural-sounding voiceover in minutes — no studio booking, no microphone, no third person needed." },
+        { "type": "heading", "text": "What Does Text-to-Speech Actually Do?" },
+        { "type": "paragraph", "text": "What goes in is simple: a script, a speaker profile (young-energetic, corporate-calm, warm-and-friendly, and so on), a target language, and optionally a reference tone. What comes out is a ready-to-use audio file — at the speed, tone and length you asked for, as WAV or MP3. A one-minute voiceover, with the right model and a clear brief, is usually ready in ten to twenty minutes; a studio session that goes through booking, setup, rehearsal and recording easily takes a full day. But it isn't as simple as 'paste text, get voice' — how real and natural the output sounds depends directly on how the script is written, how short the sentences are, and how clear your direction to the model is." },
+        { "type": "heading", "text": "Picking the Right Voice and Model: What LuviBot Actually Does Here" },
+        { "type": "paragraph", "text": "Trying every one of 180+ models one by one to find the right fit for your job wastes time. Tell LuviBot 'I need an energetic, short-sentence voiceover for a product video' and it suggests a suitable voice model and turns your script into a direction the model understands better — where the emphasis lands, where breaths happen, pacing and tone included. You still have the final say: changing a tone you don't like, feeding in a reference voice sample, or saying 'read this slower and warmer' is entirely up to you. LuviBot speeds up the picking and the writing — it doesn't make the call for you; that's always yours." },
+        { "type": "heading", "text": "A Real Scenario: Weekly Reels Voiceovers for Three Brands" },
+        { "type": "paragraph", "text": "Picture a freelancer running social media for three small brands solo: every week, five reels each, meaning ten scripts total — half in Turkish, half in English. This used to go through a voice-acting agency and take three days. Now they set one voice profile per brand — one warm and friendly, one corporate and crisp — and describe that tone to LuviBot. The first output mispronounces one brand's name; they fix it by respelling it phonetically in the script ('Luvi' becomes 'Lu-vee'). Once the tone is approved, they batch-generate the remaining nine scripts with the same voice profile, then rerun the English versions by swapping only the language setting. A workflow node chains the audio output straight into the video-cutting step, so nothing needs to be downloaded and synced separately. All ten voiceovers are done within one afternoon." },
+        { "type": "heading", "text": "How to Set This Up (Briefly)" },
+        { "type": "list", "items": [
+          "Write the script in short, spoken-language sentences, not written-language ones — TTS doesn't read long, comma-heavy sentences naturally",
+          "Describe the job's tone, audience and use case to LuviBot, listen to the suggested model, and approve or adjust it",
+          "If there's a brand name, product name or jargon, fix it with phonetic spelling or a reference voice sample",
+          "Once you approve the tone on one script, batch-generate the rest and any language variants with the same settings",
+          "If you need it synced to video, chain the voice output straight into the video step with a workflow node"
+        ] },
+        { "type": "stats", "items": [
+          { "label": "Studio time for a 60-second voiceover", "value": "booking + recording: 1-2 days" },
+          { "label": "Same job with text-to-speech", "value": "10-20 minutes" },
+          { "label": "Extra time per additional language variant", "value": "a few minutes" }
+        ] },
+        { "type": "heading", "text": "Honest Limits and Cost" },
+        { "type": "paragraph", "text": "Not everything comes out perfect. Moments that need real emotion — genuine laughter, a tearful tone, subtle sarcasm — still don't sound as natural as a real voice actor's delivery; for that kind of work, a studio recording is still the safer choice. Narration longer than about ten minutes can need a human edit pass for breathing and pacing. Brand names, abbreviations or foreign jargon sometimes get mispronounced on the first try and need a phonetic fix. Background music and mixing are still a separate step, not automatic. On cost, a precise number would be misleading, but roughly: a one-minute voiceover costs about as much in credits as a mid-size image generation job, or less — nowhere close to a separate studio invoice." },
+        { "type": "heading", "text": "Frequently Asked Questions" },
+        { "type": "subheading", "text": "Which languages does text-to-speech actually work well in?" },
+        { "type": "paragraph", "text": "Usable results come out in most common languages, including Turkish, but not every model performs equally well in every language — when working in a new language or accent, it's safest to start with a short test clip and approve the tone separately for that language." },
+        { "type": "subheading", "text": "Is it safe to use the generated voice as my own brand voice?" },
+        { "type": "paragraph", "text": "Using the platform's built-in voice models in your own content isn't a problem; what you need to watch for is not trying to clone a real person's voice without their consent — that's both an ethical and a legal line, and your brand voice should always be built inside it." },
+        { "type": "subheading", "text": "Does this mean I never need studio voiceover again?" },
+        { "type": "paragraph", "text": "No — a high-budget ad film, a voice actor who's become a brand's signature sound, or a heavily emotional read still gets a stronger result from a real recording. But for the bulk of high-volume, repetitive work — weekly reels, product walkthroughs, training videos — text-to-speech more than covers what a studio session used to." },
+        { "type": "paragraph", "text": "If you've got a script sitting around this week, the fastest way to test this is to open an account and run it through text-to-speech yourself: https://www.luvicreator.com lets you generate your first voiceover today." }
+      ]
+    }
   }
 ]
