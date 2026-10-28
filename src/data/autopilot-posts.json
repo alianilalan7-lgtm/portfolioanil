@@ -5279,5 +5279,118 @@
         { "type": "paragraph", "text": "If you want to test your own brand guideline against a campaign you're working on right now, share your brief through luvi.agency — we'll build the reference set and the style lock together." }
       ]
     }
+  },
+  {
+    "slug": "ai-image-generation-mistakes-and-fixes",
+    "publishedAt": "2026-10-28",
+    "readTime": "7 min",
+    "category": "AI İçerik Üretimi",
+    "tags": ["LUVI Creator", "AI Görsel Üretimi", "Prompt", "Inpainting"],
+    "status": "published",
+    "relatedLinks": [
+      { "label": "AI içerik stüdyosu: LUVI Creator", "href": "https://www.luvicreator.com" },
+      { "label": "Toplu ürün görseli üretimi (ilgili yazı)", "href": "/blog/batch-ai-product-photography-50-products" },
+      { "label": "Kendi projen için konuşalım", "href": "/contact" }
+    ],
+    "tr": {
+      "title": "Görsel Üretiminde En Sık Yapılan Yedi Hata ve Nasıl Düzeltilir?",
+      "excerpt": "AI ile görsel üretirken eli garip çıkan, arka planı tutmayan, metni bozan yedi klasik hata — ve her birinin pratik çözümü.",
+      "content": [
+        { "type": "paragraph", "text": "Bir ürün görseli üretmen gerekiyor: e-ticaret sitesine yüklenecek, temiz arka plan, ürün tam ortada, marka rengine uygun. Promptu yazıyorsun, görsel geliyor — ama el garip duruyor, arka plan istediğin beyaz değil, üstündeki etiket yazısı okunmuyor. Tekrar deniyorsun, bu sefer başka bir şey bozuk çıkıyor: ürün hafif eğri duruyor ya da gölge yanlış yöne düşüyor. Üç dört saat sonra elinde hâlâ kullanılabilir bir görsel yok ve aynı hatayı mı tekrarladığını da bilmiyorsun — her denemede rastgele bir şey değişiyor gibi hissediyorsun." },
+        { "type": "heading", "text": "Hatalar genelde aynı yedi yerde oluyor" },
+        { "type": "paragraph", "text": "AI ile görsel üretirken yaşanan sorunların büyük kısmı rastgele değil, aynı yedi hatanın farklı kılıklarda tekrarı. Bunları bir kere tanıyınca bir görseli baştan on kere üretmek yerine ilk seferde doğru kurup, gerektiğinde küçük bir düzeltme yapman yeterli oluyor. Aşağıdaki yedi başlık, LUVI Creator üzerinde tekrar eden işlerde en çok görülen kalıpların pratik çözümü ve her biri tek başına küçük bir alışkanlık değişikliği." },
+        { "type": "heading", "text": "Yedi klasik hata ve düzeltmesi" },
+        { "type": "subheading", "text": "1. Yanlış model ile başlamak" },
+        { "type": "paragraph", "text": "Yüz seksenden fazla model farklı işler için optimize edilmiş durumda; biri fotogerçekçi ürün çekimine güçlü, biri illüstrasyona, biri de metin ve logo okunabilirliğine. Genel amaçlı tek bir modelle her işi yapmaya çalışmak ilk hatayı burada yaratıyor ve genelde en pahalı hata oluyor, çünkü yanlış model seçince sonraki altı adımın hiçbiri işe yaramıyor. LuviBot'a işini olduğu gibi anlatman, mesela beyaz arka planda e-ticaret için ürün çekimi demen yeterli; hangi modelin bu işe en yakın olduğunu ve prompt'u nasıl kurman gerektiğini LuviBot senin yerine öneriyor." },
+        { "type": "subheading", "text": "2. Referans görsel vermeden tutarlılık beklemek" },
+        { "type": "paragraph", "text": "Aynı ürünü veya karakteri on farklı karede tutmak istiyorsan, metin promptu tek başına yeterli değil; model her seferde biraz farklı bir yüz, biraz farklı bir renk üretir. Gerçek ürün fotoğrafını veya önceki onaylı görseli referans olarak vermek, modeli o görselin kimliğine kilitliyor. Stil kilidi burada devreye giriyor ve seri boyunca ürün aynı ürün, karakter aynı karakter olarak kalıyor." },
+        { "type": "subheading", "text": "3. Prompt'a her şeyi tek cümlede sıkıştırmak" },
+        { "type": "paragraph", "text": "Beyaz arka planda, yakın çekim, yumuşak ışık, ürün ortada, hafif gölgeli, minimalist, dört K, profesyonel gibi tek cümleye yığılmış bir prompt, model için çelişkili sinyaller taşır ve hiçbir isteğin tam karşılanmaz. Konu, ortam, ışık, kamera açısı ve stili ayrı katmanlar gibi sırayla kurmak, önce ne olduğunu, sonra nerede olduğunu, sonra nasıl aydınlatıldığını anlatmak çok daha tutarlı sonuç veriyor. Bu sıralamayı bir kere not alıp her promptta aynı şablonu kullanmak, aradan birkaç işten sonra otomatikleşiyor." },
+        { "type": "subheading", "text": "4. Küçük bir hatayı düzeltmek için baştan üretmek" },
+        { "type": "paragraph", "text": "Görselin yüzde doksanı doğru, sadece etiketteki yazı bozuk veya arka planda istenmeyen bir leke var; bu durumda tüm görseli yeniden üretmek kredi ve zaman kaybı. Inpainting tam bunun için var: sadece bozuk bölgeyi seçip o kısmı yeniden ürettiriyorsun, görselin geri kalanı aynı kalıyor. Pratikte bu tek değişiklik, en çok kredi tasarrufu yaptıran adım oluyor." },
+        { "type": "subheading", "text": "5. Modelin zayıf olduğu şeyi zorlamak" },
+        { "type": "paragraph", "text": "El pozisyonları, küçük okunabilir yazı ve tam simetrik desenler hâlâ AI görsel üretiminin en zorlandığı üç alan. Bunu bilmeden kompozisyonu bu noktalara dayandırmak, mesela elin ürünü net tuttuğu bir poz veya ambalajdaki küçük yazının okunması gereken bir kare, işi zorlaştırıyor. Kompozisyonu bu zayıf noktaları arka planda tutacak şekilde kurmak, ya da metni sonradan bir tasarım programında eklemek, çok daha az sürtünmeli bir yol — ve çoğu zaman sonuç hiç fark edilmeyecek kadar doğal duruyor." },
+        { "type": "subheading", "text": "6. Aynı işi tek modelde tek seferde üretip durmak" },
+        { "type": "paragraph", "text": "İlk çıktı beğenilmediğinde çoğu kullanıcı aynı modelde promptu biraz değiştirip tekrar dener. Oysa aynı promptu iki üç farklı modelde paralel denemek, biri fotogerçekçiliğe güçlü biri kompozisyona, hangi modelin bu spesifik iş için daha iyi sonuç verdiğini gösteriyor. Tek hesapta yüz seksenden fazla model olduğu için bu karşılaştırma ekstra bir araç kurmayı gerektirmiyor, birkaç dakika içinde yapılabiliyor." },
+        { "type": "subheading", "text": "7. Mecrayı düşünmeden çözünürlük ve oran seçmek" },
+        { "type": "paragraph", "text": "Instagram akışı için kare, hikaye için dikey format, web banner için geniş format; görseli tek bir oranda üretip sonra kırpmak kompozisyonun önemli kısmını kadraj dışına atabiliyor ya da kaliteyi düşürüyor. Hangi mecrada kullanılacağını üretim öncesi belirlemek ve o orana göre üretmek, sonradan bir tasarım programında kurtarmaya çalışmaktan hem daha hızlı hem daha kaliteli." },
+        { "type": "heading", "text": "Gerçek bir iş: bozuk bir ürün görselini düzeltme" },
+        { "type": "paragraph", "text": "Bir freelance tasarımcı, bir kozmetik markası için on iki ürünün e-ticaret görselini çıkarması gerekiyor. İlk denemede genel amaçlı bir modelle tek cümlelik prompt kullanıyor; sonuç, şişenin etiketindeki marka adı bozuk çıkıyor ve arka plan istediği gibi beyaz değil. İşi LuviBot'a tarif ettiğinde ürün fotoğrafçılığına güçlü başka bir modeli öneriyor; tasarımcı ürünün gerçek fotoğrafını referans olarak ekliyor. İkinci üretimde ürün ve ışık doğru ama etiket hâlâ net değil; bu kez tüm görseli atmak yerine sadece etiket bölgesini inpainting ile yeniden üretiyor. Son adımda aynı prompt ve referansla kalan on bir ürünü batch ile tek seferde çıkarıyor, kare ve dikey olmak üzere iki farklı oranda. İş, ilk denemeden teslim edilen dosyaya kadar bir öğleden sonra sürüyor; krediler ağırlıklı olarak ikinci inpainting düzeltmesinde ve batch çıkışında harcanıyor, baştan tekrar üretimde değil. Aynı on iki görseli klasik bir stüdyo çekimiyle çıkarmak günler ve çok daha yüksek bir bütçe gerektirirdi; burada fark, doğru sırayı bilmekten geliyor, sadece araçtan değil." },
+        { "type": "list", "items": [
+          "İşi tanımla ve LuviBot'un hangi modeli önerdiğine bak.",
+          "Elinde varsa gerçek ürün veya karakter fotoğrafını referans olarak ekle.",
+          "Prompt'u konu – ortam – ışık – stil sırasıyla katmanla, tek cümleye sıkıştırma.",
+          "Küçük hatalarda baştan üretme, inpainting ile sadece o bölgeyi düzelt.",
+          "Mecrayı (kare / dikey / geniş) üretimden önce belirle."
+        ] },
+        { "type": "heading", "text": "Maliyet ve sınırlar: dürüst taraf" },
+        { "type": "paragraph", "text": "Bir ürün görseli, modele ve çözünürlüğe göre birkaç kredi tutuyor; bir inpainting düzeltmesi bundan daha az krediye mal oluyor çünkü sadece küçük bir alan yeniden üretiliyor. Video üretimi görselden kat kat daha fazla krediye ihtiyaç duyuyor, bu yüzden video işinde yanlış modelle başlamanın maliyeti çok daha yüksek oluyor. Kredi cüzdanının süresi dolmadığı için bu denemeleri aceleye getirmeden yapabiliyorsun; bir işe bugün başlayıp yarın devam etmek krediyi kaybettirmiyor. Dürüst olmak gerekirse: tam simetrik desenler, çok küçük okunabilir yazı ve karmaşık el pozları hâlâ bazen üç dört denemeden sonra bile tam istediğin gibi çıkmıyor; bu noktalarda bir tasarım programında küçük bir insan dokunuşu en hızlı çözüm oluyor. Bunu kabul etmek, zamanını yanlış yerde on kere denemek yerine doğru yerde bir kere düzeltmeye harcamanı sağlıyor." },
+        { "type": "stats", "items": [
+          { "label": "Tipik görsel üretimi", "value": "1-3 kredi / görsel (modele göre)" },
+          { "label": "Inpainting düzeltmesi", "value": "görselin yeniden üretiminden daha az kredi" },
+          { "label": "12 ürünlük iş süresi", "value": "bir öğleden sonra (deneme + batch dahil)" }
+        ] },
+        { "type": "heading", "text": "Sık Sorulan Sorular" },
+        { "type": "subheading", "text": "Hangi model doğru, nasıl anlarım?" },
+        { "type": "paragraph", "text": "İşini olduğu gibi LuviBot'a tarif et; hangi model türünün, fotogerçekçi, illüstrasyon veya üç boyutlu, işine uygun olduğunu ve nasıl bir prompt kurman gerektiğini öneriyor. Tahmin etmen gerekmiyor, denedikçe de hangi model ailesinin senin işlerine daha çok yattığını öğreniyorsun." },
+        { "type": "subheading", "text": "Referans görsel kullanınca orijinal görselin aynısı mı çıkar?" },
+        { "type": "paragraph", "text": "Hayır, referans görsel modeli o ürünün veya karakterin kimliğine, rengine, formuna ve oranına kilitler ama sahne, açı ve ışık her üretimde değişebilir. Bu yüzden stil kilidiyle birlikte kullanmak tutarlılığı artırır." },
+        { "type": "subheading", "text": "Inpainting ile baştan üretim arasındaki fark ne kadar kredi tasarrufu sağlıyor?" },
+        { "type": "paragraph", "text": "Kesin oran işe göre değişir ama pratikte tüm görseli tekrar üretmek yerine sadece bozuk bölgeyi düzeltmek genelde çok daha az kredi harcatıyor, çünkü yeniden üretilen alan görselin küçük bir parçası." },
+        { "type": "subheading", "text": "Bu yedi hatayı tek bir işte birden görebilir miyim, yoksa birbirinden ayrı mı ele almalıyım?" },
+        { "type": "paragraph", "text": "Çoğu zaman birlikte görülüyor; yanlış model seçimi genelde referans eksikliğiyle, o da aşırı yüklü bir promptla birleşiyor. Bu yüzden bu listeyi tek tek değil, bir üretim öncesi kontrol listesi gibi baştan geçmek daha az deneme gerektiriyor." },
+        { "type": "paragraph", "text": "Bu yedi düzeltmeyi bir sonraki işinde uygulamak için LUVI Creator'da hesap aç, bir ürün veya görsel işini LuviBot'a tarif et ve referans, inpainting ve batch üçlüsünü aynı iş üzerinde dene; aradaki farkı ilk üretimde görürsün." }
+      ]
+    },
+    "en": {
+      "title": "The Seven Most Common AI Image Generation Mistakes — and How to Fix Each One",
+      "excerpt": "The seven mistakes that keep breaking AI-generated images — hands, backgrounds, and label text — and the practical fix for each.",
+      "content": [
+        { "type": "paragraph", "text": "You need a product image ready for your online store: clean background, product dead-center, matching your brand color. You write the prompt, the image comes back — but the hand looks off, the background isn't the white you asked for, the label text is unreadable. You try again, and this time something else breaks: the product tilts, or the shadow falls the wrong way. Three or four hours later you still don't have a usable image, and you're not sure what mistake you keep making — every attempt feels random." },
+        { "type": "heading", "text": "The mistakes keep showing up in the same seven places" },
+        { "type": "paragraph", "text": "Most of what goes wrong when generating AI images isn't random — it's the same seven mistakes wearing different outfits. Once you recognize them, you stop regenerating an image ten times from scratch and instead set it up right the first time, then make a small fix when needed. The seven points below are the practical fixes for the patterns that repeat most often across jobs on LUVI Creator, and each one is a small habit change on its own." },
+        { "type": "heading", "text": "Seven classic mistakes and how to fix them" },
+        { "type": "subheading", "text": "1. Starting with the wrong model" },
+        { "type": "paragraph", "text": "More than 180 models are each optimized for different jobs — one is strong at photorealistic product shots, another at illustration, another at legible text and logos. Trying to do every job with one general-purpose model creates the first mistake right here, and it's usually the most expensive one, because a wrong model choice makes the next six steps irrelevant. Describing your job to LuviBot as it is — say, \"product shot on a white background for an online store\" — is enough; LuviBot suggests the closest model and how to structure the prompt." },
+        { "type": "subheading", "text": "2. Expecting consistency without a reference image" },
+        { "type": "paragraph", "text": "If you want to keep the same product or character across ten frames, a text prompt alone isn't enough — the model produces a slightly different face or color every time. Giving it the real product photo, or a previously approved image, as a reference locks the model onto that image's identity. Style lock kicks in here, and the product stays the same product across the whole series." },
+        { "type": "subheading", "text": "3. Cramming everything into one prompt sentence" },
+        { "type": "paragraph", "text": "A prompt piled into one sentence — \"white background, close-up, soft light, product centered, slight shadow, minimalist, 4K, professional\" — carries contradictory signals, and none of the requests get fully honored. Building it in layers instead — subject, environment, light, camera angle, style, in that order — gives a far more consistent result. Note this order once and reuse the same template every time; it becomes automatic after a few jobs." },
+        { "type": "subheading", "text": "4. Regenerating from scratch to fix a small error" },
+        { "type": "paragraph", "text": "The image is 90% right — only the label text is broken, or there's an unwanted smudge in the background — and regenerating the whole image wastes both credits and time. This is exactly what inpainting is for: select just the broken area and have only that region regenerated, while the rest stays the same. In practice, this single change saves the most credits of any habit on this list." },
+        { "type": "subheading", "text": "5. Forcing the thing the model is weak at" },
+        { "type": "paragraph", "text": "Hand positions, small legible text, and perfectly symmetric patterns are still the three areas AI image generation struggles with most. Not knowing this and building a composition that depends on them — a hand gripping the product cleanly, or tiny packaging text that has to be readable — makes the job harder than it needs to be. Composing around these weak points, or adding the text afterward in a design tool, is a far less frictional path." },
+        { "type": "subheading", "text": "6. Generating the same job once, in one model, and stopping there" },
+        { "type": "paragraph", "text": "When the first output disappoints, most users tweak the prompt and try again in the same model. Running the same prompt in parallel across two or three different models instead — one strong at photorealism, one at composition — shows which model actually performs better for this specific job. With more than 180 models on one account, this comparison takes a few minutes, not a new tool." },
+        { "type": "subheading", "text": "7. Picking resolution and aspect ratio without thinking about where it'll run" },
+        { "type": "paragraph", "text": "Square for the Instagram feed, vertical for Stories, wide for a web banner — generating at one ratio and cropping afterward can push the important part of the composition out of frame, or reduce quality. Deciding where the image will run before you generate, and generating at that ratio directly, is faster and higher quality than rescuing it in a design tool afterward." },
+        { "type": "heading", "text": "A real job: fixing a broken product image" },
+        { "type": "paragraph", "text": "A freelance designer needs e-commerce images for twelve products for a cosmetics brand. On the first attempt, using a general-purpose model and a single-sentence prompt, the brand name comes out broken on the bottle label and the background isn't the white it was supposed to be. Describing the job to LuviBot, it suggests a model stronger at product photography; the designer adds the product's real photo as a reference. The second generation gets the product and lighting right, but the label still isn't sharp — so instead of discarding the whole image, only the label area gets regenerated with inpainting. In the last step, the remaining eleven products get produced in one pass with batch, using the same prompt and reference, in both square and vertical ratios. The job runs from first attempt to delivered files in one afternoon; credits go mostly toward the inpainting fix and the batch run, not toward regenerating from scratch. A classic studio shoot of the same twelve products would take days and a far larger budget." },
+        { "type": "list", "items": [
+          "Define the job and check what model LuviBot suggests.",
+          "Add a real product or character photo as a reference if you have one.",
+          "Layer the prompt as subject – environment – light – style, not one crammed sentence.",
+          "Don't regenerate from scratch for small errors — fix just that area with inpainting.",
+          "Decide the destination (square / vertical / wide) before you generate."
+        ] },
+        { "type": "heading", "text": "Cost and limits: the honest part" },
+        { "type": "paragraph", "text": "A product image costs a few credits depending on model and resolution; an inpainting fix costs less than that because only a small area gets regenerated. Video generation needs far more credits than an image, so starting with the wrong model costs much more on a video job. Because the credit wallet doesn't expire, you can run these experiments without rushing. To be honest about the limits: perfectly symmetric patterns, very small legible text, and complex hand poses still sometimes don't come out right even after three or four attempts — at that point, a small human touch-up in a design tool is the fastest fix. Accepting that upfront saves you from trying ten times in the wrong place instead of fixing it once in the right one." },
+        { "type": "stats", "items": [
+          { "label": "Typical image generation", "value": "1-3 credits per image (model-dependent)" },
+          { "label": "Inpainting fix", "value": "less than a full regeneration" },
+          { "label": "12-product job", "value": "one afternoon, including tests and batch" }
+        ] },
+        { "type": "heading", "text": "FAQ" },
+        { "type": "subheading", "text": "How do I know which model is right?" },
+        { "type": "paragraph", "text": "Describe the job to LuviBot as it is; it suggests which model type — photorealistic, illustration, or 3D — fits your job and how to structure the prompt. You don't have to guess, and the more you use it, the more you learn which model family fits your own jobs." },
+        { "type": "subheading", "text": "If I use a reference image, does the output look exactly like it?" },
+        { "type": "paragraph", "text": "No — a reference image locks the model onto that product's or character's identity, color, shape and proportions, but the scene, angle and lighting can still change each time. Pairing it with style lock improves consistency further." },
+        { "type": "subheading", "text": "How much does inpainting actually save compared to regenerating from scratch?" },
+        { "type": "paragraph", "text": "The exact ratio depends on the job, but fixing just the broken area instead of the whole image generally costs far fewer credits, because the regenerated area is only a small part of the image." },
+        { "type": "subheading", "text": "Do these seven mistakes usually show up together, or should I treat them separately?" },
+        { "type": "paragraph", "text": "They usually show up together — picking the wrong model tends to come bundled with missing a reference, which tends to come bundled with an overloaded prompt. It's worth running through this list as a pre-production checklist rather than tackling each mistake in isolation — it takes fewer attempts." },
+        { "type": "paragraph", "text": "To put these seven fixes to work on your next job, open an account on LUVI Creator, describe a product or image job to LuviBot, and try the reference, inpainting and batch combination on the same job — you'll see the difference on the very first generation." }
+      ]
+    }
   }
 ]
